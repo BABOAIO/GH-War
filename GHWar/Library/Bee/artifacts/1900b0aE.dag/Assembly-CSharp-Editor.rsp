@@ -111,8 +111,14 @@
 -define:ENABLE_TIMELINE
 -define:ENABLE_LEGACY_INPUT_MANAGER
 -define:TEXTCORE_FONT_ENGINE_1_5_OR_NEWER
+-define:PHOTON_UNITY_NETWORKING
+-define:PUN_2_0_OR_NEWER
+-define:PUN_2_OR_NEWER
+-define:PUN_2_19_OR_NEWER
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
+-r:"Assets/Photon/PhotonLibs/netstandard2.0/Photon3Unity3D.dll"
+-r:"Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/Managed/UnityEditor.Graphs.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/Managed/UnityEngine/UnityEditor.DeviceSimulatorModule.dll"
@@ -368,6 +374,16 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Oculus.VR.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Oculus.VR.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Oculus.VR.Scripts.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/PhotonChat.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/PhotonRealtime.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/PhotonUnityNetworking.Demos.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/PhotonUnityNetworking.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/PhotonUnityNetworking.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/PhotonUnityNetworking.Utilities.Culling.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/PhotonUnityNetworking.Utilities.PhotonPlayer.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/PhotonUnityNetworking.Utilities.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/PunDemos.DemoHubEditor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/PunDemos.DemoSlotcarEditor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.EditorCoroutines.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Performance.Profile-Analyzer.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.PlasticSCM.Editor.ref.dll"
@@ -409,6 +425,7 @@
 "Assets/Oculus/SampleFramework/Editor/BuildSamples.cs"
 "Assets/Oculus/SampleFramework/Editor/OculusSampleFrameworkUtil.cs"
 "Assets/Oculus/SampleFramework/Usage/OVROverlayCanvas/Editor/OVROverlayCanvasEditor.cs"
+"Assets/Photon/PhotonChat/Demos/DemoChat/Editor/ChatEditor.cs"
 -langversion:9.0
 
 /deterministic
