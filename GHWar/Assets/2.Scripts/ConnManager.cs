@@ -33,7 +33,7 @@ public class ConnManager : MonoBehaviourPunCallbacks
     // 서버 접속 실패 시 재시도
     public override void OnDisconnected(DisconnectCause cause)
     {
-        Debug.LogError("오프라인 : 접속 실패...");
+        Debug.LogError("오프라인 : 접속 해제...");
         PhotonNetwork.ConnectUsingSettings();
     }
     // 로비 접속 완료 후 방 접속
