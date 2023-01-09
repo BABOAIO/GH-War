@@ -14,7 +14,6 @@ public class VRPlayerMove : MonoBehaviourPun, IPunObservable
 
     Vector3 v3_setPos;
     Quaternion q_setRot;
-    float f_directionSpeed = 0f;
 
     void Start()
     {
