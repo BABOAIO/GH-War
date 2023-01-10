@@ -15,7 +15,11 @@ C:/Users/Clicked_NB/Documents/GitHub/GH-War/GHWar
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
+<<<<<<< Updated upstream
 2113
+=======
+11606
+>>>>>>> Stashed changes
 Successfully changed project path to: C:/Users/Clicked_NB/Documents/GitHub/GH-War/GHWar
 C:/Users/Clicked_NB/Documents/GitHub/GH-War/GHWar
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,12 +51,21 @@ C:/Users/Clicked_NB/Documents/GitHub/GH-War/GHWar
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
+<<<<<<< Updated upstream
 Player connection [21728] Host "[IP] 192.168.10.36 [Port] 0 [Flags] 2 [Guid] 648902865 [EditorId] 648902865 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-IAE06UK) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
 Player connection [21728] Host "[IP] 192.168.10.36 [Port] 0 [Flags] 2 [Guid] 648902865 [EditorId] 648902865 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-IAE06UK) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
 Refreshing native plugins compatible for Editor in 145.59 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.61 ms.
+=======
+Player connection [16884] Host "[IP] 192.168.10.36 [Port] 0 [Flags] 2 [Guid] 1729803673 [EditorId] 1729803673 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-IAE06UK) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [16884] Host "[IP] 192.168.10.36 [Port] 0 [Flags] 2 [Guid] 1729803673 [EditorId] 1729803673 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-IAE06UK) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+Refreshing native plugins compatible for Editor in 175.33 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.39 ms.
+>>>>>>> Stashed changes
 Initialize engine version: 2021.3.16f1 (4016570cf34f)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path C:/Users/Clicked_NB/Documents/GitHub/GH-War/GHWar/Assets
@@ -68,11 +81,16 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/MonoBleedingEdge/etc'
+<<<<<<< Updated upstream
 Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56280
+=======
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56144
+>>>>>>> Stashed changes
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.16f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+<<<<<<< Updated upstream
 Registered in 0.007681 seconds.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
@@ -83,11 +101,24 @@ Mono: successfully reloaded assembly
 Domain Reload Profiling:
 	ReloadAssembly (822ms)
 		BeginReloadAssembly (76ms)
+=======
+Registered in 0.009138 seconds.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 159.35 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.771 seconds
+Domain Reload Profiling:
+	ReloadAssembly (771ms)
+		BeginReloadAssembly (79ms)
+>>>>>>> Stashed changes
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
+<<<<<<< Updated upstream
 		EndReloadAssembly (623ms)
 			LoadAssemblies (73ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
@@ -102,20 +133,45 @@ Domain Reload Profiling:
 				BeforeProcessingInitializeOnLoad (1ms)
 				ProcessInitializeOnLoadAttributes (150ms)
 				ProcessInitializeOnLoadMethodAttributes (54ms)
+=======
+		EndReloadAssembly (560ms)
+			LoadAssemblies (77ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (129ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (40ms)
+			SetupLoadedEditorAssemblies (333ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (10ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (160ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (120ms)
+				ProcessInitializeOnLoadMethodAttributes (42ms)
+>>>>>>> Stashed changes
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
+<<<<<<< Updated upstream
 Registered in 0.009921 seconds.
+=======
+Registered in 0.007104 seconds.
+>>>>>>> Stashed changes
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image C:\Users\Clicked_NB\Documents\GitHub\GH-War\GHWar\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Symbol file LoadedFromMemory doesn't match image C:\Users\Clicked_NB\Documents\GitHub\GH-War\GHWar\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
+<<<<<<< Updated upstream
 Refreshing native plugins compatible for Editor in 1.77 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.07 ms.
+=======
+Refreshing native plugins compatible for Editor in 175.10 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
+>>>>>>> Stashed changes
 Package Manager log level set to [2]
 [XR] OculusXRPlugin: registering subsystems
 [XR] Unable to register display lifecyle provider: [1]
@@ -123,6 +179,7 @@ Package Manager log level set to [2]
 [XR] Unable to register input lifecyle provider: [1]
 [XR] OVRP version 1.79.0
 Mono: successfully reloaded assembly
+<<<<<<< Updated upstream
 - Completed reload, in  1.442 seconds
 Domain Reload Profiling:
 	ReloadAssembly (1445ms)
@@ -221,6 +278,32 @@ Domain Reload Profiling:
 				ProcessInitializeOnLoadAttributes (246ms)
 				ProcessInitializeOnLoadMethodAttributes (31ms)
 				AfterProcessingInitializeOnLoad (8ms)
+=======
+- Completed reload, in  1.633 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1634ms)
+		BeginReloadAssembly (108ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (23ms)
+		EndReloadAssembly (1383ms)
+			LoadAssemblies (87ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (430ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (109ms)
+			SetupLoadedEditorAssemblies (684ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (7ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (175ms)
+				BeforeProcessingInitializeOnLoad (150ms)
+				ProcessInitializeOnLoadAttributes (312ms)
+				ProcessInitializeOnLoadMethodAttributes (32ms)
+				AfterProcessingInitializeOnLoad (7ms)
+>>>>>>> Stashed changes
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (7ms)
@@ -284,6 +367,7 @@ Domain Reload Profiling:
 			AwakeInstancesAfterBackupRestoration (6ms)
 Platform modules already initialized, skipping
 Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
+<<<<<<< Updated upstream
 Refreshing native plugins compatible for Editor in 4.40 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.04 ms.
 Unloading 4918 Unused Serialized files (Serialized files now loaded: 0)
@@ -754,6 +838,15 @@ Unloading 4918 Unused Serialized files (Serialized files now loaded: 0)
 Unloading 55 unused Assets / (167.9 KB). Loaded Objects now: 5492.
 Memory consumption went from 172.5 MB to 172.3 MB.
 Total: 3.110100 ms (FindLiveObjects: 0.358300 ms CreateObjectMapping: 0.194700 ms MarkObjects: 2.393500 ms  DeleteObjects: 0.162700 ms)
+=======
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 1.81 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.08 ms.
+Unloading 5650 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 67 unused Assets / (199.9 KB). Loaded Objects now: 6082.
+Memory consumption went from 204.3 MB to 204.1 MB.
+Total: 3.641100 ms (FindLiveObjects: 0.438600 ms CreateObjectMapping: 0.227000 ms MarkObjects: 2.787600 ms  DeleteObjects: 0.186600 ms)
+>>>>>>> Stashed changes
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -768,12 +861,17 @@ AssetImportParameters requested are different than current active one (requested
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
+<<<<<<< Updated upstream
 Registered in 0.008027 seconds.
+=======
+Registered in 0.008696 seconds.
+>>>>>>> Stashed changes
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image C:\Users\Clicked_NB\Documents\GitHub\GH-War\GHWar\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Symbol file LoadedFromMemory doesn't match image C:\Users\Clicked_NB\Documents\GitHub\GH-War\GHWar\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
+<<<<<<< Updated upstream
 Refreshing native plugins compatible for Editor in 1.32 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.08 ms.
 Mono: successfully reloaded assembly
@@ -834,12 +932,17 @@ Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 Refreshing native plugins compatible for Editor in 1.51 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.09 ms.
+=======
+Refreshing native plugins compatible for Editor in 1.72 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.07 ms.
+>>>>>>> Stashed changes
 Mono: successfully reloaded assembly
 - Completed reload, in  1.050 seconds
 Domain Reload Profiling:
 	ReloadAssembly (1051ms)
 		BeginReloadAssembly (139ms)
 			ExecutionOrderSort (0ms)
+<<<<<<< Updated upstream
 			DisableScriptedObjects (6ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
@@ -1323,17 +1426,47 @@ Domain Reload Profiling:
 				ProcessInitializeOnLoadAttributes (242ms)
 				ProcessInitializeOnLoadMethodAttributes (32ms)
 				AfterProcessingInitializeOnLoad (9ms)
+=======
+			DisableScriptedObjects (3ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (44ms)
+		EndReloadAssembly (1055ms)
+			LoadAssemblies (101ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (397ms)
+			ReleaseScriptCaches (3ms)
+			RebuildScriptCaches (50ms)
+			SetupLoadedEditorAssemblies (456ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (18ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (2ms)
+				BeforeProcessingInitializeOnLoad (105ms)
+				ProcessInitializeOnLoadAttributes (289ms)
+				ProcessInitializeOnLoadMethodAttributes (30ms)
+				AfterProcessingInitializeOnLoad (10ms)
+>>>>>>> Stashed changes
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (6ms)
 Platform modules already initialized, skipping
 Shader 'Oculus/OVRMRCameraFrameLit': fallback shader 'Alpha-Diffuse' not found
+<<<<<<< Updated upstream
 Refreshing native plugins compatible for Editor in 6.43 ms, found 8 plugins.
 Preloading 1 native plugins for Editor in 0.06 ms.
 Unloading 4918 Unused Serialized files (Serialized files now loaded: 0)
 Unloading 55 unused Assets / (160.4 KB). Loaded Objects now: 5542.
 Memory consumption went from 172.6 MB to 172.5 MB.
 Total: 2.830800 ms (FindLiveObjects: 0.335300 ms CreateObjectMapping: 0.177700 ms MarkObjects: 2.152900 ms  DeleteObjects: 0.163900 ms)
+=======
+Refreshing native plugins compatible for Editor in 5.34 ms, found 8 plugins.
+Preloading 1 native plugins for Editor in 0.06 ms.
+Unloading 5556 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 56 unused Assets / (159.2 KB). Loaded Objects now: 6087.
+Memory consumption went from 196.0 MB to 195.8 MB.
+Total: 3.274200 ms (FindLiveObjects: 0.385300 ms CreateObjectMapping: 0.211400 ms MarkObjects: 2.532800 ms  DeleteObjects: 0.144000 ms)
+>>>>>>> Stashed changes
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -1345,6 +1478,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+<<<<<<< Updated upstream
 ========================================================================
 Received Import Request.
   Time since last request: 4341.628161 seconds.
@@ -1357,3 +1491,9 @@ Received Import Request.
   path: Assets/Resources/VRPlayer.prefab
   artifactKey: Guid(d85bdc8a58f82a74bbc3c92ff5fd2afe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Resources/VRPlayer.prefab using Guid(d85bdc8a58f82a74bbc3c92ff5fd2afe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '040779724a1243702e68efc33d4933e8') in 0.134783 seconds 
+=======
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
+>>>>>>> Stashed changes
