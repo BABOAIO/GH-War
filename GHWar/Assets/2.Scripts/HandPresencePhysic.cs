@@ -5,7 +5,7 @@ using UnityEngine;
 public class HandPresencePhysic : MonoBehaviour
 {
     [SerializeField] Transform t_target;
-    [SerializeField] Rigidbody rb_this;
+    Rigidbody rb_this;
 
     void Start()
     {
