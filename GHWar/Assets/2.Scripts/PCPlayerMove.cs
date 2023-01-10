@@ -9,7 +9,6 @@ public class PCPlayerMove : MonoBehaviourPun, IPunObservable
     [SerializeField] float f_moveSpeed = 3.0f;
     [Header("회전속도")]
     [SerializeField] float f_rotSpeed = 200.0f;
-    [SerializeField] GameObject o_cam;
     [SerializeField] Transform t_player;
     //[SerializeField] Animator a_player;
     [SerializeField] CharacterController cc_playerCtrl;
@@ -21,7 +20,6 @@ public class PCPlayerMove : MonoBehaviourPun, IPunObservable
 
     void Start()
     {
-        o_cam.SetActive(true);
     }
 
 

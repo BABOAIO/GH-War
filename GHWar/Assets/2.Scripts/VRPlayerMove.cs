@@ -15,6 +15,11 @@ public class VRPlayerMove : MonoBehaviourPun, IPunObservable
     Vector3 v3_setPos;
     Quaternion q_setRot;
 
+    private void OnEnable()
+    {
+        o_cam.transform.rotation = new Quaternion(0, 0, 0, 0);
+    }
+
     void Start()
     {
         o_cam.SetActive(true);
@@ -28,6 +33,7 @@ public class VRPlayerMove : MonoBehaviourPun, IPunObservable
 
     void Move()
     {
+        // 서버접속중인 것이 나라면 이동
         if(photonView.IsMine)
         {
             Vector2 v2_stickPos = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, OVRInput.Controller.LTouch);
@@ -46,6 +52,7 @@ public class VRPlayerMove : MonoBehaviourPun, IPunObservable
 
             //anim...
         }
+        // 상대방 위치 동기화
         else
         {
             transform.position = Vector3.Lerp(transform.position, v3_setPos, Time.deltaTime * 20f);
@@ -55,6 +62,7 @@ public class VRPlayerMove : MonoBehaviourPun, IPunObservable
 
     void Rotate()
     {
+        // 서버접속중인 것이 나라면 회전
         if (photonView.IsMine)
         {
             float f_rotH = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, OVRInput.Controller.RTouch).x;
@@ -63,6 +71,7 @@ public class VRPlayerMove : MonoBehaviourPun, IPunObservable
         }
     }
 
+    // 매 시간마다 변한 상대방의 위치, 회전값 전송, 읽어오기
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
@@ -71,7 +80,7 @@ public class VRPlayerMove : MonoBehaviourPun, IPunObservable
             stream.SendNext(t_player.rotation);
             //stream.SendNext(anim.GetFloat("Speed"));
         }
-
+        
         else if (stream.IsReading)
         {
             v3_setPos = (Vector3)stream.ReceiveNext();

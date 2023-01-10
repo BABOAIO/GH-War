@@ -7,7 +7,8 @@ using Photon.Pun;
 public class GameManager : MonoBehaviourPunCallbacks
 {
     public static GameManager instance;
-    
+
+    // VR인지 PC인지를 구분
     public bool isVR;
 
     public static bool isPresent()
