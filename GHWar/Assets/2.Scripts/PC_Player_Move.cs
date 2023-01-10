@@ -36,13 +36,20 @@ public class PC_Player_Move : MonoBehaviourPun, IPunObservable
         PC_Player_Cam.SetActive(true);
         PC_Player_Rigidbody = GetComponent<Rigidbody>();
 
+        if (!photonView.IsMine)
+        {
+            PC_Player_Cam.SetActive(false);
+        }
     }
 
     void Update()
     {
-        Move();
-        Rotate(); // Rotate´Â FixedUpdate¿¡ ³ÖÀ¸¸é ¶Ò¶Ò ²÷°Üº¸ÀÓ
-        Jump();
+        if(pv.IsMine)
+        {
+            Move();
+            Rotate(); // Rotate´Â FixedUpdate¿¡ ³ÖÀ¸¸é ¶Ò¶Ò ²÷°Üº¸ÀÓ
+            Jump();
+        }
     }
 
     void Move()

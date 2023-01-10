@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class HandPresencePhysic : MonoBehaviour
 {
+    [Header("같이 이동할 컨트롤러 위치")]
     [SerializeField] Transform t_target;
+    [Header("움직임 제한 초과 시 나올 투명 매터리얼")]
     [SerializeField] Renderer rd_nonPhysicsHand;
     [SerializeField] float f_showDistance = 0.05f;
     Collider[] col_hands;
@@ -30,6 +32,7 @@ public class HandPresencePhysic : MonoBehaviour
         }
     }
 
+    // 아래 Invoke 함수 참고
     public void OnSelect_EnableHandCollider()
     {
         foreach(var item in col_hands)
@@ -37,10 +40,14 @@ public class HandPresencePhysic : MonoBehaviour
             item.enabled = true;
         }
     }
+
+    // XR 이벤트 함수, 선택(트리거 버튼) 해제하면 콜라이더 발생, 이것을 0.5초 이후 발생
     public void OnSelect_EnableHandCollider_Delay(float delay)
     {
         Invoke("OnSelect_EnableHandCollider", delay);
     }
+
+    // XR 이벤트 함수, 선택(트리거 버튼)하면 콜라이더 없어짐
     public void OnSelect_DisableHandCollider()
     {
         foreach (var item in col_hands)

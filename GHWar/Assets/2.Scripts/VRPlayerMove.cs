@@ -23,12 +23,21 @@ public class VRPlayerMove : MonoBehaviourPun, IPunObservable
     void Start()
     {
         o_cam.SetActive(true);
+
+        if (!photonView.IsMine)
+        {
+            o_cam.SetActive(false);
+        }
     }
 
 
     void Update()
     {
-        
+        if(photonView.IsMine)
+        {
+            Move();
+            Rotate();
+        }
     }
 
     void Move()
