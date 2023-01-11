@@ -31,6 +31,12 @@ public class PC_Player_Move : MonoBehaviourPun, IPunObservable
 
     void Start()
     {
+        if (GameManager.instance.isVR)
+        {
+            Camera cam_this = GetComponentInChildren<Camera>();
+            cam_this.transform.LookAt(GameObject.FindGameObjectWithTag("Finish").transform.position);
+        }
+
         pv = GetComponent<PhotonView>();
 
         PC_Player_Cam.SetActive(true);
@@ -44,12 +50,13 @@ public class PC_Player_Move : MonoBehaviourPun, IPunObservable
 
     void Update()
     {
-        if(pv.IsMine)
-        {
-            Move();
-            Rotate(); // Rotate는 FixedUpdate에 넣으면 뚝뚝 끊겨보임
-            Jump();
-        }
+        // 변경점 //
+        // VR 플레이어는 따로 움직임
+        //if(GameManager.instance.isVR) { return; }
+
+        Move();
+        Rotate(); // Rotate는 FixedUpdate에 넣으면 뚝뚝 끊겨보임
+        Jump();
     }
 
     void Move()
@@ -100,7 +107,7 @@ public class PC_Player_Move : MonoBehaviourPun, IPunObservable
         {
             stream.SendNext(PC_Player_Transform.transform.position);
             stream.SendNext(PC_Player_Transform.rotation);
-            stream.SendNext(PC_Player_Cam.transform.rotation);
+            stream.SendNext(PC_Player_Cam.transform.rotation); // 필요한가??
             //stream.SendNext(anim.GetFloat("Speed"));
         }
 

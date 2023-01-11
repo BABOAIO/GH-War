@@ -11,18 +11,26 @@ public class VRPlayerMove : MonoBehaviourPun, IPunObservable
     [SerializeField] GameObject o_cam;
     [SerializeField] Transform t_player;
     //[SerializeField] Animator a_player;
+    [SerializeField] GameObject hand_L;
+    [SerializeField] GameObject hand_R;
 
     Vector3 v3_setPos;
     Quaternion q_setRot;
+    Vector3 v3_setPos_handL;
+    Quaternion q_setRot_handL;
+    Vector3 v3_setPos_handR;
+    Quaternion q_setRot_handR;
 
+    // 스크립트 활성화 시 카메라 위치 정면으로 고정 >> 실패
     private void OnEnable()
     {
-        o_cam.transform.rotation = new Quaternion(0, 0, 0, 0);
+
     }
 
     void Start()
     {
         o_cam.SetActive(true);
+        o_cam.transform.LookAt(GameObject.FindGameObjectWithTag("Ground").transform.position);
 
         if (!photonView.IsMine)
         {
@@ -66,6 +74,20 @@ public class VRPlayerMove : MonoBehaviourPun, IPunObservable
         {
             transform.position = Vector3.Lerp(transform.position, v3_setPos, Time.deltaTime * 20f);
             t_player.rotation = Quaternion.Lerp(t_player.rotation, q_setRot, Time.deltaTime * 20f);
+
+            hand_L.transform.position = Vector3.Lerp(hand_L.transform.position, v3_setPos_handL, Time.deltaTime * 20f);
+            hand_L.transform.rotation = Quaternion.Lerp(hand_L.transform.rotation, q_setRot_handL, Time.deltaTime * 20f);
+
+            hand_R.transform.position = Vector3.Lerp(hand_R.transform.position, v3_setPos_handL, Time.deltaTime * 20f);
+            hand_R.transform.rotation = Quaternion.Lerp(hand_R.transform.rotation, q_setRot_handL, Time.deltaTime * 20f);
+            // PC 플레이어 위치동기화
+            // PC 플레이어 전부 받아오기, 포톤뷰로 담아와야하잖아?
+            //GameObject[] tmp = GameObject.FindGameObjectsWithTag("PC_Player");
+
+            //foreach(var item in tmp)
+            //{
+
+            //}
         }
     }
 
@@ -87,14 +109,30 @@ public class VRPlayerMove : MonoBehaviourPun, IPunObservable
         {
             stream.SendNext(transform.position);
             stream.SendNext(t_player.rotation);
+            stream.SendNext(hand_L.transform.position);
+            stream.SendNext(hand_L.transform.rotation);
+            stream.SendNext(hand_R.transform.position);
+            stream.SendNext(hand_R.transform.rotation);
+
             //stream.SendNext(anim.GetFloat("Speed"));
         }
-        
+
         else if (stream.IsReading)
         {
             v3_setPos = (Vector3)stream.ReceiveNext();
             q_setRot= (Quaternion)stream.ReceiveNext();
+            v3_setPos_handL = (Vector3)stream.ReceiveNext();
+            q_setRot_handL = (Quaternion)stream.ReceiveNext();
+            v3_setPos_handR = (Vector3)stream.ReceiveNext();
+            q_setRot_handR = (Quaternion)stream.ReceiveNext();
+
             //f_directionSpeed= (float)stream.ReceiveNext();
         }
+    }
+
+    [PunRPC]
+    public void GrabObject()
+    {
+
     }
 }

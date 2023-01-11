@@ -8,6 +8,7 @@ ScriptsOnlyBuild:
     - OVRTouchSample.Hand
     - OVRTouchSample.HandPose
     - PCPlayerMove
+    - PC_Player_Move
     - VRPlayerMove
     Oculus.Spatializer.dll:
     - ONSPSettings
@@ -54,6 +55,7 @@ ScriptsOnlyBuild:
     - UnityEngine.XR.Interaction.Toolkit.XRController
     - UnityEngine.XR.Interaction.Toolkit.XRDirectInteractor
     - UnityEngine.XR.Interaction.Toolkit.XRGrabInteractable
+    - UnityEngine.XR.Interaction.Toolkit.XRInteractionManager
     Unity.XR.Management.Editor.dll:
     - UnityEditor.XR.Management.XRGeneralSettingsPerBuildTarget
     Unity.XR.Management.dll:
@@ -106,6 +108,18 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Slider/SliderEvent
     - UnityEngine.UI.SpriteState
   methodsToPreserve:
+  - assembly: Assembly-CSharp
+    fullTypeName: HandPresencePhysic
+    methodName: OnSelect_DisableHandCollider
+  - assembly: Assembly-CSharp
+    fullTypeName: HandPresencePhysic
+    methodName: OnSelect_EnableHandCollider_Delay
+  - assembly: Assembly-CSharp
+    fullTypeName: HandPresencePhysic
+    methodName: OnSelect_DisableHandCollider
+  - assembly: Assembly-CSharp
+    fullTypeName: HandPresencePhysic
+    methodName: OnSelect_EnableHandCollider_Delay
   - assembly: Assembly-CSharp
     fullTypeName: HandPresencePhysic
     methodName: OnSelect_DisableHandCollider
@@ -197,51 +211,55 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 6680}
     - Class: 114
-      Script: {instanceID: 6896}
+      Script: {instanceID: 6854}
     - Class: 114
-      Script: {instanceID: 7102}
+      Script: {instanceID: 6898}
     - Class: 114
-      Script: {instanceID: 7458}
+      Script: {instanceID: 7104}
     - Class: 114
-      Script: {instanceID: 7580}
+      Script: {instanceID: 7460}
     - Class: 114
-      Script: {instanceID: 7820}
+      Script: {instanceID: 7582}
     - Class: 114
-      Script: {instanceID: 8006}
+      Script: {instanceID: 7822}
     - Class: 114
-      Script: {instanceID: 8580}
+      Script: {instanceID: 8008}
     - Class: 114
-      Script: {instanceID: 8994}
+      Script: {instanceID: 8582}
     - Class: 114
-      Script: {instanceID: 9056}
+      Script: {instanceID: 8996}
     - Class: 114
-      Script: {instanceID: 9240}
+      Script: {instanceID: 9058}
     - Class: 114
-      Script: {instanceID: 9490}
+      Script: {instanceID: 9242}
     - Class: 114
-      Script: {instanceID: 9538}
+      Script: {instanceID: 9382}
     - Class: 114
-      Script: {instanceID: 10326}
+      Script: {instanceID: 9492}
     - Class: 114
-      Script: {instanceID: 10336}
+      Script: {instanceID: 9540}
     - Class: 114
-      Script: {instanceID: 10422}
+      Script: {instanceID: 10328}
     - Class: 114
-      Script: {instanceID: 10730}
+      Script: {instanceID: 10338}
     - Class: 114
-      Script: {instanceID: 10752}
+      Script: {instanceID: 10424}
     - Class: 114
-      Script: {instanceID: 10838}
+      Script: {instanceID: 10732}
     - Class: 114
-      Script: {instanceID: 10970}
+      Script: {instanceID: 10754}
     - Class: 114
-      Script: {instanceID: 11094}
+      Script: {instanceID: 10840}
     - Class: 114
-      Script: {instanceID: 11382}
+      Script: {instanceID: 10972}
     - Class: 114
-      Script: {instanceID: 12560}
+      Script: {instanceID: 11096}
     - Class: 114
-      Script: {instanceID: 12946}
+      Script: {instanceID: 11384}
+    - Class: 114
+      Script: {instanceID: 12562}
+    - Class: 114
+      Script: {instanceID: 12948}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1883,7 +1901,7 @@ ScriptsOnlyBuild:
     className: OVRLipSyncMicInput
   - hash:
       serializedVersion: 2
-      Hash: 077432a1a1dce78c76d33f25a1e9c164
+      Hash: 64119c5fae53c80158e22388f345be7e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: VRPlayerMove
@@ -2601,6 +2619,12 @@ ScriptsOnlyBuild:
     assemblyName: PhotonUnityNetworking.Utilities.dll
     namespaceName: Photon.Pun.UtilityScripts
     className: PhotonStatsGui
+  - hash:
+      serializedVersion: 2
+      Hash: 38ae2abc6756f3b40449766a75508ac2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PC_Player_Move
   - hash:
       serializedVersion: 2
       Hash: e4d9ea9c1c4d3739e738fc062c7cb283
@@ -4421,7 +4445,7 @@ ScriptsOnlyBuild:
     className: InputActionManager
   - hash:
       serializedVersion: 2
-      Hash: 41e84151f7c871bfe8d4ee4a8d76fe24
+      Hash: 38ae2abc6756f3b40449766a75508ac2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PCPlayerMove
