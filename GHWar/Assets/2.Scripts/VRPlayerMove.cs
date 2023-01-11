@@ -78,8 +78,8 @@ public class VRPlayerMove : MonoBehaviourPun, IPunObservable
             hand_L.transform.position = Vector3.Lerp(hand_L.transform.position, v3_setPos_handL, Time.deltaTime * 20f);
             hand_L.transform.rotation = Quaternion.Lerp(hand_L.transform.rotation, q_setRot_handL, Time.deltaTime * 20f);
 
-            hand_R.transform.position = Vector3.Lerp(hand_R.transform.position, v3_setPos_handL, Time.deltaTime * 20f);
-            hand_R.transform.rotation = Quaternion.Lerp(hand_R.transform.rotation, q_setRot_handL, Time.deltaTime * 20f);
+            hand_R.transform.position = Vector3.Lerp(hand_R.transform.position, v3_setPos_handR, Time.deltaTime * 20f);
+            hand_R.transform.rotation = Quaternion.Lerp(hand_R.transform.rotation, q_setRot_handR, Time.deltaTime * 20f);
             // PC 플레이어 위치동기화
             // PC 플레이어 전부 받아오기, 포톤뷰로 담아와야하잖아?
             //GameObject[] tmp = GameObject.FindGameObjectsWithTag("PC_Player");

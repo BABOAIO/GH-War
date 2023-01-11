@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class HandPresencePhysic : MonoBehaviour
 {
@@ -9,7 +10,10 @@ public class HandPresencePhysic : MonoBehaviour
     [Header("움직임 제한 초과 시 나올 투명 매터리얼")]
     [SerializeField] Renderer rd_nonPhysicsHand;
     [SerializeField] float f_showDistance = 0.05f;
+
+    // 손에 있는 모든 콜라이더
     Collider[] col_hands;
+    // 움직임에 제약을 주기 위한 리지드바디 컨트롤
     Rigidbody rb_this;
 
     void Start()
@@ -66,6 +70,9 @@ public class HandPresencePhysic : MonoBehaviour
 
         Quaternion q_rotationDifference = t_target.rotation*Quaternion.Inverse(transform.rotation);
         q_rotationDifference.ToAngleAxis(out float f_angleInDegree, out Vector3 v3_rotationAxis);
+
+        // 이 코드가 없으면 특정 각도에서 손이 180도를 넘어가서 한바퀴 돌아감
+        f_angleInDegree = Mathf.Clamp(f_angleInDegree, -90f, 90f);
 
         Vector3 v3_rotationDifferenceInDegree = f_angleInDegree * v3_rotationAxis;
 

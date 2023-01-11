@@ -21,11 +21,21 @@ public class PC_Player_Move : MonoBehaviourPun, IPunObservable
     [Header("PC 플레이어 컨트롤러")]
     [SerializeField] Rigidbody PC_Player_Rigidbody;
 
+    // 변경점 //
+    [SerializeField] GameObject hand_L;
+    [SerializeField] GameObject hand_R;
+
     float f_mouseX = 0; 
     float f_mouseY = 0;
 
     Vector3 v3_setPos;
     Quaternion q_setRot;
+
+    // 변경점 //
+    Vector3 v3_setPos_handL;
+    Quaternion q_setRot_handL;
+    Vector3 v3_setPos_handR;
+    Quaternion q_setRot_handR;
 
     private PhotonView pv;
 
@@ -52,7 +62,7 @@ public class PC_Player_Move : MonoBehaviourPun, IPunObservable
     {
         // 변경점 //
         // VR 플레이어는 따로 움직임
-        //if(GameManager.instance.isVR) { return; }
+        if (GameManager.instance.isVR) { return; }
 
         Move();
         Rotate(); // Rotate는 FixedUpdate에 넣으면 뚝뚝 끊겨보임
@@ -76,6 +86,16 @@ public class PC_Player_Move : MonoBehaviourPun, IPunObservable
         {
             PC_Player_Transform.transform.position = Vector3.Lerp(PC_Player_Transform.transform.position, v3_setPos, Time.deltaTime * 20f);
             PC_Player_Transform.rotation = Quaternion.Lerp(PC_Player_Transform.rotation, q_setRot, Time.deltaTime * 20f);
+
+            // 변경점 //
+            if (GameManager.instance.isVR)
+            {
+                hand_L.transform.position = Vector3.Lerp(hand_L.transform.position, v3_setPos_handL, Time.deltaTime * 20f);
+                hand_L.transform.rotation = Quaternion.Lerp(hand_L.transform.rotation, q_setRot_handL, Time.deltaTime * 20f);
+
+                hand_R.transform.position = Vector3.Lerp(hand_R.transform.position, v3_setPos_handR, Time.deltaTime * 20f);
+                hand_R.transform.rotation = Quaternion.Lerp(hand_R.transform.rotation, q_setRot_handR, Time.deltaTime * 20f);
+            }
         }
     }
 
@@ -103,11 +123,35 @@ public class PC_Player_Move : MonoBehaviourPun, IPunObservable
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
+        //if (stream.IsWriting)
+        //{
+        //    stream.SendNext(PC_Player_Transform.transform.position);
+        //    stream.SendNext(PC_Player_Transform.rotation);
+        //    stream.SendNext(PC_Player_Cam.transform.rotation); // 필요한가??
+        //    //stream.SendNext(anim.GetFloat("Speed"));
+        //}
+
+        //else if (stream.IsReading)
+        //{
+        //    v3_setPos = (Vector3)stream.ReceiveNext();
+        //    q_setRot = (Quaternion)stream.ReceiveNext();
+        //    //f_directionSpeed= (float)stream.ReceiveNext();
+        //}
+
+        // 변경점 //
         if (stream.IsWriting)
         {
-            stream.SendNext(PC_Player_Transform.transform.position);
+            stream.SendNext(transform.position);
             stream.SendNext(PC_Player_Transform.rotation);
-            stream.SendNext(PC_Player_Cam.transform.rotation); // 필요한가??
+
+            if(GameManager.instance.isVR)
+            {
+                stream.SendNext(hand_L.transform.position);
+                stream.SendNext(hand_L.transform.rotation);
+                stream.SendNext(hand_R.transform.position);
+                stream.SendNext(hand_R.transform.rotation);
+            }
+
             //stream.SendNext(anim.GetFloat("Speed"));
         }
 
@@ -115,6 +159,15 @@ public class PC_Player_Move : MonoBehaviourPun, IPunObservable
         {
             v3_setPos = (Vector3)stream.ReceiveNext();
             q_setRot = (Quaternion)stream.ReceiveNext();
+
+            if (GameManager.instance.isVR)
+            {
+                v3_setPos_handL = (Vector3)stream.ReceiveNext();
+                q_setRot_handL = (Quaternion)stream.ReceiveNext();
+                v3_setPos_handR = (Vector3)stream.ReceiveNext();
+                q_setRot_handR = (Quaternion)stream.ReceiveNext();
+            }
+
             //f_directionSpeed= (float)stream.ReceiveNext();
         }
     }
