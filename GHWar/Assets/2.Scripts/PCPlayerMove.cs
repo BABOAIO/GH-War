@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 
 public class PCPlayerMove : MonoBehaviourPun, IPunObservable
 {
     [Header("이동속도")]
     [SerializeField] float f_moveSpeed = 3.0f;
     [Header("회전속도")]
-    [SerializeField] float f_rotSpeed = 50.0f;
+    [SerializeField] float f_rotSpeed = 10.0f;
     [Header("점프위력")]
     [SerializeField] float f_jumpPower = 5.0f;
 
@@ -22,7 +23,9 @@ public class PCPlayerMove : MonoBehaviourPun, IPunObservable
     [SerializeField] Rigidbody PC_Player_Rigidbody;
 
     // 변경점 //
+    [SerializeField]
     GameObject hand_L;
+    [SerializeField]
     GameObject hand_R;
 
     float f_mouseX = 0;
@@ -43,9 +46,15 @@ public class PCPlayerMove : MonoBehaviourPun, IPunObservable
     {
         if (GameManager.instance.isVR)
         {
-            Camera cam_this = GetComponentInChildren<Camera>();
-            cam_this.transform.LookAt(GameObject.FindGameObjectWithTag("Ground").transform.position);
+            //Camera cam_this = GetComponentInChildren<Camera>();
+            //cam_this.transform.LookAt(GameObject.FindGameObjectWithTag("Ground").transform.position);
+
         }
+        // 변경점 //
+        hand_L = GameObject.FindGameObjectWithTag("LeftHand");
+        hand_R = GameObject.FindGameObjectWithTag("RightHand");
+        print(hand_L.name);
+        print(hand_R.name);
 
         pv = GetComponent<PhotonView>();
 
@@ -57,9 +66,7 @@ public class PCPlayerMove : MonoBehaviourPun, IPunObservable
             PC_Player_Cam.SetActive(false);
         }
 
-        // 변경점 //
-        hand_L = GameObject.FindGameObjectWithTag("LeftHand");
-        hand_R = GameObject.FindGameObjectWithTag("RightHand");
+
     }
 
     void Update()
@@ -68,11 +75,15 @@ public class PCPlayerMove : MonoBehaviourPun, IPunObservable
         // VR 플레이어는 따로 움직임
         if (GameManager.instance.isVR) { return; }
 
+        //pv.RPC("Move", RpcTarget.All);
+        //pv.RPC("Rotate", RpcTarget.All);
+        //pv.RPC("Jump", RpcTarget.All);
         Move();
         Rotate(); // Rotate는 FixedUpdate에 넣으면 뚝뚝 끊겨보임
         Jump();
     }
 
+    [PunRPC]
     void Move()
     {
         if (pv.IsMine)
@@ -92,7 +103,7 @@ public class PCPlayerMove : MonoBehaviourPun, IPunObservable
             PC_Player_Transform.rotation = Quaternion.Lerp(PC_Player_Transform.rotation, q_setRot, Time.deltaTime * 20f);
 
             // 변경점 //
-            if (GameManager.instance.isVR)
+            if (!GameManager.instance.isVR)
             {
                 hand_L.transform.position = Vector3.Lerp(hand_L.transform.position, v3_setPos_handL, Time.deltaTime * 20f);
                 hand_L.transform.rotation = Quaternion.Lerp(hand_L.transform.rotation, q_setRot_handL, Time.deltaTime * 20f);
@@ -103,6 +114,7 @@ public class PCPlayerMove : MonoBehaviourPun, IPunObservable
         }
     }
 
+    [PunRPC]
     void Rotate()
     {
         if (pv.IsMine)
@@ -114,6 +126,7 @@ public class PCPlayerMove : MonoBehaviourPun, IPunObservable
         }
     }
 
+    [PunRPC]
     void Jump()
     {
         if (pv.IsMine)
@@ -127,35 +140,11 @@ public class PCPlayerMove : MonoBehaviourPun, IPunObservable
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        if (stream.IsWriting)
-        {
-            stream.SendNext(PC_Player_Transform.transform.position);
-            stream.SendNext(PC_Player_Transform.rotation);
-            stream.SendNext(PC_Player_Cam.transform.rotation); // 필요한가??
-            //stream.SendNext(anim.GetFloat("Speed"));
-        }
-
-        else if (stream.IsReading)
-        {
-            v3_setPos = (Vector3)stream.ReceiveNext();
-            q_setRot = (Quaternion)stream.ReceiveNext();
-            //f_directionSpeed= (float)stream.ReceiveNext();
-        }
-
-        //// 변경점 //
         //if (stream.IsWriting)
         //{
-        //    stream.SendNext(transform.position);
+        //    stream.SendNext(PC_Player_Transform.transform.position);
         //    stream.SendNext(PC_Player_Transform.rotation);
-
-        //    if (GameManager.instance.isVR)
-        //    {
-        //        stream.SendNext(hand_L.transform.position);
-        //        stream.SendNext(hand_L.transform.rotation);
-        //        stream.SendNext(hand_R.transform.position);
-        //        stream.SendNext(hand_R.transform.rotation);
-        //    }
-
+        //    stream.SendNext(PC_Player_Cam.transform.rotation); // 필요한가??
         //    //stream.SendNext(anim.GetFloat("Speed"));
         //}
 
@@ -163,16 +152,40 @@ public class PCPlayerMove : MonoBehaviourPun, IPunObservable
         //{
         //    v3_setPos = (Vector3)stream.ReceiveNext();
         //    q_setRot = (Quaternion)stream.ReceiveNext();
-
-        //    if (GameManager.instance.isVR)
-        //    {
-        //        v3_setPos_handL = (Vector3)stream.ReceiveNext();
-        //        q_setRot_handL = (Quaternion)stream.ReceiveNext();
-        //        v3_setPos_handR = (Vector3)stream.ReceiveNext();
-        //        q_setRot_handR = (Quaternion)stream.ReceiveNext();
-        //    }
-
         //    //f_directionSpeed= (float)stream.ReceiveNext();
         //}
+
+        // 변경점 //
+        if (stream.IsWriting)
+        {
+            stream.SendNext(this.transform.position);
+            stream.SendNext(PC_Player_Transform.rotation);
+
+            if (GameManager.instance.isVR)
+            {
+                stream.SendNext(hand_L.transform.position);
+                stream.SendNext(hand_L.transform.rotation);
+                stream.SendNext(hand_R.transform.position);
+                stream.SendNext(hand_R.transform.rotation);
+            }
+
+            //stream.SendNext(anim.GetFloat("Speed"));
+        }
+
+        else if (stream.IsReading)
+        {
+            v3_setPos = (Vector3)stream.ReceiveNext();
+            q_setRot = (Quaternion)stream.ReceiveNext();
+
+            if (!GameManager.instance.isVR)
+            {
+                v3_setPos_handL = (Vector3)stream.ReceiveNext();
+                q_setRot_handL = (Quaternion)stream.ReceiveNext();
+                v3_setPos_handR = (Vector3)stream.ReceiveNext();
+                q_setRot_handR = (Quaternion)stream.ReceiveNext();
+            }
+
+            //f_directionSpeed= (float)stream.ReceiveNext();
+        }
     }
 }

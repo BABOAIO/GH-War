@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 
-public class PC_Player_Move : MonoBehaviourPun, IPunObservable
+public class PC_Player_Move : MonoBehaviourPunCallbacks, IPunObservable
 {
     [Header("이동속도")]
     [SerializeField] float f_moveSpeed = 3.0f;
