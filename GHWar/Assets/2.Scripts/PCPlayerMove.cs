@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.XR;
 using Photon.Realtime;
 
 public class PCPlayerMove : MonoBehaviourPun
@@ -70,15 +71,18 @@ public class PCPlayerMove : MonoBehaviourPun
         if (!photonView.IsMine)
         {
             PC_Player_Cam.SetActive(false);
+            // 변경점 //
+            // 자꾸 떨리는 움직임 방지
+            //PC_Player_Rigidbody.isKinematic= false;
         }
 
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // 변경점 //
         // VR 플레이어는 따로 움직임
-        //if (GameManager.instance.isVR) { return; }
+        if (GameManager.instance.isVR) { return; }
 
         //pv.RPC("Move", RpcTarget.All);
         //pv.RPC("Rotate", RpcTarget.All);
@@ -102,21 +106,21 @@ public class PCPlayerMove : MonoBehaviourPun
 
             //anim...
         }
-        else
-        {
-            PC_Player_Transform.position = Vector3.Lerp(PC_Player_Transform.position, v3_setPos, Time.deltaTime * 20f);
-            PC_Player_Transform.rotation = Quaternion.Lerp(PC_Player_Transform.rotation, q_setRot, Time.deltaTime * 20f);
+        //else
+        //{
+        //    PC_Player_Transform.position = Vector3.Lerp(PC_Player_Transform.position, v3_setPos, Time.deltaTime * 20f);
+        //    PC_Player_Transform.rotation = Quaternion.Lerp(PC_Player_Transform.rotation, q_setRot, Time.deltaTime * 20f);
 
-            // 변경점 //
-            //if (!GameManager.instance.isVR)
-            //{
-            //    hand_L.transform.position = Vector3.Lerp(hand_L.transform.position, v3_setPos_handL, Time.deltaTime * 20f);
-            //    hand_L.transform.rotation = Quaternion.Lerp(hand_L.transform.rotation, q_setRot_handL, Time.deltaTime * 20f);
+        //    // 변경점 //
+        //    //if (!GameManager.instance.isVR)
+        //    //{
+        //    //    hand_L.transform.position = Vector3.Lerp(hand_L.transform.position, v3_setPos_handL, Time.deltaTime * 20f);
+        //    //    hand_L.transform.rotation = Quaternion.Lerp(hand_L.transform.rotation, q_setRot_handL, Time.deltaTime * 20f);
 
-            //    hand_R.transform.position = Vector3.Lerp(hand_R.transform.position, v3_setPos_handR, Time.deltaTime * 20f);
-            //    hand_R.transform.rotation = Quaternion.Lerp(hand_R.transform.rotation, q_setRot_handR, Time.deltaTime * 20f);
-            //}
-        }
+        //    //    hand_R.transform.position = Vector3.Lerp(hand_R.transform.position, v3_setPos_handR, Time.deltaTime * 20f);
+        //    //    hand_R.transform.rotation = Quaternion.Lerp(hand_R.transform.rotation, q_setRot_handR, Time.deltaTime * 20f);
+        //    //}
+        //}
     }
 
     [PunRPC]
@@ -124,8 +128,8 @@ public class PCPlayerMove : MonoBehaviourPun
     {
         if (pv.IsMine)
         {
-            f_mouseX += Input.GetAxis("Mouse X") * f_rotSpeed * Time.deltaTime;
-            f_mouseY -= Input.GetAxis("Mouse Y") * f_rotSpeed * Time.deltaTime;
+            f_mouseX += Input.GetAxis("Mouse X") * f_rotSpeed * Time.fixedDeltaTime;
+            f_mouseY -= Input.GetAxis("Mouse Y") * f_rotSpeed * Time.fixedDeltaTime;
             transform.eulerAngles = new Vector3(0, f_mouseX, 0);
             PC_Player_Cam.transform.eulerAngles = new Vector3(f_mouseY, f_mouseX, 0);
         }
@@ -138,7 +142,7 @@ public class PCPlayerMove : MonoBehaviourPun
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                PC_Player_Rigidbody.AddForce(Vector3.up * f_jumpPower * Time.deltaTime, ForceMode.Impulse);
+                PC_Player_Rigidbody.AddForce(Vector3.up * f_jumpPower * Time.fixedDeltaTime, ForceMode.Impulse);
             }
         }
     }

@@ -71,7 +71,7 @@ public class HandPresencePhysic : MonoBehaviour
         Quaternion q_rotationDifference = t_target.rotation*Quaternion.Inverse(transform.rotation);
         q_rotationDifference.ToAngleAxis(out float f_angleInDegree, out Vector3 v3_rotationAxis);
 
-        // 이 코드가 없으면 특정 각도에서 손이 180도를 넘어가서 한바퀴 돌아감
+        // 이 코드가 없으면 특정 각도에서 손이 180도를 넘어가서 한바퀴 돌아감 > 아직 돌아가지만 손을 비틀정도만 아니면 됨...
         f_angleInDegree = Mathf.Clamp(f_angleInDegree, -90f, 90f);
 
         Vector3 v3_rotationDifferenceInDegree = f_angleInDegree * v3_rotationAxis;

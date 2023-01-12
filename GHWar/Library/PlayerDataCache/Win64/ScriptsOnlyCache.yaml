@@ -10,6 +10,7 @@ ScriptsOnlyBuild:
     - PCPlayerMove
     - PC_Player_Move
     - VRPlayerMove
+    - XRGrabInteractionPun
     Oculus.Spatializer.dll:
     - ONSPSettings
     Oculus.VR.Editor.dll:
@@ -54,7 +55,6 @@ ScriptsOnlyBuild:
     - UnityEngine.XR.Interaction.Toolkit.InteractionLayerSettings
     - UnityEngine.XR.Interaction.Toolkit.XRController
     - UnityEngine.XR.Interaction.Toolkit.XRDirectInteractor
-    - UnityEngine.XR.Interaction.Toolkit.XRGrabInteractable
     - UnityEngine.XR.Interaction.Toolkit.XRInteractionManager
     Unity.XR.Management.Editor.dll:
     - UnityEditor.XR.Management.XRGeneralSettingsPerBuildTarget
@@ -227,8 +227,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 8582}
     - Class: 114
-      Script: {instanceID: 8996}
-    - Class: 114
       Script: {instanceID: 9058}
     - Class: 114
       Script: {instanceID: 9242}
@@ -260,6 +258,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 12562}
     - Class: 114
       Script: {instanceID: 12948}
+    - Class: 114
+      Script: {instanceID: 76328}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -4445,7 +4445,7 @@ ScriptsOnlyBuild:
     className: InputActionManager
   - hash:
       serializedVersion: 2
-      Hash: cd07e27dc7180dde538664cffc5fbe77
+      Hash: 38ae2abc6756f3b40449766a75508ac2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PCPlayerMove
@@ -5427,6 +5427,30 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: dbfa7c7f142b7a25cbd4291f7401a2ce
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerController
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerGroundCheck
+  - hash:
+      serializedVersion: 2
+      Hash: d556c732075fe6f80d5407d6ff0efcbd
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: VR_Player_Move
+  - hash:
+      serializedVersion: 2
+      Hash: 2a3ee2b042aca4b4e717251910bb3696
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: XRGrabInteractionPun
   platform: 19
   scenePathNames:
   - Assets/1.Scenes/TestHandScene.unity

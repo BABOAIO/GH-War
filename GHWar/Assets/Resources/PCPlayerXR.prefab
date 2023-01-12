@@ -43,12 +43,12 @@ GameObject:
   - component: {fileID: 6735488686939514351}
   - component: {fileID: 6735488686939514350}
   - component: {fileID: 6735488686939514349}
-  - component: {fileID: 6735488686939514346}
   - component: {fileID: 6735488686939514345}
   - component: {fileID: 6735488686939514129}
-  - component: {fileID: 1035876203}
   - component: {fileID: 1035876213}
   - component: {fileID: 885574052}
+  - component: {fileID: 3646084695551439955}
+  - component: {fileID: 6735488687244854686}
   m_Layer: 0
   m_Name: PCPlayerXR
   m_TagString: PC_Player
@@ -137,23 +137,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6735488686939514346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6735488686939514344}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_allowOffhandGrab: 1
-  m_snapPosition: 0
-  m_snapOrientation: 0
-  m_snapOffset: {fileID: 0}
-  m_grabPoints: []
 --- !u!114 &6735488686939514345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,10 +154,10 @@ MonoBehaviour:
   prefixField: -1
   Synchronization: 3
   OwnershipTransfer: 0
-  observableSearch: 0
+  observableSearch: 2
   ObservedComponents:
   - {fileID: 1035876213}
-  - {fileID: 0}
+  - {fileID: 6735488687244854686}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -194,7 +177,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &1035876203
+--- !u!114 &1035876213
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,7 +186,46 @@ MonoBehaviour:
   m_GameObject: {fileID: 6735488686939514344}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
+  m_Script: {fileID: 11500000, guid: 93c814df4e2187c409723fa829509231, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  f_moveSpeed: 3
+  f_rotSpeed: 20
+  f_jumpPower: 5
+  PC_Player_Cam: {fileID: 6735488686991723640}
+  PC_Player_Transform: {fileID: 6735488686939514128}
+  a_player: {fileID: 0}
+  PC_Player_Rigidbody: {fileID: 6735488686939514129}
+  hand_L: {fileID: 0}
+  hand_R: {fileID: 0}
+--- !u!114 &885574052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6735488686939514344}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1f89e5ee048cb34287b8ecc7601748f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  f_moveSpeed: 3
+  f_rotSpeed: 1000
+  f_jumpPower: 1000
+  PC_Player_Cam: {fileID: 6735488686991723640}
+  PC_Player_Transform: {fileID: 6735488686939514128}
+  PC_Player_Rigidbody: {fileID: 6735488686939514129}
+--- !u!114 &3646084695551439955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6735488686939514344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fb6853c2fc86d14f9a70c489e6d3cb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
@@ -309,25 +331,7 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
---- !u!114 &1035876213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6735488686939514344}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93c814df4e2187c409723fa829509231, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  f_moveSpeed: 3
-  f_rotSpeed: 20
-  f_jumpPower: 5
-  PC_Player_Cam: {fileID: 6735488686991723640}
-  PC_Player_Transform: {fileID: 6735488686939514128}
-  PC_Player_Rigidbody: {fileID: 6735488686939514129}
---- !u!114 &885574052
+--- !u!114 &6735488687244854686
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -336,15 +340,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 6735488686939514344}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1f89e5ee048cb34287b8ecc7601748f, type: 3}
+  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  f_moveSpeed: 3
-  f_rotSpeed: 1000
-  f_jumpPower: 2000
-  PC_Player_Cam: {fileID: 6735488686991723640}
-  PC_Player_Transform: {fileID: 6735488686939514128}
-  PC_Player_Rigidbody: {fileID: 6735488686939514129}
+  m_PositionModel:
+    SynchronizeEnabled: 1
+    TeleportEnabled: 1
+    TeleportIfDistanceGreaterThan: 3
+    InterpolateOption: 4
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 10
+    ExtrapolateOption: 0
+    ExtrapolateSpeed: 1
+    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateNumberOfStoredPositions: 1
+  m_RotationModel:
+    SynchronizeEnabled: 1
+    InterpolateOption: 1
+    InterpolateRotateTowardsSpeed: 180
+    InterpolateLerpSpeed: 5
+  m_ScaleModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 0
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 0
 --- !u!1 &6735488686991723640
 GameObject:
   m_ObjectHideFlags: 0
