@@ -71,12 +71,12 @@ public class PCPlayerMove : MonoBehaviourPunCallbacks, IPunObservable
             PC_Player_Cam.SetActive(false);
         }
 
-        a_o_VRPlayers = GameObject.FindGameObjectsWithTag("VR_Player");
-        for (int i = 0; i < a_o_VRPlayers.Length; i++)
-        {
-            a_v3_setVRpos[i] = a_o_VRPlayers[i].transform.position;
-            a_q_setVRrot[i] = a_o_VRPlayers[i].transform.rotation;
-        }
+        //a_o_VRPlayers = GameObject.FindGameObjectsWithTag("VR_Player");
+        //for (int i = 0; i < a_o_VRPlayers.Length; i++)
+        //{
+        //    a_v3_setVRpos[i] = a_o_VRPlayers[i].transform.position;
+        //    a_q_setVRrot[i] = a_o_VRPlayers[i].transform.rotation;
+        //}
     }
 
     void Update()
@@ -154,7 +154,6 @@ public class PCPlayerMove : MonoBehaviourPunCallbacks, IPunObservable
         {
             stream.SendNext(PC_Player_Transform.transform.position);
             stream.SendNext(PC_Player_Transform.rotation);
-            stream.SendNext(PC_Player_Cam.transform.rotation); // 필요한가??
             //stream.SendNext(anim.GetFloat("Speed"));
         }
 

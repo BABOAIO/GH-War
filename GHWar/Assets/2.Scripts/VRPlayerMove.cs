@@ -15,8 +15,8 @@ public class VRPlayerMove : MonoBehaviourPunCallbacks, IPunObservable
     [SerializeField] GameObject hand_L;
     [SerializeField] GameObject hand_R;
     
-    public Vector3 v3_setPos;
-    public Quaternion q_setRot;
+    Vector3 v3_setPos;
+    Quaternion q_setRot;
     Vector3 v3_setPos_handL;
     Quaternion q_setRot_handL;
     Vector3 v3_setPos_handR;
@@ -137,10 +137,5 @@ public class VRPlayerMove : MonoBehaviourPunCallbacks, IPunObservable
             //f_directionSpeed= (float)stream.ReceiveNext();
         }
     }
-
-    [PunRPC]
-    public void GrabObject()
-    {
-
-    }
+    
 }
