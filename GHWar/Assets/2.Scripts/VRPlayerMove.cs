@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Unity.VisualScripting;
+using Photon.Realtime;
 
-public class VRPlayerMove : MonoBehaviourPun, IPunObservable
+public class VRPlayerMove : MonoBehaviourPunCallbacks, IPunObservable
 {
     [SerializeField] float f_moveSpeed = 3.0f;
     [SerializeField] float f_rotSpeed = 200.0f;
@@ -13,13 +14,18 @@ public class VRPlayerMove : MonoBehaviourPun, IPunObservable
     //[SerializeField] Animator a_player;
     [SerializeField] GameObject hand_L;
     [SerializeField] GameObject hand_R;
-
-    Vector3 v3_setPos;
-    Quaternion q_setRot;
+    
+    public Vector3 v3_setPos;
+    public Quaternion q_setRot;
     Vector3 v3_setPos_handL;
     Quaternion q_setRot_handL;
     Vector3 v3_setPos_handR;
     Quaternion q_setRot_handR;
+
+    GameObject[] a_o_PCPlayers;
+
+    Vector3[] v3_setPCpos;
+    Quaternion[] q_setPCrot;
 
     // 스크립트 활성화 시 카메라 위치 정면으로 고정 >> 실패
     private void OnEnable()
@@ -36,6 +42,8 @@ public class VRPlayerMove : MonoBehaviourPun, IPunObservable
         {
             o_cam.SetActive(false);
         }
+
+        a_o_PCPlayers = GameObject.FindGameObjectsWithTag("PC_Player");
     }
 
 
@@ -75,19 +83,19 @@ public class VRPlayerMove : MonoBehaviourPun, IPunObservable
             transform.position = Vector3.Lerp(transform.position, v3_setPos, Time.deltaTime * 20f);
             t_player.rotation = Quaternion.Lerp(t_player.rotation, q_setRot, Time.deltaTime * 20f);
 
+            if (a_o_PCPlayers.Length <= 0) { return; }
+
+            for(int i = 0; i < a_o_PCPlayers.Length; i++)
+            {
+                transform.position = Vector3.Lerp(transform.position, v3_setPCpos[i], Time.deltaTime * 20f);
+                t_player.rotation = Quaternion.Lerp(t_player.rotation, q_setPCrot[i], Time.deltaTime * 20f);
+            }
+
             hand_L.transform.position = Vector3.Lerp(hand_L.transform.position, v3_setPos_handL, Time.deltaTime * 20f);
             hand_L.transform.rotation = Quaternion.Lerp(hand_L.transform.rotation, q_setRot_handL, Time.deltaTime * 20f);
 
             hand_R.transform.position = Vector3.Lerp(hand_R.transform.position, v3_setPos_handR, Time.deltaTime * 20f);
             hand_R.transform.rotation = Quaternion.Lerp(hand_R.transform.rotation, q_setRot_handR, Time.deltaTime * 20f);
-            // PC 플레이어 위치동기화
-            // PC 플레이어 전부 받아오기, 포톤뷰로 담아와야하잖아?
-            //GameObject[] tmp = GameObject.FindGameObjectsWithTag("PC_Player");
-
-            //foreach(var item in tmp)
-            //{
-
-            //}
         }
     }
 
