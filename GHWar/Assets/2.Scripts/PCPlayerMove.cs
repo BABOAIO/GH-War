@@ -4,7 +4,8 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class PCPlayerMove : MonoBehaviourPunCallbacks, IPunObservable
+public class PCPlayerMove : MonoBehaviourPun
+    //, IPunObservable
 {
     [Header("이동속도")]
     [SerializeField] float f_moveSpeed = 3.0f;
@@ -23,10 +24,10 @@ public class PCPlayerMove : MonoBehaviourPunCallbacks, IPunObservable
     [SerializeField] Rigidbody PC_Player_Rigidbody;
 
     // 변경점 //
-    [SerializeField]
-    GameObject hand_L;
-    [SerializeField]
-    GameObject hand_R;
+    //[SerializeField]
+    //GameObject hand_L;
+    //[SerializeField]
+    //GameObject hand_R;
 
     float f_mouseX = 0;
     float f_mouseY = 0;
@@ -56,10 +57,10 @@ public class PCPlayerMove : MonoBehaviourPunCallbacks, IPunObservable
 
         }
         // 변경점 //
-        hand_L = GameObject.FindGameObjectWithTag("LeftHand");
-        hand_R = GameObject.FindGameObjectWithTag("RightHand");
-        print(hand_L.name);
-        print(hand_R.name);
+        //hand_L = GameObject.FindGameObjectWithTag("LeftHand");
+        //hand_R = GameObject.FindGameObjectWithTag("RightHand");
+        //print(hand_L.name);
+        //print(hand_R.name);
 
         pv = GetComponent<PhotonView>();
 
@@ -71,19 +72,13 @@ public class PCPlayerMove : MonoBehaviourPunCallbacks, IPunObservable
             PC_Player_Cam.SetActive(false);
         }
 
-        //a_o_VRPlayers = GameObject.FindGameObjectsWithTag("VR_Player");
-        //for (int i = 0; i < a_o_VRPlayers.Length; i++)
-        //{
-        //    a_v3_setVRpos[i] = a_o_VRPlayers[i].transform.position;
-        //    a_q_setVRrot[i] = a_o_VRPlayers[i].transform.rotation;
-        //}
     }
 
     void Update()
     {
         // 변경점 //
         // VR 플레이어는 따로 움직임
-        if (GameManager.instance.isVR) { return; }
+        //if (GameManager.instance.isVR) { return; }
 
         //pv.RPC("Move", RpcTarget.All);
         //pv.RPC("Rotate", RpcTarget.All);
@@ -109,18 +104,18 @@ public class PCPlayerMove : MonoBehaviourPunCallbacks, IPunObservable
         }
         else
         {
-            PC_Player_Transform.transform.position = Vector3.Lerp(PC_Player_Transform.transform.position, v3_setPos, Time.deltaTime * 20f);
+            PC_Player_Transform.position = Vector3.Lerp(PC_Player_Transform.position, v3_setPos, Time.deltaTime * 20f);
             PC_Player_Transform.rotation = Quaternion.Lerp(PC_Player_Transform.rotation, q_setRot, Time.deltaTime * 20f);
 
             // 변경점 //
-            if (!GameManager.instance.isVR)
-            {
-                hand_L.transform.position = Vector3.Lerp(hand_L.transform.position, v3_setPos_handL, Time.deltaTime * 20f);
-                hand_L.transform.rotation = Quaternion.Lerp(hand_L.transform.rotation, q_setRot_handL, Time.deltaTime * 20f);
+            //if (!GameManager.instance.isVR)
+            //{
+            //    hand_L.transform.position = Vector3.Lerp(hand_L.transform.position, v3_setPos_handL, Time.deltaTime * 20f);
+            //    hand_L.transform.rotation = Quaternion.Lerp(hand_L.transform.rotation, q_setRot_handL, Time.deltaTime * 20f);
 
-                hand_R.transform.position = Vector3.Lerp(hand_R.transform.position, v3_setPos_handR, Time.deltaTime * 20f);
-                hand_R.transform.rotation = Quaternion.Lerp(hand_R.transform.rotation, q_setRot_handR, Time.deltaTime * 20f);
-            }
+            //    hand_R.transform.position = Vector3.Lerp(hand_R.transform.position, v3_setPos_handR, Time.deltaTime * 20f);
+            //    hand_R.transform.rotation = Quaternion.Lerp(hand_R.transform.rotation, q_setRot_handR, Time.deltaTime * 20f);
+            //}
         }
     }
 
@@ -129,8 +124,8 @@ public class PCPlayerMove : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (pv.IsMine)
         {
-            f_mouseX += Input.GetAxis("Mouse X") * f_rotSpeed;
-            f_mouseY -= Input.GetAxis("Mouse Y") * f_rotSpeed;
+            f_mouseX += Input.GetAxis("Mouse X") * f_rotSpeed * Time.deltaTime;
+            f_mouseY -= Input.GetAxis("Mouse Y") * f_rotSpeed * Time.deltaTime;
             transform.eulerAngles = new Vector3(0, f_mouseX, 0);
             PC_Player_Cam.transform.eulerAngles = new Vector3(f_mouseY, f_mouseX, 0);
         }
@@ -143,58 +138,58 @@ public class PCPlayerMove : MonoBehaviourPunCallbacks, IPunObservable
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                PC_Player_Rigidbody.AddForce(Vector3.up * f_jumpPower, ForceMode.Impulse);
+                PC_Player_Rigidbody.AddForce(Vector3.up * f_jumpPower * Time.deltaTime, ForceMode.Impulse);
             }
         }
     }
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.IsWriting)
-        {
-            stream.SendNext(PC_Player_Transform.transform.position);
-            stream.SendNext(PC_Player_Transform.rotation);
-            //stream.SendNext(anim.GetFloat("Speed"));
-        }
+    //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    //{
+    //    if (stream.IsWriting)
+    //    {
+    //        stream.SendNext(PC_Player_Transform.position);
+    //        stream.SendNext(PC_Player_Transform.rotation);
+    //        //stream.SendNext(anim.GetFloat("Speed"));
+    //    }
 
-        else if (stream.IsReading)
-        {
-            v3_setPos = (Vector3)stream.ReceiveNext();
-            q_setRot = (Quaternion)stream.ReceiveNext();
-            //f_directionSpeed= (float)stream.ReceiveNext();
-        }
+    //    else if (stream.IsReading)
+    //    {
+    //        v3_setPos = (Vector3)stream.ReceiveNext();
+    //        q_setRot = (Quaternion)stream.ReceiveNext();
+    //        //f_directionSpeed= (float)stream.ReceiveNext();
+    //    }
 
-        // 변경점 //
-        //if (stream.IsWriting)
-        //{
-        //    stream.SendNext(this.transform.position);
-        //    stream.SendNext(PC_Player_Transform.rotation);
+    //    // 변경점 //
+    //    //if (stream.IsWriting)
+    //    //{
+    //    //    stream.SendNext(PC_Player_Transform.transform.position);
+    //    //    stream.SendNext(PC_Player_Transform.rotation);
 
-        //    if (GameManager.instance.isVR)
-        //    {
-        //        stream.SendNext(hand_L.transform.position);
-        //        stream.SendNext(hand_L.transform.rotation);
-        //        stream.SendNext(hand_R.transform.position);
-        //        stream.SendNext(hand_R.transform.rotation);
-        //    }
+    //    //    if (GameManager.instance.isVR)
+    //    //    {
+    //    //        stream.SendNext(hand_L.transform.position);
+    //    //        stream.SendNext(hand_L.transform.rotation);
+    //    //        stream.SendNext(hand_R.transform.position);
+    //    //        stream.SendNext(hand_R.transform.rotation);
+    //    //    }
 
-        //    //stream.SendNext(anim.GetFloat("Speed"));
-        //}
+    //    //    //stream.SendNext(anim.GetFloat("Speed"));
+    //    //}
 
-        //else if (stream.IsReading)
-        //{
-        //    v3_setPos = (Vector3)stream.ReceiveNext();
-        //    q_setRot = (Quaternion)stream.ReceiveNext();
+    //    //else if (stream.IsReading)
+    //    //{
+    //    //    v3_setPos = (Vector3)stream.ReceiveNext();
+    //    //    q_setRot = (Quaternion)stream.ReceiveNext();
 
-        //    if (!GameManager.instance.isVR)
-        //    {
-        //        v3_setPos_handL = (Vector3)stream.ReceiveNext();
-        //        q_setRot_handL = (Quaternion)stream.ReceiveNext();
-        //        v3_setPos_handR = (Vector3)stream.ReceiveNext();
-        //        q_setRot_handR = (Quaternion)stream.ReceiveNext();
-        //    }
+    //    //    if (!GameManager.instance.isVR)
+    //    //    {
+    //    //        v3_setPos_handL = (Vector3)stream.ReceiveNext();
+    //    //        q_setRot_handL = (Quaternion)stream.ReceiveNext();
+    //    //        v3_setPos_handR = (Vector3)stream.ReceiveNext();
+    //    //        q_setRot_handR = (Quaternion)stream.ReceiveNext();
+    //    //    }
 
-        //f_directionSpeed= (float)stream.ReceiveNext();
-    }
-    
+    //    //f_directionSpeed= (float)stream.ReceiveNext();
+    //}
+
 }
