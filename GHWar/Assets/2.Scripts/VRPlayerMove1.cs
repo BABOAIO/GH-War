@@ -93,8 +93,8 @@ public class VRPlayerMove1 : MonoBehaviourPunCallbacks, IPunObservable
 
             for(int i = 0; i < a_o_PCPlayers.Length; i++)
             {
-                transform.position = Vector3.Lerp(transform.position, v3_setPCpos[i], Time.deltaTime * 20f);
-                t_player.rotation = Quaternion.Lerp(t_player.rotation, q_setPCrot[i], Time.deltaTime * 20f);
+                a_o_PCPlayers[i].transform.position = Vector3.Lerp(transform.position, v3_setPCpos[i], Time.deltaTime * 20f);
+                a_o_PCPlayers[i].transform.rotation = Quaternion.Lerp(t_player.rotation, q_setPCrot[i], Time.deltaTime * 20f);
             }
 
             hand_L.transform.position = Vector3.Lerp(hand_L.transform.position, v3_setPos_handL, Time.deltaTime * 20f);

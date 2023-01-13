@@ -91,30 +91,35 @@ public class PC_Player_Move1 : MonoBehaviourPun, IPunObservable
         //pv.RPC("Move", RpcTarget.All);
         //pv.RPC("Rotate", RpcTarget.All);
         //pv.RPC("Jump", RpcTarget.All);
-        if (pv.IsMine)
+
+        Move();
+        Rotate(); // Rotate는 FixedUpdate에 넣으면 뚝뚝 끊겨보임
+        Jump();
+
+        // VR 플레이어 보간
+        if (array_o_VRPlayers != null)
         {
-            Move();
-            Rotate(); // Rotate는 FixedUpdate에 넣으면 뚝뚝 끊겨보임
-            Jump();
+            for (int i = 0; i < array_o_VRPlayers.Length; i++)
+            {
+                a_v3_setVRpos[i] = array_o_VRPlayers[i].transform.position;
+                a_q_setVRrot[i] = array_o_VRPlayers[i].transform.rotation;
+                a_v3_setPos_handL[i] = array_o_handL[i].transform.position;
+                a_q_setRot_handL[i] = array_o_handL[i].transform.rotation;
+                a_v3_setPos_handR[i] = array_o_handR[i].transform.position;
+                a_q_setRot_handR[i] = array_o_handR[i].transform.rotation;
+            }
+
         }
         else
         {
-            // PC 플레이어 보간
-            PC_Player_Transform.position = Vector3.Lerp(PC_Player_Transform.position, v3_setPos, Time.deltaTime * 20.0f);
-            PC_Player_Transform.rotation = Quaternion.Slerp(PC_Player_Transform.rotation, q_setRot, Time.deltaTime * 20.0f);
-        }
+            // VR 플레이어 찾기
+            array_o_VRPlayers = GameObject.FindGameObjectsWithTag("VR_Player");
 
-        // VR 플레이어 보간
-        if (array_o_VRPlayers != null) return;
-
-        for (int i = 0; i < array_o_VRPlayers.Length; i++)
-        {
-            a_v3_setVRpos[i] = array_o_VRPlayers[i].transform.position;
-            a_q_setVRrot[i] = array_o_VRPlayers[i].transform.rotation;
-            a_v3_setPos_handL[i] = array_o_handL[i].transform.position;
-            a_q_setRot_handL[i] = array_o_handL[i].transform.rotation;
-            a_v3_setPos_handR[i] = array_o_handR[i].transform.position;
-            a_q_setRot_handR[i] = array_o_handR[i].transform.rotation;
+            for (int i = 0; i < array_o_VRPlayers.Length; i++)
+            {
+                array_o_handL[i] = array_o_VRPlayers[i].transform.Find("LeftHand").gameObject;
+                array_o_handR[i] = array_o_VRPlayers[i].transform.Find("RightHand").gameObject;
+            }
         }
     }
 
