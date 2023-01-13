@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using UnityEngine.XR.Interaction.Toolkit;
 
+// 자연스런 그랩 무브먼트를 위한 스크립트
 public class XRGrabInteractionPun : XRGrabInteractable
 {
     PhotonView pv;

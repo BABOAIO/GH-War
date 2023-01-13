@@ -9,24 +9,25 @@ public class PC_Player_Move : MonoBehaviourPun, IPunObservable
     [Header("이동속도")]
     [SerializeField] float f_moveSpeed = 3.0f;
     [Header("회전속도")]
-    [SerializeField] float f_rotSpeed = 10.0f;
+    [SerializeField] float f_rotSpeed = 1000.0f;
     [Header("점프위력")]
-    [SerializeField] float f_jumpPower = 5.0f;
+    [SerializeField] float f_jumpPower = 1500.0f;
 
     [Header("PC 플레이어 카메라")]
     [SerializeField] GameObject PC_Player_Cam;
-    [Header("PC 플레이어 트랜스폼")]
-    [SerializeField] Transform PC_Player_Transform;
+
+    [SerializeField] float f_lerpSpeed = 50.0f;
+
+    Transform PC_Player_Transform;
     //[Header("PC 플레이어 애니메이션")]
     //[SerializeField] Animator a_player;
-    [Header("PC 플레이어 컨트롤러")]
-    [SerializeField] Rigidbody PC_Player_Rigidbody;
+    Rigidbody PC_Player_Rigidbody;
 
     float f_mouseX = 0;
     float f_mouseY = 0;
 
-    Vector3 v3_setPos = Vector3.zero;
-    Quaternion q_setRot = Quaternion.identity;
+    Vector3 v3_setPos;
+    Quaternion q_setRot;
 
     // 변경점 //
     GameObject[] array_o_VRPlayers;
@@ -45,32 +46,26 @@ public class PC_Player_Move : MonoBehaviourPun, IPunObservable
 
     void Awake()
     {
-        if (GameManager.instance.isVR)
-        {
-            Camera cam_this = GetComponentInChildren<Camera>();
-            cam_this.transform.LookAt(GameObject.FindGameObjectWithTag("Ground").transform.position);
-            // 변경점 //
-        }
-
-        pv = GetComponent<PhotonView>();
-        pv.Synchronization = ViewSynchronization.UnreliableOnChange;
-        pv.ObservedComponents[0] = this;
-
-        PC_Player_Cam.SetActive(true);
+        // 굳이 넣지 않아도 될 부분
+        PC_Player_Transform = GetComponent<Transform>();
         PC_Player_Rigidbody = GetComponent<Rigidbody>();
 
         if (!photonView.IsMine)
         {
+            // 카메라 충돌 방지
             PC_Player_Cam.SetActive(false);
+
             // 변경점 // 
-            // 트랜스폼 뷰 할때 떨림 방지
+            // 트랜스폼 뷰 할때 떨림 방지 > 실패
             gameObject.GetComponent<Rigidbody>().isKinematic = false;
         }
 
+        // 초기 자기 포지션 백업? 왜 써있는거지?
         v3_setPos = PC_Player_Transform.position;
         q_setRot = PC_Player_Transform.rotation;
 
-        array_o_VRPlayers = GameObject.FindGameObjectsWithTag("PC_Player");
+        // VR 플레이어 찾기
+        array_o_VRPlayers = GameObject.FindGameObjectsWithTag("VR_Player");
 
         for (int i = 0; i < array_o_VRPlayers.Length; i++)
         {
@@ -81,38 +76,42 @@ public class PC_Player_Move : MonoBehaviourPun, IPunObservable
 
     void Update()
     {
-        // 변경점 //
-        // VR 플레이어는 따로 움직임
-        if (GameManager.instance.isVR) { return; }
-
         //pv.RPC("Move", RpcTarget.All);
         //pv.RPC("Rotate", RpcTarget.All);
         //pv.RPC("Jump", RpcTarget.All);
-        if (pv.IsMine)
+
+        // 기본 움직임 구현
+        Move();
+        Rotate(); // Rotate는 FixedUpdate에 넣으면 뚝뚝 끊겨보임
+        Jump();
+
+        // 모든 VR 플레이어 위치 보간, IsMine이 필요한가??
+        if (array_o_VRPlayers.Length > 0)
         {
-            Move();
-            Rotate(); // Rotate는 FixedUpdate에 넣으면 뚝뚝 끊겨보임
-            Jump();
+            for (int i = 0; i < array_o_VRPlayers.Length; i++)
+            {
+                array_o_VRPlayers[i].transform.position = Vector3.Lerp(array_o_VRPlayers[i].transform.position, a_v3_setVRpos[i], Time.deltaTime * f_lerpSpeed);
+                array_o_VRPlayers[i].transform.rotation = Quaternion.Lerp(array_o_VRPlayers[i].transform.rotation, a_q_setVRrot[i], Time.deltaTime * f_lerpSpeed);
+                array_o_handL[i].transform.position = Vector3.Lerp(array_o_handL[i].transform.position, a_v3_setPos_handL[i], Time.deltaTime * f_lerpSpeed);
+                array_o_handL[i].transform.rotation = Quaternion.Lerp(array_o_handL[i].transform.rotation, a_q_setRot_handL[i], Time.deltaTime * f_lerpSpeed);
+                array_o_handR[i].transform.position = Vector3.Lerp(array_o_handR[i].transform.position, a_v3_setPos_handR[i], Time.deltaTime * f_lerpSpeed);
+                array_o_handR[i].transform.rotation = Quaternion.Lerp(array_o_handR[i].transform.rotation, a_q_setRot_handR[i], Time.deltaTime * f_lerpSpeed);
+            }
         }
-        else
+
+        // start 함수에서 탐색 못한 VR 플레이어 재탐색
+        if (array_o_VRPlayers.Length <= 0)
+        {
+            array_o_VRPlayers = GameObject.FindGameObjectsWithTag("VR_Player");
+        }
+
+        if (!pv.IsMine)
         {
             // PC 플레이어 보간
-            PC_Player_Transform.position = Vector3.Lerp(PC_Player_Transform.position, v3_setPos, Time.deltaTime * 3.0f);
-            PC_Player_Transform.rotation = Quaternion.Slerp(PC_Player_Transform.rotation, q_setRot, Time.deltaTime * 3.0f);
+            PC_Player_Transform.position = Vector3.Lerp(PC_Player_Transform.position, v3_setPos, Time.deltaTime * f_lerpSpeed);
+            PC_Player_Transform.rotation = Quaternion.Slerp(PC_Player_Transform.rotation, q_setRot, Time.deltaTime * f_lerpSpeed);
         }
 
-        // VR 플레이어 보간
-        if (array_o_VRPlayers != null) return;
-
-        for (int i = 0; i < array_o_VRPlayers.Length; i++)
-        {
-            a_v3_setVRpos[i] = array_o_VRPlayers[i].transform.position;
-            a_q_setVRrot[i] = array_o_VRPlayers[i].transform.rotation;
-            a_v3_setPos_handL[i] = array_o_handL[i].transform.position;
-            a_q_setRot_handL[i] = array_o_handL[i].transform.rotation;
-            a_v3_setPos_handR[i] = array_o_handR[i].transform.position;
-            a_q_setRot_handR[i] = array_o_handR[i].transform.rotation;
-        }
     }
 
     [PunRPC]
@@ -129,25 +128,6 @@ public class PC_Player_Move : MonoBehaviourPun, IPunObservable
             transform.Translate(v3_moveDirection * Time.deltaTime * f_moveSpeed);
 
             //anim...
-        }
-
-        // 트랜스폼 뷰 사용시에만 비활성화
-        else
-        {
-            PC_Player_Transform.position = Vector3.Lerp(PC_Player_Transform.position, v3_setPos, Time.deltaTime * 20f);
-            PC_Player_Transform.rotation = Quaternion.Lerp(PC_Player_Transform.rotation, q_setRot, Time.deltaTime * 20f);
-
-            if (array_o_VRPlayers.Length <= 0) { return; }
-
-            for (int i = 0; i < array_o_VRPlayers.Length; i++)
-            {
-                array_o_VRPlayers[i].transform.position = Vector3.Lerp(array_o_VRPlayers[i].transform.position, a_v3_setVRpos[i], Time.deltaTime * 20f);
-                array_o_VRPlayers[i].transform.rotation = Quaternion.Lerp(array_o_VRPlayers[i].transform.rotation, a_q_setVRrot[i], Time.deltaTime * 20f);
-                array_o_handL[i].transform.position = Vector3.Lerp(array_o_handL[i].transform.position, a_v3_setPos_handL[i], Time.deltaTime * 20f);
-                array_o_handL[i].transform.rotation = Quaternion.Lerp(array_o_handL[i].transform.rotation, a_q_setRot_handL[i], Time.deltaTime * 20f);
-                array_o_handR[i].transform.position = Vector3.Lerp(array_o_handR[i].transform.position, a_v3_setPos_handR[i], Time.deltaTime * 20f);
-                array_o_handR[i].transform.rotation = Quaternion.Lerp(array_o_handR[i].transform.rotation, a_q_setRot_handR[i], Time.deltaTime * 20f);
-            }
         }
     }
 
@@ -196,14 +176,17 @@ public class PC_Player_Move : MonoBehaviourPun, IPunObservable
             stream.SendNext(PC_Player_Transform.position);
             stream.SendNext(PC_Player_Transform.rotation);
 
-            for (int i = 0; i < array_o_VRPlayers.Length; i++)
+            if (array_o_VRPlayers.Length > 0)
             {
-                stream.SendNext(a_v3_setVRpos[i]);
-                stream.SendNext(a_q_setVRrot[i]);
-                stream.SendNext(a_v3_setPos_handL[i]);
-                stream.SendNext(a_q_setRot_handL[i]);
-                stream.SendNext(a_v3_setPos_handR[i]);
-                stream.SendNext(a_q_setRot_handR[i]);
+                for (int i = 0; i < array_o_VRPlayers.Length; i++)
+                {
+                    stream.SendNext(array_o_VRPlayers[i].transform.position);
+                    stream.SendNext(array_o_VRPlayers[i].transform.rotation);
+                    stream.SendNext(array_o_handL[i].transform.position);
+                    stream.SendNext(array_o_handL[i].transform.rotation);
+                    stream.SendNext(array_o_handR[i].transform.position);
+                    stream.SendNext(array_o_handR[i].transform.rotation);
+                }
             }
         }
 
@@ -212,16 +195,18 @@ public class PC_Player_Move : MonoBehaviourPun, IPunObservable
             v3_setPos = (Vector3)stream.ReceiveNext();
             q_setRot = (Quaternion)stream.ReceiveNext();
 
-            for (int i = 0; i < array_o_VRPlayers.Length; i++)
+            if (array_o_VRPlayers.Length > 0)
             {
-                a_v3_setVRpos[i] = (Vector3)stream.ReceiveNext();
-                a_q_setVRrot[i] = (Quaternion)stream.ReceiveNext();
-                a_v3_setPos_handL[i] = (Vector3)stream.ReceiveNext();
-                a_q_setRot_handL[i] = (Quaternion)stream.ReceiveNext();
-                a_v3_setPos_handR[i] = (Vector3)stream.ReceiveNext();
-                a_q_setRot_handR[i] = (Quaternion)stream.ReceiveNext();
+                for (int i = 0; i < array_o_VRPlayers.Length; i++)
+                {
+                    a_v3_setVRpos[i] = (Vector3)stream.ReceiveNext();
+                    a_q_setVRrot[i] = (Quaternion)stream.ReceiveNext();
+                    a_v3_setPos_handL[i] = (Vector3)stream.ReceiveNext();
+                    a_q_setRot_handL[i] = (Quaternion)stream.ReceiveNext();
+                    a_v3_setPos_handR[i] = (Vector3)stream.ReceiveNext();
+                    a_q_setRot_handR[i] = (Quaternion)stream.ReceiveNext();
+                }
             }
-                
         }
     }
 }

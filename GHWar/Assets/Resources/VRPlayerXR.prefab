@@ -634,11 +634,11 @@ GameObject:
   - component: {fileID: 835762982879732488}
   - component: {fileID: 835762982879732489}
   - component: {fileID: 835762982879732490}
-  - component: {fileID: 1509741305}
   - component: {fileID: 1509741304}
-  - component: {fileID: 407877146}
-  - component: {fileID: 835762982800391107}
   - component: {fileID: 835762982800391108}
+  - component: {fileID: 8943390998843920596}
+  - component: {fileID: 6755770855679679891}
+  - component: {fileID: -51572892544080187}
   m_Layer: 0
   m_Name: VRPlayerXR
   m_TagString: VR_Player
@@ -766,30 +766,13 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 835762982879732489}
-  - {fileID: 1509741305}
-  - {fileID: 835762982800391107}
   - {fileID: 835762982800391108}
+  - {fileID: 8943390998843920596}
+  - {fileID: 6755770855679679891}
+  - {fileID: -51572892544080187}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &1509741305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 835762982879732491}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93c814df4e2187c409723fa829509231, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  f_moveSpeed: 3
-  f_rotSpeed: 50
-  f_jumpPower: 5
-  PC_Player_Cam: {fileID: 145513498}
-  PC_Player_Transform: {fileID: 835762982879732597}
-  PC_Player_Rigidbody: {fileID: 1509741304}
 --- !u!54 &1509741304
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -806,7 +789,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &407877146
+--- !u!114 &835762982800391108
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -815,16 +798,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 835762982879732491}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1f89e5ee048cb34287b8ecc7601748f, type: 3}
+  m_Script: {fileID: 11500000, guid: cb2040ee0b5593048b81d6e365b94a02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   f_moveSpeed: 3
-  f_rotSpeed: 50
-  f_jumpPower: 5
-  PC_Player_Cam: {fileID: 145513498}
-  PC_Player_Transform: {fileID: 835762982879732597}
-  PC_Player_Rigidbody: {fileID: 1509741304}
---- !u!114 &835762982800391107
+  f_rotSpeed: 200
+  o_cam: {fileID: 145513498}
+  t_player: {fileID: 835762982879732597}
+  hand_L: {fileID: 6936610138783767306}
+  hand_R: {fileID: 3542382943089238680}
+  f_lerpSpeed: 50
+--- !u!114 &8943390998843920596
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -832,6 +816,40 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 835762982879732491}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb2b77db73d00f44292f915a20337ead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  f_moveSpeed: 3
+  f_rotSpeed: 200
+  o_cam: {fileID: 145513498}
+  t_player: {fileID: 835762982879732597}
+  hand_L: {fileID: 6936610138783767306}
+  hand_R: {fileID: 3542382943089238680}
+--- !u!114 &6755770855679679891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835762982879732491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &-51572892544080187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835762982879732491}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
   m_Name: 
@@ -842,7 +860,7 @@ MonoBehaviour:
     TeleportIfDistanceGreaterThan: 3
     InterpolateOption: 4
     InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 20
+    InterpolateLerpSpeed: 10
     ExtrapolateOption: 0
     ExtrapolateSpeed: 1
     ExtrapolateIncludingRoundTripTime: 1
@@ -857,24 +875,6 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
---- !u!114 &835762982800391108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 835762982879732491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb2040ee0b5593048b81d6e365b94a02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  f_moveSpeed: 3
-  f_rotSpeed: 200
-  o_cam: {fileID: 145513498}
-  t_player: {fileID: 835762982879732597}
-  hand_L: {fileID: 6936610138783767306}
-  hand_R: {fileID: 3542382943089238680}
 --- !u!1001 &835762981889468580
 PrefabInstance:
   m_ObjectHideFlags: 0

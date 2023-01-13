@@ -5,7 +5,7 @@ using Photon.Pun;
 using Unity.VisualScripting;
 using Photon.Realtime;
 
-public class VRPlayerMove : MonoBehaviourPunCallbacks, IPunObservable
+public class VRPlayerMove : MonoBehaviourPunCallbacks,IPunObservable
 {
     [SerializeField] float f_moveSpeed = 3.0f;
     [SerializeField] float f_rotSpeed = 200.0f;
@@ -49,11 +49,13 @@ public class VRPlayerMove : MonoBehaviourPunCallbacks, IPunObservable
 
     void Update()
     {
-        if(photonView.IsMine)
-        {
-            Move();
-            Rotate();
-        }
+        Move();
+        Rotate();
+        //if (photonView.IsMine)
+        //{
+        //    Move();
+        //    Rotate();
+        //}
     }
 
     void Move()
