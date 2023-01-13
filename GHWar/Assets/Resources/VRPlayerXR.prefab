@@ -789,10 +789,7 @@ MonoBehaviour:
   f_jumpPower: 5
   PC_Player_Cam: {fileID: 145513498}
   PC_Player_Transform: {fileID: 835762982879732597}
-  a_player: {fileID: 0}
   PC_Player_Rigidbody: {fileID: 1509741304}
-  hand_L: {fileID: 0}
-  hand_R: {fileID: 0}
 --- !u!54 &1509741304
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -845,7 +842,7 @@ MonoBehaviour:
     TeleportIfDistanceGreaterThan: 3
     InterpolateOption: 4
     InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 10
+    InterpolateLerpSpeed: 20
     ExtrapolateOption: 0
     ExtrapolateSpeed: 1
     ExtrapolateIncludingRoundTripTime: 1

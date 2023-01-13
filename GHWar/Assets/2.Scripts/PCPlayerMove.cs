@@ -37,26 +37,28 @@ public class PCPlayerMove : MonoBehaviourPun
     Quaternion q_setRot;
 
     // 변경점 //
-    Vector3 v3_setPos_handL;
-    Quaternion q_setRot_handL;
-    Vector3 v3_setPos_handR;
-    Quaternion q_setRot_handR;
-
     GameObject[] a_o_VRPlayers;
+    GameObject[] a_o_handL;
+    GameObject[] a_o_handR;
 
     Vector3[] a_v3_setVRpos;
     Quaternion[] a_q_setVRrot;
+    Vector3[] a_v3_setPos_handL;
+    Quaternion[] a_q_setRot_handL;
+    Vector3[] a_v3_setPos_handR;
+    Quaternion[] a_q_setRot_handR;
+
 
     private PhotonView pv;
 
     void Start()
     {
-        if (GameManager.instance.isVR)
-        {
-            //Camera cam_this = GetComponentInChildren<Camera>();
-            //cam_this.transform.LookAt(GameObject.FindGameObjectWithTag("Ground").transform.position);
+        //if (GameManager.instance.isVR)
+        //{
+        //    Camera cam_this = GetComponentInChildren<Camera>();
+        //    cam_this.transform.LookAt(GameObject.FindGameObjectWithTag("Ground").transform.position);
 
-        }
+        //}
         // 변경점 //
         //hand_L = GameObject.FindGameObjectWithTag("LeftHand");
         //hand_R = GameObject.FindGameObjectWithTag("RightHand");
@@ -72,10 +74,17 @@ public class PCPlayerMove : MonoBehaviourPun
         {
             PC_Player_Cam.SetActive(false);
             // 변경점 //
-            // 자꾸 떨리는 움직임 방지
+            // 자꾸 떨리는 움직임 방지 >> 실패
             //PC_Player_Rigidbody.isKinematic= false;
         }
 
+        a_o_VRPlayers = GameObject.FindGameObjectsWithTag("PC_Player");
+
+        for(int i = 0; i< a_o_VRPlayers.Length; i++)
+        {
+            a_o_handL[i] = a_o_VRPlayers[i].transform.Find("LeftHand").gameObject;
+            a_o_handR[i] = a_o_VRPlayers[i].transform.Find("RightHand").gameObject;
+        }
     }
 
     void FixedUpdate()
@@ -90,6 +99,8 @@ public class PCPlayerMove : MonoBehaviourPun
         Move();
         Rotate(); // Rotate는 FixedUpdate에 넣으면 뚝뚝 끊겨보임
         Jump();
+
+        if (a_o_VRPlayers != null) return;
     }
 
     [PunRPC]
