@@ -5,7 +5,7 @@ using Photon.Pun;
 using Unity.VisualScripting;
 using Photon.Realtime;
 
-public class VRPlayerMove1 : MonoBehaviourPunCallbacks, IPunObservable
+public class VRPlayerMove1 : MonoBehaviourPun//, IPunObservable
 {
     [SerializeField] float f_moveSpeed = 3.0f;
     [SerializeField] float f_rotSpeed = 200.0f;
@@ -43,7 +43,7 @@ public class VRPlayerMove1 : MonoBehaviourPunCallbacks, IPunObservable
             o_cam.SetActive(false);
         }
 
-        a_o_PCPlayers = GameObject.FindGameObjectsWithTag("PC_Player");
+        //a_o_PCPlayers = GameObject.FindGameObjectsWithTag("PC_Player");
     }
 
 
@@ -54,11 +54,11 @@ public class VRPlayerMove1 : MonoBehaviourPunCallbacks, IPunObservable
             Move();
             Rotate();
         }
-        for(int i = 0; i < a_o_PCPlayers.Length; i++)
-        {
-            v3_setPCpos[i] = a_o_PCPlayers[i].transform.position;
-            q_setPCrot[i] = a_o_PCPlayers[i].transform.rotation;
-        }
+        //for(int i = 0; i < a_o_PCPlayers.Length; i++)
+        //{
+        //    v3_setPCpos[i] = a_o_PCPlayers[i].transform.position;
+        //    q_setPCrot[i] = a_o_PCPlayers[i].transform.rotation;
+        //}
     }
 
     void Move()
@@ -116,41 +116,41 @@ public class VRPlayerMove1 : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     // 매 시간마다 변한 상대방의 위치, 회전값 전송, 읽어오기
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.IsWriting)
-        {
-            stream.SendNext(transform.position);
-            stream.SendNext(t_player.rotation);
-            stream.SendNext(hand_L.transform.position);
-            stream.SendNext(hand_L.transform.rotation);
-            stream.SendNext(hand_R.transform.position);
-            stream.SendNext(hand_R.transform.rotation);
-            for(int i = 0; i < a_o_PCPlayers.Length; i++)
-            {
-                stream.SendNext(v3_setPCpos[i]);
-                stream.SendNext(q_setPCrot[i]);
-            }
+    //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    //{
+    //    if (stream.IsWriting)
+    //    {
+    //        stream.SendNext(transform.position);
+    //        stream.SendNext(t_player.rotation);
+    //        stream.SendNext(hand_L.transform.position);
+    //        stream.SendNext(hand_L.transform.rotation);
+    //        stream.SendNext(hand_R.transform.position);
+    //        stream.SendNext(hand_R.transform.rotation);
+    //        for(int i = 0; i < a_o_PCPlayers.Length; i++)
+    //        {
+    //            stream.SendNext(v3_setPCpos[i]);
+    //            stream.SendNext(q_setPCrot[i]);
+    //        }
             
-            //stream.SendNext(anim.GetFloat("Speed"));
-        }
+    //        //stream.SendNext(anim.GetFloat("Speed"));
+    //    }
 
-        else if (stream.IsReading)
-        {
-            v3_setPos = (Vector3)stream.ReceiveNext();
-            q_setRot= (Quaternion)stream.ReceiveNext();
-            v3_setPos_handL = (Vector3)stream.ReceiveNext();
-            q_setRot_handL = (Quaternion)stream.ReceiveNext();
-            v3_setPos_handR = (Vector3)stream.ReceiveNext();
-            q_setRot_handR = (Quaternion)stream.ReceiveNext();
-            for(int i = 0; i < a_o_PCPlayers.Length; i++)
-            {
-                v3_setPCpos[i] = (Vector3)stream.ReceiveNext();
-                q_setPCrot[i] = (Quaternion)stream.ReceiveNext();
-            }
+    //    else if (stream.IsReading)
+    //    {
+    //        v3_setPos = (Vector3)stream.ReceiveNext();
+    //        q_setRot= (Quaternion)stream.ReceiveNext();
+    //        v3_setPos_handL = (Vector3)stream.ReceiveNext();
+    //        q_setRot_handL = (Quaternion)stream.ReceiveNext();
+    //        v3_setPos_handR = (Vector3)stream.ReceiveNext();
+    //        q_setRot_handR = (Quaternion)stream.ReceiveNext();
+    //        for(int i = 0; i < a_o_PCPlayers.Length; i++)
+    //        {
+    //            v3_setPCpos[i] = (Vector3)stream.ReceiveNext();
+    //            q_setPCrot[i] = (Quaternion)stream.ReceiveNext();
+    //        }
 
-            //f_directionSpeed= (float)stream.ReceiveNext();
-        }
-    }
+    //        //f_directionSpeed= (float)stream.ReceiveNext();
+    //    }
+    //}
     
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class PC_Player_Move : MonoBehaviourPun, IPunObservable
+public class PC_Player_Move : MonoBehaviourPun//, IPunObservable
 {
     [Header("이동속도")]
     [SerializeField] float f_moveSpeed = 3.0f;
@@ -44,18 +44,18 @@ public class PC_Player_Move : MonoBehaviourPun, IPunObservable
 
     void Awake()
     {
-        if (GameManager.instance.isVR)
-        {
-            Camera cam_this = GetComponentInChildren<Camera>();
-            cam_this.transform.LookAt(GameObject.FindGameObjectWithTag("Ground").transform.position);
-            // 변경점 //
-            hand_L = GameObject.FindGameObjectWithTag("LeftHand");
-            hand_R = GameObject.FindGameObjectWithTag("RightHand");
-            print(hand_L.name);
-            print(hand_R.name);
-        }
-        hand_L = GameObject.FindGameObjectWithTag("LeftHand");
-        hand_R = GameObject.FindGameObjectWithTag("RightHand");
+        //if (GameManager.instance.isVR)
+        //{
+        //    Camera cam_this = GetComponentInChildren<Camera>();
+        //    cam_this.transform.LookAt(GameObject.FindGameObjectWithTag("Ground").transform.position);
+        //    // 변경점 //
+        //    hand_L = GameObject.FindGameObjectWithTag("LeftHand");
+        //    hand_R = GameObject.FindGameObjectWithTag("RightHand");
+        //    print(hand_L.name);
+        //    print(hand_R.name);
+        //}
+        //hand_L = GameObject.FindGameObjectWithTag("LeftHand");
+        //hand_R = GameObject.FindGameObjectWithTag("RightHand");
 
         pv = GetComponent<PhotonView>();
         pv.Synchronization = ViewSynchronization.UnreliableOnChange;
@@ -72,8 +72,8 @@ public class PC_Player_Move : MonoBehaviourPun, IPunObservable
             gameObject.GetComponent<Rigidbody>().isKinematic = false;
         }
 
-        v3_setPos = PC_Player_Transform.position;
-        q_setRot = PC_Player_Transform.rotation;
+        //v3_setPos = PC_Player_Transform.position;
+        //q_setRot = PC_Player_Transform.rotation;
 
     }
 
@@ -92,11 +92,11 @@ public class PC_Player_Move : MonoBehaviourPun, IPunObservable
             Rotate(); // Rotate는 FixedUpdate에 넣으면 뚝뚝 끊겨보임
             Jump();
         }
-        else
-        {
-            PC_Player_Transform.position = Vector3.Lerp(PC_Player_Transform.position, v3_setPos, Time.deltaTime * 3.0f);
-            PC_Player_Transform.rotation = Quaternion.Slerp(PC_Player_Transform.rotation, q_setRot, Time.deltaTime * 3.0f);
-        }
+        //else
+        //{
+        //    PC_Player_Transform.position = Vector3.Lerp(PC_Player_Transform.position, v3_setPos, Time.deltaTime * 3.0f);
+        //    PC_Player_Transform.rotation = Quaternion.Slerp(PC_Player_Transform.rotation, q_setRot, Time.deltaTime * 3.0f);
+        //}
     }
 
     [PunRPC]
@@ -155,19 +155,19 @@ public class PC_Player_Move : MonoBehaviourPun, IPunObservable
         }
     }
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.IsWriting)
-        {
-            stream.SendNext(PC_Player_Transform.position);
-            stream.SendNext(PC_Player_Transform.rotation);
-        }
-        else
-        {
-            v3_setPos = (Vector3)stream.ReceiveNext();
-            q_setRot = (Quaternion)stream.ReceiveNext();
-        }
-    }
+    //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    //{
+    //    if (stream.IsWriting)
+    //    {
+    //        stream.SendNext(PC_Player_Transform.position);
+    //        stream.SendNext(PC_Player_Transform.rotation);
+    //    }
+    //    else
+    //    {
+    //        v3_setPos = (Vector3)stream.ReceiveNext();
+    //        q_setRot = (Quaternion)stream.ReceiveNext();
+    //    }
+    //}
 
     //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     //{
