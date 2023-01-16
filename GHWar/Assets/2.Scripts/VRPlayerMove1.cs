@@ -47,7 +47,7 @@ public class VRPlayerMove1 : MonoBehaviourPun//, IPunObservable
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
         if(photonView.IsMine)
         {
