@@ -35,9 +35,11 @@ public class VRPlayerMove1 : MonoBehaviourPun//, IPunObservable
 
     void Start()
     {
+        // 위치 및 카메라 시선 고정 >> 실패
         o_cam.SetActive(true);
         o_cam.transform.LookAt(GameObject.FindGameObjectWithTag("Ground").transform.position);
 
+        // 카메라 사이의 충돌 방지
         if (!photonView.IsMine)
         {
             o_cam.SetActive(false);
@@ -82,7 +84,8 @@ public class VRPlayerMove1 : MonoBehaviourPun//, IPunObservable
 
             //anim...
         }
-        // 상대방 위치 동기화
+
+        // 상대방 위치 동기화, 사실상 무의미
         else
         {
             transform.position = Vector3.Lerp(transform.position, v3_setPos, Time.deltaTime * 20f);
@@ -115,6 +118,7 @@ public class VRPlayerMove1 : MonoBehaviourPun//, IPunObservable
         }
     }
 
+    // 이 부분의 경우, 좀더 세심한 작업을 위해 작성하는 스크립트이나 Lerp 값을 30000정도로 맞추면 어느정도 자연스러워지므로 생략
     // 매 시간마다 변한 상대방의 위치, 회전값 전송, 읽어오기
     //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     //{

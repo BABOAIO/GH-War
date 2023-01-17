@@ -10,6 +10,7 @@ public class HandPresencePhysic : MonoBehaviour
     [SerializeField] Transform t_target;
     [Header("움직임 제한 초과 시 나올 투명 매터리얼")]
     [SerializeField] Renderer rd_nonPhysicsHand;
+    [Header("볼 수 있는 거리(?)")]
     [SerializeField] float f_showDistance = 0.05f;
 
     [SerializeField] Vector2 v2_rangeOfHandRotation;
@@ -74,7 +75,7 @@ public class HandPresencePhysic : MonoBehaviour
         Quaternion q_rotationDifference = t_target.rotation*Quaternion.Inverse(transform.rotation);
         q_rotationDifference.ToAngleAxis(out float f_angleInDegree, out Vector3 v3_rotationAxis);
 
-        // 이 코드가 없으면 특정 각도에서 손이 180도를 넘어가서 한바퀴 돌아감 > 아직 돌아가지만 손을 비틀정도만 아니면 됨...
+        // 이 코드가 없으면 특정 각도에서 손이 180도를 넘어가서 한바퀴 돌아감 > 아직 돌아가지만 손을 비틀정도만 아니면 됨..., 왼손, 오른손 비교도 필수 불가결, 일단 코드 해석 먼저 해야함
         f_angleInDegree = Mathf.Clamp(f_angleInDegree, v2_rangeOfHandRotation.x, v2_rangeOfHandRotation.y);
 
         Vector3 v3_rotationDifferenceInDegree = f_angleInDegree * v3_rotationAxis;
