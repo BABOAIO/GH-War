@@ -5,8 +5,9 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class XRGrabInteractionPun : XRGrabInteractable//, IPunObservable // ÀÌ Ç×¸ñÀÌ ÀÖ±â¿¡ ÀÎ½ºÆåÅÍÃ¢¿¡ ±×·¦°ü·Ã Ç×¸ñÀÌ »ý¼º
+public class XRGrabInteractionPun : XRGrabInteractable//, IPunOwnershipCallbacks//, IPunObservable // ÀÌ Ç×¸ñÀÌ ÀÖ±â¿¡ ÀÎ½ºÆåÅÍÃ¢¿¡ ±×·¦°ü·Ã Ç×¸ñÀÌ »ý¼º
 {
+    Player player_this;
     Transform t_this;
     Vector3 v3_grabbed;
     PhotonView pv;
@@ -17,18 +18,19 @@ public class XRGrabInteractionPun : XRGrabInteractable//, IPunObservable // ÀÌ Ç
     {
         t_this = GetComponent<Transform>();
         pv = GetComponent<PhotonView>();
+        player_this= GetComponent<Player>();
     }
 
     void Update()
     {
-        
+
     }
 
     // Áý¾úÀ» °æ¿ì ¼ÒÀ¯±Ç ¿äÃ»
     protected override void OnSelectEntered(XRBaseInteractor interactor)
     {
         pv.RequestOwnership();
-        sc_PCPlayerMove.st_PC = PC_Player_Move.PC_Player_State.IsGrab;
+        //sc_PCPlayerMove.st_PC = PC_Player_Move.PC_Player_State.IsGrab;
         base.OnSelectEntered(interactor);
     }
 
@@ -36,14 +38,14 @@ public class XRGrabInteractionPun : XRGrabInteractable//, IPunObservable // ÀÌ Ç
     protected override void OnSelectEntering(XRBaseInteractor interactor)
     {
         pv.RequestOwnership();
-        sc_PCPlayerMove.st_PC = PC_Player_Move.PC_Player_State.IsGrab;
+        //sc_PCPlayerMove.st_PC = PC_Player_Move.PC_Player_State.IsGrab;
         base.OnSelectEntering(interactor);
     }
 
-    protected override void OnSelectCanceling(XRBaseInteractor interactor)
+    protected override void OnSelectExiting(XRBaseInteractor interactor)
     {
-        sc_PCPlayerMove.st_PC = PC_Player_Move.PC_Player_State.Normal;
-        base.OnSelectCanceling(interactor);
+        pv.TransferOwnership(player_this);
+        base.OnSelectExiting(interactor);
     }
 
     //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -57,4 +59,5 @@ public class XRGrabInteractionPun : XRGrabInteractable//, IPunObservable // ÀÌ Ç
     //        stream.SendNext(t_this.position);
     //    }
     //}
+
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 
 public class HandPresencePhysic : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class HandPresencePhysic : MonoBehaviour
     [Header("움직임 제한 초과 시 나올 투명 매터리얼")]
     [SerializeField] Renderer rd_nonPhysicsHand;
     [SerializeField] float f_showDistance = 0.05f;
+
+    [SerializeField] Vector2 v2_rangeOfHandRotation;
 
     // 손에 있는 모든 콜라이더
     Collider[] col_hands;
@@ -72,7 +75,7 @@ public class HandPresencePhysic : MonoBehaviour
         q_rotationDifference.ToAngleAxis(out float f_angleInDegree, out Vector3 v3_rotationAxis);
 
         // 이 코드가 없으면 특정 각도에서 손이 180도를 넘어가서 한바퀴 돌아감 > 아직 돌아가지만 손을 비틀정도만 아니면 됨...
-        f_angleInDegree = Mathf.Clamp(f_angleInDegree, -90f, 90f);
+        f_angleInDegree = Mathf.Clamp(f_angleInDegree, v2_rangeOfHandRotation.x, v2_rangeOfHandRotation.y);
 
         Vector3 v3_rotationDifferenceInDegree = f_angleInDegree * v3_rotationAxis;
 

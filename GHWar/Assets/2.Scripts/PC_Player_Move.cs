@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class PC_Player_Move : MonoBehaviourPun, IPunObservable
+public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
 {
     [Header("이동속도")]
     [SerializeField] float f_moveSpeed = 3.0f;
@@ -42,13 +42,13 @@ public class PC_Player_Move : MonoBehaviourPun, IPunObservable
 
     private PhotonView pv = null;
 
-    public enum PC_Player_State
-    {
-        Normal = 0,
-        IsGrab = 1,
-    }
+    //public enum PC_Player_State
+    //{
+    //    Normal = 0,
+    //    IsGrab = 1,
+    //}
 
-    public PC_Player_State st_PC;
+    //public PC_Player_State st_PC;
 
     void Awake()
     {
@@ -83,7 +83,7 @@ public class PC_Player_Move : MonoBehaviourPun, IPunObservable
         //v3_setPos = PC_Player_Transform.position;
         //q_setRot = PC_Player_Transform.rotation;
 
-        st_PC = PC_Player_State.Normal;
+        //st_PC = PC_Player_State.Normal;
     }
 
     void FixedUpdate()
@@ -171,11 +171,6 @@ public class PC_Player_Move : MonoBehaviourPun, IPunObservable
                 PC_Player_Rigidbody.AddForce(Vector3.up * f_jumpPower * Time.deltaTime, ForceMode.Impulse);
             }
         }
-    }
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        throw new System.NotImplementedException();
     }
 
     //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
