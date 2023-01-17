@@ -8,8 +8,8 @@ using UnityEngine.XR;
 
 public class VR_Player_Move : MonoBehaviourPun//, IPunObservable
 {
-    [SerializeField] float f_moveSpeed = 3.0f;
-    [SerializeField] float f_rotSpeed = 200.0f;
+    //[SerializeField] float f_moveSpeed = 3.0f;
+    //[SerializeField] float f_rotSpeed = 200.0f;
     [SerializeField] GameObject o_cam;
     [SerializeField] Transform /*t_head,*/ t_leftHand, t_rightHand;
     //[SerializeField] Animator a_player;

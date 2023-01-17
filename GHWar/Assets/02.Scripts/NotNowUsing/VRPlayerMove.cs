@@ -27,11 +27,6 @@ public class VRPlayerMove : MonoBehaviourPunCallbacks, IPunObservable
     Vector3[] v3_setPCpos;
     Quaternion[] q_setPCrot;
 
-    // 스크립트 활성화 시 카메라 위치 정면으로 고정 >> 실패
-    private void OnEnable()
-    {
-
-    }
 
     void Start()
     {

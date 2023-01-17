@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18977997, g: 0.58799297, b: 0.76871157, a: 1}
+  m_IndirectSpecularColor: {r: 0.06808574, g: 0.2201561, b: 0.29588664, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -375,6 +375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isVR: 0
+  RotationPerSecond: 2
 --- !u!1001 &236428015
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -528,6 +529,7 @@ GameObject:
   - component: {fileID: 379465895}
   - component: {fileID: 379465897}
   - component: {fileID: 379465898}
+  - component: {fileID: 379465899}
   m_Layer: 0
   m_Name: Capsule (2)
   m_TagString: Untagged
@@ -819,6 +821,18 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+--- !u!114 &379465899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 379465885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a48e23297831a2144a9d21fc11142a73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &457588109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3240,6 +3254,7 @@ GameObject:
   - component: {fileID: 2075962136}
   - component: {fileID: 2075962138}
   - component: {fileID: 2075962139}
+  - component: {fileID: 2075962140}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -3531,6 +3546,18 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+--- !u!114 &2075962140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075962127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a48e23297831a2144a9d21fc11142a73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2097087616
 PrefabInstance:
   m_ObjectHideFlags: 0
