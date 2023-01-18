@@ -173,6 +173,10 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
     public void Hit_PCPlayer(float damage)
     {
         HP -= damage;
+        if (pv.IsMine)
+        {
+            Debug.Log($"{pv.Controller} is Damaged : Dmg {damage}");
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
