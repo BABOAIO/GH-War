@@ -22,6 +22,7 @@ public class XRGrabInteractionPun : XRGrabInteractable//, IPunOwnershipCallbacks
     }
 
     // 집었을 경우 소유권 요청
+    [System.Obsolete]
     protected override void OnSelectEntered(XRBaseInteractor interactor)
     {
         pv.RequestOwnership();
@@ -30,6 +31,7 @@ public class XRGrabInteractionPun : XRGrabInteractable//, IPunOwnershipCallbacks
     }
 
     // 쥐고 있는 중에도 소유권 요청
+    [System.Obsolete]
     protected override void OnSelectEntering(XRBaseInteractor interactor)
     {
         pv.RequestOwnership();
@@ -38,6 +40,7 @@ public class XRGrabInteractionPun : XRGrabInteractable//, IPunOwnershipCallbacks
     }
 
     // 쥐고 있는 플레이어를 놓았을 경우, 그 플레이어의 소유권을 돌려줌
+    [System.Obsolete]
     protected override void OnSelectExited(XRBaseInteractor interactor)
     {
         pv.TransferOwnership(player_origin);

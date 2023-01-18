@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-using Photon.Realtime;
+//using Photon.Realtime;
 
 public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
 {
@@ -28,18 +28,6 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
 
     float f_mouseX = 0;
     float f_mouseY = 0;
-
-    float invincibilityTime = 1.0f;
-    float currentTime = 1.0f;
-
-    //Vector3 v3_setPos = Vector3.zero;
-    //Quaternion q_setRot = Quaternion.identity;
-
-    //// 변경점 //
-    //Vector3 v3_setPos_handL;
-    //Quaternion q_setRot_handL;
-    //Vector3 v3_setPos_handR;
-    //Quaternion q_setRot_handR;
 
     private PhotonView pv = null;
 
@@ -76,23 +64,6 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
 
     void FixedUpdate()
     {
-        //currentTime += Time.fixedDeltaTime;
-
-        // 변경점 //
-        // VR 플레이어는 따로 움직임
-        //if (GameManager.instance.isVR) { return; }
-
-        //pv.RPC("Move", RpcTarget.All);
-        //pv.RPC("Rotate", RpcTarget.All);
-        //pv.RPC("Jump", RpcTarget.All);
-
-        //switch (st_PC)
-        //{
-        //    case PC_Player_State.Normal:
-        //        break;
-        //    case PC_Player_State.IsGrab:
-        //        break;
-        //}
 
         if (pv.IsMine)
         {
@@ -100,11 +71,6 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
             Rotate(); // Rotate는 FixedUpdate에 넣으면 뚝뚝 끊겨보임
             Jump();
         }
-        //else
-        //{
-        //    PC_Player_Transform.position = Vector3.Lerp(PC_Player_Transform.position, v3_setPos, Time.deltaTime * 3.0f);
-        //    PC_Player_Transform.rotation = Quaternion.Slerp(PC_Player_Transform.rotation, q_setRot, Time.deltaTime * 3.0f);
-        //}
     }
 
     [PunRPC]
@@ -121,22 +87,6 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
 
             //anim...
         }
-        // 트랜스폼 뷰 사용시에만 비활성화
-        //else
-        //{
-        //    PC_Player_Transform.transform.position = Vector3.Lerp(PC_Player_Transform.transform.position, v3_setPos, Time.deltaTime * 20f);
-        //    PC_Player_Transform.rotation = Quaternion.Lerp(PC_Player_Transform.rotation, q_setRot, Time.deltaTime * 20f);
-
-        //    // 변경점 //
-        //    if (!GameManager.instance.isVR)
-        //    {
-        //        hand_L.transform.position = Vector3.Lerp(hand_L.transform.position, v3_setPos_handL, Time.deltaTime * 20f);
-        //        hand_L.transform.rotation = Quaternion.Lerp(hand_L.transform.rotation, q_setRot_handL, Time.deltaTime * 20f);
-
-        //        hand_R.transform.position = Vector3.Lerp(hand_R.transform.position, v3_setPos_handR, Time.deltaTime * 20f);
-        //        hand_R.transform.rotation = Quaternion.Lerp(hand_R.transform.rotation, q_setRot_handR, Time.deltaTime * 20f);
-        //    }
-        //}
     }
 
     [PunRPC]
