@@ -26,12 +26,6 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
     [Header("PC 플레이어 컨트롤러")]
     [SerializeField] Rigidbody PC_Player_Rigidbody;
 
-    // 변경점 //
-    [SerializeField]
-    GameObject hand_L;
-    [SerializeField]
-    GameObject hand_R;
-
     float f_mouseX = 0;
     float f_mouseY = 0;
 
@@ -59,7 +53,6 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
 
     void Awake()
     {
-
         pv = GetComponent<PhotonView>();
         pv.Synchronization = ViewSynchronization.UnreliableOnChange;
         pv.ObservedComponents[0] = this;
@@ -83,7 +76,8 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
 
     void FixedUpdate()
     {
-        currentTime += Time.fixedDeltaTime;
+        //currentTime += Time.fixedDeltaTime;
+
         // 변경점 //
         // VR 플레이어는 따로 움직임
         //if (GameManager.instance.isVR) { return; }
@@ -169,27 +163,27 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
         }
     }
 
-    [PunRPC]
-    public void Hit_PCPlayer(float damage)
-    {
-        HP -= damage;
-        if (pv.IsMine)
-        {
-            Debug.Log($"{pv.Controller} is Damaged : Dmg {damage}");
-        }
-    }
+    //[PunRPC]
+    //public void Hit_PCPlayer(float damage)
+    //{
+    //    HP -= damage;
+    //    if (pv.IsMine)
+    //    {
+    //        Debug.Log($"{pv.Controller} is Damaged : Dmg {damage}");
+    //    }
+    //}
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        float f_objVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    float f_objVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
 
-        if (f_objVelocity > 10 && currentTime >= invincibilityTime)
-        {
-            if (pv.IsMine)
-            {
-                pv.RPC("Hit_PCPlayer", RpcTarget.All, f_objVelocity);
-            }
-            currentTime = 0.0f;
-        }
-    }
+    //    if (f_objVelocity > 10 && currentTime >= invincibilityTime)
+    //    {
+    //        if (pv.IsMine)
+    //        {
+    //            pv.RPC("Hit_PCPlayer", RpcTarget.All, f_objVelocity);
+    //        }
+    //        currentTime = 0.0f;
+    //    }
+    //}
 }

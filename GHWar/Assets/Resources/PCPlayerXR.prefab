@@ -198,8 +198,6 @@ MonoBehaviour:
   PC_Player_Transform: {fileID: 6735488686939514128}
   a_player: {fileID: 0}
   PC_Player_Rigidbody: {fileID: 6735488686939514129}
-  hand_L: {fileID: 0}
-  hand_R: {fileID: 0}
 --- !u!114 &3646084695551439955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,7 +329,7 @@ MonoBehaviour:
     SynchronizeEnabled: 1
     TeleportEnabled: 1
     TeleportIfDistanceGreaterThan: 3
-    InterpolateOption: 4
+    InterpolateOption: 3
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 30000
     ExtrapolateOption: 1
@@ -362,7 +360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SynchronizeVelocity: 1
   m_SynchronizeAngularVelocity: 1
-  m_TeleportEnabled: 0
+  m_TeleportEnabled: 1
   m_TeleportIfDistanceGreaterThan: 3
 --- !u!1 &6735488686991723640
 GameObject:

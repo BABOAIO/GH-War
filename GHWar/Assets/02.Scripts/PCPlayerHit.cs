@@ -20,7 +20,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
 
         if (f_objVelocity > 10 && currentTime >= invincibilityTime)
         {
-            this.GetComponent<PC_Player_Move>().Hit_PCPlayer(f_objVelocity);
+            //this.GetComponent<PC_Player_Move>().Hit_PCPlayer(f_objVelocity);
             currentTime = 0.0f;
         }
     }

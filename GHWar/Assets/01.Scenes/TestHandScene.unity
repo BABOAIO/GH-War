@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.15039991, g: 0.46803692, b: 0.6134362, a: 1}
+  m_IndirectSpecularColor: {r: 0.06326385, g: 0.20456451, b: 0.27493197, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3881,6 +3881,10 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6735488686939514129, guid: dbfc8f6b15feb71478302164dc9a9b50, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6735488686939514344, guid: dbfc8f6b15feb71478302164dc9a9b50, type: 3}
       propertyPath: m_Name
       value: PCPlayerXR
@@ -3895,7 +3899,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6735488686939514345, guid: dbfc8f6b15feb71478302164dc9a9b50, type: 3}
       propertyPath: OwnershipTransfer
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6735488687244854686, guid: dbfc8f6b15feb71478302164dc9a9b50, type: 3}
+      propertyPath: m_PositionModel.InterpolateOption
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6735488687244854686, guid: dbfc8f6b15feb71478302164dc9a9b50, type: 3}
       propertyPath: m_RotationModel.InterpolateOption
