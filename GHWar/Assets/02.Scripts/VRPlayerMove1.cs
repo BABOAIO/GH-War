@@ -37,7 +37,7 @@ public class VRPlayerMove1 : MonoBehaviourPun//, IPunObservable
     {
         // 위치 및 카메라 시선 고정 >> 실패
         o_cam.SetActive(true);
-        o_cam.transform.LookAt(GameObject.FindGameObjectWithTag("Ground").transform.position);
+        //o_cam.transform.LookAt(GameObject.FindGameObjectWithTag("Ground").transform.position);
 
         // 카메라 사이의 충돌 방지
         if (!photonView.IsMine)

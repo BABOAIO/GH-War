@@ -7,7 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class XRGrabInteractionPun : XRGrabInteractable//, IPunOwnershipCallbacks//, IPunObservable // 이 항목이 있기에 인스펙터창에 그랩관련 항목이 생성
 {
-    //Player player_this;
+    Player player_this;
     //Transform t_this;
     //Vector3 v3_grabbed;
     PhotonView pv;
@@ -19,6 +19,7 @@ public class XRGrabInteractionPun : XRGrabInteractable//, IPunOwnershipCallbacks
         //t_this = GetComponent<Transform>();
         //player_this = GetComponent<Player>();
         pv = GetComponent<PhotonView>();
+        player_this = pv.Controller;
     }
 
     void Update()
@@ -40,6 +41,12 @@ public class XRGrabInteractionPun : XRGrabInteractable//, IPunOwnershipCallbacks
         pv.RequestOwnership();
         //sc_PCPlayerMove.st_PC = PC_Player_Move.PC_Player_State.IsGrab;
         base.OnSelectEntering(interactor);
+    }
+
+    protected override void OnSelectExited(XRBaseInteractor interactor)
+    {
+        pv.TransferOwnership(player_this);
+        base.OnSelectExited(interactor);
     }
 
     // 셀렉트에서 손 놓았을 때 당시 IsMine인 컨트롤러에게 돌려줄려고 했지만 실패(이후는 TransferInteractionMaster 스크립트 참고)
