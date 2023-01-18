@@ -35,7 +35,7 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
 
     private PhotonView pv = null;
 
-    #region 캐릭터 점프, 구르기 관련
+    #region 캐릭터 점프, 구르기, 발버둥 관련
     bool Run = false;
 
     public int jumpCount = 2;
@@ -44,7 +44,11 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
 
     public int dodgeCount = 2;
     bool isDodge = false;
+
+    bool isGrab = false;
     #endregion
+
+    XRGrabInteractionPun XRG;
 
     void Awake()
     {
@@ -83,6 +87,7 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
             Rotate();
             Jump();
             Dodge();
+            Wiggle();
         }
     }
 
@@ -186,6 +191,19 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
             f_moveSpeed *= 0.5f;
             dodgeCount = 2;
             isDodge = false;
+        }
+    }
+
+    [PunRPC]
+    void Wiggle()
+    {
+        if (XRG.isGrab == true)
+        {
+            a_player.SetBool("Wiggle", true);
+        }
+        else
+        {
+            a_player.SetBool("Wiggle", false);
         }
     }
 
