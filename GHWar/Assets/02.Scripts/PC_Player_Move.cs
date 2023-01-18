@@ -6,8 +6,10 @@ using Photon.Realtime;
 
 public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
 {
+    [Header("Max HP")]
+    public float MaxHP = 100.0f;
     [Header("HP")]
-    [SerializeField] float HP = 100.0f;
+    public float HP = 100.0f;
     [Header("이동속도")]
     [SerializeField] float f_moveSpeed = 3.0f;
     [Header("회전속도")]
@@ -32,6 +34,9 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
 
     float f_mouseX = 0;
     float f_mouseY = 0;
+
+    float invincibilityTime = 1.0f;
+    float currentTime = 1.0f;
 
     //Vector3 v3_setPos = Vector3.zero;
     //Quaternion q_setRot = Quaternion.identity;
@@ -78,9 +83,10 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
 
     void FixedUpdate()
     {
+        currentTime += Time.fixedDeltaTime;
         // 변경점 //
         // VR 플레이어는 따로 움직임
-        if (GameManager.instance.isVR) { return; }
+        //if (GameManager.instance.isVR) { return; }
 
         //pv.RPC("Move", RpcTarget.All);
         //pv.RPC("Rotate", RpcTarget.All);
@@ -163,8 +169,23 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
         }
     }
 
+    [PunRPC]
     public void Hit_PCPlayer(float damage)
     {
         HP -= damage;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        float f_objVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
+
+        if (f_objVelocity > 10 && currentTime >= invincibilityTime)
+        {
+            if (pv.IsMine)
+            {
+                pv.RPC("Hit_PCPlayer", RpcTarget.All, f_objVelocity);
+            }
+            currentTime = 0.0f;
+        }
     }
 }
