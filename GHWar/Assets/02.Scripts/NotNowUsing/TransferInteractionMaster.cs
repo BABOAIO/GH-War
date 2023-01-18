@@ -17,7 +17,7 @@ public class TransferInteractionMaster : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!collision.collider.GetComponent<PhotonView>().IsMine && (collision.collider.CompareTag("PC_Player") || collision.collider.CompareTag("VR_Player")))
+        if (!collision.collider.GetComponent<PhotonView>().IsMine && !(collision.collider.CompareTag("PC_Player") || collision.collider.CompareTag("VR_Player")))
         {
             pv.RequestOwnership();
         }
@@ -25,7 +25,7 @@ public class TransferInteractionMaster : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (!collision.collider.GetComponent<PhotonView>().IsMine && (collision.collider.CompareTag("PC_Player") || collision.collider.CompareTag("VR_Player")))
+        if (!collision.collider.GetComponent<PhotonView>().IsMine && !(collision.collider.CompareTag("PC_Player") || collision.collider.CompareTag("VR_Player")))
         {
             pv.RequestOwnership();
         }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.06326385, g: 0.20456451, b: 0.27493197, a: 1}
+  m_IndirectSpecularColor: {r: 0.063901685, g: 0.20662695, b: 0.27770394, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3833,6 +3833,10 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 1495189417}
+    - target: {fileID: 4782068654067011126, guid: dbfc8f6b15feb71478302164dc9a9b50, type: 3}
+      propertyPath: m_TeleportEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6735488686939514128, guid: dbfc8f6b15feb71478302164dc9a9b50, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -3902,6 +3906,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6735488687244854686, guid: dbfc8f6b15feb71478302164dc9a9b50, type: 3}
+      propertyPath: m_PositionModel.TeleportEnabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6735488687244854686, guid: dbfc8f6b15feb71478302164dc9a9b50, type: 3}
+      propertyPath: m_PositionModel.ExtrapolateOption
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6735488687244854686, guid: dbfc8f6b15feb71478302164dc9a9b50, type: 3}
       propertyPath: m_PositionModel.InterpolateOption
       value: 4
       objectReference: {fileID: 0}
@@ -3912,6 +3924,10 @@ PrefabInstance:
     - target: {fileID: 6735488687244854686, guid: dbfc8f6b15feb71478302164dc9a9b50, type: 3}
       propertyPath: m_PositionModel.InterpolateLerpSpeed
       value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6735488687244854686, guid: dbfc8f6b15feb71478302164dc9a9b50, type: 3}
+      propertyPath: m_PositionModel.ExtrapolateIncludingRoundTripTime
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbfc8f6b15feb71478302164dc9a9b50, type: 3}
