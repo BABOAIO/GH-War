@@ -6,6 +6,10 @@ using Photon.Realtime;
 
 public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
 {
+    [Header("Max HP")]
+    public float MaxHP = 100.0f;
+    [Header("HP")]
+    public float HP = 100.0f;
     [Header("이동속도")]
     [SerializeField] float f_moveSpeed = 3.0f;
     [Header("회전속도")]
@@ -22,48 +26,29 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
     [Header("PC 플레이어 컨트롤러")]
     [SerializeField] Rigidbody PC_Player_Rigidbody;
 
-    // 변경점 //
-    [SerializeField]
-    GameObject hand_L;
-    [SerializeField]
-    GameObject hand_R;
-
     float f_mouseX = 0;
     float f_mouseY = 0;
+    float f_mouseYlim;
 
-    //Vector3 v3_setPos = Vector3.zero;
-    //Quaternion q_setRot = Quaternion.identity;
-
-    //// 변경점 //
-    //Vector3 v3_setPos_handL;
-    //Quaternion q_setRot_handL;
-    //Vector3 v3_setPos_handR;
-    //Quaternion q_setRot_handR;
+    float invincibilityTime = 1.0f;
+    float currentTime = 1.0f;
 
     private PhotonView pv = null;
 
-    //public enum PC_Player_State
-    //{
-    //    Normal = 0,
-    //    IsGrab = 1,
-    //}
+    #region 캐릭터 점프, 구르기 관련
+    bool Run = false;
 
-    //public PC_Player_State st_PC;
+    public int jumpCount = 2;
+    bool isGround = false;
+    bool isJump = false;
+
+    public int dodgeCount = 2;
+    bool isDodge = false;
+    #endregion
 
     void Awake()
     {
-        //if (GameManager.instance.isVR)
-        //{
-        //    Camera cam_this = GetComponentInChildren<Camera>();
-        //    cam_this.transform.LookAt(GameObject.FindGameObjectWithTag("Ground").transform.position);
-        //    // 변경점 //
-        //    hand_L = GameObject.FindGameObjectWithTag("LeftHand");
-        //    hand_R = GameObject.FindGameObjectWithTag("RightHand");
-        //    print(hand_L.name);
-        //    print(hand_R.name);
-        //}
-        //hand_L = GameObject.FindGameObjectWithTag("LeftHand");
-        //hand_R = GameObject.FindGameObjectWithTag("RightHand");
+        Application.targetFrameRate = 120; // 화면 프레임 조절
 
         pv = GetComponent<PhotonView>();
         pv.Synchronization = ViewSynchronization.UnreliableOnChange;
@@ -72,6 +57,13 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
         PC_Player_Cam.SetActive(true);
         PC_Player_Rigidbody = GetComponent<Rigidbody>();
 
+        a_player = GetComponent<Animator>();
+
+        jumpCount = 0;
+        dodgeCount = 2;
+
+        Cursor.lockState = CursorLockMode.Locked;
+
         if (!photonView.IsMine)
         {
             PC_Player_Cam.SetActive(false);
@@ -79,43 +71,29 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
             // 트랜스폼 뷰 할때 떨림 방지
             gameObject.GetComponent<Rigidbody>().isKinematic = false;
         }
-
-        //v3_setPos = PC_Player_Transform.position;
-        //q_setRot = PC_Player_Transform.rotation;
-
-        //st_PC = PC_Player_State.Normal;
     }
 
     void FixedUpdate()
     {
-        // 변경점 //
-        // VR 플레이어는 따로 움직임
-        if (GameManager.instance.isVR) { return; }
-
-        //pv.RPC("Move", RpcTarget.All);
-        //pv.RPC("Rotate", RpcTarget.All);
-        //pv.RPC("Jump", RpcTarget.All);
-
-        //switch (st_PC)
-        //{
-        //    case PC_Player_State.Normal:
-        //        break;
-        //    case PC_Player_State.IsGrab:
-        //        break;
-        //}
+        currentTime += Time.fixedDeltaTime;
 
         if (pv.IsMine)
         {
             Move();
-            Rotate(); // Rotate는 FixedUpdate에 넣으면 뚝뚝 끊겨보임
+            Rotate();
             Jump();
+            Dodge();
         }
-        //else
-        //{
-        //    PC_Player_Transform.position = Vector3.Lerp(PC_Player_Transform.position, v3_setPos, Time.deltaTime * 3.0f);
-        //    PC_Player_Transform.rotation = Quaternion.Slerp(PC_Player_Transform.rotation, q_setRot, Time.deltaTime * 3.0f);
-        //}
     }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
+
 
     [PunRPC]
     void Move()
@@ -129,24 +107,15 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
 
             transform.Translate(v3_moveDirection * Time.deltaTime * f_moveSpeed);
 
-            //anim...
+            if (f_h == 0 && f_v == 0)
+            {
+                a_player.SetBool("Run", false);
+            }
+            else
+            {
+                a_player.SetBool("Run", true);
+            }
         }
-        // 트랜스폼 뷰 사용시에만 비활성화
-        //else
-        //{
-        //    PC_Player_Transform.transform.position = Vector3.Lerp(PC_Player_Transform.transform.position, v3_setPos, Time.deltaTime * 20f);
-        //    PC_Player_Transform.rotation = Quaternion.Lerp(PC_Player_Transform.rotation, q_setRot, Time.deltaTime * 20f);
-
-        //    // 변경점 //
-        //    if (!GameManager.instance.isVR)
-        //    {
-        //        hand_L.transform.position = Vector3.Lerp(hand_L.transform.position, v3_setPos_handL, Time.deltaTime * 20f);
-        //        hand_L.transform.rotation = Quaternion.Lerp(hand_L.transform.rotation, q_setRot_handL, Time.deltaTime * 20f);
-
-        //        hand_R.transform.position = Vector3.Lerp(hand_R.transform.position, v3_setPos_handR, Time.deltaTime * 20f);
-        //        hand_R.transform.rotation = Quaternion.Lerp(hand_R.transform.rotation, q_setRot_handR, Time.deltaTime * 20f);
-        //    }
-        //}
     }
 
     [PunRPC]
@@ -157,7 +126,10 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
             f_mouseX += Input.GetAxis("Mouse X") * f_rotSpeed * Time.deltaTime;
             f_mouseY -= Input.GetAxis("Mouse Y") * f_rotSpeed * Time.deltaTime;
             transform.eulerAngles = new Vector3(0, f_mouseX, 0);
-            PC_Player_Cam.transform.eulerAngles = new Vector3(f_mouseY, f_mouseX, 0);
+
+            f_mouseYlim = f_mouseYlim + f_mouseY;
+            f_mouseYlim = Mathf.Clamp(f_mouseY, -90, 90);
+            PC_Player_Cam.transform.eulerAngles = new Vector3(f_mouseYlim, f_mouseX, 0);
         }
     }
 
@@ -166,74 +138,86 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
     {
         if (pv.IsMine)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (isGround && isDodge == false)
             {
-                PC_Player_Rigidbody.AddForce(Vector3.up * f_jumpPower * Time.deltaTime, ForceMode.Impulse);
+                if (jumpCount > 0)
+                {
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        PC_Player_Rigidbody.AddForce(Vector3.up * f_jumpPower * 1000f * Time.deltaTime, ForceMode.Impulse);
+                        jumpCount--;
+                        isJump = true;
+
+                        a_player.SetTrigger("Jump");
+                    }
+                }
             }
         }
     }
 
-    //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    [PunRPC]
+    void Dodge()
+    {
+        if (pv.IsMine)
+        {
+            if (isJump == false && isDodge == false)
+            {
+                if (dodgeCount > 0)
+                {
+                    if (Input.GetKeyDown(KeyCode.LeftShift))
+                    {
+                        f_moveSpeed *= 2;
+                        a_player.SetTrigger("Roll");
+                        dodgeCount--;
+                        isDodge = true;
+
+                        Invoke("DodgeOut", 0.5f);
+                    }
+                }
+            }
+        }
+    }
+
+    [PunRPC]
+    void DodgeOut()
+    {
+        if (pv.IsMine)
+        {
+            f_moveSpeed *= 0.5f;
+            dodgeCount = 2;
+            isDodge = false;
+        }
+    }
+
+    [PunRPC]
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGround = true;
+            isJump = false;
+            jumpCount = 2;
+        }
+    }
+
+    //[PunRPC]
+    //public void Hit_PCPlayer(float damage)
     //{
-    //    if (stream.IsWriting)
-    //    {
-    //        stream.SendNext(PC_Player_Transform.position);
-    //        stream.SendNext(PC_Player_Transform.rotation);
-    //    }
-    //    else
-    //    {
-    //        v3_setPos = (Vector3)stream.ReceiveNext();
-    //        q_setRot = (Quaternion)stream.ReceiveNext();
-    //    }
+    //    HP -= damage;
+    //    Debug.Log($"{pv.Controller} is Damaged : Dmg {damage}");
     //}
 
-    //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    //private void OnCollisionEnter(Collision collision)
     //{
-    //    if (stream.IsWriting)
-    //    {
-    //        stream.SendNext(PC_Player_Transform.position);
-    //        stream.SendNext(PC_Player_Transform.rotation);
-    //        //stream.SendNext(anim.GetFloat("Speed"));
-    //    }
+    //    float f_objVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
 
-    //    else if (stream.IsReading)
+    //    if (f_objVelocity >= 10 && currentTime >= invincibilityTime)
     //    {
-    //        v3_setPos = (Vector3)stream.ReceiveNext();
-    //        q_setRot = (Quaternion)stream.ReceiveNext();
-    //        //f_directionSpeed = (float)stream.ReceiveNext();
-    //    }
-
-    //    // 변경점 //
-    //    if (stream.IsWriting)
-    //    {
-    //        stream.SendNext(PC_Player_Transform.position);
-    //        stream.SendNext(PC_Player_Transform.rotation);
-
-    //        if (GameManager.instance.isVR)
+    //        if(pv.IsMine)
     //        {
-    //            stream.SendNext(hand_L.transform.position);
-    //            stream.SendNext(hand_L.transform.rotation);
-    //            stream.SendNext(hand_R.transform.position);
-    //            stream.SendNext(hand_R.transform.rotation);
+    //            pv.RPC("Hit_PCPlayer", RpcTarget.All, f_objVelocity);
+    //            currentTime = 0.0f;
     //        }
-
-    //        //stream.SendNext(anim.GetFloat("Speed"));
-    //    }
-
-    //    else if (stream.IsReading)
-    //    {
-    //        v3_setPos = (Vector3)stream.ReceiveNext();
-    //        q_setRot = (Quaternion)stream.ReceiveNext();
-
-    //        if (!GameManager.instance.isVR)
-    //        {
-    //            v3_setPos_handL = (Vector3)stream.ReceiveNext();
-    //            q_setRot_handL = (Quaternion)stream.ReceiveNext();
-    //            v3_setPos_handR = (Vector3)stream.ReceiveNext();
-    //            q_setRot_handR = (Quaternion)stream.ReceiveNext();
-    //        }
-
-    //        //f_directionSpeed = (float)stream.ReceiveNext();
     //    }
     //}
 }
