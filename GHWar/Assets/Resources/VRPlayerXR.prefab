@@ -782,7 +782,7 @@ MonoBehaviour:
     SynchronizeEnabled: 1
     TeleportEnabled: 1
     TeleportIfDistanceGreaterThan: 3
-    InterpolateOption: 4
+    InterpolateOption: 3
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 30000
     ExtrapolateOption: 1
@@ -791,7 +791,7 @@ MonoBehaviour:
     ExtrapolateNumberOfStoredPositions: 1
   m_RotationModel:
     SynchronizeEnabled: 1
-    InterpolateOption: 2
+    InterpolateOption: 1
     InterpolateRotateTowardsSpeed: 180
     InterpolateLerpSpeed: 30000
   m_ScaleModel:
@@ -1210,6 +1210,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7771788171356222633, guid: edc6ea433c162414abc0a11fcaf622e6, type: 3}
   m_PrefabInstance: {fileID: 835762982441021347}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1539580742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6936610138783767306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed571674d8f0884aa67ed160050f00e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller_xr: {fileID: 1574258887}
+  b_checkFist: 0
+  ps_attackGroundEffect: {fileID: 4757421163229417474, guid: d1dc5b9b10a0ac4469b185be972c0465, type: 3}
+  o_Stone: {fileID: 5456919417387618678, guid: 0cac6e5e9dd065942a69e3088181a6df, type: 3}
 --- !u!114 &371318640850231739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1467,6 +1483,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4228924605379942118, guid: 8ed78693227848c4cb6cad4f6b020332, type: 3}
   m_PrefabInstance: {fileID: 835762983444952190}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1539580741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3542382943089238680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed571674d8f0884aa67ed160050f00e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller_xr: {fileID: 625869747}
+  b_checkFist: 0
+  ps_attackGroundEffect: {fileID: 4757421163229417474, guid: d1dc5b9b10a0ac4469b185be972c0465, type: 3}
+  o_Stone: {fileID: 5456919417387618678, guid: 0cac6e5e9dd065942a69e3088181a6df, type: 3}
 --- !u!114 &1071228331592616995
 MonoBehaviour:
   m_ObjectHideFlags: 0
