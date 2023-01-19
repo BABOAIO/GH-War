@@ -4318,6 +4318,7 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+  isGrab: 0
 --- !u!114 &8663142151764401293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4333,12 +4334,6 @@ MonoBehaviour:
   ShowLayerWeightsInspector: 1
   ShowParameterInspector: 1
   m_SynchronizeParameters:
-  - Type: 9
-    SynchronizeType: 0
-    Name: Roll
-  - Type: 9
-    SynchronizeType: 0
-    Name: Jump
   - Type: 4
     SynchronizeType: 2
     Name: Run
@@ -4348,6 +4343,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: IsJump
+  - Type: 4
+    SynchronizeType: 2
+    Name: Wiggle
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0

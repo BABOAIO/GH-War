@@ -47,7 +47,7 @@ public class GroundImpact : MonoBehaviourPunCallbacks
         GameObject o_ps = PhotonNetwork.Instantiate("HitEffect",position,rotation);
         GameObject o_tmp = PhotonNetwork.Instantiate("HitCube", position, rotation);
 
-        StartCoroutine(Delayed_Destroy(0.2f, o_ps));
+        StartCoroutine(Delayed_Destroy(0.5f, o_ps));
     }
 
     IEnumerator Delayed_Destroy(float t, GameObject obj)
@@ -57,11 +57,5 @@ public class GroundImpact : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.Destroy(obj);
         }
-    }
-
-
-    private void DestroyEffect(ParticleSystem ps)
-    {
-        Destroy(ps);
     }
 }

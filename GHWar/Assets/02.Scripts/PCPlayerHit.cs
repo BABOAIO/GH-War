@@ -6,8 +6,8 @@ using Photon.Pun;
 
 public class PCPlayerHit : MonoBehaviour
 {
-    float invincibilityTime = 1.0f;
-    float currentTime = 1.0f;
+    float invincibilityTime = 2.0f;
+    float currentTime = 2.0f;
 
     private void OnCollisionEnter(Collision collision)
     {

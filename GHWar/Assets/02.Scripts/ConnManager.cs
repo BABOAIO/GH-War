@@ -65,7 +65,7 @@ public class ConnManager : MonoBehaviourPunCallbacks
         if (GameManager.instance.isVR)
         {
             Vector2 originPos = Random.insideUnitCircle * 2.0f;
-            PhotonNetwork.Instantiate("VRPlayerXR", Vector3.zero, Quaternion.identity);
+            PhotonNetwork.Instantiate("UniversalMale", Vector3.zero, Quaternion.identity);
         }
         // 반경 2m 이내에 랜덤 위치에서 PC 플레이어 생성
         else

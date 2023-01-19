@@ -27,6 +27,8 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
     [Header("PC 플레이어 컨트롤러")]
     [SerializeField] Rigidbody PC_Player_Rigidbody;
 
+    XRGrabInteractionPun xrgrabinteractionPun;
+
     float f_mouseX = 0;
     float f_mouseY = 0;
     float f_mouseYlim;
@@ -52,6 +54,8 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
         pv.Synchronization = ViewSynchronization.UnreliableOnChange;
         pv.ObservedComponents[0] = this;
 
+        xrgrabinteractionPun = GetComponent<XRGrabInteractionPun>();
+
         PC_Player_Cam.SetActive(true);
         PC_Player_Rigidbody = GetComponent<Rigidbody>();
 
@@ -73,13 +77,14 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
 
     void FixedUpdate()
     {
+        print(xrgrabinteractionPun.isGrab);
         if (pv.IsMine)
         {
             Move();
             Rotate();
             Jump();
             Dodge();
-
+            Wiggle();
         }
     }
 
@@ -91,6 +96,18 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
         }
     }
 
+    [PunRPC]
+    void Wiggle()
+    {
+        if (xrgrabinteractionPun.isGrab == true)
+        {
+            a_player.SetBool("Wiggle", true);
+        }
+        else if (xrgrabinteractionPun.isGrab == false)
+        {
+            a_player.SetBool("Wiggle", false);
+        }
+    }
 
     [PunRPC]
     void Move()
@@ -211,24 +228,10 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
         }
     }
 
-    //[PunRPC]
-    //public void Hit_PCPlayer(float damage)
-    //{
-    //    HP -= damage;
-    //    Debug.Log($"{pv.Controller} is Damaged : Dmg {damage}");
-    //}
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    float f_objVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
-
-    //    if (f_objVelocity >= 10 && currentTime >= invincibilityTime)
-    //    {
-    //        if(pv.IsMine)
-    //        {
-    //            pv.RPC("Hit_PCPlayer", RpcTarget.All, f_objVelocity);
-    //            currentTime = 0.0f;
-    //        }
-    //    }
-    //}
+    [PunRPC]
+    public void Hit_PCPlayer(float damage)
+    {
+        HP -= damage;
+        Debug.Log($"{pv.Controller} is Damaged : Dmg {damage}");
+    }
 }
