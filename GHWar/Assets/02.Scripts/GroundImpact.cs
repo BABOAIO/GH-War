@@ -1,24 +1,67 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
+using Unity.VisualScripting;
+using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.UIElements;
 
-public class GroundImpact : MonoBehaviour
+[RequireComponent(typeof(PhotonView))]
+public class GroundImpact : MonoBehaviourPunCallbacks
 {
+    [SerializeField] XRController controller;
     [Header("땅을 칠때 나오는 이펙트")]
     [SerializeField] ParticleSystem ps_hitGround;
     [Header("땅을 칠때 나오는 큐브")]
     [SerializeField] GameObject o_stone;
 
+    PhotonView pv;
+
+    private void Start()
+    {
+        pv = GetComponent<PhotonView>();
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("HitZone"))
+        print("Col");
+        if (collision.gameObject.CompareTag("Ground"))
         {
-            print("히트 존 충돌인식");
-            if (collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude >= 0)
+            print("Tag");
+            if (controller.inputDevice.TryGetFeatureValue(CommonUsages.gripButton,out bool isGrab))
             {
-
-                print("히트 존 속도 감지");
+                if (isGrab)
+                {
+                    print("Btn");
+                    pv.RPC("Hit_Ground_withEffect", RpcTarget.All, collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
+                }
             }
         }
+    }
+
+    [PunRPC]
+    public void Hit_Ground_withEffect(Vector3 position, Quaternion rotation)
+    {
+        GameObject o_ps = PhotonNetwork.Instantiate("HitEffect",position,rotation);
+        GameObject o_tmp = PhotonNetwork.Instantiate("HitCube", position, rotation);
+
+        StartCoroutine(Delayed_Destroy(0.2f, o_ps));
+    }
+
+    IEnumerator Delayed_Destroy(float t, GameObject obj)
+    {
+        yield return new WaitForSeconds(t);
+        if(obj != null)
+        {
+            PhotonNetwork.Destroy(obj);
+        }
+    }
+
+
+    private void DestroyEffect(ParticleSystem ps)
+    {
+        Destroy(ps);
     }
 }
