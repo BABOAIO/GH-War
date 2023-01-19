@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UniRx;
 
 public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
 {
@@ -29,9 +30,6 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
     float f_mouseX = 0;
     float f_mouseY = 0;
     float f_mouseYlim;
-
-    float invincibilityTime = 1.0f;
-    float currentTime = 1.0f;
 
     private PhotonView pv = null;
 
@@ -75,14 +73,13 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
 
     void FixedUpdate()
     {
-        currentTime += Time.fixedDeltaTime;
-
         if (pv.IsMine)
         {
             Move();
             Rotate();
             Jump();
             Dodge();
+
         }
     }
 
@@ -107,7 +104,7 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
 
             transform.Translate(v3_moveDirection * Time.deltaTime * f_moveSpeed);
 
-            if (f_h == 0 && f_v == 0)
+            if (Mathf.Abs(f_h) <= 0.2 && Mathf.Abs(f_v) <= 0.2)
             {
                 a_player.SetBool("Run", false);
             }
@@ -148,13 +145,21 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
                         jumpCount--;
                         isJump = true;
 
-                        a_player.SetTrigger("Jump");
+                        //a_player.SetTrigger("Jump");
+
+                        // setbool을 settrigger처럼 쓸 수 있음
+                        a_player.SetBool("IsJump", true);
+                        Observable.NextFrame().Subscribe(_ => a_player.SetBool("IsJump", false));
                     }
                 }
             }
+            else
+            {
+                //a_player.SetBool("IsJump", false);
+            }
         }
     }
-
+    
     [PunRPC]
     void Dodge()
     {
@@ -167,13 +172,19 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
                     if (Input.GetKeyDown(KeyCode.LeftShift))
                     {
                         f_moveSpeed *= 2;
-                        a_player.SetTrigger("Roll");
+                        //a_player.SetTrigger("Roll")
+                        a_player.SetBool("IsRoll", true);
+                        Observable.NextFrame().Subscribe(_ => a_player.SetBool("IsRoll", false));
                         dodgeCount--;
                         isDodge = true;
 
                         Invoke("DodgeOut", 0.5f);
                     }
                 }
+            }
+            else
+            {
+                //a_player.SetBool("Roll", false);
             }
         }
     }
