@@ -20,4 +20,9 @@ public class PCPlayerHit : MonoBehaviour
             currentTime = 0.0f;
         }
     }
+
+    private void FixedUpdate()
+    {
+        currentTime += Time.fixedDeltaTime;
+    }
 }

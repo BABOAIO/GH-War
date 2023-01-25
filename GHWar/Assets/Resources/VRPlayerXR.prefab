@@ -266,7 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4253f32900bcc4d499d675566142ded0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 6346509021555160278, guid: bd4a8c2459d82ee449fb9f4f49c59186, type: 3}
+  m_InteractionManager: {fileID: 0}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -482,7 +482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4253f32900bcc4d499d675566142ded0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 6346509021555160278, guid: bd4a8c2459d82ee449fb9f4f49c59186, type: 3}
+  m_InteractionManager: {fileID: 0}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -739,7 +739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb2040ee0b5593048b81d6e365b94a02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 100
+  HP: 2
   f_moveSpeed: 3
   f_rotSpeed: 200
   o_cam: {fileID: 145513498}
@@ -1302,6 +1302,7 @@ MonoBehaviour:
   controller: {fileID: 1574258887}
   ps_hitGround: {fileID: 5994798196723277596, guid: ee6e14d735848ff46a73b4f595c566a4, type: 3}
   o_stone: {fileID: 7394915181881394707, guid: 32c9bdda1a32ba140ac2d452a48c70cf, type: 3}
+  delayTime: 1
 --- !u!114 &5175149902502459088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1675,6 +1676,7 @@ MonoBehaviour:
   controller: {fileID: 625869747}
   ps_hitGround: {fileID: 5994798196723277596, guid: ee6e14d735848ff46a73b4f595c566a4, type: 3}
   o_stone: {fileID: 7394915181881394707, guid: 32c9bdda1a32ba140ac2d452a48c70cf, type: 3}
+  delayTime: 1
 --- !u!1 &3542382943089238680 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4228924605379942118, guid: 8ed78693227848c4cb6cad4f6b020332, type: 3}

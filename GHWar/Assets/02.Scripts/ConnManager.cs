@@ -66,15 +66,15 @@ public class ConnManager : MonoBehaviourPunCallbacks
         // 원점에서 VR 플레이어 생성
         if (GameManager.instance.IsVR)
         {
-            Vector2 originPos = Random.insideUnitCircle * 2.0f;
-            PhotonNetwork.Instantiate("VRPlayerXR", Vector3.zero, Quaternion.identity);
+            //Vector2 originPos = Random.insideUnitCircle * 2.0f;
+            GameManager.instance.Array_AllPlayers[0] = PhotonNetwork.Instantiate("VRPlayerXR", Vector3.zero, Quaternion.identity);
         }
         // 반경 2m 이내에 랜덤 위치에서 PC 플레이어 생성
         else
         {
             //Vector2 originPos = Random.insideUnitCircle * 2.0f;
             //PhotonNetwork.Instantiate("PCPlayerXR", PC_Spawn, Quaternion.identity); 
-            PhotonNetwork.Instantiate("UniversalMale", PC_Spawn, Quaternion.identity);
+            GameManager.instance.Array_AllPlayers[1] = PhotonNetwork.Instantiate("UniversalMale", PC_Spawn, Quaternion.identity);
         }
 
     }

@@ -17,7 +17,7 @@ public class GroundImpact : MonoBehaviourPunCallbacks
     [SerializeField] ParticleSystem ps_hitGround;
     [Header("¶¥À» Ä¥¶§ ³ª¿À´Â Å¥ºê")]
     [SerializeField] GameObject o_stone;
-    [Header("¶¥À» Ä¥¶§ ³ª¿À´Â Å¥ºê")]
+    [Header("¶¥À» Ä¡´Â ÀÌÆåÆ® µô·¹ÀÌ")]
     [SerializeField] float delayTime = 1.0f;
     float currentTime = 0;
 

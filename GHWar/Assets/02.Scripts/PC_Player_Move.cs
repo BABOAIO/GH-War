@@ -232,11 +232,11 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
     public void Hit_PCPlayer(float damage)
     {
         HP -= damage;
-        Debug.Log($"{pv.Controller} is Damaged : Dmg {damage}");
+        Debug.Log($"PC Player {pv.Controller} is Damaged : Dmg {damage}");
 
         if(HP <= 0)
         {
-            print("PC Á×À½");
+            GameManager.instance.PCPlayerDeath();
         }
     }
 }
