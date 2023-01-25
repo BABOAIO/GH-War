@@ -15,28 +15,29 @@ public class OnClickButtonManager : MonoBehaviourPunCallbacks
     [SerializeField] GameObject canvasVR;
     [SerializeField] GameObject canvasPC;
 
-    [SerializeField] GameManager gameManager;
-
     private void Start()
     {
-        if(photonView.Controller.IsMasterClient)
-        {
-            Debug.Log("마스터 클라이언트 활성화");
-            hpManager = GetComponent<HPManager>();
-
-            hpManager.enabled= false;
-        }
+        canvasPC.SetActive(false); canvasVR.SetActive(false);
 
         maxPlayerCount = GetComponent<ConnManager>().Byte_maxPlayer;
         Debug.Log($"최대 플레이어 : {maxPlayerCount}");
 
         if (GameManager.instance.IsVR)
         {
+            print("더");
             canvasVR.SetActive(true); canvasPC.SetActive(false);
         }
         else
         {
             canvasVR.SetActive(false); canvasPC.SetActive(true);
+        }
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            Debug.Log("마스터 클라이언트 활성화");
+            hpManager = GetComponent<HPManager>();
+
+            hpManager.enabled = false;
         }
     }
 

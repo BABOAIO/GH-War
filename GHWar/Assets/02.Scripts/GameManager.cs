@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public float RotationPerSecond = 2; // 스카이박스 초당 회전 값 변수
 
+
     public static bool isPresent()
     {
         var list_xrDisplaySubsystem = new List<XRDisplaySubsystem>();

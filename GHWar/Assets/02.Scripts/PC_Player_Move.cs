@@ -8,9 +8,9 @@ using UniRx;
 public class PC_Player_Move : MonoBehaviourPunCallbacks
 {
     [Header("Max HP")]
-    public float MaxHP = 100.0f;
+    public float MaxHP = 2.0f;
     [Header("HP")]
-    public float HP = 100.0f;
+    public float HP = 2.0f;
     [Header("이동속도")]
     [SerializeField] float f_moveSpeed = 3.0f;
     [Header("회전속도")]
@@ -233,5 +233,10 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
     {
         HP -= damage;
         Debug.Log($"{pv.Controller} is Damaged : Dmg {damage}");
+
+        if(HP <= 0)
+        {
+            print("PC 죽음");
+        }
     }
 }
