@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.UIElements;
+using UniRx;
 
 [RequireComponent(typeof(PhotonView))]
 public class GroundImpact : MonoBehaviourPunCallbacks
@@ -16,12 +17,22 @@ public class GroundImpact : MonoBehaviourPunCallbacks
     [SerializeField] ParticleSystem ps_hitGround;
     [Header("¶¥À» Ä¥¶§ ³ª¿À´Â Å¥ºê")]
     [SerializeField] GameObject o_stone;
+    [Header("¶¥À» Ä¥¶§ ³ª¿À´Â Å¥ºê")]
+    [SerializeField] float delayTime = 1.0f;
+    float currentTime = 0;
 
     PhotonView pv;
 
     private void Start()
     {
         pv = GetComponent<PhotonView>();
+
+        currentTime = delayTime;
+    }
+
+    private void FixedUpdate()
+    {
+        currentTime += Time.fixedDeltaTime;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -30,12 +41,14 @@ public class GroundImpact : MonoBehaviourPunCallbacks
         if (collision.gameObject.CompareTag("Ground"))
         {
             print("Tag");
-            if (controller.inputDevice.TryGetFeatureValue(CommonUsages.gripButton,out bool isGrab))
+            if ((currentTime >= delayTime) &&
+                (controller.inputDevice.TryGetFeatureValue(CommonUsages.gripButton,out bool isGrab)))
             {
                 if (isGrab)
                 {
                     print("Btn");
                     pv.RPC("Hit_Ground_withEffect", RpcTarget.All, collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
+                    currentTime = 0;
                 }
             }
         }
