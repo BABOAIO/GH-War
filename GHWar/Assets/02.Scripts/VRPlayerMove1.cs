@@ -4,10 +4,14 @@ using UnityEngine;
 using Photon.Pun;
 using Unity.VisualScripting;
 using Photon.Realtime;
+using UnityEngine.UI;
+using OVR.OpenVR;
 
 public class VRPlayerMove1 : MonoBehaviourPun//, IPunObservable
 {
     public float HP = 2.0f;
+
+    public Text Txt_winnerText_VR;
 
     //[SerializeField] float f_moveSpeed = 3.0f;
     //[SerializeField] float f_rotSpeed = 200.0f;
@@ -32,7 +36,7 @@ public class VRPlayerMove1 : MonoBehaviourPun//, IPunObservable
     // 스크립트 활성화 시 카메라 위치 정면으로 고정 >> 실패
     private void OnEnable()
     {
-
+        Txt_winnerText_VR.text = string.Empty;
     }
 
     void Start()
@@ -107,7 +111,6 @@ public class VRPlayerMove1 : MonoBehaviourPun//, IPunObservable
 
         if (HP <= 0)
         {
-            GameManager.instance.VRPlayerDeath();
         }
     }
 

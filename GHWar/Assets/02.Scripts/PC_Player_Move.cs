@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using UniRx;
+using UnityEngine.UI;
 
 public class PC_Player_Move : MonoBehaviourPunCallbacks
 {
@@ -35,6 +36,8 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
 
     private PhotonView pv = null;
 
+    public Text Txt_winnerText_PC;
+
     #region 캐릭터 점프, 구르기 관련
     bool Run = false;
 
@@ -49,6 +52,8 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
     void Awake()
     {
         Application.targetFrameRate = 120; // 화면 프레임 조절
+
+        Txt_winnerText_PC.text = string.Empty;
 
         pv = GetComponent<PhotonView>();
         pv.Synchronization = ViewSynchronization.UnreliableOnChange;
@@ -236,7 +241,6 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
 
         if(HP <= 0)
         {
-            GameManager.instance.PCPlayerDeath();
         }
     }
 }

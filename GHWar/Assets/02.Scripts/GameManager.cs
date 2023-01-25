@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
     // VR인지 PC인지를 구분
     public bool IsVR;
 
-    GameObject canvasPC;
-    GameObject canvasVR;
+    // VR 플레이어는 0, PC 플레이어는 1
+    public Text[] Array_txtWinner = new Text[2];
 
     // VR 플레이어는 0, PC 플레이어는 1
     public GameObject[] Array_AllPlayers = new GameObject[2];
@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         while (!B_GameStart)
         {
-            if(PhotonNetwork.IsMasterClient)
+            if (PhotonNetwork.IsMasterClient)
             {
                 if (Array_AllPlayers[0])
                 {
@@ -42,17 +42,19 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
                     if (o_otherPlayer)
                     {
                         Array_AllPlayers[1] = o_otherPlayer;
+                        Array_txtWinner[1] = Array_AllPlayers[1].GetComponent<PC_Player_Move>().Txt_winnerText_PC;
                         B_GameStart= true;
                         // sound 등 게임시작 알림
                     }
                 }
                 else if (Array_AllPlayers[1])
                 {
-                    GameObject o_otherPlayer = GameObject.FindGameObjectWithTag("PC_Player");
+                    GameObject o_otherPlayer = GameObject.FindGameObjectWithTag("VR_Player");
 
                     if (o_otherPlayer)
                     {
                         Array_AllPlayers[0] = o_otherPlayer;
+                        Array_txtWinner[0] = Array_AllPlayers[0].GetComponent<VRPlayerMove1>().Txt_winnerText_VR;
                         B_GameStart = true;
 
                         // sound 등 게임시작 알림
@@ -109,7 +111,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (B_GameStart)
         {
-            
+            CheckWinner();
         }
     }
 
@@ -125,11 +127,14 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
                 if (Array_AllPlayers[0].GetComponent<VRPlayerMove1>().HP <= 0)
                 {
                     // canvas 추가, 부활막기
+
+                    StartCoroutine(LeaveEnd(3f));
                 }
                 // PC가 이겼을 경우
                 else if (Array_AllPlayers[1].GetComponent<PC_Player_Move>().HP <= 0)
                 {
                     // canvas 추가
+                    StartCoroutine(LeaveEnd(3f));
                 }
             }
             else
@@ -138,11 +143,13 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
                 if (Array_AllPlayers[0].GetComponent<VRPlayerMove1>().HP <= 0)
                 {
                     // canvas 추가
+                    StartCoroutine(LeaveEnd(3f));
                 }
                 // PC가 이겼을 경우
                 else if (Array_AllPlayers[1].GetComponent<PC_Player_Move>().HP <= 0)
                 {
                     // canvas 추가
+                    StartCoroutine(LeaveEnd(3f));
                 }
             }
         }
@@ -166,10 +173,13 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
         // 데이터 송수신 빈도 초당 30으로 설정
         PhotonNetwork.SendRate = 30;
         PhotonNetwork.SerializationRate = 30;
+
+        StartCoroutine(WaitPlayer());
     }
 
     void Update()
     {
+        UpdatePhotonNetwork();
         RotateSkyBox(RotationPerSecond);
     }
 
@@ -178,22 +188,42 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
         RenderSettings.skybox.SetFloat("_Rotation", Time.time * rotationSpeedPerSecond);
     }
 
-    [PunRPC]
-    public void PCPlayerDeath()
-    {
-        i_PCDeathCount++;
-    }
+    //[PunRPC]
+    //public void PCPlayerDeath()
+    //{
+    //    i_PCDeathCount++;
+    //}
 
-    [PunRPC]
-    public void VRPlayerDeath()
-    {
-        i_VRDeathCount++;
-    }
+    //[PunRPC]
+    //public void VRPlayerDeath()
+    //{
+    //    i_VRDeathCount++;
+    //}
 
     private void ResetDeathCount()
     {
         i_PCDeathCount = 0;
         i_VRDeathCount = 0;
+    }
+
+    public IEnumerator LeaveEnd(float ftime)
+    {
+        yield return new WaitForSeconds(ftime);
+        LeaveRoom();
+    }
+
+    public void LeaveRoom()
+    {
+        Array_AllPlayers[0] = null;
+        Array_AllPlayers[1] = null;
+
+        B_IsGameOver = false;
+        B_GameStart = false;
+
+        // Canvas, Animator State 초기화
+
+        // 승패 결정 시 게임종료
+        PhotonNetwork.LeaveRoom();
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -207,4 +237,6 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
 
         }
     }
+
+    
 }
