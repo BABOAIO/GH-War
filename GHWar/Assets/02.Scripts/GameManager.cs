@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 using Photon.Pun;
+using Photon.Realtime;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
     public static GameManager instance;
 
     // VR인지 PC인지를 구분
-    public bool isVR;
+    public bool IsVR;
 
     public float RotationPerSecond = 2; // 스카이박스 초당 회전 값 변수
 
@@ -33,7 +34,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         if (instance == null) instance = this;
 
         Debug.Log("VR Device = " + isPresent().ToString());
-        isVR = isPresent();
+        IsVR = isPresent();
     }
 
     void Start()
@@ -48,6 +49,12 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     void Update()
     {
-        RenderSettings.skybox.SetFloat("_Rotation", Time.time * RotationPerSecond);
+        RotateSkyBox(RotationPerSecond);
     }
+
+    void RotateSkyBox(float rotationSpeedPerSecond)
+    {
+        RenderSettings.skybox.SetFloat("_Rotation", Time.time * rotationSpeedPerSecond);
+    }
+
 }

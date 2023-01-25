@@ -7,6 +7,9 @@ using Photon.Realtime;
 
 public class VRPlayerMove1 : MonoBehaviourPun//, IPunObservable
 {
+    public float HP = 100.0f;
+
+
     [SerializeField] float f_moveSpeed = 3.0f;
     [SerializeField] float f_rotSpeed = 200.0f;
     [SerializeField] GameObject o_cam;
@@ -118,6 +121,13 @@ public class VRPlayerMove1 : MonoBehaviourPun//, IPunObservable
         }
     }
 
+    [PunRPC]
+    public void Hit_PCPlayer(float damage)
+    {
+        HP -= damage;
+        Debug.Log($"{photonView.Controller} is Damaged : Dmg {damage}");
+    }
+
     // 이 부분의 경우, 좀더 세심한 작업을 위해 작성하는 스크립트이나 Lerp 값을 30000정도로 맞추면 어느정도 자연스러워지므로 생략
     // 매 시간마다 변한 상대방의 위치, 회전값 전송, 읽어오기
     //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -135,7 +145,7 @@ public class VRPlayerMove1 : MonoBehaviourPun//, IPunObservable
     //            stream.SendNext(v3_setPCpos[i]);
     //            stream.SendNext(q_setPCrot[i]);
     //        }
-            
+
     //        //stream.SendNext(anim.GetFloat("Speed"));
     //    }
 
@@ -156,5 +166,5 @@ public class VRPlayerMove1 : MonoBehaviourPun//, IPunObservable
     //        //f_directionSpeed= (float)stream.ReceiveNext();
     //    }
     //}
-    
+
 }

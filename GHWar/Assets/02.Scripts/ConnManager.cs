@@ -8,7 +8,9 @@ using System.Data;
 
 public class ConnManager : MonoBehaviourPunCallbacks
 {
-    [Header("플레이어 스폰 위치")]
+    public byte Byte_maxPlayer = 2;
+
+    [Header("PC 플레이어 스폰 위치")]
     [SerializeField] Vector3 PC_Spawn;
 
     // 씬 시작 시 서버에 접속
@@ -44,7 +46,7 @@ public class ConnManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("로비 접속 완료!");
         // 방에 접속할 수 있는 최대 플레이어 2명
-        RoomOptions ro_0 = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = 3 };
+        RoomOptions ro_0 = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = Byte_maxPlayer };
         PhotonNetwork.JoinOrCreateRoom("NetTest", ro_0, TypedLobby.Default);
     }
 
@@ -52,7 +54,7 @@ public class ConnManager : MonoBehaviourPunCallbacks
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         Debug.LogError("룸 접속 실패...");
-        RoomOptions ro_0 = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = 3 };
+        RoomOptions ro_0 = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = Byte_maxPlayer };
         PhotonNetwork.JoinOrCreateRoom("NetTest", ro_0, TypedLobby.Default);
     }
 
@@ -62,10 +64,10 @@ public class ConnManager : MonoBehaviourPunCallbacks
         Debug.Log("룸 입장!");
 
         // 원점에서 VR 플레이어 생성
-        if (GameManager.instance.isVR)
+        if (GameManager.instance.IsVR)
         {
             Vector2 originPos = Random.insideUnitCircle * 2.0f;
-            PhotonNetwork.Instantiate("UniversalMale", Vector3.zero, Quaternion.identity);
+            PhotonNetwork.Instantiate("VRPlayerXR", Vector3.zero, Quaternion.identity);
         }
         // 반경 2m 이내에 랜덤 위치에서 PC 플레이어 생성
         else

@@ -51,7 +51,7 @@ public class PCPlayerMove : MonoBehaviourPun
 
     void Start()
     {
-        if (GameManager.instance.isVR)
+        if (GameManager.instance.IsVR)
         {
             //Camera cam_this = GetComponentInChildren<Camera>();
             //cam_this.transform.LookAt(GameObject.FindGameObjectWithTag("Ground").transform.position);
@@ -82,7 +82,7 @@ public class PCPlayerMove : MonoBehaviourPun
     {
         // 변경점 //
         // VR 플레이어는 따로 움직임
-        if (GameManager.instance.isVR) { return; }
+        if (GameManager.instance.IsVR) { return; }
 
         //pv.RPC("Move", RpcTarget.All);
         //pv.RPC("Rotate", RpcTarget.All);

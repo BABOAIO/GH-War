@@ -5,7 +5,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UniRx;
 
-public class PC_Player_Move : MonoBehaviourPunCallbacks//, IPunObservable
+public class PC_Player_Move : MonoBehaviourPunCallbacks
 {
     [Header("Max HP")]
     public float MaxHP = 100.0f;

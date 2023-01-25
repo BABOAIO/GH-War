@@ -13,8 +13,9 @@ public class PCPlayerHit : MonoBehaviour
     {
         float f_objVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
 
-        if (f_objVelocity >= 10 && currentTime>=invincibilityTime)
+        if (f_objVelocity >= 1f && currentTime>=invincibilityTime)
         {
+            print("PC È÷Æ®");
             //this.GetComponent<PC_Player_Move>().Hit_PCPlayer(f_objVelocity);
             currentTime = 0.0f;
         }
