@@ -127,13 +127,16 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
                 if (Array_AllPlayers[0].GetComponent<VRPlayerMove1>().HP <= 0)
                 {
                     // canvas 추가, 부활막기
-
+                    Array_txtWinner[0].text = "VR Player Win!!";
+                    Array_txtWinner[1].text = "PC Player Lose..";
                     StartCoroutine(LeaveEnd(3f));
                 }
                 // PC가 이겼을 경우
                 else if (Array_AllPlayers[1].GetComponent<PC_Player_Move>().HP <= 0)
                 {
                     // canvas 추가
+                    Array_txtWinner[0].text = "VR Player Lose..";
+                    Array_txtWinner[1].text = "PC Player Win!!";
                     StartCoroutine(LeaveEnd(3f));
                 }
             }
@@ -143,12 +146,16 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
                 if (Array_AllPlayers[0].GetComponent<VRPlayerMove1>().HP <= 0)
                 {
                     // canvas 추가
+                    Array_txtWinner[0].text = "VR Player Win!!";
+                    Array_txtWinner[1].text = "PC Player Lose..";
                     StartCoroutine(LeaveEnd(3f));
                 }
                 // PC가 이겼을 경우
                 else if (Array_AllPlayers[1].GetComponent<PC_Player_Move>().HP <= 0)
                 {
                     // canvas 추가
+                    Array_txtWinner[0].text = "VR Player Lose..";
+                    Array_txtWinner[1].text = "PC Player Win!!";
                     StartCoroutine(LeaveEnd(3f));
                 }
             }

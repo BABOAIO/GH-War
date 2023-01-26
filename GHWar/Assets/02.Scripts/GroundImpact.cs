@@ -58,7 +58,7 @@ public class GroundImpact : MonoBehaviourPunCallbacks
     public void Hit_Ground_withEffect(Vector3 position, Quaternion rotation)
     {
         GameObject o_ps = PhotonNetwork.Instantiate("HitEffect",position,rotation);
-        GameObject o_tmp = PhotonNetwork.Instantiate("HitCube", position, rotation);
+        GameObject o_tmp = PhotonNetwork.Instantiate("Rock", position, rotation);
 
         StartCoroutine(Delayed_Destroy(0.5f, o_ps));
     }
