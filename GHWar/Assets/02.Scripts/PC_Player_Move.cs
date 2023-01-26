@@ -82,7 +82,7 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
 
     void FixedUpdate()
     {
-        print(xrgrabinteractionPun.isGrab);
+        //print(xrgrabinteractionPun.isGrab);
         if (pv.IsMine)
         {
             Move();

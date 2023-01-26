@@ -37,16 +37,13 @@ public class GroundImpact : MonoBehaviourPunCallbacks
 
     private void OnCollisionEnter(Collision collision)
     {
-        print("Col");
         if (collision.gameObject.CompareTag("Ground"))
         {
-            print("Tag");
             if ((currentTime >= delayTime) &&
                 (controller.inputDevice.TryGetFeatureValue(CommonUsages.gripButton,out bool isGrab)))
             {
                 if (isGrab)
                 {
-                    print("Btn");
                     pv.RPC("Hit_Ground_withEffect", RpcTarget.All, collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
                     currentTime = 0;
                 }
@@ -57,7 +54,29 @@ public class GroundImpact : MonoBehaviourPunCallbacks
     [PunRPC]
     public void Hit_Ground_withEffect(Vector3 position, Quaternion rotation)
     {
-        GameObject o_ps = PhotonNetwork.Instantiate("HitEffect",position,rotation);
+        GameObject o_ps = PhotonNetwork.Instantiate("Effect_Smoke", position, rotation);
+
+        int tmp_randomValue = Random.Range(1, 4);
+        Vector3 tmp_pos;
+        switch (tmp_randomValue)
+        {
+            case 1:
+                tmp_pos = position + new Vector3(Random.Range(1, 2), 0, Random.Range(1, 2));
+                position = tmp_pos;
+                break;
+            case 2:
+                tmp_pos = position + new Vector3(Random.Range(-1, -2), 0, Random.Range(1, 2));
+                position = tmp_pos;
+                break;
+            case 3:
+                tmp_pos = position + new Vector3(Random.Range(1, 2), 0, Random.Range(-1, -2));
+                position = tmp_pos;
+                break;
+            case 4:
+                tmp_pos = position + new Vector3(Random.Range(-1, -2), 0, Random.Range(-1, -2));
+                position = tmp_pos;
+                break;
+        }
         GameObject o_tmp = PhotonNetwork.Instantiate("Rock", position, rotation);
 
         StartCoroutine(Delayed_Destroy(0.5f, o_ps));

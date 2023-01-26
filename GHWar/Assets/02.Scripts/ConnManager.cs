@@ -68,7 +68,7 @@ public class ConnManager : MonoBehaviourPunCallbacks
         if (GameManager.instance.IsVR)
         {
             //Vector2 originPos = Random.insideUnitCircle * 2.0f;
-            GameManager.instance.Array_AllPlayers[0] = PhotonNetwork.Instantiate("VRPlayerXR", Vector3.zero, Quaternion.identity);
+            GameManager.instance.Array_AllPlayers[0] = PhotonNetwork.Instantiate("UniversalMale", Vector3.zero, Quaternion.identity);
             GameManager.instance.Array_txtWinner[0] = GameManager.instance.Array_AllPlayers[0].GetComponent<VRPlayerMove1>().Txt_winnerText_VR;
         }
         // 반경 2m 이내에 랜덤 위치에서 PC 플레이어 생성
