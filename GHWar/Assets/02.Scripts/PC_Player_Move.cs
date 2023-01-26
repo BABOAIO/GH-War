@@ -242,6 +242,8 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
         if(HP <= 0)
         {
             HP = MaxHP;
+            a_player.SetBool("IsDie", true);
+            Observable.NextFrame().Subscribe(_ => a_player.SetBool("IsDie", false));
             GameManager.instance.CheckRebirthPCPlayer();
         }
     }
