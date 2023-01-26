@@ -9,11 +9,6 @@ using OVR.OpenVR;
 
 public class VRPlayerMove1 : MonoBehaviourPun//, IPunObservable
 {
-    [Header("Max HP")]
-    public float MaxHP = 2.0f;
-    [Header("HP")]
-    public float HP = 2.0f;
-
     public Text Txt_winnerText_VR;
 
     [SerializeField] GameObject o_cam;
@@ -108,17 +103,5 @@ public class VRPlayerMove1 : MonoBehaviourPun//, IPunObservable
         //}
     }
 
-    [PunRPC]
-    public void Hit_VRPlayer(float damage)
-    {
-        HP -= damage;
-        Debug.Log($"VR Player {photonView.Controller} is Damaged : Dmg {damage}");
-
-        if (HP <= 0)
-        {
-            HP = MaxHP;
-            GameManager.instance.CheckRebirthVRPlayer();
-        }
-    }
 
 }

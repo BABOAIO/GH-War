@@ -8,10 +8,6 @@ using UnityEngine.UI;
 
 public class PC_Player_Move : MonoBehaviourPunCallbacks
 {
-    [Header("Max HP")]
-    public float MaxHP = 2.0f;
-    [Header("HP")]
-    public float HP = 2.0f;
     [Header("이동속도")]
     [SerializeField] float f_moveSpeed = 3.0f;
     [Header("회전속도")]
@@ -230,21 +226,6 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
             isGround = true;
             isJump = false;
             jumpCount = 2;
-        }
-    }
-
-    [PunRPC]
-    public void Hit_PCPlayer(float damage)
-    {
-        HP -= damage;
-        Debug.Log($"PC Player {pv.Controller} is Damaged : Dmg {damage}");
-
-        if(HP <= 0)
-        {
-            HP = MaxHP;
-            a_player.SetBool("IsDie", true);
-            Observable.NextFrame().Subscribe(_ => a_player.SetBool("IsDie", false));
-            GameManager.instance.CheckRebirthPCPlayer();
         }
     }
 }

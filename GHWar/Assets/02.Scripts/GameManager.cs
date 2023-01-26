@@ -111,6 +111,12 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
 
+    void ResetDeathCount(int i)
+    {
+        i_VRDeathCount = i;
+        i_PCDeathCount = i;
+    }
+
     // VR 기기 연결 상태 확인
     public static bool IsPresent()
     {
@@ -283,7 +289,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
         Debug.Log("VR Device = " + IsPresent().ToString());
         IsVR = IsPresent();
 
-        ResetDeathCount();
+        ResetDeathCount(2);
     }
 
     void Start()
@@ -326,12 +332,6 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
     //{
     //    i_VRDeathCount++;
     //}
-
-    private void ResetDeathCount()
-    {
-        i_PCDeathCount = 0;
-        i_VRDeathCount = 0;
-    }
 
     public IEnumerator LeaveEnd(float ftime)
     {
