@@ -6,7 +6,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
 
-
+[RequireComponent(typeof(AudioSource))]
 public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
 {
     public static GameManager instance;
@@ -36,7 +36,9 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
 
     // 스카이박스 초당 회전 값 변수
     [Header("스카이박스 초당 회전 값 변수")]
-    public float RotationPerSecond = 2; 
+    public float RotationPerSecond = 2;
+
+    AudioSource as_gm;
 
     // 1 대 1 한정 다른 플레이어를 대기하는 함수
     IEnumerator WaitPlayer()
@@ -293,6 +295,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
         PhotonNetwork.SendRate = 30;
         PhotonNetwork.SerializationRate = 30;
 
+        as_gm = GetComponent<AudioSource>();
+
         StartCoroutine(WaitPlayer());
     }
 
@@ -300,6 +304,10 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         UpdatePhotonNetwork();
         RotateSkyBox(RotationPerSecond);
+
+        if (as_gm.isPlaying) { return; }
+        
+        as_gm.Play();
     }
 
     void RotateSkyBox(float rotationSpeedPerSecond)
@@ -349,7 +357,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (stream.IsWriting)
         {
-
+        
         }
         if (stream.IsReading)
         {
