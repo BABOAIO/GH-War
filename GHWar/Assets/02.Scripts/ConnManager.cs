@@ -12,7 +12,17 @@ public class ConnManager : MonoBehaviourPunCallbacks
     public byte Byte_maxPlayer = 2;
 
     [Header("PC 플레이어 스폰 위치")]
-    [SerializeField] Vector3 PC_Spawn;
+    public Vector3 PC_Spawn;
+
+    public static ConnManager Conn = null;
+
+    private void Awake()
+    {
+        if(Conn == null)
+        {
+            Conn = this;
+        }
+    }
 
     // 씬 시작 시 서버에 접속
     void Start()
@@ -68,8 +78,9 @@ public class ConnManager : MonoBehaviourPunCallbacks
         if (GameManager.instance.IsVR)
         {
             //Vector2 originPos = Random.insideUnitCircle * 2.0f;
-            GameManager.instance.Array_AllPlayers[0] = PhotonNetwork.Instantiate("UniversalMale", Vector3.zero, Quaternion.identity);
+            GameManager.instance.Array_AllPlayers[0] = PhotonNetwork.Instantiate("VRPlayerXR", Vector3.zero, Quaternion.identity);
             GameManager.instance.Array_txtWinner[0] = GameManager.instance.Array_AllPlayers[0].GetComponent<VRPlayerMove1>().Txt_winnerText_VR;
+            GameManager.instance.i_VRDeathCount = 2;
         }
         // 반경 2m 이내에 랜덤 위치에서 PC 플레이어 생성
         else
@@ -78,6 +89,7 @@ public class ConnManager : MonoBehaviourPunCallbacks
             //PhotonNetwork.Instantiate("PCPlayerXR", PC_Spawn, Quaternion.identity); 
             GameManager.instance.Array_AllPlayers[1] = PhotonNetwork.Instantiate("UniversalMale", PC_Spawn, Quaternion.identity);
             GameManager.instance.Array_txtWinner[1] = GameManager.instance.Array_AllPlayers[1].GetComponent<PC_Player_Move>().Txt_winnerText_PC;
+            GameManager.instance.i_PCDeathCount = 2;
         }
 
     }

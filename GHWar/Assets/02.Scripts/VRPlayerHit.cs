@@ -7,7 +7,7 @@ using Photon.Pun;
 public class VRPlayerHit : MonoBehaviour
 {
     float invincibilityTime = 2.0f;
-    float currentTime = 2.0f;
+    public float currentTime = 2.0f;
 
     private void OnCollisionEnter(Collision collision)
     {

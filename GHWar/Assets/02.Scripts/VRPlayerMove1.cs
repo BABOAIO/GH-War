@@ -9,18 +9,23 @@ using OVR.OpenVR;
 
 public class VRPlayerMove1 : MonoBehaviourPun//, IPunObservable
 {
+    [Header("Max HP")]
+    public float MaxHP = 2.0f;
+    [Header("HP")]
     public float HP = 2.0f;
 
     public Text Txt_winnerText_VR;
 
-    //[SerializeField] float f_moveSpeed = 3.0f;
-    //[SerializeField] float f_rotSpeed = 200.0f;
     [SerializeField] GameObject o_cam;
     [SerializeField] Transform t_player;
+
+
+    //[SerializeField] float f_moveSpeed = 3.0f;
+    //[SerializeField] float f_rotSpeed = 200.0f;
     //[SerializeField] Animator a_player;
     //[SerializeField] GameObject hand_L;
     //[SerializeField] GameObject hand_R;
-    
+
     //Vector3 v3_setPos;
     //Quaternion q_setRot;
     //Vector3 v3_setPos_handL;
@@ -111,6 +116,8 @@ public class VRPlayerMove1 : MonoBehaviourPun//, IPunObservable
 
         if (HP <= 0)
         {
+            HP = MaxHP;
+            GameManager.instance.CheckRebirthVRPlayer();
         }
     }
 

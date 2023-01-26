@@ -24,7 +24,7 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
     [Header("PC 플레이어 트랜스폼")]
     [SerializeField] Transform PC_Player_Transform;
     [Header("PC 플레이어 애니메이션")]
-    [SerializeField] Animator a_player;
+    [SerializeField] public Animator a_player;
     [Header("PC 플레이어 컨트롤러")]
     [SerializeField] Rigidbody PC_Player_Rigidbody;
 
@@ -241,6 +241,8 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
 
         if(HP <= 0)
         {
+            HP = MaxHP;
+            GameManager.instance.CheckRebirthPCPlayer();
         }
     }
 }
