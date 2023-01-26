@@ -13,10 +13,6 @@ using UniRx;
 public class GroundImpact : MonoBehaviourPunCallbacks
 {
     [SerializeField] XRController controller;
-    [Header("¶¥À» Ä¥¶§ ³ª¿À´Â ÀÌÆåÆ®")]
-    [SerializeField] ParticleSystem ps_hitGround;
-    [Header("¶¥À» Ä¥¶§ ³ª¿À´Â Å¥ºê")]
-    [SerializeField] GameObject o_stone;
     [Header("¶¥À» Ä¡´Â ÀÌÆåÆ® µô·¹ÀÌ")]
     [SerializeField] float delayTime = 1.0f;
     float currentTime = 0;

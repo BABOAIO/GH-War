@@ -6,7 +6,7 @@ public class DestroyOutObject : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Obstacle"))
+        if (other.gameObject.CompareTag("Obstacle") || other.gameObject.CompareTag("Arrow"))
         {
             Destroy(other.gameObject);
         }

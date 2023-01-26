@@ -145,15 +145,27 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
     }
     IEnumerator RebirthVRPlayer()
     {
+        // 2초 동안 움직임 방지
+        Array_AllPlayers[0].GetComponent<VRPlayerMove1>().enabled = false;
+
         yield return new WaitForSeconds(2f);
 
         if (PhotonNetwork.IsMasterClient)
         {
-            --i_VRDeathCount;
+            Array_AllPlayers[1].GetComponent<VRPlayerMove1>().enabled = true;
+            --i_PCDeathCount;
+
+            // 일정 시간 무적 부여
+            Array_AllPlayers[1].GetComponent<VRPlayerHit>().currentTime = 0;
+        }
+        else
+        {
+            Array_AllPlayers[1].GetComponent<VRPlayerMove1>().enabled = true;
+            --i_PCDeathCount;
             // anim idle
 
             // 일정 시간 무적 부여
-            Array_AllPlayers[0].GetComponent<VRPlayerHit>().currentTime = 0;
+            Array_AllPlayers[1].GetComponent<VRPlayerHit>().currentTime = 0;
         }
     }
 
