@@ -10,10 +10,10 @@ using OVR.OpenVR;
 public class VRPlayerMove1 : MonoBehaviourPun//, IPunObservable
 {
     public Text Txt_winnerText_VR;
+    public GameObject o_vrFace;
 
     [SerializeField] GameObject o_cam;
     [SerializeField] Transform t_player;
-
 
     //[SerializeField] float f_moveSpeed = 3.0f;
     //[SerializeField] float f_rotSpeed = 200.0f;

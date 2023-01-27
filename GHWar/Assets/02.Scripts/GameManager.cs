@@ -175,11 +175,12 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
 
         if (PhotonNetwork.IsMasterClient)
         {
-            Array_AllPlayers[1].GetComponent<VRPlayerMove1>().enabled = true;
+            Array_AllPlayers[0].GetComponent<VRPlayerMove1>().enabled = true;
             --i_PCDeathCount;
 
             // 일정 시간 무적 부여
-            Array_AllPlayers[1].GetComponent<VRPlayerHit>().currentTime = 0;
+            Array_AllPlayers[0].GetComponent<VRPlayerMove1>().o_vrFace.GetComponent<VRPlayerHit>().currentTime = 0;
+            //Array_AllPlayers[0].GetComponent<VRPlayerHit>().currentTime = 0;
         }
         else
         {
@@ -188,7 +189,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
             // anim idle
 
             // 일정 시간 무적 부여
-            Array_AllPlayers[1].GetComponent<VRPlayerHit>().currentTime = 0;
+            Array_AllPlayers[0].GetComponent<VRPlayerMove1>().o_vrFace.GetComponent<VRPlayerHit>().currentTime = 0;
         }
     }
 
@@ -219,7 +220,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
             if (PhotonNetwork.IsMasterClient)
             {
                 // PC가 이겼을 경우
-                if (Array_AllPlayers[0].GetComponent<VRPlayerHit>().HP <= 0)
+                if (Array_AllPlayers[0].GetComponent<VRPlayerMove1>().o_vrFace.GetComponent<VRPlayerHit>().HP <= 0)
                 //if (i_VRDeathCount <= 0) 
                 {
                     B_IsGameOver = true;
@@ -260,7 +261,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
             else
             {
                 // PC가 이겼을 경우
-                if (Array_AllPlayers[0].GetComponent<VRPlayerHit>().HP <= 0)
+                if (Array_AllPlayers[0].GetComponent<VRPlayerMove1>().o_vrFace.GetComponent<VRPlayerHit>().HP <= 0)
                 {
                     B_IsGameOver = true;
 

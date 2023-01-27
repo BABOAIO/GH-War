@@ -108,7 +108,7 @@
 //            print("데이터 전송 후");
 //        }
 //    }
-//}using System.Collections;
+//}using System.Collections;using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Realtime;
@@ -127,6 +127,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
     float tmpHP = 2.0f;
 
     public PC_Player_Move PPM;
+    public PCPlayerFireArrow PPFA;
     Animator a_PCPlayer;
 
     float invincibilityTime = 2.0f;
@@ -137,6 +138,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
         pv = GetComponent<PhotonView>();
         a_PCPlayer = GetComponent<PC_Player_Move>().a_player;
         PPM = GetComponent<PC_Player_Move>();
+        PPFA = GetComponent<PCPlayerFireArrow>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -172,6 +174,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
 
     }
 
+
     [PunRPC]
     public void Hit_PCPlayer(int damage)
     {
@@ -186,6 +189,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
             GameManager.instance.CheckRebirthPCPlayer();
 
             PPM.GetComponent<PC_Player_Move>().isDie = true;
+            PPFA.GetComponent<PCPlayerFireArrow>().isDie = true;
             //HP = MaxHP;
         }
     }

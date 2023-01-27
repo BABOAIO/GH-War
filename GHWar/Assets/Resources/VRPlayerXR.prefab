@@ -888,7 +888,6 @@ GameObject:
   - component: {fileID: 8904401947435760648}
   - component: {fileID: 4187729618690297515}
   - component: {fileID: 864338146334026433}
-  - component: {fileID: 2351251881853586199}
   m_Layer: 0
   m_Name: VRPlayerXR
   m_TagString: VR_Player
@@ -992,6 +991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Txt_winnerText_VR: {fileID: 1443583390}
+  o_vrFace: {fileID: 4238156570095460499}
   o_cam: {fileID: 145513498}
   t_player: {fileID: 835762982879732597}
 --- !u!114 &8904401947435760648
@@ -1066,21 +1066,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &2351251881853586199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 835762982879732491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba7b439a9c3227643a119085065be525, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxHP: 2
-  HP: 2
-  currentTime: 2
 --- !u!1 &3308134655872753133
 GameObject:
   m_ObjectHideFlags: 0
