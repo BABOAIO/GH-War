@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 273857902}
   - component: {fileID: 273857903}
+  - component: {fileID: 1376305787170692397}
   m_Layer: 0
   m_Name: PCWinCanvas
   m_TagString: Untagged
@@ -40,11 +41,33 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 273857901}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e67d67db95ca6c4496b5407dc1bf5b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1376305787170692397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273857901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &554202108
 GameObject:
   m_ObjectHideFlags: 0
@@ -4609,18 +4632,18 @@ MonoBehaviour:
     SynchronizeType: 2
     Name: Wiggle
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: ReadyToShot
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: Shot
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: IsDie
   m_SynchronizeLayers:
-  - SynchronizeType: 0
+  - SynchronizeType: 2
     LayerIndex: 0
-  - SynchronizeType: 0
+  - SynchronizeType: 2
     LayerIndex: 1
 --- !u!114 &2094558177950042213
 MonoBehaviour:

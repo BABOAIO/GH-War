@@ -29,18 +29,27 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
     {
         if(collision.gameObject.GetComponent<Rigidbody>() == null) { return; }
 
-        float f_objVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
-        print("PC Player Hit Object Velocity : " + f_objVelocity);
-        if (f_objVelocity >= 10f && currentTime >= invincibilityTime)
-        {
-            print("PC 히트");
-            Hit_PCPlayer(1);
-            //pv.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
-            currentTime = 0.0f;
-        }
+        //float f_objVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
+        //print("PC Player Hit Object Velocity : " + f_objVelocity);
+        //if (f_objVelocity >= 10f && currentTime >= invincibilityTime)
+        //{
+        //    print("PC 히트");
+        //    Hit_PCPlayer(1);
+        //    pv.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
+        //    currentTime = 0.0f;
+        //}
 
         if (pv.IsMine)
         {
+            float f_objVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
+            print("PC Player Hit Object Velocity : " + f_objVelocity);
+            if (f_objVelocity >= 10f && currentTime >= invincibilityTime)
+            {
+                print("PC 히트");
+                Hit_PCPlayer(1);
+                pv.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
+                currentTime = 0.0f;
+            }
         }
     }
 
@@ -57,10 +66,13 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
 
         if (HP <= 0)
         {
+            if (pv.IsMine)
+            {
+                a_PCPlayer.SetBool("IsDie", true);
+                Observable.NextFrame().Subscribe(_ => a_PCPlayer.SetBool("IsDie", false));
+                GameManager.instance.CheckRebirthPCPlayer();
+            }
             HP = MaxHP;
-            a_PCPlayer.SetBool("IsDie", true);
-            Observable.NextFrame().Subscribe(_ => a_PCPlayer.SetBool("IsDie", false));
-            GameManager.instance.CheckRebirthPCPlayer();
         }
     }
 }

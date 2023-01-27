@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
     [Header("대전 플레이어 / 0이면 VR, 1이면 PC")]
     public GameObject[] Array_AllPlayers = new GameObject[2];
 
-    // ConnManager에서 플레이어가 생성될 때 받아옴
+    // 게임 시작 시 리셋
     [Header("PC 플레이어 목숨 수")]
     public int i_PCDeathCount = 0;
     [Header("VR 플레이어 목숨 수")]
@@ -355,14 +355,20 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        if (stream.IsWriting)
-        {
-        
-        }
-        if (stream.IsReading)
-        {
-
-        }
+        //if (stream.IsWriting)
+        //{
+        //    if (IsVR)
+        //    {
+        //        stream.SendNext(i_VRDeathCount);
+        //    }
+        //}
+        //if (stream.IsReading)
+        //{
+        //    if(!IsVR)
+        //    {
+        //        i_VRDeathCount = (int)stream.ReceiveNext();
+        //    }
+        //}
     }
 
     
