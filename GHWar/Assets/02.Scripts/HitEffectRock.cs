@@ -45,12 +45,23 @@ public class HitEffectRock : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("PC_Player"))
         {
-            PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
+            GameObject o_effect = PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
 
             as_rock.Stop();
             as_rock.PlayOneShot(ac_throwHit);
 
-            Destroy(this.gameObject);
+            PhotonNetwork.Destroy(this.gameObject);
+            StartCoroutine(DestroyuDelayed(o_effect, 0.5f));
+        }
+    }
+
+    IEnumerator DestroyuDelayed(GameObject obj, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (obj != null)
+        {
+            PhotonNetwork.Destroy(obj);
         }
     }
 }

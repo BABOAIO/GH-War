@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
                     {
                         Array_AllPlayers[1] = o_otherPlayer;
                         Array_txtWinner[1] = Array_AllPlayers[1].GetComponent<PC_Player_Move>().Txt_winnerText_PC;
+                        Debug.Log("Game Start!");
                         B_GameStart= true;
                         // sound 등 게임시작 알림
                     }
@@ -72,6 +73,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
                     {
                         Array_AllPlayers[0] = o_otherPlayer;
                         Array_txtWinner[0] = Array_AllPlayers[0].GetComponent<VRPlayerMove1>().Txt_winnerText_VR;
+                        Debug.Log("Game Start!");
                         B_GameStart = true;
 
                         // sound 등 게임시작 알림
@@ -89,6 +91,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
                     if (o_otherPlayer)
                     {
                         Array_AllPlayers[1] = o_otherPlayer;
+                        Array_txtWinner[1] = Array_AllPlayers[1].GetComponent<PC_Player_Move>().Txt_winnerText_PC;
+                        Debug.Log("Game Start!");
                         B_GameStart = true;
                         // sound 등 게임시작 알림
                     }
@@ -101,6 +105,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
                     if (o_otherPlayer)
                     {
                         Array_AllPlayers[0] = o_otherPlayer;
+                        Array_txtWinner[0] = Array_AllPlayers[0].GetComponent<VRPlayerMove1>().Txt_winnerText_VR;
+                        Debug.Log("Game Start!");
                         B_GameStart = true;
 
                         // sound 등 게임시작 알림
@@ -215,9 +221,9 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
             if (PhotonNetwork.IsMasterClient)
             {
                 // PC가 이겼을 경우
-                if (i_VRDeathCount <= 0) 
+                if (Array_AllPlayers[0].GetComponent<VRPlayerHit>().HP <= 0)
+                //if (i_VRDeathCount <= 0) 
                 {
-                    // canvas 추가, 부활막기
                     if (Array_txtWinner[0] != null)
                     {
                         Array_txtWinner[0].text = "VR Player Lose..";
@@ -230,9 +236,9 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
                     StartCoroutine(LeaveEnd(3f));
                 }
                 // VR이 이겼을 경우
-                else if (i_PCDeathCount <= 0)
+                else if (Array_AllPlayers[1].GetComponent<PCPlayerHit>().HP <= 0)
+                //else if (i_PCDeathCount <= 0)
                 {
-                    // canvas 추가
                     if (Array_txtWinner[0] != null)
                     {
                         Array_txtWinner[0].text = "VR Player Win!!";

@@ -45,8 +45,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
             print("PC Player Hit Object Velocity : " + f_objVelocity);
             if (f_objVelocity >= 10f && currentTime >= invincibilityTime)
             {
-                print("PC È÷Æ®");
-                Hit_PCPlayer(1);
+                //Hit_PCPlayer(1);
                 pv.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
                 currentTime = 0.0f;
             }
@@ -59,13 +58,14 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    public void Hit_PCPlayer(float damage)
+    public void Hit_PCPlayer(int damage)
     {
         HP -= damage;
         Debug.Log($"PC Player {pv.Controller} is Damaged : Dmg {damage}");
 
         if (HP <= 0)
         {
+            print("PC Á×À½");
             if (pv.IsMine)
             {
                 a_PCPlayer.SetBool("IsDie", true);
