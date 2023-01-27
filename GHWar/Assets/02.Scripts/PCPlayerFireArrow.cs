@@ -79,30 +79,54 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
         if (isDie == false)
         {
             if ((pv.IsMine) && (Input.GetMouseButtonDown(0))
-                //&& (currentTime >= delayTime)
+                && (currentTime >= delayTime - Time.fixedDeltaTime * 3)
                 )
             {
                 a_playerInFire.SetBool("ReadyToShot", true);
-                Observable.NextFrame().Subscribe(_ => a_playerInFire.SetBool("ReadyToShot", false));
+                //Observable.NextFrame().Subscribe(_ => a_playerInFire.SetBool("ReadyToShot", false));
                 //obj_tmp.transform.LookAt(firePosEnd.position - firePos.position);
             }
             if ((pv.IsMine) && (Input.GetMouseButtonUp(0))
-                && (currentTime >= delayTime)
                 )
             {
-                // 家府 何盒 //
-                as_fireArrow.PlayOneShot(ac_shotInit);
-                // 家府 何盒 //
+                if (currentTime >= delayTime)
+                {
+                    // 家府 何盒 //
+                    as_fireArrow.PlayOneShot(ac_shotInit);
+                    // 家府 何盒 //
 
-                currentTime = 0;
-                a_playerInFire.SetBool("ReadyToShot", false);
-                a_playerInFire.SetBool("Shot", true);
-                Observable.NextFrame().Subscribe(_ => a_playerInFire.SetBool("Shot", false));
-                GameObject obj_tmp = PhotonNetwork.Instantiate("Arrow", firePos.position, firePosEnd.rotation);
-                //obj_tmp.transform.LookAt(firePosEnd.position - firePos.position);
+                    currentTime = 0;
+                    a_playerInFire.SetBool("ReadyToShot", false);
+                    a_playerInFire.SetBool("Shot", true);
+                    Observable.NextFrame().Subscribe(_ => a_playerInFire.SetBool("Shot", false));
+                    GameObject obj_tmp = PhotonNetwork.Instantiate("Arrow", firePos.position, firePosEnd.rotation);
+                    //obj_tmp.transform.LookAt(firePosEnd.position - firePos.position);
+
+                }
+                else
+                {
+                    a_playerInFire.SetBool("ToIdle", true);
+                    Observable.NextFrame().Subscribe(_ => a_playerInFire.SetBool("ToIdle", false));
+                }
             }
+
+
         }
     }
+    private void OnAnimatorIK(int layerIndex)
+    {
+        a_playerInFire.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0.1f);
+        //a_playerInFire.SetIKPositionWeight(AvatarIKGoal.RightHand, 1.0f);
+        a_playerInFire.SetIKRotationWeight(AvatarIKGoal.LeftHand, 0.1f);
+        //a_playerInFire.SetIKRotationWeight(AvatarIKGoal.RightHand, 1.0f);
+
+        a_playerInFire.SetIKPosition(AvatarIKGoal.LeftHand, firePosEnd.position);
+        //a_playerInFire.SetIKPosition(AvatarIKGoal.RightHand, firePosEnd.position);
+        a_playerInFire.SetIKRotation(AvatarIKGoal.LeftHand, firePosEnd.rotation);
+        //a_playerInFire.SetIKRotation(AvatarIKGoal.RightHand, firePosEnd.rotation);
+
+    }
+
     [PunRPC]
     public void InitShootingArrow()
     {

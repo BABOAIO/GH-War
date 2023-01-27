@@ -355,9 +355,9 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
     //    i_VRDeathCount++;
     //}
 
-    public IEnumerator LeaveEnd(float ftime)
+    public IEnumerator LeaveEnd(float delay)
     {
-        yield return new WaitForSeconds(ftime);
+        yield return new WaitForSeconds(delay);
         LeaveRoom();
     }
 
@@ -373,6 +373,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
 
         // 승패 결정 시 게임종료
         PhotonNetwork.LeaveRoom();
+        Application.Quit();
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

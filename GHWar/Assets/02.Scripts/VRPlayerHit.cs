@@ -34,7 +34,7 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    public void Hit_VRPlayer(float damage)
+    public void Hit_VRPlayer(int damage)
     {
         HP -= damage;
         Debug.Log($"VR Player {photonView.Controller} is Damaged : Dmg {damage}");

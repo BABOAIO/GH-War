@@ -14,7 +14,7 @@ public class ArrowProperty : MonoBehaviour
 
     // 家府何盒 //
     AudioSource as_arrow;
-    [SerializeField] AudioClip ac_shotArrow;
+    //[SerializeField] AudioClip ac_shotArrow;
     [SerializeField] AudioClip ac_shotHit;
     // 家府何盒 //
 
@@ -37,10 +37,10 @@ public class ArrowProperty : MonoBehaviour
     void FixedUpdate()
     {
         // 家府何盒 //
-        if (!as_arrow.isPlaying)
-        {
-            as_arrow.PlayOneShot(ac_shotArrow);
-        }
+        //if (!as_arrow.isPlaying)
+        //{
+        //    as_arrow.PlayOneShot(ac_shotArrow);
+        //}
         // 家府何盒 //
         tr_this.Translate(Vector3.forward * shotSpeed * Time.fixedDeltaTime);
     }
@@ -57,8 +57,8 @@ public class ArrowProperty : MonoBehaviour
             as_arrow.PlayOneShot(ac_shotHit);
             // 家府何盒 //
 
-            Destroy(this.gameObject);
-            Destroy(o_ps, 0.5f);
+            StartCoroutine(DestroyDelayed(gameObject, 0.0f));
+            StartCoroutine(DestroyDelayed(o_ps, 0.5f));
         }
 
         else
@@ -71,8 +71,18 @@ public class ArrowProperty : MonoBehaviour
             as_arrow.PlayOneShot(ac_shotHit);
             // 家府何盒 // 
 
-            Destroy(this.gameObject);
-            Destroy(o_ps, 0.5f);
+            StartCoroutine(DestroyDelayed(gameObject, 0.0f));
+            StartCoroutine(DestroyDelayed(o_ps, 0.5f));
+        }
+    }
+
+    IEnumerator DestroyDelayed(GameObject obj, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (obj != null) 
+        {
+            PhotonNetwork.Destroy(obj);
         }
     }
 }

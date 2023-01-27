@@ -198,7 +198,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 445059221249270055}
   m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -4661,6 +4661,7 @@ MonoBehaviour:
   MaxHP: 2
   HP: 2
   PPM: {fileID: 0}
+  PPFA: {fileID: 0}
   currentTime: 2
 --- !u!114 &8698734641206498671
 MonoBehaviour:
@@ -4674,11 +4675,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e4c2dcead51824da87854bb1c85424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDie: 0
   delayTime: 2
   firePos: {fileID: 2079023333}
   firePosEnd: {fileID: 2846497822351951750}
   tr_lookSide: {fileID: 6853944897322966705}
-  ac_shotInit: {fileID: 0}
+  ac_shotInit: {fileID: 8300000, guid: 02dd54299c8a7f44c8e130b8a8a61718, type: 3}
 --- !u!82 &4018855086650176668
 AudioSource:
   m_ObjectHideFlags: 0
