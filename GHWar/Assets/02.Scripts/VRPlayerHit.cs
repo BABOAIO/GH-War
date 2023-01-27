@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Realtime;
 using Photon.Pun;
+using UnityEngine.UI;
 
 public class VRPlayerHit : MonoBehaviourPunCallbacks
 {
@@ -16,11 +17,14 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Arrow") && currentTime>=invincibilityTime)
+        if (photonView.IsMine)
         {
-            print("VR 히트");
-            Hit_VRPlayer(1);
-            currentTime = 0.0f;
+            if (collision.gameObject.CompareTag("Arrow") && currentTime >= invincibilityTime)
+            {
+                print("VR 히트");
+                photonView.RPC("Hit_VRPlayer", RpcTarget.AllBuffered, 1);
+                currentTime = 0.0f;
+            }
         }
     }
 
@@ -37,7 +41,7 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
 
         if (HP <= 0)
         {
-            HP = MaxHP;
+            print("VR 죽음");
             GameManager.instance.CheckRebirthVRPlayer();
         }
     }

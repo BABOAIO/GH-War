@@ -4391,7 +4391,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &5009191569173098882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4414,6 +4414,7 @@ MonoBehaviour:
   Txt_winnerText_PC: {fileID: 554202110}
   jumpCount: 2
   dodgeCount: 2
+  isDie: 0
 --- !u!114 &9221954164556844357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4659,6 +4660,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHP: 2
   HP: 2
+  PPM: {fileID: 0}
   currentTime: 2
 --- !u!114 &8698734641206498671
 MonoBehaviour:

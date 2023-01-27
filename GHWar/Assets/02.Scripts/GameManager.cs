@@ -216,14 +216,14 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (!B_IsGameOver)
         {
-            B_IsGameOver= true;
-
             if (PhotonNetwork.IsMasterClient)
             {
                 // PC가 이겼을 경우
                 if (Array_AllPlayers[0].GetComponent<VRPlayerHit>().HP <= 0)
                 //if (i_VRDeathCount <= 0) 
                 {
+                    B_IsGameOver = true;
+
                     if (Array_txtWinner[0] != null)
                     {
                         Array_txtWinner[0].text = "VR Player Lose..";
@@ -232,6 +232,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
                     {
                         Array_txtWinner[1].text = "PC Player Win!!";
                     }
+
+                    Debug.Log("PC Player Win!!");
                     // 3초 뒤 서버 종료
                     StartCoroutine(LeaveEnd(3f));
                 }
@@ -239,6 +241,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
                 else if (Array_AllPlayers[1].GetComponent<PCPlayerHit>().HP <= 0)
                 //else if (i_PCDeathCount <= 0)
                 {
+                    B_IsGameOver = true;
+
                     if (Array_txtWinner[0] != null)
                     {
                         Array_txtWinner[0].text = "VR Player Win!!";
@@ -247,6 +251,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
                     {
                         Array_txtWinner[1].text = "PC Player Lose..";
                     }
+
+                    Debug.Log("VR Player Win!!");
                     // 3초 뒤 서버 종료
                     StartCoroutine(LeaveEnd(3f));
                 }
@@ -254,8 +260,10 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
             else
             {
                 // PC가 이겼을 경우
-                if (i_VRDeathCount <= 0)
+                if (Array_AllPlayers[0].GetComponent<VRPlayerHit>().HP <= 0)
                 {
+                    B_IsGameOver = true;
+
                     // canvas 추가, 부활막기
                     if (Array_txtWinner[0] != null)
                     {
@@ -265,12 +273,16 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
                     {
                         Array_txtWinner[1].text = "PC Player Win!!";
                     }
+
+                    Debug.Log("PC Player Win!!");
                     // 3초 뒤 서버 종료
                     StartCoroutine(LeaveEnd(3f));
                 }
                 // VR이 이겼을 경우
-                else if (i_PCDeathCount <= 0)
+                else if (Array_AllPlayers[1].GetComponent<PCPlayerHit>().HP <= 0)
                 {
+                    B_IsGameOver = true;
+
                     // canvas 추가
                     if (Array_txtWinner[0] != null)
                     {
@@ -280,6 +292,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
                     {
                         Array_txtWinner[1].text = "PC Player Lose..";
                     }
+
+                    Debug.Log("VR Player Win!!");
                     // 3초 뒤 서버 종료
                     StartCoroutine(LeaveEnd(3f));
                 }
@@ -292,10 +306,11 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
         // 싱글톤
         if (instance == null) instance = this;
 
+        // VR 기기인지 체크
         Debug.Log("VR Device = " + IsPresent().ToString());
         IsVR = IsPresent();
 
-        ResetDeathCount(2);
+        //ResetDeathCount(2);
     }
 
     void Start()

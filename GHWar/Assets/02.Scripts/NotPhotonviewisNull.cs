@@ -11,7 +11,7 @@ public class NotPhotonviewisNull : MonoBehaviour
     void Start()
     {
         pv = GetComponent<PhotonView>();
-        if (pv.IsMine)
+        if (!pv.IsMine)
         {
             this.gameObject.SetActive(false);
         }
@@ -19,7 +19,7 @@ public class NotPhotonviewisNull : MonoBehaviour
 
     void Update()
     {
-        if(!this.gameObject.activeSelf) { return; }
+        if(this.gameObject.activeSelf) { return; }
         else
         {
             this.gameObject.SetActive(false);

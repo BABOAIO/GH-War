@@ -54,36 +54,43 @@ public class GroundImpact : MonoBehaviourPunCallbacks
 
         int tmp_randomValue = Random.Range(1, 4);
         Vector3 tmp_pos;
-        switch (tmp_randomValue)
+
+        if (pv.IsMine)
         {
-            case 1:
-                tmp_pos = position + new Vector3(Random.Range(5, 10), 0, Random.Range(5, 10));
-                position = tmp_pos;
-                break;
-            case 2:
-                tmp_pos = position + new Vector3(Random.Range(-10, -5), 0, Random.Range(5, 10));
-                position = tmp_pos;
-                break;
-            case 3:
-                tmp_pos = position + new Vector3(Random.Range(5, 10), 0, Random.Range(-10, -5));
-                position = tmp_pos;
-                break;
-            case 4:
-                tmp_pos = position + new Vector3(Random.Range(-10, -5), 0, Random.Range(-10, -5));
-                position = tmp_pos;
-                break;
+            switch (tmp_randomValue)
+            {
+                case 1:
+                    tmp_pos = position + new Vector3(Random.Range(1, 2), 0, Random.Range(1, 2));
+                    position = tmp_pos;
+                    break;
+                case 2:
+                    tmp_pos = position + new Vector3(Random.Range(-2, -1), 0, Random.Range(1, 2));
+                    position = tmp_pos;
+                    break;
+                case 3:
+                    tmp_pos = position + new Vector3(Random.Range(1, 2), 0, Random.Range(-2, -1));
+                    position = tmp_pos;
+                    break;
+                case 4:
+                    tmp_pos = position + new Vector3(Random.Range(-2, -1), 0, Random.Range(-2, -1));
+                    position = tmp_pos;
+                    break;
+            }
+            GameObject o_tmp = PhotonNetwork.Instantiate("Rock", position, rotation);
+
         }
-        GameObject o_tmp = PhotonNetwork.Instantiate("Rock", position, rotation);
 
         StartCoroutine(Delayed_Destroy(0.5f, o_ps));
+
     }
 
     IEnumerator Delayed_Destroy(float t, GameObject obj)
     {
         yield return new WaitForSeconds(t);
-        if(obj != null)
+        if (obj != null)
         {
             PhotonNetwork.Destroy(obj);
         }
+        else print("Non Destroy Target...");
     }
 }
