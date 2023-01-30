@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class ArrowLineRendering : MonoBehaviour
+public class ArrowLineRendering : MonoBehaviourPun
 {
     LineRenderer lr;
     Transform start;
     [SerializeField] Transform end;
+
+    private void OnEnable()
+    {
+        if (!photonView.IsMine) { GetComponent<LineRenderer>().enabled = false; }
+    }
 
     void Start()
     {
