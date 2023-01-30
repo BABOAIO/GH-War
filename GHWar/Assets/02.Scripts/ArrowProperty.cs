@@ -57,7 +57,7 @@ public class ArrowProperty : MonoBehaviour
             as_arrow.PlayOneShot(ac_shotHit);
             // 家府何盒 //
 
-            Destroy(this.gameObject);
+            PhotonNetwork.Destroy(this.gameObject);
             StartCoroutine(DestroyDelayed(gameObject, 0.1f));
         }
 
@@ -71,7 +71,7 @@ public class ArrowProperty : MonoBehaviour
             as_arrow.PlayOneShot(ac_shotHit);
             // 家府何盒 // 
 
-            Destroy(this.gameObject);
+            PhotonNetwork.Destroy(this.gameObject);
             StartCoroutine(DestroyDelayed(gameObject, 0.1f));
         }
     }

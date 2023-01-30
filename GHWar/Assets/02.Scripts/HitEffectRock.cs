@@ -50,8 +50,8 @@ public class HitEffectRock : MonoBehaviour
             as_rock.Stop();
             as_rock.PlayOneShot(ac_throwHit);
 
-            Destroy(this.gameObject);
             PhotonNetwork.Destroy(this.gameObject);
+            //PhotonNetwork.Destroy(this.gameObject);
         }
     }
 
