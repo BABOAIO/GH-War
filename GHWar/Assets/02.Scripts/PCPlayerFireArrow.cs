@@ -73,21 +73,30 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
     //        //obj_tmp.transform.LookAt(firePosEnd.position - firePos.position);
     //    }
     //}
+
+    private RaycastHit hit;
+
     void FixedUpdate()
     {
-        //RaycastHit hitinfo;
-        Debug.DrawRay(firePos.transform.position, (firePosEnd.transform.position - firePos.transform.position) * 10f, Color.red);
-        //if(Physics.Raycast(firePos.transform.position, (firePosEnd.transform.position - firePos.transform.position),out hitinfo, Mathf.Infinity))
+        //if (photonView.IsMine)
         //{
-        //    if(hitinfo.collider.CompareTag("VR_Player"))
+
+        //    //Debug.Log(pv.Synchronization);
+
+        //    //메인 카메라를 마우스 커서의 위치로 캐스팅되는 레이를 생성
+        //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //    //생성된 Ray를 Scene 뷰에 녹색 광선으로 표현
+        //    Debug.DrawRay(ray.origin, ray.direction * 100.0f, Color.green);
+        //    //8번째 레이어(TERRAIN)와 레이가 부딪혔다면
+        //    if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         //    {
-        //        Debug.DrawRay(firePos.transform.position, firePosEnd.transform.position, Color.red);
-        //    }
-        //    else
-        //    {
-        //        Debug.DrawRay(firePos.transform.position, firePosEnd.transform.position, Color.green);
+        //        //Ray에 맞은 위치를 로컬좌표로 변환
+        //        Vector3 relative = tr_this.InverseTransformPoint(hit.point);
+        //        //역탄젠트 함수로 두 점 간 각도를 게산
+        //        float angle = Mathf.Atan2(relative.x, relative.z) * Mathf.Rad2Deg;
         //    }
         //}
+
 
         currentTime += Time.fixedDeltaTime;
 
@@ -115,7 +124,7 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
                     a_playerInFire.SetBool("Shot", true);
                     Observable.NextFrame().Subscribe(_ => a_playerInFire.SetBool("Shot", false));
 
-                    Vector2 v2_tmp = (firePosEnd.position - firePos.position);
+                    //Vector2 v2_tmp = (firePosEnd.position - firePos.position);
                     GameObject obj_tmp = PhotonNetwork.Instantiate("Arrow", firePos.position, firePos.rotation);
                     //obj_tmp.transform.LookAt(firePosEnd.position - firePos.position);
                 }

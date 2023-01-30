@@ -16,12 +16,18 @@ public class ConnManager : MonoBehaviourPunCallbacks
 
     public static ConnManager Conn = null;
 
+    Quaternion spawnRotation;
+
+    [SerializeField] Transform target;
+
     private void Awake()
     {
         if(Conn == null)
         {
             Conn = this;
         }
+
+        spawnRotation = target.localRotation;
     }
 
     // 씬 시작 시 서버에 접속
@@ -85,8 +91,8 @@ public class ConnManager : MonoBehaviourPunCallbacks
         else
         {
             //Vector2 originPos = Random.insideUnitCircle * 2.0f;
-            //PhotonNetwork.Instantiate("PCPlayerXR", PC_Spawn, Quaternion.identity); 
-            GameManager.instance.Array_AllPlayers[1] = PhotonNetwork.Instantiate("UniversalMale", PC_Spawn, Quaternion.identity);
+            //PhotonNetwork.Instantiate("PCPlayerXR", PC_Spawn, Quaternion.identity);
+            GameManager.instance.Array_AllPlayers[1] = PhotonNetwork.Instantiate("UniversalMale", PC_Spawn, spawnRotation);
             GameManager.instance.Array_txtWinner[1] = GameManager.instance.Array_AllPlayers[1].GetComponent<PC_Player_Move>().Txt_winnerText_PC;
         }
 
