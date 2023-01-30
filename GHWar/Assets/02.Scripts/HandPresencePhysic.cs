@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class HandPresencePhysic : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class HandPresencePhysic : MonoBehaviour
     Collider[] col_hands;
     // 움직임에 제약을 주기 위한 리지드바디 컨트롤
     Rigidbody rb_this;
+    //[Header("땅을 칠때 나오는 이펙트")]
+    //[SerializeField] ParticleSystem ps_hitGround;
+    //[Header("땅을 칠때 나오는 큐브")]
+    //[SerializeField] GameObject o_stone;
 
     void Start()
     {
@@ -67,6 +72,25 @@ public class HandPresencePhysic : MonoBehaviour
     {
         Invoke("OnSelect_DisableHandCollider", delay);
     }
+
+    //public void OnHoverEnter_HitGround(HoverEnterEventArgs args)
+    //{
+    //    print("호버 이벤트 : 충돌 인식 성공");
+    //    if (rb_this.velocity.magnitude >= 0)
+    //    {
+    //        print("호버 이벤트 : 태그 인식 성공");
+    //    }
+    //}
+    //public void OnHoverExit_HitGround(HoverExitEventArgs args)
+    //{
+    //    print("호버 익시트 이벤트 : 충돌 인식 성공");
+    //    if (rb_this.velocity.magnitude >= 0)
+    //    {
+    //        print("호버 익시트 이벤트 : 태그 인식 성공");
+    //    }
+    //}
+
+
 
     void FixedUpdate()
     {
