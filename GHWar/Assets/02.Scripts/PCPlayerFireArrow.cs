@@ -22,7 +22,6 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
     [SerializeField] Transform firePosEnd;
 
     Transform tr_this;
-    [SerializeField] Transform tr_lookSide;
 
     // 소리 부분 //
     AudioSource as_fireArrow;
@@ -115,9 +114,9 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
     }
     private void OnAnimatorIK(int layerIndex)
     {
-        a_playerInFire.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0.1f);
+        a_playerInFire.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1.0f);
         //a_playerInFire.SetIKPositionWeight(AvatarIKGoal.RightHand, 1.0f);
-        a_playerInFire.SetIKRotationWeight(AvatarIKGoal.LeftHand, 0.1f);
+        a_playerInFire.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1.0f);
         //a_playerInFire.SetIKRotationWeight(AvatarIKGoal.RightHand, 1.0f);
 
         a_playerInFire.SetIKPosition(AvatarIKGoal.LeftHand, firePosEnd.position);
