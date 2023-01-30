@@ -48,6 +48,7 @@ public class XRGrabInteractionPun : XRGrabInteractable // 이 항목이 있기에 인스�
         base.OnSelectEntering(interactor);
     }
 
+<<<<<<< HEAD
     [System.Obsolete]
     protected override void OnSelectExited(XRBaseInteractor interactor)
     {
@@ -56,6 +57,15 @@ public class XRGrabInteractionPun : XRGrabInteractable // 이 항목이 있기에 인스�
         base.OnSelectExited(interactor);
     }
 
+=======
+    protected override void OnSelectExited(XRBaseInteractor interactor)
+    {
+        pv.TransferOwnership(player_this);
+        base.OnSelectExited(interactor);
+    }
+
+    // 셀렉트에서 손 놓았을 때 당시 IsMine인 컨트롤러에게 돌려줄려고 했지만 실패(이후는 TransferInteractionMaster 스크립트 참고)
+>>>>>>> main
     //protected override void OnSelectExiting(XRBaseInteractor interactor)
     //{
     //    pv.TransferOwnership(player_this);
