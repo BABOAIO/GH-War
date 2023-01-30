@@ -5,6 +5,8 @@ using Photon.Pun;
 using UniRx;
 using Photon.Realtime;
 using System.ComponentModel;
+using SimpleMan.VisualRaycast;
+using UnityEditor;
 
 [RequireComponent(typeof(AudioSource))]
 public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
@@ -73,6 +75,20 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
     //}
     void FixedUpdate()
     {
+        //RaycastHit hitinfo;
+        Debug.DrawRay(firePos.transform.position, (firePosEnd.transform.position - firePos.transform.position) * 10f, Color.red);
+        //if(Physics.Raycast(firePos.transform.position, (firePosEnd.transform.position - firePos.transform.position),out hitinfo, Mathf.Infinity))
+        //{
+        //    if(hitinfo.collider.CompareTag("VR_Player"))
+        //    {
+        //        Debug.DrawRay(firePos.transform.position, firePosEnd.transform.position, Color.red);
+        //    }
+        //    else
+        //    {
+        //        Debug.DrawRay(firePos.transform.position, firePosEnd.transform.position, Color.green);
+        //    }
+        //}
+
         currentTime += Time.fixedDeltaTime;
 
         if (isDie == false)
@@ -98,9 +114,10 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
                     a_playerInFire.SetBool("ReadyToShot", false);
                     a_playerInFire.SetBool("Shot", true);
                     Observable.NextFrame().Subscribe(_ => a_playerInFire.SetBool("Shot", false));
-                    GameObject obj_tmp = PhotonNetwork.Instantiate("Arrow", firePos.position, firePosEnd.rotation);
-                    //obj_tmp.transform.LookAt(firePosEnd.position - firePos.position);
 
+                    Vector2 v2_tmp = (firePosEnd.position - firePos.position);
+                    GameObject obj_tmp = PhotonNetwork.Instantiate("Arrow", firePos.position, firePos.rotation);
+                    //obj_tmp.transform.LookAt(firePosEnd.position - firePos.position);
                 }
                 else
                 {
@@ -119,9 +136,9 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
         a_playerInFire.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1.0f);
         //a_playerInFire.SetIKRotationWeight(AvatarIKGoal.RightHand, 1.0f);
 
-        a_playerInFire.SetIKPosition(AvatarIKGoal.LeftHand, firePosEnd.position);
+        a_playerInFire.SetIKPosition(AvatarIKGoal.LeftHand, firePos.position);
         //a_playerInFire.SetIKPosition(AvatarIKGoal.RightHand, firePosEnd.position);
-        a_playerInFire.SetIKRotation(AvatarIKGoal.LeftHand, firePosEnd.rotation);
+        a_playerInFire.SetIKRotation(AvatarIKGoal.LeftHand, firePos.rotation);
         //a_playerInFire.SetIKRotation(AvatarIKGoal.RightHand, firePosEnd.rotation);
 
     }

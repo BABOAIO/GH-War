@@ -5,7 +5,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class XRGrabInteractionPun : XRGrabInteractable//, IPunOwnershipCallbacks//, IPunObservable // 이 항목이 있기에 인스펙터창에 그랩관련 항목이 생성
+public class XRGrabInteractionPun : XRGrabInteractable // 이 항목이 있기에 인스펙터창에 그랩관련 항목이 생성
 {
     Player player_this;
     //Transform t_this;
@@ -34,7 +34,6 @@ public class XRGrabInteractionPun : XRGrabInteractable//, IPunOwnershipCallbacks
     protected override void OnSelectEntered(XRBaseInteractor interactor)
     {
         pv.RequestOwnership();
-        print("셀렉트 엔터");
         isGrab= true;
         //sc_PCPlayerMove.st_PC = PC_Player_Move.PC_Player_State.IsGrab;
         base.OnSelectEntered(interactor);
@@ -45,7 +44,6 @@ public class XRGrabInteractionPun : XRGrabInteractable//, IPunOwnershipCallbacks
     protected override void OnSelectEntering(XRBaseInteractor interactor)
     {
         pv.RequestOwnership();
-        print("셀렉트 엔터링");
         //sc_PCPlayerMove.st_PC = PC_Player_Move.PC_Player_State.IsGrab;
         base.OnSelectEntering(interactor);
     }
@@ -54,12 +52,10 @@ public class XRGrabInteractionPun : XRGrabInteractable//, IPunOwnershipCallbacks
     protected override void OnSelectExited(XRBaseInteractor interactor)
     {
         pv.TransferOwnership(player_this);
-        print("놓아준다");
         isGrab= false;
         base.OnSelectExited(interactor);
     }
 
-    // 셀렉트에서 손 놓았을 때 당시 IsMine인 컨트롤러에게 돌려줄려고 했지만 실패(이후는 TransferInteractionMaster 스크립트 참고)
     //protected override void OnSelectExiting(XRBaseInteractor interactor)
     //{
     //    pv.TransferOwnership(player_this);

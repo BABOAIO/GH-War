@@ -57,8 +57,8 @@ public class ArrowProperty : MonoBehaviour
             as_arrow.PlayOneShot(ac_shotHit);
             // 家府何盒 //
 
-            StartCoroutine(DestroyDelayed(gameObject, 0.0f));
-            StartCoroutine(DestroyDelayed(o_ps, 0.5f));
+            Destroy(this.gameObject);
+            StartCoroutine(DestroyDelayed(gameObject, 0.1f));
         }
 
         else
@@ -71,8 +71,8 @@ public class ArrowProperty : MonoBehaviour
             as_arrow.PlayOneShot(ac_shotHit);
             // 家府何盒 // 
 
-            StartCoroutine(DestroyDelayed(gameObject, 0.0f));
-            StartCoroutine(DestroyDelayed(o_ps, 0.5f));
+            Destroy(this.gameObject);
+            StartCoroutine(DestroyDelayed(gameObject, 0.1f));
         }
     }
 
