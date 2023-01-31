@@ -3,6 +3,7 @@ using UnityEngine;
 using Photon.Realtime;
 using Photon.Pun;
 using UniRx;
+using UnityEngine.UI;
 
 public class PCPlayerHit : MonoBehaviourPunCallbacks
 {
@@ -12,6 +13,9 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
     public float MaxHP = 2.0f;
     [Header("HP")]
     public float HP = 2.0f;
+
+    [Header("HP 슬라이더바")]
+    [SerializeField] Slider hpBar;
 
     // 왜 퍼블릭인가...?
     private PC_Player_Move PPM;
@@ -27,6 +31,8 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
         a_PCPlayer = GetComponent<PC_Player_Move>().a_player;
         PPM = GetComponent<PC_Player_Move>();
         PPFA = GetComponent<PCPlayerFireArrow>();
+
+        hpBar.value = HP / MaxHP;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -79,6 +85,8 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
             PPM.GetComponent<PC_Player_Move>().isDie = true;
             PPFA.GetComponent<PCPlayerFireArrow>().isDie = true;
             //HP = MaxHP;
+
+            hpBar.value = HP / MaxHP;
         }
     }
 

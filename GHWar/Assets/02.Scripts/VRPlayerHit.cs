@@ -12,8 +12,12 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
     [Header("HP")]
     public float HP = 2.0f;
 
+    [Header("HP 슬라이더")]
+    [SerializeField] Slider hpBar;
+
     float invincibilityTime = 2.0f;
     public float currentTime = 2.0f;
+
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -31,6 +35,8 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
     private void FixedUpdate()
     {
         currentTime += Time.fixedDeltaTime;
+
+        hpBar.value = HP / MaxHP;
     }
 
     [PunRPC]

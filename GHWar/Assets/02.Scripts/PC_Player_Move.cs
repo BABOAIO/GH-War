@@ -148,8 +148,8 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
             transform.eulerAngles = new Vector3(0, f_mouseX, 0);
 
             f_mouseYlim = f_mouseYlim + f_mouseY;
-            f_mouseYlim = Mathf.Clamp(f_mouseY, -60, 80);
-            PC_Player_Cam.transform.eulerAngles = new Vector3(f_mouseYlim, f_mouseX, 0);
+            f_mouseY = Mathf.Clamp(f_mouseY, -70, 30);
+            PC_Player_Cam.transform.eulerAngles = new Vector3(f_mouseY, f_mouseX, 0);
         }
     }
 

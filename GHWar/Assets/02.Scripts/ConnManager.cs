@@ -11,6 +11,8 @@ public class ConnManager : MonoBehaviourPunCallbacks
 {
     public byte Byte_maxPlayer = 2;
 
+    [Header("VR 플레이어 스폰 위치")]
+    public Vector3 VR_Spawn;
     [Header("PC 플레이어 스폰 위치")]
     public Vector3 PC_Spawn;
 
@@ -82,7 +84,7 @@ public class ConnManager : MonoBehaviourPunCallbacks
         if (GameManager.instance.IsVR)
         {
             //Vector2 originPos = Random.insideUnitCircle * 2.0f;
-            GameManager.instance.Array_AllPlayers[0] = PhotonNetwork.Instantiate("VRPlayerXR", Vector3.zero, Quaternion.identity);
+            GameManager.instance.Array_AllPlayers[0] = PhotonNetwork.Instantiate("VRPlayerXR", VR_Spawn, Quaternion.Euler(0,180,0));
             GameManager.instance.Array_txtWinner[0] = GameManager.instance.Array_AllPlayers[0].GetComponent<VRPlayerMove1>().Txt_winnerText_VR;
         }
         // 반경 2m 이내에 랜덤 위치에서 PC 플레이어 생성

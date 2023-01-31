@@ -11,6 +11,7 @@ public class ArrowProperty : MonoBehaviour
     Rigidbody rb_this;
     Transform tr_this;
 
+    bool isHit = false;
 
     // 家府何盒 //
     AudioSource as_arrow;
@@ -25,6 +26,7 @@ public class ArrowProperty : MonoBehaviour
 
     private void OnEnable()
     {
+        isHit = false;
     }
 
     private void Start()
@@ -42,13 +44,19 @@ public class ArrowProperty : MonoBehaviour
         //    as_arrow.PlayOneShot(ac_shotArrow);
         //}
         // 家府何盒 //
-        tr_this.Translate(Vector3.forward * shotSpeed * Time.fixedDeltaTime);
+
+        if(!isHit)
+        {
+            tr_this.Translate(Vector3.forward * shotSpeed * Time.fixedDeltaTime);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("VR_Player"))
         {
+            isHit = true;
+
             GameObject o_ps =
             PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
 
@@ -57,12 +65,14 @@ public class ArrowProperty : MonoBehaviour
             as_arrow.PlayOneShot(ac_shotHit);
             // 家府何盒 //
 
-            PhotonNetwork.Destroy(this.gameObject);
+            //PhotonNetwork.Destroy(this.gameObject);            
             StartCoroutine(DestroyDelayed(gameObject, 0.1f));
         }
 
-        else
+        else if(!collision.gameObject.CompareTag("PC_Player"))
         {
+            isHit = true;
+
             GameObject o_ps = 
             PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
 
@@ -71,7 +81,7 @@ public class ArrowProperty : MonoBehaviour
             as_arrow.PlayOneShot(ac_shotHit);
             // 家府何盒 // 
 
-            PhotonNetwork.Destroy(this.gameObject);
+            //PhotonNetwork.Destroy(this.gameObject);
             StartCoroutine(DestroyDelayed(gameObject, 0.1f));
         }
     }

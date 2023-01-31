@@ -25,19 +25,19 @@ public class ArrowLineRendering : MonoBehaviourPun
 
     void Update()
     {
-        RaycastHit hitinfo;
-        Debug.DrawRay(start.position, (end.position - start.position) * 10f, Color.red);
-        if (Physics.Raycast(start.position, (end.position - start.position), out hitinfo, Mathf.Infinity))
-        {
-            if (hitinfo.collider.CompareTag("Ground"))
-            {
-                lr.SetColors(Color.red, Color.red);
-            }
-            else
-            {
-                lr.SetColors(Color.green, Color.green);
-            }
-        }
+        //RaycastHit hitinfo;
+        //Debug.DrawRay(start.position, (end.position - start.position) * 10f, Color.red);
+        //if (Physics.Raycast(start.position, (end.position - start.position), out hitinfo, Mathf.Infinity))
+        //{
+        //    if (hitinfo.collider.CompareTag("Ground"))
+        //    {
+        //        lr.SetColors(Color.red, Color.red);
+        //    }
+        //    else
+        //    {
+        //        lr.SetColors(Color.green, Color.green);
+        //    }
+        //}
         lr.SetPosition(0, start.position);
         lr.SetPosition(1, end.position);
     }

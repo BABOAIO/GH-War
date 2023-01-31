@@ -73,25 +73,6 @@ public class HandPresencePhysic : MonoBehaviour
         Invoke("OnSelect_DisableHandCollider", delay);
     }
 
-    //public void OnHoverEnter_HitGround(HoverEnterEventArgs args)
-    //{
-    //    print("호버 이벤트 : 충돌 인식 성공");
-    //    if (rb_this.velocity.magnitude >= 0)
-    //    {
-    //        print("호버 이벤트 : 태그 인식 성공");
-    //    }
-    //}
-    //public void OnHoverExit_HitGround(HoverExitEventArgs args)
-    //{
-    //    print("호버 익시트 이벤트 : 충돌 인식 성공");
-    //    if (rb_this.velocity.magnitude >= 0)
-    //    {
-    //        print("호버 익시트 이벤트 : 태그 인식 성공");
-    //    }
-    //}
-
-
-
     void FixedUpdate()
     {
         rb_this.velocity = (t_target.position - transform.position) / Time.fixedDeltaTime;

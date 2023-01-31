@@ -17,7 +17,7 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
 
     public bool isDie;
 
-    [SerializeField] float delayTime = 3.0f;
+    [SerializeField] float delayTime = 2.0f;
     float currentTime = 0;
 
     [SerializeField] Transform firePos;
@@ -103,7 +103,7 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
         if (isDie == false)
         {
             if ((pv.IsMine) && (Input.GetMouseButtonDown(0))
-                && (currentTime >= delayTime - Time.fixedDeltaTime * 3)
+                && (currentTime >= delayTime/2)
                 )
             {
                 a_playerInFire.SetBool("ReadyToShot", true);
