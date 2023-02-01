@@ -61,8 +61,8 @@ public class ArrowProperty : MonoBehaviour
             PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
 
             // 家府何盒 //
-            as_arrow.Stop();
-            as_arrow.PlayOneShot(ac_shotHit);
+            //as_arrow.Stop();
+            //as_arrow.PlayOneShot(ac_shotHit);
             // 家府何盒 //
 
             //PhotonNetwork.Destroy(this.gameObject);            
@@ -77,8 +77,8 @@ public class ArrowProperty : MonoBehaviour
             PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
 
             // 家府何盒 //
-            as_arrow.Stop();
-            as_arrow.PlayOneShot(ac_shotHit);
+            //as_arrow.Stop();
+            //as_arrow.PlayOneShot(ac_shotHit);
             // 家府何盒 // 
 
             //PhotonNetwork.Destroy(this.gameObject);

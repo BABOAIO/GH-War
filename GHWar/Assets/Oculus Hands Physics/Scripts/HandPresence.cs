@@ -9,6 +9,9 @@ public class HandPresence : MonoBehaviour
     private InputDevice targetDevice;
     public Animator handAnimator;
 
+    public float triggerValue;
+    public float gripValue;
+
     void Start()
     {
         TryInitialize();
@@ -27,7 +30,7 @@ public class HandPresence : MonoBehaviour
 
     void UpdateHandAnimation()
     {
-        if(targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue))
+        if(targetDevice.TryGetFeatureValue(CommonUsages.trigger, out triggerValue))
         {
             handAnimator.SetFloat("Trigger", triggerValue);
         }
@@ -36,7 +39,7 @@ public class HandPresence : MonoBehaviour
             handAnimator.SetFloat("Trigger", 0);
         }
 
-        if (targetDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue))
+        if (targetDevice.TryGetFeatureValue(CommonUsages.grip, out gripValue))
         {
             handAnimator.SetFloat("Grip", gripValue);
         }

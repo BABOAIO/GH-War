@@ -4,6 +4,7 @@ using Photon.Realtime;
 using Photon.Pun;
 using UniRx;
 using UnityEngine.UI;
+using System.Collections;
 
 public class PCPlayerHit : MonoBehaviourPunCallbacks
 {
@@ -17,7 +18,6 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
     [Header("HP 슬라이더바")]
     [SerializeField] Slider hpBar;
 
-    // 왜 퍼블릭인가...?
     private PC_Player_Move PPM;
     private PCPlayerFireArrow PPFA;
     Animator a_PCPlayer;
@@ -38,26 +38,41 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<Rigidbody>() == null) { return; }
-
-        //float f_objVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
-        //print("PC Player Hit Object Velocity : " + f_objVelocity);
-        //if (f_objVelocity >= 10f && currentTime >= invincibilityTime)
-        //{
-        //    print("PC 히트");
-        //    Hit_PCPlayer(1);
-        //    pv.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
-        //    currentTime = 0.0f;
-        //}
-
         if (pv.IsMine)
         {
             float f_objVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
             print("PC Player Hit Object Velocity : " + f_objVelocity);
-            if (f_objVelocity >= 10f && currentTime >= invincibilityTime)
+
+            if (currentTime >= invincibilityTime)
             {
-                //Hit_PCPlayer(1);
-                pv.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
-                currentTime = 0.0f;
+                if ((collision.gameObject.CompareTag("RightHand") || collision.gameObject.CompareTag("LeftHand")))
+                {
+                    if (f_objVelocity >= 5f)
+                    {
+                        if (collision.gameObject.GetComponent<HandPresence>().gripValue >= 0.5f)
+                        {
+                            pv.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
+                            currentTime = 0.0f;
+                        }
+                        else
+                        {
+                            pv.RPC("FunctionForceReducing", RpcTarget.AllBuffered);
+                        }
+                    }
+                    else
+                    {
+                        pv.RPC("FunctionForceReducing", RpcTarget.AllBuffered);
+                    }
+                }
+                else
+                {
+                    if (f_objVelocity >= 5f)
+                    {
+                        //Hit_PCPlayer(1);
+                        pv.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
+                        currentTime = 0.0f;
+                    }
+                }
             }
         }
     }
@@ -66,6 +81,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
     {
         currentTime += Time.fixedDeltaTime;
 
+        hpBar.value = HP / MaxHP;
     }
 
 
@@ -80,14 +96,25 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
             print("PC 죽음");
             a_PCPlayer.SetBool("IsDie", true);
             Observable.NextFrame().Subscribe(_ => a_PCPlayer.SetBool("IsDie", false));
-            GameManager.instance.CheckRebirthPCPlayer();
 
             PPM.GetComponent<PC_Player_Move>().isDie = true;
             PPFA.GetComponent<PCPlayerFireArrow>().isDie = true;
-            //HP = MaxHP;
 
-            hpBar.value = HP / MaxHP;
+            if (GameManager.instance.i_PCDeathCount > 0)
+            {
+                HP = MaxHP;
+                GameManager.instance.CheckRebirthPCPlayer();
+                GameManager.instance.i_PCDeathCount--;
+                PPM.GetComponent<PC_Player_Move>().isDie = false;
+                PPFA.GetComponent<PCPlayerFireArrow>().isDie = false;
+            }
         }
+    }
+
+    [PunRPC]
+    public void FunctionForceReducing()
+    {
+        this.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
 }

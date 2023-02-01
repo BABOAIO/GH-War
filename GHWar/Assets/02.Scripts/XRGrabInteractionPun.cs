@@ -51,11 +51,17 @@ public class XRGrabInteractionPun : XRGrabInteractable // 이 항목이 있기에 인스�
     [System.Obsolete]
     protected override void OnSelectExited(XRBaseInteractor interactor)
     {
+        //StartCoroutine(DelayedTransferOwnership());
         pv.TransferOwnership(player_this);
-        isGrab= false;
+        isGrab = false;
         base.OnSelectExited(interactor);
     }
 
+    IEnumerator DelayedTransferOwnership()
+    {
+        yield return new WaitForSeconds(0.5f);
+        pv.TransferOwnership(player_this);
+    }
     //protected override void OnSelectExiting(XRBaseInteractor interactor)
     //{
     //    pv.TransferOwnership(player_this);

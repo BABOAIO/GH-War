@@ -47,8 +47,8 @@ public class HitEffectRock : MonoBehaviour
         {
             GameObject o_effect = PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
 
-            as_rock.Stop();
-            as_rock.PlayOneShot(ac_throwHit);
+            //as_rock.Stop();
+            //as_rock.PlayOneShot(ac_throwHit);
 
             PhotonNetwork.Destroy(this.gameObject);
             //PhotonNetwork.Destroy(this.gameObject);

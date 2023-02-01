@@ -261,7 +261,7 @@ namespace Photon.Pun
                     break;
 
                 case PhotonTransformViewPositionModel.InterpolateOptions.FixedSpeed:
-                    currentPosition = Vector3.MoveTowards(currentPosition, targetPosition, Time.deltaTime * m_Model.InterpolateMoveTowardsSpeed);
+                    currentPosition = Vector3.MoveTowards(currentPosition, targetPosition, Time.fixedDeltaTime * m_Model.InterpolateMoveTowardsSpeed);
                     break;
 
                 case PhotonTransformViewPositionModel.InterpolateOptions.EstimatedSpeed:
@@ -276,7 +276,7 @@ namespace Photon.Pun
                     float estimatedSpeed = (Vector3.Distance(m_NetworkPosition, GetOldestStoredNetworkPosition()) / m_OldNetworkPositions.Count) * PhotonNetwork.SerializationRate;
 
                     // move towards the targetPosition (including estimates, if that's active) with the speed calculated from the last updates.
-                    currentPosition = Vector3.MoveTowards(currentPosition, targetPosition, Time.deltaTime * estimatedSpeed);
+                    currentPosition = Vector3.MoveTowards(currentPosition, targetPosition, Time.fixedDeltaTime * estimatedSpeed);
                     break;
 
                 case PhotonTransformViewPositionModel.InterpolateOptions.SynchronizeValues:
@@ -286,13 +286,13 @@ namespace Photon.Pun
                     }
                     else
                     {
-                        currentPosition = Vector3.MoveTowards(currentPosition, targetPosition, Time.deltaTime * m_SynchronizedSpeed.magnitude);
+                        currentPosition = Vector3.MoveTowards(currentPosition, targetPosition, Time.fixedDeltaTime * m_SynchronizedSpeed.magnitude);
                     }
 
                     break;
 
                 case PhotonTransformViewPositionModel.InterpolateOptions.Lerp:
-                    currentPosition = Vector3.Lerp(currentPosition, targetPosition, Time.deltaTime * m_Model.InterpolateLerpSpeed);
+                    currentPosition = Vector3.Lerp(currentPosition, targetPosition, Time.fixedDeltaTime * m_Model.InterpolateLerpSpeed);
                     break;
             }
 
@@ -459,9 +459,9 @@ namespace Photon.Pun
                 case PhotonTransformViewRotationModel.InterpolateOptions.Disabled:
                     return m_NetworkRotation;
                 case PhotonTransformViewRotationModel.InterpolateOptions.RotateTowards:
-                    return Quaternion.RotateTowards(currentRotation, m_NetworkRotation, m_Model.InterpolateRotateTowardsSpeed * Time.deltaTime);
+                    return Quaternion.RotateTowards(currentRotation, m_NetworkRotation, m_Model.InterpolateRotateTowardsSpeed * Time.fixedDeltaTime);
                 case PhotonTransformViewRotationModel.InterpolateOptions.Lerp:
-                    return Quaternion.Lerp(currentRotation, m_NetworkRotation, m_Model.InterpolateLerpSpeed * Time.deltaTime);
+                    return Quaternion.Lerp(currentRotation, m_NetworkRotation, m_Model.InterpolateLerpSpeed * Time.fixedDeltaTime);
             }
         }
 

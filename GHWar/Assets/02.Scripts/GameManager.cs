@@ -34,6 +34,19 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
     [Header("게임이 시작했는지 알려주는 변수")]
     public bool B_GameStart = false;
 
+    public bool B_GameStop
+    {
+        get { return B_IsGameOver; }
+        set
+        {
+            B_IsGameOver = value;
+            if(value)
+            {
+                ResetDeathCount(2);
+            }
+        }
+    }
+
     // 스카이박스 초당 회전 값 변수
     [Header("스카이박스 초당 회전 값 변수")]
     public float RotationPerSecond = 2;
@@ -220,8 +233,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
             if (PhotonNetwork.IsMasterClient)
             {
                 // PC가 이겼을 경우
-                if (Array_AllPlayers[0].GetComponent<VRPlayerMove1>().o_vrFace.GetComponent<VRPlayerHit>().HP <= 0)
-                //if (i_VRDeathCount <= 0) 
+                //if (Array_AllPlayers[0].GetComponent<VRPlayerMove1>().o_vrFace.GetComponent<VRPlayerHit>().HP <= 0)
+                if (i_VRDeathCount <= 0)
                 {
                     B_IsGameOver = true;
 
@@ -239,9 +252,9 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
                     StartCoroutine(LeaveEnd(3f));
                 }
                 // VR이 이겼을 경우
-                else if (Array_AllPlayers[1].GetComponent<PCPlayerHit>().HP <= 0)
-                //else if (i_PCDeathCount <= 0)
-                {
+                //else if (Array_AllPlayers[1].GetComponent<PCPlayerHit>().HP <= 0)
+                else if (i_PCDeathCount <= 0)
+                        {
                     B_IsGameOver = true;
 
                     if (Array_txtWinner[0] != null)
@@ -261,7 +274,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
             else
             {
                 // PC가 이겼을 경우
-                if (Array_AllPlayers[0].GetComponent<VRPlayerMove1>().o_vrFace.GetComponent<VRPlayerHit>().HP <= 0)
+                //if (Array_AllPlayers[0].GetComponent<VRPlayerMove1>().o_vrFace.GetComponent<VRPlayerHit>().HP <= 0)
+                if (i_VRDeathCount <= 0)
                 {
                     B_IsGameOver = true;
 
@@ -280,7 +294,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
                     StartCoroutine(LeaveEnd(3f));
                 }
                 // VR이 이겼을 경우
-                else if (Array_AllPlayers[1].GetComponent<PCPlayerHit>().HP <= 0)
+                //else if (Array_AllPlayers[1].GetComponent<PCPlayerHit>().HP <= 0)
+                else if (i_PCDeathCount <= 0)
                 {
                     B_IsGameOver = true;
 
@@ -373,7 +388,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
 
         // 승패 결정 시 게임종료
         PhotonNetwork.LeaveRoom();
-        Application.Quit();
+        //Application.Quit();
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

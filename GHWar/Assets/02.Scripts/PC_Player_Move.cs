@@ -102,14 +102,15 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
     [PunRPC]
     void Wiggle()
     {
-        if (xrgrabinteractionPun.isGrab == true)
-        {
-            a_player.SetBool("Wiggle", true);
-        }
-        else if (xrgrabinteractionPun.isGrab == false)
-        {
-            a_player.SetBool("Wiggle", false);
-        }
+        a_player.SetBool("Wiggle", xrgrabinteractionPun.isGrab);
+        //if (xrgrabinteractionPun.isGrab == true)
+        //{
+        //    a_player.SetBool("Wiggle", true);
+        //}
+        //else if (xrgrabinteractionPun.isGrab == false)
+        //{
+        //    a_player.SetBool("Wiggle", false);
+        //}
     }
 
     [PunRPC]

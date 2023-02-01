@@ -6,6 +6,7 @@ ScriptsOnlyBuild:
     - ConnManager
     - DestroyOutObject
     - EffectObjDelete
+    - ForceReducing
     - GameManager
     - GroundImpact
     - HPManager
@@ -22,6 +23,7 @@ ScriptsOnlyBuild:
     - PCPlayerHit
     - PCPlayerMove
     - PC_Player_Move
+    - PhotonviewCanTSee
     - VRPlayerHit
     - VRPlayerMove
     - VRPlayerMove1
@@ -83,13 +85,6 @@ ScriptsOnlyBuild:
     Unity.XR.Oculus.dll:
     - Unity.XR.Oculus.OculusLoader
     - Unity.XR.Oculus.OculusSettings
-    UnityEditor.Graphs.dll:
-    - UnityEditor.Graphs.AnimationBlendTree.Graph
-    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
-    - UnityEditor.Graphs.AnimationStateMachine.Graph
-    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -300,85 +295,89 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 6494}
     - Class: 114
-      Script: {instanceID: 6916}
+      Script: {instanceID: 6880}
     - Class: 114
-      Script: {instanceID: 7082}
+      Script: {instanceID: 6918}
     - Class: 114
-      Script: {instanceID: 7108}
+      Script: {instanceID: 7084}
     - Class: 114
-      Script: {instanceID: 7154}
+      Script: {instanceID: 7110}
     - Class: 114
-      Script: {instanceID: 7370}
+      Script: {instanceID: 7156}
     - Class: 114
-      Script: {instanceID: 7740}
+      Script: {instanceID: 7372}
     - Class: 114
-      Script: {instanceID: 7868}
+      Script: {instanceID: 7742}
     - Class: 114
-      Script: {instanceID: 7890}
+      Script: {instanceID: 7870}
     - Class: 114
-      Script: {instanceID: 8118}
+      Script: {instanceID: 7892}
     - Class: 114
-      Script: {instanceID: 8122}
+      Script: {instanceID: 8120}
     - Class: 114
-      Script: {instanceID: 8316}
+      Script: {instanceID: 8124}
     - Class: 114
-      Script: {instanceID: 8562}
+      Script: {instanceID: 8318}
     - Class: 114
-      Script: {instanceID: 8780}
+      Script: {instanceID: 8564}
     - Class: 114
-      Script: {instanceID: 8916}
+      Script: {instanceID: 8782}
     - Class: 114
-      Script: {instanceID: 9406}
+      Script: {instanceID: 8918}
     - Class: 114
-      Script: {instanceID: 9594}
+      Script: {instanceID: 9408}
     - Class: 114
-      Script: {instanceID: 9598}
+      Script: {instanceID: 9596}
     - Class: 114
-      Script: {instanceID: 9744}
+      Script: {instanceID: 9600}
     - Class: 114
-      Script: {instanceID: 9862}
+      Script: {instanceID: 9746}
     - Class: 114
-      Script: {instanceID: 9912}
+      Script: {instanceID: 9864}
     - Class: 114
-      Script: {instanceID: 10114}
+      Script: {instanceID: 9914}
     - Class: 114
-      Script: {instanceID: 10174}
+      Script: {instanceID: 10116}
     - Class: 114
-      Script: {instanceID: 10384}
+      Script: {instanceID: 10176}
     - Class: 114
-      Script: {instanceID: 10754}
+      Script: {instanceID: 10386}
     - Class: 114
-      Script: {instanceID: 10764}
+      Script: {instanceID: 10756}
     - Class: 114
-      Script: {instanceID: 10856}
+      Script: {instanceID: 10766}
     - Class: 114
-      Script: {instanceID: 11034}
+      Script: {instanceID: 10858}
     - Class: 114
-      Script: {instanceID: 11172}
+      Script: {instanceID: 11036}
     - Class: 114
-      Script: {instanceID: 11194}
+      Script: {instanceID: 11174}
     - Class: 114
-      Script: {instanceID: 11284}
+      Script: {instanceID: 11196}
     - Class: 114
-      Script: {instanceID: 11368}
+      Script: {instanceID: 11286}
     - Class: 114
-      Script: {instanceID: 11418}
+      Script: {instanceID: 11370}
     - Class: 114
-      Script: {instanceID: 11544}
+      Script: {instanceID: 11420}
     - Class: 114
-      Script: {instanceID: 11812}
+      Script: {instanceID: 11546}
     - Class: 114
-      Script: {instanceID: 11836}
+      Script: {instanceID: 11814}
     - Class: 114
-      Script: {instanceID: 11850}
+      Script: {instanceID: 11838}
     - Class: 114
-      Script: {instanceID: 12768}
+      Script: {instanceID: 11852}
     - Class: 114
-      Script: {instanceID: 13088}
+      Script: {instanceID: 12770}
     - Class: 114
-      Script: {instanceID: 13492}
+      Script: {instanceID: 13090}
     - Class: 114
-      Script: {instanceID: 244108}
+      Script: {instanceID: 13494}
+    - Class: 114
+      Script: {instanceID: 40506}
+    - Class: 114
+      Script: {instanceID: 40518}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -1060,7 +1059,7 @@ ScriptsOnlyBuild:
     className: BezierCurve
   - hash:
       serializedVersion: 2
-      Hash: 92dc2a7f19e849f90ce4913bcaa56757
+      Hash: f6162f81f09a509ea523ab8fd038da07
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: HandPresence
@@ -2176,7 +2175,7 @@ ScriptsOnlyBuild:
     className: NamePickGui
   - hash:
       serializedVersion: 2
-      Hash: aa6f118edd5df12c3a55cdb3783f4a8d
+      Hash: 25572558fc2a6571c5cff2f5fb5a6400
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: VRPlayerHit
@@ -2224,7 +2223,7 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: b28860683f4a9fc7ec7af42c53610824
+      Hash: 21b04e7e2be335e57c6a0436d8778a63
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ConnManager
@@ -2804,6 +2803,12 @@ ScriptsOnlyBuild:
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Cockpit
     className: CurrentRoomExpectedUsersProperty
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LookCamera
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -5941,7 +5946,13 @@ ScriptsOnlyBuild:
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: LookCamera
+    className: PhotonviewCanTSee
+  - hash:
+      serializedVersion: 2
+      Hash: 5a27472b48afa59c170ef48f4e551187
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ForceReducing
   platform: 19
   scenePathNames:
   - Assets/01.Scenes/TestHandScene.unity

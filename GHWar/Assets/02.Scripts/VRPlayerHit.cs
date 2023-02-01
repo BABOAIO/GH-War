@@ -14,6 +14,7 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
 
     [Header("HP 슬라이더")]
     [SerializeField] Slider hpBar;
+    [SerializeField] Slider hpBar2;
 
     float invincibilityTime = 2.0f;
     public float currentTime = 2.0f;
@@ -37,6 +38,12 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
         currentTime += Time.fixedDeltaTime;
 
         hpBar.value = HP / MaxHP;
+        hpBar2.value = hpBar.value;
+
+        if (photonView.IsMine)
+        {
+            this.GetComponent<MeshRenderer>().enabled = false;
+        }
     }
 
     [PunRPC]

@@ -9,6 +9,8 @@ using UnityEngine.UI;
 
 public class ConnManager : MonoBehaviourPunCallbacks
 {
+    [SerializeField] string[] array_PlayerType = new string[2];
+
     public byte Byte_maxPlayer = 2;
 
     [Header("VR 플레이어 스폰 위치")]
@@ -84,7 +86,7 @@ public class ConnManager : MonoBehaviourPunCallbacks
         if (GameManager.instance.IsVR)
         {
             //Vector2 originPos = Random.insideUnitCircle * 2.0f;
-            GameManager.instance.Array_AllPlayers[0] = PhotonNetwork.Instantiate("VRPlayerXR", VR_Spawn, Quaternion.Euler(0,180,0));
+            GameManager.instance.Array_AllPlayers[0] = PhotonNetwork.Instantiate(array_PlayerType[0], VR_Spawn, Quaternion.Euler(0,180,0));
             GameManager.instance.Array_txtWinner[0] = GameManager.instance.Array_AllPlayers[0].GetComponent<VRPlayerMove1>().Txt_winnerText_VR;
         }
         // 반경 2m 이내에 랜덤 위치에서 PC 플레이어 생성
@@ -92,7 +94,7 @@ public class ConnManager : MonoBehaviourPunCallbacks
         {
             //Vector2 originPos = Random.insideUnitCircle * 2.0f;
             //PhotonNetwork.Instantiate("PCPlayerXR", PC_Spawn, Quaternion.identity);
-            GameManager.instance.Array_AllPlayers[1] = PhotonNetwork.Instantiate("UniversalMale", PC_Spawn, Quaternion.identity);
+            GameManager.instance.Array_AllPlayers[1] = PhotonNetwork.Instantiate(array_PlayerType[1], PC_Spawn, Quaternion.identity);
             GameManager.instance.Array_txtWinner[1] = GameManager.instance.Array_AllPlayers[1].GetComponent<PC_Player_Move>().Txt_winnerText_PC;
         }
 
