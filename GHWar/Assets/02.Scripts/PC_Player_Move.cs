@@ -130,13 +130,17 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
 
                 transform.Translate(v3_moveDirection * Time.deltaTime * f_moveSpeed);
 
-                if (Mathf.Abs(f_h) <= 0.2 && Mathf.Abs(f_v) <= 0.2)
+                if (Mathf.Abs(f_h) <= 0.1f && Mathf.Abs(f_v) <= 0.1f)
                 {
-                    a_player.SetBool("Run", false);
+                    a_player.SetBool("IdleToRun", false);
+                    //a_player.SetBool("Run", false);
                 }
                 else
                 {
-                    a_player.SetBool("Run", true);
+                    a_player.SetBool("IdleToRun", true);
+                    a_player.SetFloat("_RunLeft", f_h);
+                    a_player.SetFloat("_RunForward", f_v);
+                    //a_player.SetBool("Run", true);
                 }
             }
         }

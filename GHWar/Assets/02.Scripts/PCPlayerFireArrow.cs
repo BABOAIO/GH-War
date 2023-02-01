@@ -120,6 +120,7 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
                     // 소리 부분 //
 
                     currentTime = 0;
+
                     a_playerInFire.SetBool("ReadyToShot", false);
                     a_playerInFire.SetBool("Shot", true);
                     Observable.NextFrame().Subscribe(_ => a_playerInFire.SetBool("Shot", false));
@@ -128,11 +129,11 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
                     GameObject obj_tmp = PhotonNetwork.Instantiate("Arrow", firePos.position, firePos.rotation);
                     //obj_tmp.transform.LookAt(firePosEnd.position - firePos.position);
                 }
-                else
-                {
-                    a_playerInFire.SetBool("ToIdle", true);
-                    Observable.NextFrame().Subscribe(_ => a_playerInFire.SetBool("ToIdle", false));
-                }
+                //else
+                //{
+                //    a_playerInFire.SetBool("ToIdle", true);
+                //    Observable.NextFrame().Subscribe(_ => a_playerInFire.SetBool("ToIdle", false));
+                //}
             }
 
 

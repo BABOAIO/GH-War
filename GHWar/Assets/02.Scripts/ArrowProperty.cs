@@ -65,8 +65,8 @@ public class ArrowProperty : MonoBehaviour
             //as_arrow.PlayOneShot(ac_shotHit);
             // 家府何盒 //
 
-            //PhotonNetwork.Destroy(this.gameObject);            
-            StartCoroutine(DestroyDelayed(gameObject, 0.1f));
+            PhotonNetwork.Destroy(this.gameObject);
+            //StartCoroutine(DestroyDelayed(gameObject, 0.1f));
         }
 
         else if(!collision.gameObject.CompareTag("PC_Player"))
@@ -81,8 +81,8 @@ public class ArrowProperty : MonoBehaviour
             //as_arrow.PlayOneShot(ac_shotHit);
             // 家府何盒 // 
 
-            //PhotonNetwork.Destroy(this.gameObject);
-            StartCoroutine(DestroyDelayed(gameObject, 0.1f));
+            PhotonNetwork.Destroy(this.gameObject);
+            //StartCoroutine(DestroyDelayed(gameObject, 0.1f));
         }
     }
 
