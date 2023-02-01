@@ -5,6 +5,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UniRx;
 using UnityEngine.UI;
+using UniRx.Triggers;
 
 public class PC_Player_Move : MonoBehaviourPunCallbacks
 {
@@ -89,6 +90,8 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
             Dodge();
             Wiggle();
         }
+
+        this.GetComponent<CapsuleCollider>().enabled = !xrgrabinteractionPun.isGrab;
     }
 
     private void Update()

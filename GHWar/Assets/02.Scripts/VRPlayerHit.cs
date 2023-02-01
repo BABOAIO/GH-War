@@ -4,6 +4,8 @@ using UnityEngine;
 using Photon.Realtime;
 using Photon.Pun;
 using UnityEngine.UI;
+using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class VRPlayerHit : MonoBehaviourPunCallbacks
 {
@@ -16,6 +18,8 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
     [SerializeField] Slider hpBar;
     [SerializeField] Slider hpBar2;
 
+    [SerializeField] XRBaseController[] xRBaseControllers = new XRBaseController[2];
+
     float invincibilityTime = 2.0f;
     public float currentTime = 2.0f;
 
@@ -27,6 +31,10 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
             if (collision.gameObject.CompareTag("Arrow") && currentTime >= invincibilityTime)
             {
                 print("VR È÷Æ®");
+
+                xRBaseControllers[0].SendHapticImpulse(0.5f, 0.3f);
+                xRBaseControllers[1].SendHapticImpulse(0.5f, 0.3f);
+
                 photonView.RPC("Hit_VRPlayer", RpcTarget.AllBuffered, 1);
                 currentTime = 0.0f;
             }

@@ -1666,8 +1666,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 8977956400030169100}
   - {fileID: 3032198044212444341}
+  - {fileID: 8977956400030169100}
   m_Father: {fileID: 835762982879732597}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1772,7 +1772,7 @@ Transform:
   m_Children:
   - {fileID: 4339310123786191479}
   m_Father: {fileID: 523740616933098936}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6697782300113657929
 MonoBehaviour:
@@ -2353,6 +2353,9 @@ MonoBehaviour:
   HP: 2
   hpBar: {fileID: 4076440505534456477}
   hpBar2: {fileID: 0}
+  xRBaseControllers:
+  - {fileID: 0}
+  - {fileID: 0}
   currentTime: 2
 --- !u!114 &5845419757238311688
 MonoBehaviour:
@@ -3061,7 +3064,7 @@ MonoBehaviour:
     InterpolateOption: 3
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 30000
-    ExtrapolateOption: 1
+    ExtrapolateOption: 0
     ExtrapolateSpeed: 1
     ExtrapolateIncludingRoundTripTime: 1
     ExtrapolateNumberOfStoredPositions: 1
@@ -3208,7 +3211,7 @@ MonoBehaviour:
     InterpolateOption: 3
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 30000
-    ExtrapolateOption: 1
+    ExtrapolateOption: 0
     ExtrapolateSpeed: 1
     ExtrapolateIncludingRoundTripTime: 1
     ExtrapolateNumberOfStoredPositions: 1
@@ -3375,7 +3378,7 @@ MonoBehaviour:
     InterpolateOption: 3
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 10
-    ExtrapolateOption: 1
+    ExtrapolateOption: 0
     ExtrapolateSpeed: 1
     ExtrapolateIncludingRoundTripTime: 1
     ExtrapolateNumberOfStoredPositions: 1
@@ -3518,7 +3521,7 @@ MonoBehaviour:
     InterpolateOption: 3
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 30000
-    ExtrapolateOption: 1
+    ExtrapolateOption: 0
     ExtrapolateSpeed: 1
     ExtrapolateIncludingRoundTripTime: 1
     ExtrapolateNumberOfStoredPositions: 1
@@ -3804,7 +3807,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 15bde43efef92e94cb46c1de274e7e7c, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 15bde43efef92e94cb46c1de274e7e7c, type: 3}
       propertyPath: m_LocalScale.x
@@ -3918,6 +3921,9 @@ MonoBehaviour:
   HP: 2
   hpBar: {fileID: 4076440505534456477}
   hpBar2: {fileID: 8475276248827834905}
+  xRBaseControllers:
+  - {fileID: 1574258887}
+  - {fileID: 625869747}
   currentTime: 2
 --- !u!114 &4525663722560921718
 MonoBehaviour:
@@ -3985,7 +3991,7 @@ MonoBehaviour:
   m_RotationModel:
     SynchronizeEnabled: 1
     InterpolateOption: 1
-    InterpolateRotateTowardsSpeed: 180
+    InterpolateRotateTowardsSpeed: 18000
     InterpolateLerpSpeed: 5
   m_ScaleModel:
     SynchronizeEnabled: 0

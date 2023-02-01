@@ -34,19 +34,6 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
     [Header("게임이 시작했는지 알려주는 변수")]
     public bool B_GameStart = false;
 
-    public bool B_GameStop
-    {
-        get { return B_IsGameOver; }
-        set
-        {
-            B_IsGameOver = value;
-            if(value)
-            {
-                ResetDeathCount(2);
-            }
-        }
-    }
-
     // 스카이박스 초당 회전 값 변수
     [Header("스카이박스 초당 회전 값 변수")]
     public float RotationPerSecond = 2;
@@ -339,6 +326,9 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
         PhotonNetwork.SerializationRate = 30;
 
         as_gm = GetComponent<AudioSource>();
+
+        B_GameStart = false; B_IsGameOver = false;
+        ResetDeathCount(2);
 
         StartCoroutine(WaitPlayer());
     }
