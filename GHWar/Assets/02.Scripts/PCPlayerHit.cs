@@ -5,6 +5,7 @@ using Photon.Pun;
 using UniRx;
 using UnityEngine.UI;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class PCPlayerHit : MonoBehaviourPunCallbacks
 {
@@ -72,6 +73,24 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
                         pv.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
                         currentTime = 0.0f;
                     }
+                }
+            }
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<Rigidbody>() == null) { return; }
+        if (pv.IsMine)
+        {
+            float f_objVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
+            print("PC Player Hit Object Velocity : " + f_objVelocity);
+
+            if (currentTime >= invincibilityTime)
+            {
+                if ((collision.gameObject.CompareTag("RightHand") || collision.gameObject.CompareTag("LeftHand")))
+                {
+                    pv.RPC("FunctionForceReducing", RpcTarget.AllBuffered);
                 }
             }
         }
