@@ -5,6 +5,8 @@ using UnityEngine.XR;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
+using DG.Tweening;
+using UniRx.Triggers;
 
 [RequireComponent(typeof(AudioSource))]
 public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
@@ -40,18 +42,53 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
 
     AudioSource as_gm;
 
+    private void Awake()
+    {
+        // 싱글톤
+        if (instance == null) instance = this;
+
+        // VR 기기인지 체크
+        Debug.Log("VR Device = " + IsPresent().ToString());
+        IsVR = IsPresent();
+
+        //ResetDeathCount(2);
+    }
+
+    void Start()
+    {
+        // 실행화면에 대한 해상도 960x640
+        Screen.SetResolution(960, 640, FullScreenMode.Windowed);
+
+        // 데이터 송수신 빈도 초당 30으로 설정
+        PhotonNetwork.SendRate = 30;
+        PhotonNetwork.SerializationRate = 30;
+
+        as_gm = GetComponent<AudioSource>();
+
+        B_GameStart = false; B_IsGameOver = false;
+
+        ResetDeathCount(2);
+
+        StartCoroutine(WaitPlayer());
+    }
+
     // 1 대 1 한정 다른 플레이어를 대기하는 함수
     IEnumerator WaitPlayer()
     {
+        string str = "Wait for Other Players...";
+        float delay = 1f;
+
         while (!B_GameStart)
         {
+
             // 마스터 클라이언트는 항상 존재하기 때문에 구분해놓음
             if (PhotonNetwork.IsMasterClient)
             {
                 // ConnManager에서 플레이어가 생성될 때, 싱글턴으로 넣어줌
                 if (Array_AllPlayers[0])
                 {
-                    Debug.Log("Wait for Other Player...");
+                    Array_txtWinner[0].text = str;
+                    Debug.Log(str);
                     GameObject o_otherPlayer = GameObject.FindGameObjectWithTag("PC_Player");
 
                     if (o_otherPlayer)
@@ -59,14 +96,17 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
                         Array_AllPlayers[1] = o_otherPlayer;
                         Array_txtWinner[1] = Array_AllPlayers[1].GetComponent<PC_Player_Move>().Txt_winnerText_PC;
                         Debug.Log("Game Start!");
-                        B_GameStart= true;
+
+                        Array_txtWinner[0].text = "Game Start!";
+                        Invoke("ResetText", delay);
                         // sound 등 게임시작 알림
                     }
                 }
                 // ConnManager에서 플레이어가 생성될 때, 싱글턴으로 넣어줌
                 else if (Array_AllPlayers[1])
                 {
-                    Debug.Log("Wait for Other Player...");
+                    Array_txtWinner[1].text = str;
+                    Debug.Log(str);
                     GameObject o_otherPlayer = GameObject.FindGameObjectWithTag("VR_Player");
 
                     if (o_otherPlayer)
@@ -74,8 +114,9 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
                         Array_AllPlayers[0] = o_otherPlayer;
                         Array_txtWinner[0] = Array_AllPlayers[0].GetComponent<VRPlayerMove1>().Txt_winnerText_VR;
                         Debug.Log("Game Start!");
-                        B_GameStart = true;
 
+                        Array_txtWinner[0].text = "Game Start!";
+                        Invoke("ResetText", delay);
                         // sound 등 게임시작 알림
                     }
                 }
@@ -85,7 +126,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
             {
                 if (Array_AllPlayers[0])
                 {
-                    Debug.Log("Wait for Other Player...");
+                    Array_txtWinner[0].text = str;
+                    Debug.Log(str);
                     GameObject o_otherPlayer = GameObject.FindGameObjectWithTag("PC_Player");
 
                     if (o_otherPlayer)
@@ -93,13 +135,16 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
                         Array_AllPlayers[1] = o_otherPlayer;
                         Array_txtWinner[1] = Array_AllPlayers[1].GetComponent<PC_Player_Move>().Txt_winnerText_PC;
                         Debug.Log("Game Start!");
-                        B_GameStart = true;
+
+                        Array_txtWinner[0].text = "Game Start!";
+                        Invoke("ResetText", delay);
                         // sound 등 게임시작 알림
                     }
                 }
                 else if (Array_AllPlayers[1])
                 {
-                    Debug.Log("Wait for Other Player...");
+                    Array_txtWinner[1].text = str;
+                    Debug.Log(str);
                     GameObject o_otherPlayer = GameObject.FindGameObjectWithTag("VR_Player");
 
                     if (o_otherPlayer)
@@ -107,14 +152,24 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
                         Array_AllPlayers[0] = o_otherPlayer;
                         Array_txtWinner[0] = Array_AllPlayers[0].GetComponent<VRPlayerMove1>().Txt_winnerText_VR;
                         Debug.Log("Game Start!");
-                        B_GameStart = true;
 
+                        Array_txtWinner[0].text = "Game Start!";
+                        Invoke("ResetText", delay);
                         // sound 등 게임시작 알림
                     }
                 }
             }
             yield return null;
         }
+
+        Array_txtWinner[1].text = "Game Start!";
+    }
+
+    void ResetText()
+    {
+        Array_txtWinner[0].text = "";
+        Array_txtWinner[1].text = "";
+        B_GameStart = true;
     }
 
     void ResetDeathCount(int i)
@@ -304,35 +359,6 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
 
-    private void Awake()
-    {
-        // 싱글톤
-        if (instance == null) instance = this;
-
-        // VR 기기인지 체크
-        Debug.Log("VR Device = " + IsPresent().ToString());
-        IsVR = IsPresent();
-
-        //ResetDeathCount(2);
-    }
-
-    void Start()
-    {
-        // 실행화면에 대한 해상도 960x640
-        Screen.SetResolution(960, 640, FullScreenMode.Windowed);
-
-        // 데이터 송수신 빈도 초당 30으로 설정
-        PhotonNetwork.SendRate = 30;
-        PhotonNetwork.SerializationRate = 30;
-
-        as_gm = GetComponent<AudioSource>();
-
-        B_GameStart = false; B_IsGameOver = false;
-        ResetDeathCount(2);
-
-        StartCoroutine(WaitPlayer());
-    }
-
     void Update()
     {
         UpdatePhotonNetwork();
@@ -373,6 +399,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
 
         B_IsGameOver = false;
         B_GameStart = false;
+
+        ResetDeathCount(2);
 
         // Canvas, Animator State 초기화
 

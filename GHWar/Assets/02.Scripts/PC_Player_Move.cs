@@ -25,6 +25,8 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
     [Header("PC 플레이어 컨트롤러")]
     [SerializeField] Rigidbody PC_Player_Rigidbody;
 
+    PCPlayerFireArrow fireArrow;
+
     XRGrabInteractionPun xrgrabinteractionPun;
 
     float f_mouseX = 0;
@@ -40,10 +42,10 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
 
     public int jumpCount = 2;
     bool isGround = false;
-    bool isJump = false;
+    public bool isJump = false;
 
     public int dodgeCount = 2;
-    bool isDodge = false;
+    public bool isDodge = false;
     #endregion
 
     public bool isDie = false;
@@ -62,6 +64,7 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
 
         PC_Player_Cam.SetActive(true);
         PC_Player_Rigidbody = GetComponent<Rigidbody>();
+        fireArrow = GetComponent<PCPlayerFireArrow>();
 
         a_player = GetComponent<Animator>();
 
@@ -84,11 +87,19 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
         //print(xrgrabinteractionPun.isGrab);
         if (pv.IsMine)
         {
-            Move();
-            Rotate();
-            Jump();
-            Dodge();
+            if(!isDie)
+            {
+                Move();
+                Rotate();
+                Jump();
+                Dodge();
+            }
             Wiggle();
+
+            if(isJump)
+            {
+                PC_Player_Rigidbody.AddForce(Vector3.down * Time.deltaTime * f_jumpPower, ForceMode.Force);
+            }
         }
 
         this.GetComponent<CapsuleCollider>().enabled = !xrgrabinteractionPun.isGrab;
@@ -119,9 +130,11 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
     [PunRPC]
     public void Move()
     {
-        if (pv.IsMine)
+        if (pv.IsMine
+            //&& !isDodge
+            )
         {
-            if (isDie == false)
+            if (!fireArrow.B_isReadyToShot)
             {
                 float f_h = Input.GetAxis("Horizontal");
                 float f_v = Input.GetAxis("Vertical");      // 플레이어 움직임 입력 받기 (상하좌우)
@@ -130,6 +143,7 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
 
                 transform.Translate(v3_moveDirection * Time.deltaTime * f_moveSpeed);
 
+                // 
                 if (Mathf.Abs(f_h) <= 0.1f && Mathf.Abs(f_v) <= 0.1f)
                 {
                     a_player.SetBool("IdleToRun", false);
@@ -140,6 +154,30 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
                     a_player.SetBool("IdleToRun", true);
                     a_player.SetFloat("_RunLeft", f_h);
                     a_player.SetFloat("_RunForward", f_v);
+                    //a_player.SetBool("Run", true);
+                }
+            }
+
+            else if (fireArrow.B_isReadyToShot && !isJump)
+            {
+                float f_h = Input.GetAxis("Horizontal");
+                float f_v = Input.GetAxis("Vertical");      // 플레이어 움직임 입력 받기 (상하좌우)
+
+                Vector3 v3_moveDirection = new Vector3(f_h, 0, f_v);
+
+                transform.Translate(v3_moveDirection * Time.deltaTime * f_moveSpeed / 2.0f);
+
+                // 
+                if (Mathf.Abs(f_h) <= 0.1f && Mathf.Abs(f_v) <= 0.1f)
+                {
+                    a_player.SetBool("IdleToAimWalk", false);
+                    //a_player.SetBool("Run", false);
+                }
+                else
+                {
+                    a_player.SetBool("IdleToAimWalk", true);
+                    a_player.SetFloat("_AimWalkLeft", f_h);
+                    a_player.SetFloat("_AimWalkForward", f_v);
                     //a_player.SetBool("Run", true);
                 }
             }
@@ -166,29 +204,23 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
     {
         if (pv.IsMine)
         {
-            if (isDie == false)
+            if (isGround && !isDodge)
             {
-                if (isGround && isDodge == false)
+                if (jumpCount > 0)
                 {
-                    if (jumpCount > 0)
+                    if (Input.GetKeyDown(KeyCode.Space))
                     {
-                        if (Input.GetKeyDown(KeyCode.Space))
-                        {
-                            PC_Player_Rigidbody.AddForce(Vector3.up * f_jumpPower * 1000f * Time.deltaTime, ForceMode.Impulse);
-                            jumpCount--;
-                            isJump = true;
+                        PC_Player_Rigidbody.AddForce(Vector3.up * f_jumpPower * 1000f * Time.deltaTime, ForceMode.Impulse);
+                        jumpCount--;
+                        isJump = true;
+                        //a_player.SetTrigger("Jump");
 
-                            //a_player.SetTrigger("Jump");
+                        fireArrow.B_isReadyToShot = false;
 
-                            // setbool을 settrigger처럼 쓸 수 있음
-                            a_player.SetBool("IsJump", true);
-                            Observable.NextFrame().Subscribe(_ => a_player.SetBool("IsJump", false));
-                        }
+                        // setbool을 settrigger처럼 쓸 수 있음
+                        a_player.SetBool("IsJump", true);
+                        Observable.NextFrame().Subscribe(_ => a_player.SetBool("IsJump", false));
                     }
-                }
-                else
-                {
-                    //a_player.SetBool("IsJump", false);
                 }
             }
         }
@@ -199,29 +231,28 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
     {
         if (pv.IsMine)
         {
-            if (isDie == false)
+            if (!isJump && !isDodge)
             {
-                if (isJump == false && isDodge == false)
+                if (dodgeCount > 0)
                 {
-                    if (dodgeCount > 0)
+                    if (Input.GetKeyDown(KeyCode.LeftShift))
                     {
-                        if (Input.GetKeyDown(KeyCode.LeftShift))
-                        {
-                            f_moveSpeed *= 2;
-                            //a_player.SetTrigger("Roll")
-                            a_player.SetBool("IsRoll", true);
-                            Observable.NextFrame().Subscribe(_ => a_player.SetBool("IsRoll", false));
-                            dodgeCount--;
-                            isDodge = true;
+                        f_moveSpeed *= 2f;
+                        //PC_Player_Rigidbody.AddForce(PC_Player_Transform.forward * 300f, ForceMode.Impulse);
+                        //a_player.SetTrigger("Roll")
+                        fireArrow.B_isReadyToShot = false;
+                        a_player.SetBool("IsRoll", true);
+                        Observable.NextFrame().Subscribe(_ => a_player.SetBool("IsRoll", false));
+                        dodgeCount--;
+                        isDodge = true;
 
-                            Invoke("DodgeOut", 0.5f);
-                        }
+                        Invoke("DodgeOut", 0.7f);
                     }
                 }
-                else
-                {
-                    //a_player.SetBool("Roll", false);
-                }
+            }
+            else
+            {
+                //a_player.SetBool("Roll", false);
             }
         }
     }
@@ -231,7 +262,8 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
     {
         if (pv.IsMine)
         {
-            f_moveSpeed *= 0.5f;
+            PC_Player_Rigidbody.velocity = Vector3.zero;
+            f_moveSpeed /= 2f;
             dodgeCount = 2;
             isDodge = false;
         }

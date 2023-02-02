@@ -33,6 +33,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
         PPM = GetComponent<PC_Player_Move>();
         PPFA = GetComponent<PCPlayerFireArrow>();
 
+        HP = MaxHP;
         hpBar.value = HP / MaxHP;
     }
 
@@ -127,6 +128,11 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
                 PPM.GetComponent<PC_Player_Move>().isDie = false;
                 PPFA.GetComponent<PCPlayerFireArrow>().isDie = false;
             }
+        }
+        else
+        {
+            a_PCPlayer.SetBool("IsHit", true);
+            Observable.NextFrame().Subscribe(_ => a_PCPlayer.SetBool("IsHit", false));
         }
     }
 
