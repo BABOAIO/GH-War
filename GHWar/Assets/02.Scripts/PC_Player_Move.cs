@@ -89,10 +89,14 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
         {
             if(!isDie)
             {
-                Move();
-                Rotate();
-                Jump();
-                Dodge();
+                pv.RPC("Move", RpcTarget.All);
+                pv.RPC("Rotate", RpcTarget.All);
+                pv.RPC("Jump", RpcTarget.All);
+                pv.RPC("Dodge", RpcTarget.All);
+                //Move();
+                //Rotate();
+                //Jump();
+                //Dodge();
             }
             Wiggle();
 

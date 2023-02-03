@@ -105,48 +105,59 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
 
         currentTime += Time.fixedDeltaTime;
 
-        if (isDie == false)
+        if (pv.IsMine)
         {
-            if ((pv.IsMine) && (Input.GetMouseButtonDown(0))
-                && (currentTime >= delayTime)
-                && !_Move.isJump
-                )
+            if (isDie == false)
             {
-                a_playerInFire.SetBool("ReadyToShot", true);
-                a_playerInFire.SetBool("RunToAimWalk", true);
-                B_isReadyToShot = true;
-                //Observable.NextFrame().Subscribe(_ => a_playerInFire.SetBool("ReadyToShot", false));
-                //obj_tmp.transform.LookAt(firePosEnd.position - firePos.position);
+                //Shot();
+                pv.RPC("Shot", RpcTarget.All);
             }
-            if ((pv.IsMine) && (Input.GetMouseButtonUp(0))
-                && B_isReadyToShot
-                )
-            {
-                // 家府 何盒 //
-                as_fireArrow.PlayOneShot(ac_shotInit);
-                // 家府 何盒 //
+        }
+    }
 
-                currentTime = 0;
+    [PunRPC]
 
-                a_playerInFire.SetBool("ReadyToShot", false);
-                a_playerInFire.SetBool("RunToAimWalk", false);
-                a_playerInFire.SetBool("Shot", true);
-                Observable.NextFrame().Subscribe(_ => a_playerInFire.SetBool("Shot", false));
-                Invoke("DelayedActive", 0.8f);
+    private void Shot()
+    {
+        if (Input.GetMouseButtonDown(0)
+            && (currentTime >= delayTime)
+            && !_Move.isJump
+            )
+        {
+            a_playerInFire.SetBool("ReadyToShot", true);
+            a_playerInFire.SetBool("RunToAimWalk", true);
+            B_isReadyToShot = true;
+            //Observable.NextFrame().Subscribe(_ => a_playerInFire.SetBool("ReadyToShot", false));
+            //obj_tmp.transform.LookAt(firePosEnd.position - firePos.position);
+        }
+        if (Input.GetMouseButtonUp(0)
+            && B_isReadyToShot
+            )
+        {
+            // 家府 何盒 //
+            as_fireArrow.PlayOneShot(ac_shotInit);
+            // 家府 何盒 //
 
-                //Vector2 v2_tmp = (firePosEnd.position - firePos.position);
-                GameObject obj_tmp = PhotonNetwork.Instantiate("Arrow", firePos.position, firePos.rotation);
-                //obj_tmp.transform.LookAt(firePosEnd.position - firePos.position);
-                //else
-                //{
-                //    a_playerInFire.SetBool("ToIdle", true);
-                //    Observable.NextFrame().Subscribe(_ => a_playerInFire.SetBool("ToIdle", false));
-                //}
-            }
-            else
-            {
-                // 檬扁拳
-            }
+            currentTime = 0;
+
+            a_playerInFire.SetBool("ReadyToShot", false);
+            a_playerInFire.SetBool("RunToAimWalk", false);
+            a_playerInFire.SetBool("Shot", true);
+            Observable.NextFrame().Subscribe(_ => a_playerInFire.SetBool("Shot", false));
+            Invoke("DelayedActive", 0.8f);
+
+            //Vector2 v2_tmp = (firePosEnd.position - firePos.position);
+            GameObject obj_tmp = PhotonNetwork.Instantiate("Arrow", firePos.position, firePos.rotation);
+            //obj_tmp.transform.LookAt(firePosEnd.position - firePos.position);
+            //else
+            //{
+            //    a_playerInFire.SetBool("ToIdle", true);
+            //    Observable.NextFrame().Subscribe(_ => a_playerInFire.SetBool("ToIdle", false));
+            //}
+        }
+        else
+        {
+            // 檬扁拳
         }
     }
 

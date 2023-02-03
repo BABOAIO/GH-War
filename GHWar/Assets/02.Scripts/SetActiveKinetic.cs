@@ -12,4 +12,16 @@ public class SetActiveKinetic : MonoBehaviour
         V3_origonPos= transform.position;
         Q_origonRot= transform.rotation;
     }
+
+    private void Update()
+    {
+        if(GameManager.instance.B_GameStart)
+        {
+            gameObject.GetComponent<Rigidbody>().isKinematic = false;
+        }
+        if (!GameManager.instance.B_GameStart)
+        {
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        }
+    }
 }

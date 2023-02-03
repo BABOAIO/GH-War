@@ -18,6 +18,15 @@ public class TurretFire : MonoBehaviourPunCallbacks
 
     void Update()
     {
+        if (photonView.IsMine)
+        {
+            photonView.RPC("LookVRPlayer", RpcTarget.All);
+        }
+    }
+
+    [PunRPC]
+    void LookVRPlayer()
+    {
         if (tr_target != null) { tr_target = GameObject.FindGameObjectWithTag("VRPlayerHead").transform; }
 
         Vector3 v3_direction = tr_target.position - transform.position;

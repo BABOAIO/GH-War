@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 8878436472767343600}
   - component: {fileID: 8878436472767343603}
   - component: {fileID: 8878436472767343607}
-  - component: {fileID: 8878436472767343604}
   - component: {fileID: 8878436472767343605}
   m_Layer: 10
   m_Name: Cannon
@@ -130,22 +129,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   f_shotPower: 50
---- !u!114 &8878436472767343604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8878436472767343613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
 --- !u!114 &8878436472767343605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,10 +145,9 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
-  ObservedComponents:
-  - {fileID: 8878436472767343604}
+  ObservedComponents: []
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -645,7 +627,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
   - {fileID: 8878436473731772226}
