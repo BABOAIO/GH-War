@@ -46,11 +46,6 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
             float f_objVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
             //print("PC Player Hit Object Velocity : " + f_objVelocity);
 
-            if (collision.gameObject.CompareTag("FallingZone"))
-            {
-                pv.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
-            }
-
             if (currentTime >= invincibilityTime)
             {
                 if ((collision.gameObject.CompareTag("RightHand") || collision.gameObject.CompareTag("LeftHand")))
@@ -85,6 +80,25 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (pv.IsMine)
+        {
+            if (other.gameObject.CompareTag("FallingZone"))
+            {
+                // 싱글턴을 통한 원래 스폰 위치로 복귀
+                transform.position = ConnManager.Conn.PC_Spawn;
+
+                // 반동으로 떨어졌을때 힘 억제
+                gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+                currentTime = 0.0f;
+
+                pv.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
+            }
+        }
+    }
+
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.GetComponent<Rigidbody>() == null) { return; }
@@ -108,6 +122,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
         currentTime += Time.fixedDeltaTime;
 
         hpBar.value = HP / MaxHP;
+
     }
 
 

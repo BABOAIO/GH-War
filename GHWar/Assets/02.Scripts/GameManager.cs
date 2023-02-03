@@ -14,14 +14,14 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
 {
     public static GameManager instance;
 
-    [SerializeField] List<GameObject> Trees = new List<GameObject>();
-    List<Vector3> v3_treesOriginPos = new List<Vector3>();
-    List<Quaternion> q_treesRotation = new List<Quaternion>();
+    //[SerializeField] List<GameObject> Trees = new List<GameObject>();
+    //List<Vector3> v3_treesOriginPos = new List<Vector3>();
+    //List<Quaternion> q_treesRotation = new List<Quaternion>();
 
     //[SerializeField] GameObject obj_trees;
     //Vector3 v3_treesOriginPos;
     //Quaternion q_treesOriginRot;
-    [SerializeField] GameObject obj_FallingArea;
+    //[SerializeField] GameObject obj_FallingArea;
 
     // VR인지 PC인지를 구분
     [Header("VR 상태 변수")]
@@ -76,11 +76,11 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
         as_gm = GetComponent<AudioSource>();
 
         B_GameStart = false; B_IsGameOver = false;
-        for (int i = 0; i < Trees.Count; i++)
-        {
-            v3_treesOriginPos[i] = Trees[i].GetComponent<SetActiveKinetic>().V3_origonPos;
-            q_treesRotation[i] = Trees[i].GetComponent<SetActiveKinetic>().Q_origonRot;
-        }
+        //for (int i = 0; i < Trees.Count; i++)
+        //{
+        //    v3_treesOriginPos[i] = Trees[i].GetComponent<SetActiveKinetic>().V3_origonPos;
+        //    q_treesRotation[i] = Trees[i].GetComponent<SetActiveKinetic>().Q_origonRot;
+        //}
 
         //v3_treesOriginPos = obj_trees.transform.position;
         //q_treesOriginRot = obj_trees.transform.rotation;
@@ -199,14 +199,14 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
         i_VRDeathCount = i;
         i_PCDeathCount = i;
 
-        for (int j = 0; j < i_VRDeathCount; j++)
-        {
-            Trees[j].transform.position = v3_treesOriginPos[j];
-            Trees[j].transform.rotation = q_treesRotation[j];
-        }
-        //obj_trees.transform.position = v3_treesOriginPos;
-        //obj_trees.transform.rotation = q_treesOriginRot;
-        obj_FallingArea.SetActive(true);
+        //for (int j = 0; j < i_VRDeathCount; j++)
+        //{
+        //    Trees[j].transform.position = v3_treesOriginPos[j];
+        //    Trees[j].transform.rotation = q_treesRotation[j];
+        //}
+        ////obj_trees.transform.position = v3_treesOriginPos;
+        ////obj_trees.transform.rotation = q_treesOriginRot;
+        //obj_FallingArea.SetActive(true);
 
         GameObject[] tmp_rock = GameObject.FindGameObjectsWithTag("Rock");
         if(tmp_rock != null)
