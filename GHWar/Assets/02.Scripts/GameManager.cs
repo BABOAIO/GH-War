@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
     //Quaternion q_treesOriginRot;
     //[SerializeField] GameObject obj_FallingArea;
 
+    [SerializeField] List<TurretFire> turrets = new List<TurretFire>();
+
     // VR인지 PC인지를 구분
     [Header("VR 상태 변수")]
     public bool IsVR;
@@ -56,6 +58,11 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         // 싱글톤
         if (instance == null) instance = this;
+
+        foreach (var t in turrets)
+        {
+            t.enabled = false;
+        }
 
         // VR 기기인지 체크
         Debug.Log("VR Device = " + IsPresent().ToString());
@@ -207,6 +214,11 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
         ////obj_trees.transform.position = v3_treesOriginPos;
         ////obj_trees.transform.rotation = q_treesOriginRot;
         //obj_FallingArea.SetActive(true);
+
+        foreach (var t in turrets)
+        {
+            t.enabled = true;
+        }
 
         GameObject[] tmp_rock = GameObject.FindGameObjectsWithTag("Rock");
         if(tmp_rock != null)

@@ -8,28 +8,27 @@ public class TurretFire : MonoBehaviourPunCallbacks
     [SerializeField] float f_shotPower = 50f;
     Animation anim_this;
 
-    Transform tr_target;
+    GameObject o_target;
+    Transform tr_this;
 
     void Start()
     {
         anim_this = GetComponent<Animation>();
-        tr_target = GameObject.FindGameObjectWithTag("VRPlayerHead").transform;
+        o_target = GameObject.FindGameObjectWithTag("VRPlayerHead");
+        tr_this = GetComponent<Transform>();
     }
 
     void Update()
     {
-        if (photonView.IsMine)
-        {
-            photonView.RPC("LookVRPlayer", RpcTarget.All);
-        }
+        LookVRPlayer();
     }
 
     [PunRPC]
     void LookVRPlayer()
     {
-        if (tr_target != null) { tr_target = GameObject.FindGameObjectWithTag("VRPlayerHead").transform; }
+        if (o_target != null) { o_target = GameObject.FindGameObjectWithTag("VRPlayerHead"); }
 
-        Vector3 v3_direction = tr_target.position - transform.position;
+        Vector3 v3_direction = o_target.transform.position - tr_this.position;
         transform.rotation = Quaternion.LookRotation(v3_direction.normalized);
     }
 

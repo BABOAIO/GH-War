@@ -17,10 +17,12 @@ public class SetActiveKinetic : MonoBehaviour
     {
         if(GameManager.instance.B_GameStart)
         {
+            gameObject.GetComponent<BoxCollider>().enabled = true;
             gameObject.GetComponent<Rigidbody>().isKinematic = false;
         }
         if (!GameManager.instance.B_GameStart)
         {
+            gameObject.GetComponent<BoxCollider>().enabled = false;
             gameObject.GetComponent<Rigidbody>().isKinematic = true;
         }
     }
