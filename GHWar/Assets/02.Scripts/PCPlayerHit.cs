@@ -46,6 +46,11 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
             float f_objVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
             //print("PC Player Hit Object Velocity : " + f_objVelocity);
 
+            if (collision.gameObject.CompareTag("FallingZone"))
+            {
+                pv.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
+            }
+
             if (currentTime >= invincibilityTime)
             {
                 if ((collision.gameObject.CompareTag("RightHand") || collision.gameObject.CompareTag("LeftHand")))
