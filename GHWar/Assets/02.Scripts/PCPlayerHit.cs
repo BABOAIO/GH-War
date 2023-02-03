@@ -39,11 +39,12 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
 
     private void OnCollisionEnter(Collision collision)
     {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Turret")) { return; }
         if (collision.gameObject.GetComponent<Rigidbody>() == null) { return; }
         if (pv.IsMine)
         {
             float f_objVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
-            print("PC Player Hit Object Velocity : " + f_objVelocity);
+            //print("PC Player Hit Object Velocity : " + f_objVelocity);
 
             if (currentTime >= invincibilityTime)
             {
@@ -85,7 +86,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
         if (pv.IsMine)
         {
             float f_objVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
-            print("PC Player Hit Object Velocity : " + f_objVelocity);
+            //print("PC Player Hit Object Velocity : " + f_objVelocity);
 
             if (currentTime >= invincibilityTime)
             {

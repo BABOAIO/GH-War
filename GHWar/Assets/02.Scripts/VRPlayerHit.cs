@@ -28,7 +28,9 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
     {
         if (photonView.IsMine)
         {
-            if (collision.gameObject.CompareTag("Arrow") && currentTime >= invincibilityTime)
+            if (currentTime >= invincibilityTime
+                && (collision.gameObject.CompareTag("Arrow") || collision.gameObject.CompareTag("CannonBall"))
+                ) 
             {
                 print("VR È÷Æ®");
 

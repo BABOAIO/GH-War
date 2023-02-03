@@ -1,563 +1,571 @@
 { "pid": 0, "tid": -1, "ph": "M", "name": "process_name", "args": { "name": "BeeDriver" } },
 { "pid": 0, "tid": -1, "ph": "M", "name": "process_sort_index", "args": { "sort_index": "-2" } },
 { "pid": 0, "tid": 1, "ph": "M", "name": "thread_name", "args": { "name": "" } },
-{ "pid": 0, "tid": 1, "ts": 1675233964431738, "dur": 704528, "ph": "X", "name": "Build Player", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1675233964432055, "dur": 15204, "ph": "X", "name": "WriteBuildProgramData", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1675233964447263, "dur": 678116, "ph": "X", "name": "Run Backend", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1675233965125383, "dur": 10882, "ph": "X", "name": "Finish", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1675233965136996, "dur": 34, "ph": "X", "name": "", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1675402437027596, "dur": 713422, "ph": "X", "name": "Build Player", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1675402437027880, "dur": 1700, "ph": "X", "name": "WriteBuildProgramData", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1675402437029582, "dur": 709909, "ph": "X", "name": "Run Backend", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1675402437739494, "dur": 1523, "ph": "X", "name": "Finish", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1675402437741497, "dur": 25, "ph": "X", "name": "", "args": {} },
 { "cat":"", "pid":12345, "tid":0, "ts":0, "ph":"M", "name":"process_name", "args": { "name":"bee_backend" } }
-,{ "pid":12345, "tid":0, "ts":1675233964472138, "dur":1074, "ph":"X", "name": "DriverInitData",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1675233964473223, "dur":238, "ph":"X", "name": "Tundra",  "args": { "detail":"RemoveStaleOutputs" }}
-,{ "pid":12345, "tid":0, "ts":1675233964473503, "dur":46, "ph":"X", "name": "Tundra",  "args": { "detail":"PrepareNodes" }}
-,{ "pid":12345, "tid":0, "ts":1675233964473549, "dur":389, "ph":"X", "name": "Tundra",  "args": { "detail":"BuildQueueInit" }}
-,{ "pid":12345, "tid":0, "ts":1675233964473982, "dur":790, "ph":"X", "name": "EnqueueRequestedNodes",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1675233964474772, "dur":2, "ph":"X", "name": "SortWorkingStack",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1675233965109572, "dur":175, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1675233965109747, "dur":19, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1675233965109766, "dur":3, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1675233965109769, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1675233965109774, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1675233965109775, "dur":7, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1675233965109782, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1675233965109783, "dur":5, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1675233965109788, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1675233965109790, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1675233965109794, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1675233965109796, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1675233965109800, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1675233965109801, "dur":5, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1675233965109806, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1675233965109808, "dur":5, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1675233965109813, "dur":0, "ph":"X", "name": "SharedResourceDestroy",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1675233965109826, "dur":1, "ph":"X", "name": "BuildQueueDestroyTail",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1675233965109857, "dur":2448, "ph":"X", "name": "Tundra",  "args": { "detail":"Write AllBuiltNodes" }}
-,{ "pid":12345, "tid":1, "ts":1675233964474199, "dur":582, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964474782, "dur":3935, "ph":"X", "name": "CheckDagSignatures",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964478733, "dur":1, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"WriteText Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info" }}
-,{ "pid":12345, "tid":1, "ts":1675233964478736, "dur":120, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964478863, "dur":2, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/app.info" }}
-,{ "pid":12345, "tid":1, "ts":1675233964478865, "dur":89, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964478954, "dur":101, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/4.0/web.config" }}
-,{ "pid":12345, "tid":1, "ts":1675233964479055, "dur":120, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964479176, "dur":138, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
-,{ "pid":12345, "tid":1, "ts":1675233964479314, "dur":63, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964479378, "dur":130, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar.exe" }}
-,{ "pid":12345, "tid":1, "ts":1675233964479508, "dur":52, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964479561, "dur":40, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.XRModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1675233964479601, "dur":37, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964479638, "dur":40, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.WindModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1675233964479678, "dur":36, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964479714, "dur":44, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.VirtualTexturingModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1675233964479758, "dur":43, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964479801, "dur":42, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.VFXModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1675233964479843, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964479878, "dur":47, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1675233964479925, "dur":39, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964479965, "dur":48, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UnityWebRequestModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1675233964480013, "dur":36, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964480050, "dur":28, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1675233964480078, "dur":22, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964480101, "dur":25, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UnityCurlModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1675233964480127, "dur":32, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964480159, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UnityConnectModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1675233964480197, "dur":46, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964480244, "dur":48, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UnityAnalyticsCommonModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1675233964480292, "dur":56, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964480349, "dur":62, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UIModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1675233964480411, "dur":26, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964480438, "dur":36, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UIElementsModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1675233964480474, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964480509, "dur":6748, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UI.pdb" }}
-,{ "pid":12345, "tid":1, "ts":1675233964487257, "dur":47, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964487305, "dur":48, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1675233964487354, "dur":41, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964487397, "dur":45, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1675233964487443, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964487477, "dur":34, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.TerrainModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1675233964487511, "dur":41, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964487552, "dur":37, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.SubsystemsModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1675233964487589, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964487623, "dur":36, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.SubstanceModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1675233964487659, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964487693, "dur":35, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.StreamingModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1675233964487728, "dur":31, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964487760, "dur":33, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.SpriteShapeModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1675233964487793, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964487827, "dur":35, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
-,{ "pid":12345, "tid":1, "ts":1675233964487862, "dur":36, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964487898, "dur":14824, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.SpatialTracking.pdb" }}
-,{ "pid":12345, "tid":1, "ts":1675233964502722, "dur":78, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964502802, "dur":10896, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.XR.Management.pdb" }}
-,{ "pid":12345, "tid":1, "ts":1675233964513698, "dur":76, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964513776, "dur":6877, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.XR.Interaction.Toolkit.pdb" }}
-,{ "pid":12345, "tid":1, "ts":1675233964520654, "dur":79, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964520735, "dur":5711, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.VisualScripting.State.pdb" }}
-,{ "pid":12345, "tid":1, "ts":1675233964526447, "dur":51, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964526499, "dur":8867, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.VisualScripting.Flow.pdb" }}
-,{ "pid":12345, "tid":1, "ts":1675233964535367, "dur":77, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964535446, "dur":94550, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.VisualScripting.Flow.dll" }}
-,{ "pid":12345, "tid":1, "ts":1675233964629996, "dur":50, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964630048, "dur":6596, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Networking.pdb" }}
-,{ "pid":12345, "tid":1, "ts":1675233964636644, "dur":82, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964636728, "dur":8001, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Environments.pdb" }}
-,{ "pid":12345, "tid":1, "ts":1675233964644730, "dur":47, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964644778, "dur":6025, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Configuration.pdb" }}
-,{ "pid":12345, "tid":1, "ts":1675233964650804, "dur":60, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964650866, "dur":108026, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.InputSystem.dll" }}
-,{ "pid":12345, "tid":1, "ts":1675233964758892, "dur":74, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964758968, "dur":42, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Photon3Unity3D.pdb" }}
-,{ "pid":12345, "tid":1, "ts":1675233964759010, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964759044, "dur":33, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Photon3Unity3D.dll" }}
-,{ "pid":12345, "tid":1, "ts":1675233964759077, "dur":32, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964759109, "dur":8816, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.VR.pdb" }}
-,{ "pid":12345, "tid":1, "ts":1675233964767926, "dur":80, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233964768008, "dur":301745, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.VR.dll" }}
-,{ "pid":12345, "tid":1, "ts":1675233965069753, "dur":36, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":1, "ts":1675233965069789, "dur":39786, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964474231, "dur":555, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964474787, "dur":3935, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964478732, "dur":133, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
-,{ "pid":12345, "tid":2, "ts":1675233964478865, "dur":118, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964478984, "dur":103, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
-,{ "pid":12345, "tid":2, "ts":1675233964479087, "dur":70, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964479158, "dur":92, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
-,{ "pid":12345, "tid":2, "ts":1675233964479251, "dur":65, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964479317, "dur":102, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
-,{ "pid":12345, "tid":2, "ts":1675233964479420, "dur":81, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964479502, "dur":62, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/websocket-sharp.dll" }}
-,{ "pid":12345, "tid":2, "ts":1675233964479564, "dur":38, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964479603, "dur":8368, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.XR.LegacyInputHelpers.pdb" }}
-,{ "pid":12345, "tid":2, "ts":1675233964487971, "dur":63, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964488035, "dur":29507, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.SpatialTracking.dll" }}
-,{ "pid":12345, "tid":2, "ts":1675233964517543, "dur":82, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964517627, "dur":67284, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.XR.Interaction.Toolkit.dll" }}
-,{ "pid":12345, "tid":2, "ts":1675233964584911, "dur":60, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964584972, "dur":899, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Threading.dll" }}
-,{ "pid":12345, "tid":2, "ts":1675233964585872, "dur":47, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964585921, "dur":7157, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Telemetry.pdb" }}
-,{ "pid":12345, "tid":2, "ts":1675233964593079, "dur":49, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964593129, "dur":6573, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Scheduler.pdb" }}
-,{ "pid":12345, "tid":2, "ts":1675233964599703, "dur":77, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964599782, "dur":30107, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Scheduler.dll" }}
-,{ "pid":12345, "tid":2, "ts":1675233964629890, "dur":84, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964629977, "dur":39938, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Registration.dll" }}
-,{ "pid":12345, "tid":2, "ts":1675233964669916, "dur":145, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964670063, "dur":127404, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/PhotonUnityNetworking.Utilities.dll" }}
-,{ "pid":12345, "tid":2, "ts":1675233964797469, "dur":60, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964797531, "dur":5972, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.Voice.Demo.pdb" }}
-,{ "pid":12345, "tid":2, "ts":1675233964803503, "dur":51, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964803555, "dur":105140, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.Spatializer.dll" }}
-,{ "pid":12345, "tid":2, "ts":1675233964908695, "dur":68, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964908766, "dur":5653, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Facebook.WitAI.pdb" }}
-,{ "pid":12345, "tid":2, "ts":1675233964914419, "dur":48, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964914468, "dur":1381, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Facebook.Wit.TTS.Samples.dll" }}
-,{ "pid":12345, "tid":2, "ts":1675233964915849, "dur":48, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964915898, "dur":8210, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Facebook.Wit.TTS.pdb" }}
-,{ "pid":12345, "tid":2, "ts":1675233964924108, "dur":63, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964924173, "dur":7641, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Facebook.Wit.Conduit.pdb" }}
-,{ "pid":12345, "tid":2, "ts":1675233964931815, "dur":67, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964931884, "dur":10186, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/AssistantCoreSDKRuntime.pdb" }}
-,{ "pid":12345, "tid":2, "ts":1675233964942070, "dur":54, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964942125, "dur":8333, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Assembly-CSharp.pdb" }}
-,{ "pid":12345, "tid":2, "ts":1675233964950475, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964951370, "dur":2463, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Assembly-CSharp.pdb" }}
-,{ "pid":12345, "tid":2, "ts":1675233964953875, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Plugins/x86_64/OVRPlugin.dll" }}
-,{ "pid":12345, "tid":2, "ts":1675233964953917, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964953951, "dur":39, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Plugins/x86_64/OculusXRPlugin.dll" }}
-,{ "pid":12345, "tid":2, "ts":1675233964953990, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964954024, "dur":36, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Plugins/x86_64/InteractionSdk.dll" }}
-,{ "pid":12345, "tid":2, "ts":1675233964954060, "dur":31, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964954092, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Plugins/x86_64/OVRLipSync.dll" }}
-,{ "pid":12345, "tid":2, "ts":1675233964954130, "dur":79, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964954210, "dur":39, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/UnitySubsystems/OculusXRPlugin/UnitySubsystemsManifest.json" }}
-,{ "pid":12345, "tid":2, "ts":1675233964954249, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964954283, "dur":107, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/StreamingAssets/UnityServicesProjectConfiguration.json" }}
-,{ "pid":12345, "tid":2, "ts":1675233964954390, "dur":84, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964954474, "dur":39, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Resources/unity_builtin_extra" }}
-,{ "pid":12345, "tid":2, "ts":1675233964954519, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964954561, "dur":1057, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Resources/unity_builtin_extra" }}
-,{ "pid":12345, "tid":2, "ts":1675233964955655, "dur":35, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/sharedassets0.resource" }}
-,{ "pid":12345, "tid":2, "ts":1675233964955695, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964955719, "dur":682, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/sharedassets0.resource" }}
-,{ "pid":12345, "tid":2, "ts":1675233964956438, "dur":34, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/sharedassets0.assets.resS" }}
-,{ "pid":12345, "tid":2, "ts":1675233964956478, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":2, "ts":1675233964956483, "dur":113154, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/sharedassets0.assets.resS" }}
-,{ "pid":12345, "tid":2, "ts":1675233965069670, "dur":39914, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1675233964474272, "dur":521, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1675233964474794, "dur":3929, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1675233964478732, "dur":151, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
-,{ "pid":12345, "tid":3, "ts":1675233964478883, "dur":106, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1675233964478990, "dur":119, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
-,{ "pid":12345, "tid":3, "ts":1675233964479109, "dur":66, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1675233964479176, "dur":122, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
-,{ "pid":12345, "tid":3, "ts":1675233964479299, "dur":68, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1675233964479368, "dur":137, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/UnityCrashHandler64.exe" }}
-,{ "pid":12345, "tid":3, "ts":1675233964479505, "dur":50, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1675233964479556, "dur":38306, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/VoiceSDK.Dictation.Runtime.dll" }}
-,{ "pid":12345, "tid":3, "ts":1675233964517862, "dur":90, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1675233964517953, "dur":6454, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.XR.CoreUtils.pdb" }}
-,{ "pid":12345, "tid":3, "ts":1675233964524407, "dur":75, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1675233964524484, "dur":60036, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.VisualScripting.State.dll" }}
-,{ "pid":12345, "tid":3, "ts":1675233964584521, "dur":172, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1675233964584696, "dur":8289, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Threading.pdb" }}
-,{ "pid":12345, "tid":3, "ts":1675233964592986, "dur":52, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1675233964593041, "dur":51207, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Telemetry.dll" }}
-,{ "pid":12345, "tid":3, "ts":1675233964644248, "dur":83, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1675233964644333, "dur":973, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Device.dll" }}
-,{ "pid":12345, "tid":3, "ts":1675233964645306, "dur":48, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1675233964645354, "dur":28008, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Configuration.dll" }}
-,{ "pid":12345, "tid":3, "ts":1675233964673363, "dur":56, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1675233964673421, "dur":5781, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/PhotonUnityNetworking.pdb" }}
-,{ "pid":12345, "tid":3, "ts":1675233964679203, "dur":80, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1675233964679285, "dur":7606, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/PhotonUnityNetworking.Demos.pdb" }}
-,{ "pid":12345, "tid":3, "ts":1675233964686892, "dur":54, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1675233964686948, "dur":143863, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/PhotonUnityNetworking.Demos.dll" }}
-,{ "pid":12345, "tid":3, "ts":1675233964830811, "dur":83, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1675233964830897, "dur":11481, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.LipSync.pdb" }}
-,{ "pid":12345, "tid":3, "ts":1675233964842378, "dur":61, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1675233964842441, "dur":5708, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.Interaction.OVR.Samples.pdb" }}
-,{ "pid":12345, "tid":3, "ts":1675233964848150, "dur":87, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1675233964848238, "dur":66090, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.Interaction.OVR.dll" }}
-,{ "pid":12345, "tid":3, "ts":1675233964914328, "dur":136, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1675233964914466, "dur":7593, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Facebook.Wit.TTS.Samples.pdb" }}
-,{ "pid":12345, "tid":3, "ts":1675233964922059, "dur":93, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1675233964922154, "dur":28525, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Facebook.Wit.Dictation.dll" }}
-,{ "pid":12345, "tid":3, "ts":1675233964950680, "dur":77, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1675233964950759, "dur":157871, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Assembly-CSharp.dll" }}
-,{ "pid":12345, "tid":3, "ts":1675233965108636, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":3, "ts":1675233965108652, "dur":870, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Assembly-CSharp.dll" }}
-,{ "pid":12345, "tid":3, "ts":1675233965109552, "dur":1, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"Player" }}
-,{ "pid":12345, "tid":3, "ts":1675233965109553, "dur":0, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964474301, "dur":498, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964474799, "dur":3920, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964478741, "dur":260, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
-,{ "pid":12345, "tid":4, "ts":1675233964479001, "dur":92, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964479094, "dur":103, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/2.0/web.config" }}
-,{ "pid":12345, "tid":4, "ts":1675233964479198, "dur":95, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964479293, "dur":106, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964479400, "dur":102, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964479503, "dur":8751, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/VoiceSDK.Runtime.pdb" }}
-,{ "pid":12345, "tid":4, "ts":1675233964488254, "dur":48, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964488303, "dur":46, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.SharedInternalsModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964488350, "dur":39, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964488390, "dur":219, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.ScreenCaptureModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964488609, "dur":40, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964488650, "dur":44, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964488694, "dur":38, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964488732, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.ProfilerModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964488773, "dur":35, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964488808, "dur":39, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.PhysicsModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964488847, "dur":85, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964488932, "dur":81, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.Physics2DModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964489014, "dur":35, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964489050, "dur":39, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.PerformanceReportingModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964489089, "dur":36, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964489126, "dur":72, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.ParticleSystemModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964489199, "dur":37, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964489237, "dur":39, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.NVIDIAModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964489276, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964489310, "dur":42, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.LocalizationModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964489353, "dur":35, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964489388, "dur":40, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.JSONSerializeModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964489428, "dur":36, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964489464, "dur":37, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.InputModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964489501, "dur":35, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964489537, "dur":54, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.InputLegacyModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964489591, "dur":38, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964489630, "dur":36, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.IMGUIModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964489666, "dur":108, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964489775, "dur":42, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.ImageConversionModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964489817, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964489852, "dur":39, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.HotReloadModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964489891, "dur":32, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964489923, "dur":34, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.GridModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964489957, "dur":31, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964489989, "dur":32, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.GIModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490021, "dur":31, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490053, "dur":35, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.GameCenterModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490088, "dur":30, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490119, "dur":32, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.DSPGraphModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490151, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490184, "dur":35, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490219, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490253, "dur":37, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.DirectorModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490290, "dur":31, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490321, "dur":34, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.CrashReportingModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490355, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490390, "dur":34, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.CoreModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490424, "dur":32, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490456, "dur":32, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.ClusterRendererModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490489, "dur":28, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490518, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.ClusterInputModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490556, "dur":32, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490588, "dur":33, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.ClothModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490621, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490656, "dur":36, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.AudioModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490692, "dur":31, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490723, "dur":33, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.AssetBundleModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490756, "dur":30, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490787, "dur":32, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.ARModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490819, "dur":28, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490848, "dur":35, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.AnimationModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490883, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490917, "dur":35, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490952, "dur":31, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964490984, "dur":34, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.AIModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964491018, "dur":32, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964491051, "dur":36, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.AccessibilityModule.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964491087, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964491121, "dur":73315, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.XR.Oculus.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964564437, "dur":75, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964564514, "dur":5529, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.TextMeshPro.pdb" }}
-,{ "pid":12345, "tid":4, "ts":1675233964570043, "dur":70, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964570115, "dur":261159, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.TextMeshPro.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964831275, "dur":52, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964831329, "dur":63635, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.LipSync.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964894965, "dur":77, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964895044, "dur":44, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Newtonsoft.Json.pdb" }}
-,{ "pid":12345, "tid":4, "ts":1675233964895089, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964895123, "dur":34, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Newtonsoft.Json.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964895157, "dur":30, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964895188, "dur":33, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/netstandard.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964895221, "dur":37, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964895258, "dur":35, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/mscorlib.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964895293, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964895326, "dur":35, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Mono.Security.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964895362, "dur":31, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964895393, "dur":8573, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/LitJson.pdb" }}
-,{ "pid":12345, "tid":4, "ts":1675233964903967, "dur":151, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964904121, "dur":77792, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/LitJson.dll" }}
-,{ "pid":12345, "tid":4, "ts":1675233964981913, "dur":55, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964981970, "dur":136, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/ScriptingAssemblies.json" }}
-,{ "pid":12345, "tid":4, "ts":1675233964982106, "dur":43, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964982150, "dur":1918, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/RuntimeInitializeOnLoads.json" }}
-,{ "pid":12345, "tid":4, "ts":1675233964984069, "dur":161, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964984232, "dur":70, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/resources.assets.resS" }}
-,{ "pid":12345, "tid":4, "ts":1675233964984308, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964984316, "dur":4632, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/resources.assets.resS" }}
-,{ "pid":12345, "tid":4, "ts":1675233964988988, "dur":46, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/globalgamemanagers.assets" }}
-,{ "pid":12345, "tid":4, "ts":1675233964989039, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":4, "ts":1675233964989047, "dur":1619, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/globalgamemanagers.assets" }}
-,{ "pid":12345, "tid":4, "ts":1675233964990705, "dur":118865, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964474328, "dur":476, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964474804, "dur":3917, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964478732, "dur":139, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/4.5/web.config" }}
-,{ "pid":12345, "tid":5, "ts":1675233964478871, "dur":783, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964479654, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.VRModule.dll" }}
-,{ "pid":12345, "tid":5, "ts":1675233964479696, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964479730, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.VideoModule.dll" }}
-,{ "pid":12345, "tid":5, "ts":1675233964479781, "dur":49, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964479831, "dur":39, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.VehiclesModule.dll" }}
-,{ "pid":12345, "tid":5, "ts":1675233964479870, "dur":52, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964479922, "dur":45, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" }}
-,{ "pid":12345, "tid":5, "ts":1675233964479968, "dur":51, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964480019, "dur":43, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" }}
-,{ "pid":12345, "tid":5, "ts":1675233964480063, "dur":37, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964480100, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" }}
-,{ "pid":12345, "tid":5, "ts":1675233964480138, "dur":49, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964480187, "dur":36, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" }}
-,{ "pid":12345, "tid":5, "ts":1675233964480223, "dur":32, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964480256, "dur":33, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UNETModule.dll" }}
-,{ "pid":12345, "tid":5, "ts":1675233964480289, "dur":51, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964480340, "dur":28, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UmbraModule.dll" }}
-,{ "pid":12345, "tid":5, "ts":1675233964480368, "dur":52, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964480421, "dur":321, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UIElementsNativeModule.dll" }}
-,{ "pid":12345, "tid":5, "ts":1675233964480742, "dur":46, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964480789, "dur":160582, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UI.dll" }}
-,{ "pid":12345, "tid":5, "ts":1675233964641372, "dur":71, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964641446, "dur":6960, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Device.pdb" }}
-,{ "pid":12345, "tid":5, "ts":1675233964648407, "dur":69, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964648478, "dur":743, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Analytics.dll" }}
-,{ "pid":12345, "tid":5, "ts":1675233964649221, "dur":46, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964649268, "dur":7356, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.InputSystem.pdb" }}
-,{ "pid":12345, "tid":5, "ts":1675233964656624, "dur":83, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964656710, "dur":66711, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UniRx.dll" }}
-,{ "pid":12345, "tid":5, "ts":1675233964723421, "dur":87, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964723511, "dur":9720, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/PhotonChat.pdb" }}
-,{ "pid":12345, "tid":5, "ts":1675233964733232, "dur":76, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964733310, "dur":66518, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/PhotonChat.dll" }}
-,{ "pid":12345, "tid":5, "ts":1675233964799829, "dur":60, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964799892, "dur":48256, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.Voice.Demo.dll" }}
-,{ "pid":12345, "tid":5, "ts":1675233964848149, "dur":83, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964848235, "dur":6054, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.Interaction.OVR.pdb" }}
-,{ "pid":12345, "tid":5, "ts":1675233964854289, "dur":80, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964854370, "dur":6930, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.AudioManager.pdb" }}
-,{ "pid":12345, "tid":5, "ts":1675233964861301, "dur":76, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964861379, "dur":78855, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.AudioManager.dll" }}
-,{ "pid":12345, "tid":5, "ts":1675233964940235, "dur":74, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964940311, "dur":41358, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/AssistantCoreSDKRuntime.dll" }}
-,{ "pid":12345, "tid":5, "ts":1675233964981670, "dur":66, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964981739, "dur":48, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/sharedassets0.assets" }}
-,{ "pid":12345, "tid":5, "ts":1675233964981796, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964981823, "dur":2251, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/sharedassets0.assets" }}
-,{ "pid":12345, "tid":5, "ts":1675233964984133, "dur":47, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/resources.resource" }}
-,{ "pid":12345, "tid":5, "ts":1675233964984187, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964984197, "dur":1377, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/resources.resource" }}
-,{ "pid":12345, "tid":5, "ts":1675233964985625, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/resources.assets" }}
-,{ "pid":12345, "tid":5, "ts":1675233964985670, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964985680, "dur":3079, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/resources.assets" }}
-,{ "pid":12345, "tid":5, "ts":1675233964988802, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/level0" }}
-,{ "pid":12345, "tid":5, "ts":1675233964988909, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964988918, "dur":1023, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/level0" }}
-,{ "pid":12345, "tid":5, "ts":1675233964989983, "dur":130, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/boot.config" }}
-,{ "pid":12345, "tid":5, "ts":1675233964990113, "dur":40, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":5, "ts":1675233964990153, "dur":119416, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1675233964474358, "dur":453, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1675233964474811, "dur":3911, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1675233964478732, "dur":575, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
-,{ "pid":12345, "tid":6, "ts":1675233964479307, "dur":42, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1675233964479350, "dur":151, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/UnityPlayer.dll" }}
-,{ "pid":12345, "tid":6, "ts":1675233964479501, "dur":44, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1675233964479546, "dur":7051, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/VoiceSDK.Dictation.Runtime.pdb" }}
-,{ "pid":12345, "tid":6, "ts":1675233964486598, "dur":80, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1675233964486680, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.TLSModule.dll" }}
-,{ "pid":12345, "tid":6, "ts":1675233964486722, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1675233964486757, "dur":94, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.TilemapModule.dll" }}
-,{ "pid":12345, "tid":6, "ts":1675233964486851, "dur":60, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1675233964486912, "dur":48, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.TextRenderingModule.dll" }}
-,{ "pid":12345, "tid":6, "ts":1675233964486961, "dur":40, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1675233964487002, "dur":4008, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" }}
-,{ "pid":12345, "tid":6, "ts":1675233964491010, "dur":44, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1675233964491054, "dur":12617, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.XR.Oculus.pdb" }}
-,{ "pid":12345, "tid":6, "ts":1675233964503671, "dur":51, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1675233964503724, "dur":33727, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.XR.Management.dll" }}
-,{ "pid":12345, "tid":6, "ts":1675233964537451, "dur":65, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1675233964537518, "dur":8238, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.VisualScripting.Core.pdb" }}
-,{ "pid":12345, "tid":6, "ts":1675233964545756, "dur":58, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1675233964545816, "dur":88287, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.VisualScripting.Core.dll" }}
-,{ "pid":12345, "tid":6, "ts":1675233964634104, "dur":78, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1675233964634184, "dur":55779, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Internal.dll" }}
-,{ "pid":12345, "tid":6, "ts":1675233964689964, "dur":55, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1675233964690021, "dur":8440, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/PhotonRealtime.pdb" }}
-,{ "pid":12345, "tid":6, "ts":1675233964698462, "dur":75, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1675233964698539, "dur":153923, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/PhotonRealtime.dll" }}
-,{ "pid":12345, "tid":6, "ts":1675233964852462, "dur":75, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1675233964852539, "dur":69004, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.Interaction.dll" }}
-,{ "pid":12345, "tid":6, "ts":1675233964921544, "dur":68, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1675233964921614, "dur":6246, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Facebook.Wit.Dictation.pdb" }}
-,{ "pid":12345, "tid":6, "ts":1675233964927861, "dur":79, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1675233964927942, "dur":59659, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Facebook.Wit.Conduit.dll" }}
-,{ "pid":12345, "tid":6, "ts":1675233964987602, "dur":109, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1675233964987714, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/level0.resS" }}
-,{ "pid":12345, "tid":6, "ts":1675233964987780, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1675233964987818, "dur":1143, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/level0.resS" }}
-,{ "pid":12345, "tid":6, "ts":1675233964989005, "dur":40, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/globalgamemanagers" }}
-,{ "pid":12345, "tid":6, "ts":1675233964989050, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":6, "ts":1675233964989056, "dur":1320, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/globalgamemanagers" }}
-,{ "pid":12345, "tid":6, "ts":1675233964990421, "dur":119151, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964474398, "dur":419, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964474817, "dur":3907, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964478732, "dur":153, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
-,{ "pid":12345, "tid":7, "ts":1675233964478886, "dur":146, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964479033, "dur":98, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
-,{ "pid":12345, "tid":7, "ts":1675233964479131, "dur":68, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964479200, "dur":105, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/config" }}
-,{ "pid":12345, "tid":7, "ts":1675233964479305, "dur":43, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964479349, "dur":99, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/WinPixEventRuntime.dll" }}
-,{ "pid":12345, "tid":7, "ts":1675233964479448, "dur":54, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964479503, "dur":69502, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/VoiceSDK.Runtime.dll" }}
-,{ "pid":12345, "tid":7, "ts":1675233964549006, "dur":80, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964549088, "dur":104, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll" }}
-,{ "pid":12345, "tid":7, "ts":1675233964549192, "dur":37, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964549229, "dur":5452, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Timeline.pdb" }}
-,{ "pid":12345, "tid":7, "ts":1675233964554681, "dur":79, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964554763, "dur":75207, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Timeline.dll" }}
-,{ "pid":12345, "tid":7, "ts":1675233964629971, "dur":53, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964630025, "dur":6618, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.pdb" }}
-,{ "pid":12345, "tid":7, "ts":1675233964636644, "dur":87, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964636732, "dur":8647, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Environments.Internal.pdb" }}
-,{ "pid":12345, "tid":7, "ts":1675233964645379, "dur":49, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964645429, "dur":5557, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Analytics.pdb" }}
-,{ "pid":12345, "tid":7, "ts":1675233964650986, "dur":48, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964651035, "dur":10121, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UniRx.pdb" }}
-,{ "pid":12345, "tid":7, "ts":1675233964661156, "dur":81, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964661240, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.Xml.Linq.dll" }}
-,{ "pid":12345, "tid":7, "ts":1675233964661282, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964661315, "dur":35, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.Xml.dll" }}
-,{ "pid":12345, "tid":7, "ts":1675233964661350, "dur":32, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964661383, "dur":34, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.Transactions.dll" }}
-,{ "pid":12345, "tid":7, "ts":1675233964661417, "dur":30, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964661448, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.ServiceModel.Internals.dll" }}
-,{ "pid":12345, "tid":7, "ts":1675233964661486, "dur":31, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964661518, "dur":34, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.Security.dll" }}
-,{ "pid":12345, "tid":7, "ts":1675233964661552, "dur":29, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964661581, "dur":33, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.Runtime.Serialization.dll" }}
-,{ "pid":12345, "tid":7, "ts":1675233964661614, "dur":32, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964661647, "dur":31, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.Numerics.dll" }}
-,{ "pid":12345, "tid":7, "ts":1675233964661678, "dur":32, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964661711, "dur":33, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.Net.Http.dll" }}
-,{ "pid":12345, "tid":7, "ts":1675233964661744, "dur":31, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964661775, "dur":37, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.IO.Compression.FileSystem.dll" }}
-,{ "pid":12345, "tid":7, "ts":1675233964661812, "dur":30, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964661843, "dur":32, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.IO.Compression.dll" }}
-,{ "pid":12345, "tid":7, "ts":1675233964661875, "dur":30, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964661906, "dur":40, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.EnterpriseServices.dll" }}
-,{ "pid":12345, "tid":7, "ts":1675233964661946, "dur":38, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964661985, "dur":34, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.Drawing.dll" }}
-,{ "pid":12345, "tid":7, "ts":1675233964662019, "dur":30, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964662050, "dur":35, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.dll" }}
-,{ "pid":12345, "tid":7, "ts":1675233964662085, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964662118, "dur":33, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.Data.dll" }}
-,{ "pid":12345, "tid":7, "ts":1675233964662151, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964662185, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.Data.DataSetExtensions.dll" }}
-,{ "pid":12345, "tid":7, "ts":1675233964662226, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964662260, "dur":35, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.Core.dll" }}
-,{ "pid":12345, "tid":7, "ts":1675233964662295, "dur":29, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964662325, "dur":29, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.Configuration.dll" }}
-,{ "pid":12345, "tid":7, "ts":1675233964662354, "dur":28, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964662382, "dur":33, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.ComponentModel.Composition.dll" }}
-,{ "pid":12345, "tid":7, "ts":1675233964662415, "dur":27, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964662443, "dur":5208, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/SimpleMan.VisualRaycast.pdb" }}
-,{ "pid":12345, "tid":7, "ts":1675233964667652, "dur":51, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964667705, "dur":6145, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/PhotonUnityNetworking.Utilities.pdb" }}
-,{ "pid":12345, "tid":7, "ts":1675233964673851, "dur":49, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964673901, "dur":161881, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/PhotonUnityNetworking.dll" }}
-,{ "pid":12345, "tid":7, "ts":1675233964835782, "dur":183, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964835968, "dur":6810, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.Interaction.pdb" }}
-,{ "pid":12345, "tid":7, "ts":1675233964842778, "dur":49, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964842828, "dur":71500, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.Interaction.OVR.Samples.dll" }}
-,{ "pid":12345, "tid":7, "ts":1675233964914328, "dur":79, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233964914409, "dur":154947, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Facebook.WitAI.dll" }}
-,{ "pid":12345, "tid":7, "ts":1675233965069357, "dur":63, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":7, "ts":1675233965069422, "dur":40146, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1675233964474424, "dur":399, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1675233964474823, "dur":3897, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1675233964478733, "dur":238, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
-,{ "pid":12345, "tid":8, "ts":1675233964478971, "dur":105, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1675233964479076, "dur":105, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
-,{ "pid":12345, "tid":8, "ts":1675233964479181, "dur":104, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1675233964479286, "dur":98, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/browscap.ini" }}
-,{ "pid":12345, "tid":8, "ts":1675233964479384, "dur":64, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1675233964479449, "dur":122, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Resources/unity default resources" }}
-,{ "pid":12345, "tid":8, "ts":1675233964479571, "dur":38, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1675233964479610, "dur":38914, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.XR.LegacyInputHelpers.dll" }}
-,{ "pid":12345, "tid":8, "ts":1675233964518524, "dur":64, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1675233964518590, "dur":104097, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.XR.CoreUtils.dll" }}
-,{ "pid":12345, "tid":8, "ts":1675233964622688, "dur":62, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1675233964622752, "dur":8228, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Registration.pdb" }}
-,{ "pid":12345, "tid":8, "ts":1675233964630981, "dur":54, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1675233964631036, "dur":735, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Networking.dll" }}
-,{ "pid":12345, "tid":8, "ts":1675233964631771, "dur":52, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1675233964631824, "dur":5670, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Internal.pdb" }}
-,{ "pid":12345, "tid":8, "ts":1675233964637495, "dur":48, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1675233964637544, "dur":663, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Environments.Internal.dll" }}
-,{ "pid":12345, "tid":8, "ts":1675233964638207, "dur":52, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1675233964638260, "dur":939, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Environments.dll" }}
-,{ "pid":12345, "tid":8, "ts":1675233964639199, "dur":54, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1675233964639254, "dur":27847, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.dll" }}
-,{ "pid":12345, "tid":8, "ts":1675233964667102, "dur":82, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1675233964667186, "dur":135902, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/SimpleMan.VisualRaycast.dll" }}
-,{ "pid":12345, "tid":8, "ts":1675233964803089, "dur":76, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1675233964803168, "dur":6681, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.Spatializer.pdb" }}
-,{ "pid":12345, "tid":8, "ts":1675233964809849, "dur":79, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1675233964809931, "dur":6115, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.Platform.pdb" }}
-,{ "pid":12345, "tid":8, "ts":1675233964816047, "dur":77, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1675233964816126, "dur":104565, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.Platform.dll" }}
-,{ "pid":12345, "tid":8, "ts":1675233964920692, "dur":64, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1675233964920759, "dur":148414, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Facebook.Wit.TTS.dll" }}
-,{ "pid":12345, "tid":8, "ts":1675233965069174, "dur":95, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":8, "ts":1675233965069271, "dur":40300, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
-,{ "pid":12345, "tid":0, "ts":1675233965114250, "dur":2676, "ph":"X", "name": "ProfilerWriteOutput" }
-,{ "pid": 0, "tid": 1, "ts": 1675233965137150, "dur": 1428, "ph": "X", "name": "backend_profiler0.traceevents", "args": {} },
-{ "pid": 0, "tid": 1, "ts": 1675233965136967, "dur": 1637, "ph": "X", "name": "Write chrome-trace events", "args": {} },
+,{ "pid":12345, "tid":0, "ts":1675402437054813, "dur":1092, "ph":"X", "name": "DriverInitData",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675402437055913, "dur":246, "ph":"X", "name": "Tundra",  "args": { "detail":"RemoveStaleOutputs" }}
+,{ "pid":12345, "tid":0, "ts":1675402437056198, "dur":37, "ph":"X", "name": "Tundra",  "args": { "detail":"PrepareNodes" }}
+,{ "pid":12345, "tid":0, "ts":1675402437056235, "dur":304, "ph":"X", "name": "Tundra",  "args": { "detail":"BuildQueueInit" }}
+,{ "pid":12345, "tid":0, "ts":1675402437056567, "dur":692, "ph":"X", "name": "EnqueueRequestedNodes",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675402437057259, "dur":1, "ph":"X", "name": "SortWorkingStack",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675402437726002, "dur":174, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675402437726176, "dur":11, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675402437726187, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675402437726189, "dur":6, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675402437726195, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675402437726196, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675402437726200, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675402437726202, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675402437726206, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675402437726208, "dur":14, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675402437726222, "dur":1, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675402437726223, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675402437726227, "dur":11, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675402437726238, "dur":6, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675402437726244, "dur":2, "ph":"X", "name": "JoinBuildThread",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675402437726246, "dur":4, "ph":"X", "name": "ThreadStateDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675402437726250, "dur":0, "ph":"X", "name": "SharedResourceDestroy",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675402437726269, "dur":2, "ph":"X", "name": "BuildQueueDestroyTail",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675402437726298, "dur":2227, "ph":"X", "name": "Tundra",  "args": { "detail":"Write AllBuiltNodes" }}
+,{ "pid":12345, "tid":1, "ts":1675402437056753, "dur":513, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437057268, "dur":4098, "ph":"X", "name": "CheckDagSignatures",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437061376, "dur":1, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"WriteText Library/Bee/artifacts/WinPlayerBuildProgram/Data/app.info" }}
+,{ "pid":12345, "tid":1, "ts":1675402437061379, "dur":88, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437061472, "dur":2, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/app.info" }}
+,{ "pid":12345, "tid":1, "ts":1675402437061474, "dur":42, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437061517, "dur":113, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/4.0/web.config" }}
+,{ "pid":12345, "tid":1, "ts":1675402437061630, "dur":159, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437061790, "dur":104, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/browscap.ini" }}
+,{ "pid":12345, "tid":1, "ts":1675402437061894, "dur":116, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437062011, "dur":155, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/websocket-sharp.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437062166, "dur":58, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437062224, "dur":43, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.WindModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437062267, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437062301, "dur":34, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.VRModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437062335, "dur":36, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437062372, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.VirtualTexturingModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437062410, "dur":43, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437062453, "dur":27, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.VFXModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437062480, "dur":23, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437062503, "dur":36, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UnityWebRequestWWWModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437062539, "dur":31, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437062571, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UnityWebRequestModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437062612, "dur":36, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437062648, "dur":42, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UnityWebRequestAssetBundleModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437062691, "dur":39, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437062731, "dur":47, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UnityCurlModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437062778, "dur":42, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437062821, "dur":40, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UnityAnalyticsModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437062861, "dur":35, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437062896, "dur":36, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UNETModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437062932, "dur":30, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437062962, "dur":34, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UIModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437062996, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437063031, "dur":52, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UIElementsModule.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437063083, "dur":37, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437063121, "dur":148441, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UI.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437211563, "dur":78, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437211643, "dur":38898, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Registration.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437250542, "dur":53, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437250596, "dur":42, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.Xml.Linq.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437250638, "dur":138, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437250777, "dur":46, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.Xml.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437250823, "dur":38, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437250861, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.Transactions.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437250900, "dur":83, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437250984, "dur":44, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.ServiceModel.Internals.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437251028, "dur":83, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437251112, "dur":44, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.Runtime.Serialization.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437251156, "dur":80, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437251237, "dur":40, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.Numerics.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437251277, "dur":37, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437251314, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.IO.Compression.FileSystem.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437251355, "dur":67, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437251423, "dur":47, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.EnterpriseServices.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437251470, "dur":66, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437251537, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437251578, "dur":49, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437251628, "dur":42, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.Data.DataSetExtensions.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437251671, "dur":72, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437251743, "dur":42, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.Configuration.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437251785, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437251820, "dur":6004, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/SimpleMan.VisualRaycast.pdb" }}
+,{ "pid":12345, "tid":1, "ts":1675402437257824, "dur":60, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437257886, "dur":5604, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/PhotonUnityNetworking.Utilities.pdb" }}
+,{ "pid":12345, "tid":1, "ts":1675402437263490, "dur":71, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437263563, "dur":178731, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/PhotonUnityNetworking.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437442294, "dur":57, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437442352, "dur":6142, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.Interaction.OVR.pdb" }}
+,{ "pid":12345, "tid":1, "ts":1675402437448495, "dur":57, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437448554, "dur":71635, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.Interaction.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437520190, "dur":51, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437520242, "dur":161441, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Facebook.Wit.TTS.dll" }}
+,{ "pid":12345, "tid":1, "ts":1675402437681683, "dur":45, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":1, "ts":1675402437681730, "dur":44259, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437056788, "dur":489, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437057278, "dur":4093, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437061376, "dur":274, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/4.5/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":2, "ts":1675402437061651, "dur":70, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437061722, "dur":103, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/2.0/settings.map" }}
+,{ "pid":12345, "tid":2, "ts":1675402437061826, "dur":66, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437061893, "dur":122, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/WinPixEventRuntime.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675402437062015, "dur":48, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437062064, "dur":44, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.XRModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675402437062109, "dur":313, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437062423, "dur":47, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.VideoModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675402437062470, "dur":24, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437062495, "dur":24, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.VehiclesModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675402437062519, "dur":31, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437062551, "dur":34, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675402437062586, "dur":38, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437062625, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UnityWebRequestAudioModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675402437062667, "dur":38, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437062706, "dur":44, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UnityTestProtocolModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675402437062750, "dur":39, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437062790, "dur":39, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UnityConnectModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675402437062829, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437062863, "dur":39, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UnityAnalyticsCommonModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675402437062902, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437062937, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UmbraModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675402437062976, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437063010, "dur":42, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UIElementsNativeModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675402437063052, "dur":63, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437063115, "dur":7197, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.UI.pdb" }}
+,{ "pid":12345, "tid":2, "ts":1675402437070312, "dur":48, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437070360, "dur":47, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.SubstanceModule.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675402437070408, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437070442, "dur":14192, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.SpatialTracking.pdb" }}
+,{ "pid":12345, "tid":2, "ts":1675402437084635, "dur":65, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437084702, "dur":37601, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.XR.Management.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675402437122304, "dur":75, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437122381, "dur":103453, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.VisualScripting.Flow.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675402437225835, "dur":53, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437225890, "dur":7291, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Environments.pdb" }}
+,{ "pid":12345, "tid":2, "ts":1675402437233181, "dur":50, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437233232, "dur":6956, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Configuration.pdb" }}
+,{ "pid":12345, "tid":2, "ts":1675402437240189, "dur":101, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437240292, "dur":1001, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Analytics.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675402437241293, "dur":49, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437241343, "dur":8933, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UniRx.pdb" }}
+,{ "pid":12345, "tid":2, "ts":1675402437250276, "dur":57, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437250335, "dur":70202, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UniRx.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675402437320537, "dur":53, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437320592, "dur":10905, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/PhotonChat.pdb" }}
+,{ "pid":12345, "tid":2, "ts":1675402437331498, "dur":62, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437331562, "dur":77106, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/PhotonChat.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675402437408669, "dur":59, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437408730, "dur":93678, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.Spatializer.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675402437502408, "dur":70, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437502480, "dur":6685, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Facebook.WitAI.pdb" }}
+,{ "pid":12345, "tid":2, "ts":1675402437509166, "dur":54, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437509223, "dur":172613, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Facebook.WitAI.dll" }}
+,{ "pid":12345, "tid":2, "ts":1675402437681836, "dur":40, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":2, "ts":1675402437681877, "dur":44125, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437056781, "dur":491, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437057272, "dur":4144, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437061416, "dur":103, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/4.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":3, "ts":1675402437061520, "dur":90, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437061611, "dur":105, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/2.0/web.config" }}
+,{ "pid":12345, "tid":3, "ts":1675402437061716, "dur":82, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437061798, "dur":102, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/EmbedRuntime/MonoPosixHelper.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675402437061900, "dur":111, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437062011, "dur":8074, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/VoiceSDK.Runtime.pdb" }}
+,{ "pid":12345, "tid":3, "ts":1675402437070086, "dur":57, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437070144, "dur":45, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.TextCoreTextEngineModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675402437070190, "dur":36, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437070227, "dur":44, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.TerrainPhysicsModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675402437070271, "dur":37, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437070309, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.SubsystemsModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675402437070350, "dur":37, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437070387, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.SpriteShapeModule.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675402437070425, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437070460, "dur":32499, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.SpatialTracking.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675402437102960, "dur":69, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437103030, "dur":105015, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.XR.CoreUtils.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675402437208046, "dur":60, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437208108, "dur":8949, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Registration.pdb" }}
+,{ "pid":12345, "tid":3, "ts":1675402437217058, "dur":59, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437217119, "dur":7759, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Networking.pdb" }}
+,{ "pid":12345, "tid":3, "ts":1675402437224879, "dur":76, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437224958, "dur":6792, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Internal.pdb" }}
+,{ "pid":12345, "tid":3, "ts":1675402437231751, "dur":66, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437231819, "dur":8447, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Device.pdb" }}
+,{ "pid":12345, "tid":3, "ts":1675402437240267, "dur":45, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437240313, "dur":10706, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.InputSystem.pdb" }}
+,{ "pid":12345, "tid":3, "ts":1675402437251019, "dur":86, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437251106, "dur":44, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.Security.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675402437251150, "dur":93, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437251243, "dur":43, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.Net.Http.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675402437251286, "dur":71, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437251357, "dur":42, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.IO.Compression.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675402437251399, "dur":68, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437251468, "dur":43, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.Drawing.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675402437251511, "dur":69, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437251581, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.Data.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675402437251631, "dur":66, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437251697, "dur":40, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.Core.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675402437251738, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437251773, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/System.ComponentModel.Composition.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675402437251814, "dur":150, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437251964, "dur":143368, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/SimpleMan.VisualRaycast.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675402437395333, "dur":66, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437395402, "dur":6660, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.Voice.Demo.pdb" }}
+,{ "pid":12345, "tid":3, "ts":1675402437402063, "dur":56, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437402121, "dur":8484, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.Spatializer.pdb" }}
+,{ "pid":12345, "tid":3, "ts":1675402437410605, "dur":68, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437410675, "dur":7945, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.Platform.pdb" }}
+,{ "pid":12345, "tid":3, "ts":1675402437418621, "dur":61, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437418684, "dur":102463, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.Platform.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675402437521147, "dur":51, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437521199, "dur":9951, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Facebook.Wit.Dictation.pdb" }}
+,{ "pid":12345, "tid":3, "ts":1675402437531151, "dur":68, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437531221, "dur":55971, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Facebook.Wit.Conduit.dll" }}
+,{ "pid":12345, "tid":3, "ts":1675402437587192, "dur":47, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437587241, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/sharedassets0.assets.resS" }}
+,{ "pid":12345, "tid":3, "ts":1675402437587287, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":3, "ts":1675402437587305, "dur":94854, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/sharedassets0.assets.resS" }}
+,{ "pid":12345, "tid":3, "ts":1675402437682193, "dur":43797, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437056814, "dur":497, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437057311, "dur":4056, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437061376, "dur":127, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/4.5/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":4, "ts":1675402437061503, "dur":94, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437061598, "dur":121, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/4.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":4, "ts":1675402437061719, "dur":67, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437061786, "dur":97, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/config" }}
+,{ "pid":12345, "tid":4, "ts":1675402437061883, "dur":37, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437061920, "dur":57, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar.exe" }}
+,{ "pid":12345, "tid":4, "ts":1675402437061977, "dur":77, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437062055, "dur":8693, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/VoiceSDK.Dictation.Runtime.pdb" }}
+,{ "pid":12345, "tid":4, "ts":1675402437070749, "dur":43, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437070793, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.Physics2DModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437070835, "dur":43, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437070879, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.ParticleSystemModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437070930, "dur":47, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437070977, "dur":49, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.LocalizationModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437071026, "dur":38, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437071065, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.InputModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437071104, "dur":32, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437071137, "dur":35, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.IMGUIModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437071172, "dur":133, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437071306, "dur":46, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.ImageConversionModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437071353, "dur":35, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437071389, "dur":42, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.HotReloadModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437071431, "dur":37, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437071469, "dur":36, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.GridModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437071505, "dur":66, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437071571, "dur":40, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.GIModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437071612, "dur":37, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437071649, "dur":40, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.GameCenterModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437071690, "dur":35, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437071726, "dur":39, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437071765, "dur":36, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437071802, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.CrashReportingModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437071843, "dur":40, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437071883, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.ClusterInputModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437071924, "dur":35, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437071960, "dur":37, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.AudioModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437071997, "dur":36, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437072034, "dur":37, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.ARModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437072071, "dur":39, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437072110, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.AnimationModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437072148, "dur":31, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437072180, "dur":36, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.AIModule.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437072216, "dur":42, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437072259, "dur":6949, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.XR.Oculus.pdb" }}
+,{ "pid":12345, "tid":4, "ts":1675402437079209, "dur":85, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437079297, "dur":9229, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.XR.Management.pdb" }}
+,{ "pid":12345, "tid":4, "ts":1675402437088526, "dur":76, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437088605, "dur":9447, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.XR.Interaction.Toolkit.pdb" }}
+,{ "pid":12345, "tid":4, "ts":1675402437098053, "dur":55, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437098110, "dur":71325, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.XR.Interaction.Toolkit.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437169436, "dur":111, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437169549, "dur":57257, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Telemetry.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437226806, "dur":54, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437226862, "dur":7371, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Environments.Internal.pdb" }}
+,{ "pid":12345, "tid":4, "ts":1675402437234233, "dur":54, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437234288, "dur":27695, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Configuration.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437261983, "dur":49, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437262034, "dur":6491, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/PhotonUnityNetworking.pdb" }}
+,{ "pid":12345, "tid":4, "ts":1675402437268526, "dur":61, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437268589, "dur":8272, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/PhotonUnityNetworking.Demos.pdb" }}
+,{ "pid":12345, "tid":4, "ts":1675402437276862, "dur":54, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437276918, "dur":145291, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/PhotonUnityNetworking.Demos.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437422210, "dur":59, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437422271, "dur":72060, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.LipSync.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437494331, "dur":76, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437494409, "dur":50, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Newtonsoft.Json.pdb" }}
+,{ "pid":12345, "tid":4, "ts":1675402437494459, "dur":39, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437494500, "dur":36, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Newtonsoft.Json.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437494537, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437494570, "dur":35, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/netstandard.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437494605, "dur":32, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437494638, "dur":33, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/mscorlib.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437494671, "dur":30, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437494701, "dur":32, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Mono.Security.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437494734, "dur":101, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437494836, "dur":7403, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/LitJson.pdb" }}
+,{ "pid":12345, "tid":4, "ts":1675402437502239, "dur":70, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437502311, "dur":81995, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/LitJson.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437584307, "dur":73, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437584382, "dur":67, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Plugins/x86_64/OVRPlugin.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437584449, "dur":41, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437584491, "dur":137, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Plugins/x86_64/OculusXRPlugin.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437584629, "dur":41, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437584671, "dur":44, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Plugins/x86_64/InteractionSdk.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437584715, "dur":176, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437584892, "dur":44, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Plugins/x86_64/OVRLipSync.dll" }}
+,{ "pid":12345, "tid":4, "ts":1675402437584937, "dur":75, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437585013, "dur":44, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/UnitySubsystems/OculusXRPlugin/UnitySubsystemsManifest.json" }}
+,{ "pid":12345, "tid":4, "ts":1675402437585057, "dur":38, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437585096, "dur":164, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/StreamingAssets/UnityServicesProjectConfiguration.json" }}
+,{ "pid":12345, "tid":4, "ts":1675402437585261, "dur":119, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437585381, "dur":48, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Resources/unity_builtin_extra" }}
+,{ "pid":12345, "tid":4, "ts":1675402437585464, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437585535, "dur":1439, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Resources/unity_builtin_extra" }}
+,{ "pid":12345, "tid":4, "ts":1675402437587018, "dur":40, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/sharedassets0.resource" }}
+,{ "pid":12345, "tid":4, "ts":1675402437587065, "dur":0, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437587073, "dur":6954, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/sharedassets0.resource" }}
+,{ "pid":12345, "tid":4, "ts":1675402437594069, "dur":140, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/ScriptingAssemblies.json" }}
+,{ "pid":12345, "tid":4, "ts":1675402437594210, "dur":44, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437594255, "dur":1357, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/RuntimeInitializeOnLoads.json" }}
+,{ "pid":12345, "tid":4, "ts":1675402437595613, "dur":90, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437595706, "dur":64, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/resources.resource" }}
+,{ "pid":12345, "tid":4, "ts":1675402437595780, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437595790, "dur":1591, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/resources.resource" }}
+,{ "pid":12345, "tid":4, "ts":1675402437597437, "dur":56, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/resources.assets" }}
+,{ "pid":12345, "tid":4, "ts":1675402437597501, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437597602, "dur":3275, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/resources.assets" }}
+,{ "pid":12345, "tid":4, "ts":1675402437600924, "dur":44, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/level0" }}
+,{ "pid":12345, "tid":4, "ts":1675402437600976, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437600986, "dur":1344, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/level0" }}
+,{ "pid":12345, "tid":4, "ts":1675402437602368, "dur":39, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/globalgamemanagers" }}
+,{ "pid":12345, "tid":4, "ts":1675402437602412, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437602419, "dur":1233, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/globalgamemanagers" }}
+,{ "pid":12345, "tid":4, "ts":1675402437603689, "dur":114, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/boot.config" }}
+,{ "pid":12345, "tid":4, "ts":1675402437603804, "dur":39, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":4, "ts":1675402437603844, "dur":122154, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675402437056839, "dur":477, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675402437057316, "dur":4053, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675402437061375, "dur":118, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/4.5/settings.map" }}
+,{ "pid":12345, "tid":5, "ts":1675402437061493, "dur":87, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675402437061580, "dur":115, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/4.0/machine.config" }}
+,{ "pid":12345, "tid":5, "ts":1675402437061695, "dur":64, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675402437061760, "dur":93, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/2.0/DefaultWsdlHelpGenerator.aspx" }}
+,{ "pid":12345, "tid":5, "ts":1675402437061853, "dur":67, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675402437061920, "dur":98, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/UnityCrashHandler64.exe" }}
+,{ "pid":12345, "tid":5, "ts":1675402437062018, "dur":43, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675402437062062, "dur":40234, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/VoiceSDK.Dictation.Runtime.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675402437102297, "dur":75, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675402437102374, "dur":16731, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.XR.CoreUtils.pdb" }}
+,{ "pid":12345, "tid":5, "ts":1675402437119106, "dur":58, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675402437119166, "dur":17228, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.VisualScripting.Flow.pdb" }}
+,{ "pid":12345, "tid":5, "ts":1675402437136395, "dur":71, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675402437136469, "dur":90874, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.VisualScripting.Core.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675402437227344, "dur":51, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675402437227396, "dur":803, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Environments.Internal.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675402437228200, "dur":103, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675402437228305, "dur":1508, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Environments.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675402437229813, "dur":69, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675402437229884, "dur":31489, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675402437261374, "dur":79, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675402437261455, "dur":135071, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/PhotonUnityNetworking.Utilities.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675402437396526, "dur":63, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675402437396591, "dur":57209, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.Voice.Demo.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675402437453801, "dur":2790, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675402437456593, "dur":9783, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.AudioManager.pdb" }}
+,{ "pid":12345, "tid":5, "ts":1675402437466377, "dur":55, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675402437466435, "dur":86907, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.AudioManager.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675402437553342, "dur":134, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675402437553477, "dur":171480, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Assembly-CSharp.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675402437725015, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":5, "ts":1675402437725031, "dur":905, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Assembly-CSharp.dll" }}
+,{ "pid":12345, "tid":5, "ts":1675402437725962, "dur":1, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"Player" }}
+,{ "pid":12345, "tid":5, "ts":1675402437725963, "dur":0, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437056869, "dur":452, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437057321, "dur":4046, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437061376, "dur":164, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/mconfig/config.xml" }}
+,{ "pid":12345, "tid":6, "ts":1675402437061540, "dur":185, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437061726, "dur":112, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/2.0/machine.config" }}
+,{ "pid":12345, "tid":6, "ts":1675402437061839, "dur":67, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437061907, "dur":137, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/UnityPlayer.dll" }}
+,{ "pid":12345, "tid":6, "ts":1675402437062044, "dur":45, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437062090, "dur":41142, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.XR.LegacyInputHelpers.dll" }}
+,{ "pid":12345, "tid":6, "ts":1675402437103232, "dur":48, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437103281, "dur":5615, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.VisualScripting.State.pdb" }}
+,{ "pid":12345, "tid":6, "ts":1675402437108897, "dur":84, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437108983, "dur":42600, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.VisualScripting.State.dll" }}
+,{ "pid":12345, "tid":6, "ts":1675402437151584, "dur":60, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437151646, "dur":5943, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.TextMeshPro.pdb" }}
+,{ "pid":12345, "tid":6, "ts":1675402437157590, "dur":56, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437157648, "dur":9038, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Threading.pdb" }}
+,{ "pid":12345, "tid":6, "ts":1675402437166686, "dur":55, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437166744, "dur":959, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Threading.dll" }}
+,{ "pid":12345, "tid":6, "ts":1675402437167703, "dur":51, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437167756, "dur":11053, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Telemetry.pdb" }}
+,{ "pid":12345, "tid":6, "ts":1675402437178810, "dur":57, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437178869, "dur":7216, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Scheduler.pdb" }}
+,{ "pid":12345, "tid":6, "ts":1675402437186085, "dur":56, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437186144, "dur":29330, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Scheduler.dll" }}
+,{ "pid":12345, "tid":6, "ts":1675402437215475, "dur":66, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437215543, "dur":6338, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.pdb" }}
+,{ "pid":12345, "tid":6, "ts":1675402437221882, "dur":216, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437222100, "dur":2817, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Networking.dll" }}
+,{ "pid":12345, "tid":6, "ts":1675402437224918, "dur":54, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437224974, "dur":52027, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Internal.dll" }}
+,{ "pid":12345, "tid":6, "ts":1675402437277001, "dur":47, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437277049, "dur":5930, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/PhotonRealtime.pdb" }}
+,{ "pid":12345, "tid":6, "ts":1675402437282979, "dur":53, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437283034, "dur":139160, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/PhotonRealtime.dll" }}
+,{ "pid":12345, "tid":6, "ts":1675402437422194, "dur":60, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437422256, "dur":6943, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.LipSync.pdb" }}
+,{ "pid":12345, "tid":6, "ts":1675402437429200, "dur":66, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437429269, "dur":10903, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.Interaction.pdb" }}
+,{ "pid":12345, "tid":6, "ts":1675402437440173, "dur":218, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437440393, "dur":77094, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.Interaction.OVR.Samples.dll" }}
+,{ "pid":12345, "tid":6, "ts":1675402437517487, "dur":126, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437517615, "dur":7061, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Facebook.Wit.TTS.Samples.pdb" }}
+,{ "pid":12345, "tid":6, "ts":1675402437524676, "dur":74, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437524753, "dur":27130, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Facebook.Wit.Dictation.dll" }}
+,{ "pid":12345, "tid":6, "ts":1675402437551884, "dur":55, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437551940, "dur":7694, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Assembly-CSharp.pdb" }}
+,{ "pid":12345, "tid":6, "ts":1675402437559650, "dur":2, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437560671, "dur":2638, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Assembly-CSharp.pdb" }}
+,{ "pid":12345, "tid":6, "ts":1675402437563356, "dur":17748, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Assembly-CSharp-firstpass.pdb" }}
+,{ "pid":12345, "tid":6, "ts":1675402437581105, "dur":70, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437581177, "dur":100517, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Assembly-CSharp-firstpass.dll" }}
+,{ "pid":12345, "tid":6, "ts":1675402437681694, "dur":57, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":6, "ts":1675402437681752, "dur":44238, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675402437056896, "dur":433, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675402437057329, "dur":4041, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675402437061376, "dur":145, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/4.5/machine.config" }}
+,{ "pid":12345, "tid":7, "ts":1675402437061521, "dur":50, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675402437061572, "dur":128, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/4.0/settings.map" }}
+,{ "pid":12345, "tid":7, "ts":1675402437061700, "dur":312, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675402437062013, "dur":69418, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/VoiceSDK.Runtime.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675402437131432, "dur":60, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675402437131494, "dur":10182, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.VisualScripting.Core.pdb" }}
+,{ "pid":12345, "tid":7, "ts":1675402437141677, "dur":85, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675402437141765, "dur":57, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.VisualScripting.Antlr3.Runtime.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675402437141823, "dur":41, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675402437141865, "dur":7668, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Timeline.pdb" }}
+,{ "pid":12345, "tid":7, "ts":1675402437149534, "dur":80, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675402437149616, "dur":83342, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Timeline.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675402437232958, "dur":60, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675402437233020, "dur":1487, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Device.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675402437234508, "dur":46, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675402437234555, "dur":6063, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.Services.Core.Analytics.pdb" }}
+,{ "pid":12345, "tid":7, "ts":1675402437240619, "dur":51, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675402437240671, "dur":112801, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.InputSystem.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675402437353472, "dur":55, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675402437353529, "dur":40, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Photon3Unity3D.pdb" }}
+,{ "pid":12345, "tid":7, "ts":1675402437353570, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675402437353604, "dur":34, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Photon3Unity3D.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675402437353638, "dur":31, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675402437353670, "dur":8512, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.VR.pdb" }}
+,{ "pid":12345, "tid":7, "ts":1675402437362182, "dur":62, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675402437362246, "dur":274645, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.VR.dll" }}
+,{ "pid":12345, "tid":7, "ts":1675402437636892, "dur":99, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":7, "ts":1675402437636994, "dur":88994, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437056920, "dur":414, "ph":"X", "name": "FirstLock",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437057334, "dur":4034, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437061376, "dur":143, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/4.5/web.config" }}
+,{ "pid":12345, "tid":8, "ts":1675402437061519, "dur":82, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437061602, "dur":126, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/etc/mono/2.0/Browsers/Compat.browser" }}
+,{ "pid":12345, "tid":8, "ts":1675402437061728, "dur":85, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437061813, "dur":91, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/MonoBleedingEdge/EmbedRuntime/mono-2.0-bdwgc.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437061904, "dur":38, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437061943, "dur":79, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Resources/unity default resources" }}
+,{ "pid":12345, "tid":8, "ts":1675402437062022, "dur":46, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437062070, "dur":7739, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.XR.LegacyInputHelpers.pdb" }}
+,{ "pid":12345, "tid":8, "ts":1675402437069810, "dur":67, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437069879, "dur":49, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.TLSModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437069928, "dur":37, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437069966, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.TilemapModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437070008, "dur":38, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437070047, "dur":48, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.TextRenderingModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437070096, "dur":98, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437070195, "dur":58, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.TextCoreFontEngineModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437070253, "dur":37, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437070291, "dur":37, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.TerrainModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437070329, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437070364, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.StreamingModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437070402, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437070436, "dur":36, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.SpriteMaskModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437070472, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437070507, "dur":42, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.SharedInternalsModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437070549, "dur":31, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437070580, "dur":35, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.ScreenCaptureModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437070615, "dur":31, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437070647, "dur":39, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437070686, "dur":38, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437070725, "dur":35, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.ProfilerModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437070760, "dur":31, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437070791, "dur":35, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.PhysicsModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437070826, "dur":32, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437070858, "dur":37, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.PerformanceReportingModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437070895, "dur":35, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437070931, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.NVIDIAModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437070969, "dur":31, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437071001, "dur":36, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.JSONSerializeModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437071037, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437071072, "dur":539, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.InputLegacyModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437071611, "dur":48, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437071660, "dur":42, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.DSPGraphModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437071702, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437071736, "dur":33, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.DirectorModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437071770, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437071803, "dur":37, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.CoreModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437071840, "dur":33, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437071874, "dur":39, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.ClusterRendererModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437071913, "dur":31, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437071945, "dur":43, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.ClothModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437071988, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437072022, "dur":38, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.AssetBundleModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437072061, "dur":106, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437072167, "dur":43, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.AndroidJNIModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437072210, "dur":36, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437072246, "dur":51, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/UnityEngine.AccessibilityModule.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437072297, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437072332, "dur":80924, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.XR.Oculus.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437153256, "dur":61, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437153318, "dur":286003, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Unity.TextMeshPro.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437439322, "dur":109, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437439433, "dur":6580, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.Interaction.OVR.Samples.pdb" }}
+,{ "pid":12345, "tid":8, "ts":1675402437446013, "dur":60, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437446075, "dur":72855, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Oculus.Interaction.OVR.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437518930, "dur":72, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437519003, "dur":933, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Facebook.Wit.TTS.Samples.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437519937, "dur":80, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437520018, "dur":8901, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Facebook.Wit.TTS.pdb" }}
+,{ "pid":12345, "tid":8, "ts":1675402437528920, "dur":58, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437528980, "dur":13166, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/Facebook.Wit.Conduit.pdb" }}
+,{ "pid":12345, "tid":8, "ts":1675402437542147, "dur":57, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437542207, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/DOTween.dll.mdb" }}
+,{ "pid":12345, "tid":8, "ts":1675402437542249, "dur":35, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437542285, "dur":35, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/DOTween.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437542320, "dur":34, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437542355, "dur":8082, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/AssistantCoreSDKRuntime.pdb" }}
+,{ "pid":12345, "tid":8, "ts":1675402437550438, "dur":58, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437550498, "dur":40207, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/Managed/AssistantCoreSDKRuntime.dll" }}
+,{ "pid":12345, "tid":8, "ts":1675402437590705, "dur":54, "ph":"X", "name": "OutputFilesMissingFor",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437590761, "dur":40, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/sharedassets0.assets" }}
+,{ "pid":12345, "tid":8, "ts":1675402437590809, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437590829, "dur":5306, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/sharedassets0.assets" }}
+,{ "pid":12345, "tid":8, "ts":1675402437596179, "dur":43, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/resources.assets.resS" }}
+,{ "pid":12345, "tid":8, "ts":1675402437596228, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437596235, "dur":4606, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/resources.assets.resS" }}
+,{ "pid":12345, "tid":8, "ts":1675402437600909, "dur":62, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/level0.resS" }}
+,{ "pid":12345, "tid":8, "ts":1675402437600988, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437601005, "dur":1134, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/level0.resS" }}
+,{ "pid":12345, "tid":8, "ts":1675402437602180, "dur":41, "ph":"X", "name": "CheckInputSignature",  "args": { "detail":"CopyFiles C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/globalgamemanagers.assets" }}
+,{ "pid":12345, "tid":8, "ts":1675402437602227, "dur":1, "ph":"X", "name": "StoreTimestampsOfNonGeneratedInputFiles",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":8, "ts":1675402437602236, "dur":1437, "ph":"X", "name": "CopyFiles",  "args": { "detail":"C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar_Data/globalgamemanagers.assets" }}
+,{ "pid":12345, "tid":8, "ts":1675402437603716, "dur":122276, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
+,{ "pid":12345, "tid":0, "ts":1675402437729908, "dur":1684, "ph":"X", "name": "ProfilerWriteOutput" }
+,{ "pid": 0, "tid": 1, "ts": 1675402437742751, "dur": 1082, "ph": "X", "name": "backend_profiler0.traceevents", "args": {} },
+{ "pid": 0, "tid": 1, "ts": 1675402437741475, "dur": 2386, "ph": "X", "name": "Write chrome-trace events", "args": {} },

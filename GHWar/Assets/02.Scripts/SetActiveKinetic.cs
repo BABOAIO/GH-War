@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class SetActiveKinetic : MonoBehaviour
 {
-    private void Update()
+    public Vector3 V3_origonPos;
+    public Quaternion Q_origonRot;
+
+    private void Awake()
     {
-        if (!GameManager.instance.B_GameStart)
-        {
-            GetComponent<Rigidbody>().isKinematic = true;
-        }
-        else
-        {
-            GetComponent<Rigidbody>().isKinematic = false;
-        }
+        V3_origonPos= transform.position;
+        Q_origonRot= transform.rotation;
     }
 }
