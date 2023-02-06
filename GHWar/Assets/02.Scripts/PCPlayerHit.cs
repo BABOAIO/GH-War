@@ -6,6 +6,7 @@ using UniRx;
 using UnityEngine.UI;
 using System.Collections;
 using Unity.VisualScripting;
+using Photon.Pun.Demo.PunBasics;
 
 public class PCPlayerHit : MonoBehaviourPunCallbacks
 {
@@ -94,7 +95,10 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
 
                 currentTime = 0.0f;
 
-                pv.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
+                if (GameManager.instance.B_GameStart)
+                {
+                    pv.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
+                }
             }
         }
     }

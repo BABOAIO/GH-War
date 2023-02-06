@@ -24,18 +24,13 @@ public class XRGrabInteractionPun : XRGrabInteractable // ÀÌ Ç×¸ñÀÌ ÀÖ±â¿¡ ÀÎ½ºÆ
         player_this = pv.Controller;
     }
 
-    void Update()
-    {
-
-    }
-
     // Áý¾úÀ» °æ¿ì ¼ÒÀ¯±Ç ¿äÃ»
     [System.Obsolete]
     protected override void OnSelectEntered(XRBaseInteractor interactor)
     {
         pv.RequestOwnership();
-        pv.RPC("IsGrabReverse", RpcTarget.All);
-        //isGrab= true;
+        //pv.RPC("IsGrabReverse", RpcTarget.All);
+        //isGrab = true;
         //sc_PCPlayerMove.st_PC = PC_Player_Move.PC_Player_State.IsGrab;
         base.OnSelectEntered(interactor);
     }
@@ -54,7 +49,7 @@ public class XRGrabInteractionPun : XRGrabInteractable // ÀÌ Ç×¸ñÀÌ ÀÖ±â¿¡ ÀÎ½ºÆ
     {
         //StartCoroutine(DelayedTransferOwnership());
         pv.TransferOwnership(player_this);
-        pv.RPC("IsGrabReverse", RpcTarget.All);
+        //pv.RPC("IsGrabReverse", RpcTarget.All);
         //isGrab = false;
         base.OnSelectExited(interactor);
     }
@@ -70,22 +65,4 @@ public class XRGrabInteractionPun : XRGrabInteractable // ÀÌ Ç×¸ñÀÌ ÀÖ±â¿¡ ÀÎ½ºÆ
         yield return new WaitForSeconds(0.5f);
         pv.TransferOwnership(player_this);
     }
-    //protected override void OnSelectExiting(XRBaseInteractor interactor)
-    //{
-    //    pv.TransferOwnership(player_this);
-    //    base.OnSelectExiting(interactor);
-    //}
-
-    //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    //{
-    //    if (stream.IsReading)
-    //    {
-    //        v3_grabbed = (Vector3)stream.ReceiveNext();
-    //    }
-    //    else if(stream.IsWriting)
-    //    {
-    //        stream.SendNext(t_this.position);
-    //    }
-    //}
-
 }

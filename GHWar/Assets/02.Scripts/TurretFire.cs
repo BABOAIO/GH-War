@@ -5,6 +5,8 @@ using Photon.Pun;
 
 public class TurretFire : MonoBehaviourPunCallbacks
 {
+    [SerializeField] GameObject cannonBall;
+
     [SerializeField] float f_shotPower = 50f;
     Animation anim_this;
 
@@ -34,6 +36,7 @@ public class TurretFire : MonoBehaviourPunCallbacks
 
     public void AnimationEvnet()
     {
+        //GameObject ball = Instantiate(cannonBall, transform.position + transform.forward * 0.5f, transform.rotation);
         GameObject ball = PhotonNetwork.Instantiate("CannonBall", transform.position + transform.forward * 0.5f, transform.rotation);
         ball.GetComponent<Rigidbody>().AddForce(transform.forward * f_shotPower, ForceMode.Impulse);
     }
