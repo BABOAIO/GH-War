@@ -100,8 +100,4 @@ public class ConnManager : MonoBehaviourPunCallbacks
 
     }
 
-    void Update()
-    {
-        
-    }
 }

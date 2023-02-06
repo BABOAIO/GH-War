@@ -36,8 +36,10 @@ public class TurretFire : MonoBehaviourPunCallbacks
 
     public void AnimationEvnet()
     {
+
         //GameObject ball = Instantiate(cannonBall, transform.position + transform.forward * 0.5f, transform.rotation);
-        GameObject ball = PhotonNetwork.Instantiate("CannonBall", transform.position + transform.forward * 0.5f, transform.rotation);
-        ball.GetComponent<Rigidbody>().AddForce(transform.forward * f_shotPower, ForceMode.Impulse);
+
+        //GameObject ball = PhotonNetwork.Instantiate("CannonBall", transform.position + transform.forward * 0.5f, transform.rotation);
+        //ball.GetComponent<Rigidbody>().AddForce(transform.forward * f_shotPower, ForceMode.Impulse);
     }
 }
