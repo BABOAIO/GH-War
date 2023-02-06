@@ -71,6 +71,7 @@ public class TurretManager : MonoBehaviourPunCallbacks
         yield return new WaitForSeconds(1.0f);
         a_turret.SetBool("Fire", true);
 
+        tr_firePos.LookAt(GameObject.FindGameObjectWithTag("VRPlayerHead").transform.position);
         GameObject ball = Instantiate(cannonBall, tr_firePos.position, tr_firePos.rotation);
         ball.GetComponent<Rigidbody>().AddForce(tr_firePos.forward * f_shotPower, ForceMode.Impulse);
 
