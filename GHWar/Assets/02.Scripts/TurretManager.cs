@@ -10,6 +10,7 @@ public class TurretManager : MonoBehaviourPunCallbacks
 {
     [SerializeField] GameObject cannonBall;
     [SerializeField] Transform tr_firePos;
+    [SerializeField] GameObject o_exp;
     [SerializeField] float f_shotPower = 150f;
 
     [SerializeField] Text txt_countDown;
@@ -58,6 +59,7 @@ public class TurretManager : MonoBehaviourPunCallbacks
             TurretButtonPress();
             if (photonView.IsMine)
             {
+                photonView.RPC("TurretButtonPress", RpcTarget.All);
                 //GetPressOrRelease();
             }
         }
@@ -72,7 +74,8 @@ public class TurretManager : MonoBehaviourPunCallbacks
         a_turret.SetBool("Fire", true);
 
         tr_firePos.LookAt(GameObject.FindGameObjectWithTag("VRPlayerHead").transform.position);
-        GameObject ball = Instantiate(cannonBall, tr_firePos.position, Quaternion.identity);
+        GameObject ball = PhotonNetwork.Instantiate("CannonBall", tr_firePos.position, Quaternion.identity);
+        GameObject fireEffect = PhotonNetwork.Instantiate("HitEffect", tr_firePos.position, tr_firePos.rotation);
         ball.GetComponent<Rigidbody>().AddForce(tr_firePos.forward * f_shotPower, ForceMode.Impulse);
         yield return new WaitForSeconds(1.0f);
 
@@ -80,9 +83,13 @@ public class TurretManager : MonoBehaviourPunCallbacks
         yield return new WaitForSeconds(0.5f);
         a_turret.SetBool("Open", false);
 
+        // 이미 스크립트에 있어서 안없애도됨
+        PhotonNetwork.Destroy(fireEffect);
+
         yield return null;
     }
 
+    [PunRPC]
     void TurretButtonPress()
     {
         if (b_isPress)
