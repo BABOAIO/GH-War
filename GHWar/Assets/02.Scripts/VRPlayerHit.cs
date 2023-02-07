@@ -7,12 +7,13 @@ using UnityEngine.UI;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 
+// VR플레이어의 헤드에 넣는다. 헤드는 컬라이더를 가지고, 태그를 VRPlayerHead로 바꾼다.
 public class VRPlayerHit : MonoBehaviourPunCallbacks
 {
     [Header("Max HP")]
-    public float MaxHP = 2.0f;
+    public float MaxHP = 5.0f;
     [Header("HP")]
-    public float HP = 2.0f;
+    public float HP = 5.0f;
 
     [Header("HP 슬라이더")]
     [SerializeField] Slider hpBar;
@@ -23,6 +24,13 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
     float invincibilityTime = 2.0f;
     public float currentTime = 2.0f;
 
+    private void Start()
+    {
+        if (!gameObject.CompareTag("VRPlayerHead"))
+        {
+            gameObject.tag = "VRPlayerHead";
+        }
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -50,6 +58,7 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
         hpBar.value = HP / MaxHP;
         hpBar2.value = hpBar.value;
 
+        // 자기 얼굴 때문에 앞이 안보이므로 플레이어의 경우, 꺼놓는다.(컬라이더는 살아있으므로 피격이 된다.)
         if (photonView.IsMine)
         {
             this.GetComponent<MeshRenderer>().enabled = false;

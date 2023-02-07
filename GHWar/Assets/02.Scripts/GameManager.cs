@@ -8,8 +8,10 @@ using UnityEngine.UI;
 using DG.Tweening;
 using UniRx.Triggers;
 
+// 게임매니저 오브젝트에 넣는다.
+
 [RequireComponent(typeof(AudioSource))]
-public class GameManager : MonoBehaviourPunCallbacks//, IPunObservable
+public class GameManager : MonoBehaviourPunCallbacks
 {
     public static GameManager instance;
 
@@ -17,12 +19,12 @@ public class GameManager : MonoBehaviourPunCallbacks//, IPunObservable
     //List<Vector3> v3_treesOriginPos = new List<Vector3>();
     //List<Quaternion> q_treesRotation = new List<Quaternion>();
 
-    //[SerializeField] GameObject obj_trees;
-    //Vector3 v3_treesOriginPos;
-    //Quaternion q_treesOriginRot;
     //[SerializeField] GameObject obj_FallingArea;
 
-    [SerializeField] List<TurretFire> turrets = new List<TurretFire>();
+    // 지정 안할 경우, TurretFire 에서 VR 플레이어를 인식 못하는 치명적 오류 발생
+    // Turret의 Cannon_set 에 들어있음
+    [Header("게임 시작하기 전 비활성화시킬 대포 오브젝트")]
+    [SerializeField] List<TurretLookVRTarget1> turrets = new List<TurretLookVRTarget1>();
 
     // VR인지 PC인지를 구분
     [Header("VR 상태 변수")]
@@ -394,11 +396,13 @@ public class GameManager : MonoBehaviourPunCallbacks//, IPunObservable
         ////obj_trees.transform.rotation = q_treesOriginRot;
         //obj_FallingArea.SetActive(true);
 
+        // 터렛 활성화 >> Start함수에서 VR플레이어 인식
         foreach (var t in turrets)
         {
             t.enabled = true;
         }
 
+        // 게임 시작 전, 방해되는 돌들 제거
         GameObject[] tmp_rock = GameObject.FindGameObjectsWithTag("Rock");
         if(tmp_rock != null)
         {

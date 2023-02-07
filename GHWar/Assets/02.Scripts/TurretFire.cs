@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
+// ¾ø¾îµµ µÊ
 public class TurretFire : MonoBehaviourPunCallbacks
 {
     [SerializeField] GameObject cannonBall;

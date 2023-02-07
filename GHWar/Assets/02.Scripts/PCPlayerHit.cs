@@ -8,6 +8,8 @@ using System.Collections;
 using Unity.VisualScripting;
 using Photon.Pun.Demo.PunBasics;
 
+// PC플레이어 최상단에 넣는다.
+// 컬라이더를 넣고, 태그를 PC_Player로 바꾼다.
 public class PCPlayerHit : MonoBehaviourPunCallbacks
 {
     PhotonView pv;
@@ -40,8 +42,12 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
 
     private void OnCollisionEnter(Collision collision)
     {
+        // 대포 스위치가 눌리고 올라올 때 속도가 꽤 빠르므로 피격대상에서 제외시킨다.
         if(collision.gameObject.layer == LayerMask.NameToLayer("Turret")) { return; }
+        // 리지드바디가 없으면 충돌대상으로 취급하지 않는다.
         if (collision.gameObject.GetComponent<Rigidbody>() == null) { return; }
+
+        // RPC 동기화를 위해 자기 자신에 대해서만 동작한다.
         if (pv.IsMine)
         {
             float f_objVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
@@ -49,20 +55,24 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
 
             if (currentTime >= invincibilityTime)
             {
+                // VR플레이어의 손위에 올라갈 때
                 if ((collision.gameObject.CompareTag("RightHand") || collision.gameObject.CompareTag("LeftHand")))
                 {
                     if (f_objVelocity >= 5f)
                     {
+                        // 주먹을 쥐었을 경우, 피격
                         if (collision.gameObject.GetComponent<HandPresence>().gripValue >= 0.5f)
                         {
                             pv.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
                             currentTime = 0.0f;
                         }
+                        // 주먹을 쥐지 않을 경우, 튕겨남 방지
                         else
                         {
                             pv.RPC("FunctionForceReducing", RpcTarget.AllBuffered);
                         }
                     }
+                    // 매우 작은 진동에도 튕기므로 보험용
                     else
                     {
                         pv.RPC("FunctionForceReducing", RpcTarget.AllBuffered);
@@ -70,6 +80,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
                 }
                 else
                 {
+                    // 어떠한 오브젝트로 속도가 일정이상 빠르면 플레이어 피격
                     if (f_objVelocity >= 5f)
                     {
                         //Hit_PCPlayer(1);
@@ -81,6 +92,8 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
         }
     }
 
+    // 플레이어가 바닥으로 떨어질 경우, 스폰장소로 리스폰
+    // 게임 중일 경우 피격 판정
     private void OnTriggerEnter(Collider other)
     {
         if (pv.IsMine)
@@ -103,6 +116,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
         }
     }
 
+    // 손에서 이탈하고도 너무 많이 튕기는 것을 방지
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.GetComponent<Rigidbody>() == null) { return; }
@@ -136,6 +150,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
         HP -= damage;
         Debug.Log($"PC Player {pv.Controller} is Damaged : Dmg {damage}");
 
+        // 죽음모션, 부활
         if (HP <= 0)
         {
             print("PC 죽음");
@@ -156,6 +171,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
                 //gameObject.GetComponent<PCPlayerLife>().HeartBreak();
             }
         }
+        // 피격모션
         else
         {
             a_PCPlayer.SetBool("IsHit", true);

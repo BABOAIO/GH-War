@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
+// 플레이어에게 넣는다. 너무 멀리 날라가버리는 불상사 방지
 public class ForceReducing : MonoBehaviourPun
 {
     [Header("저항력, 값이 커질수록 저항값이 작아짐")]

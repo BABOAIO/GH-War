@@ -3,11 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Resource 에 있는 대포알에 넣는다.
 public class CannonBall : MonoBehaviour
 {
-    Rigidbody rb_this;
-    Transform tr_this;
-
     bool isHit = false;
 
     // 소리부분 //
@@ -28,7 +26,6 @@ public class CannonBall : MonoBehaviour
 
     private void Start()
     {
-        tr_this = GetComponent<Transform>();
         as_arrow = GetComponent<AudioSource>();
         //rb_this.AddForce(new Vector3(0, 0, shotPower));
     }
@@ -39,6 +36,7 @@ public class CannonBall : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        // VR플레이어가 피격될 시
         if (collision.gameObject.CompareTag("VRPlayerHead"))
         {
             isHit = true;

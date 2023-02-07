@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// UI 등 바라보았음 편리한 것들에 넣는다.
+// HP바 등...
 public class LookCamera : MonoBehaviour
 {
     Camera cameraToLookAt;

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
+// VR 플레이어의 손(콜라이더가 있는)에 넣어준다.
+// 손 애니메이션 관련 스크립트
 public class HandPresence : MonoBehaviour
 {
     public InputDeviceCharacteristics controllerCharacteristics;    

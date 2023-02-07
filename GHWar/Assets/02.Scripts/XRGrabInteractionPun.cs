@@ -5,21 +5,18 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class XRGrabInteractionPun : XRGrabInteractable // 이 항목이 있기에 인스펙터창에 그랩관련 항목이 생성
+// VR 손으로 잡고자하는 모든 오브젝트에 넣는다.
+// 이 오브젝트는 포톤뷰가 있어야하며, 포톤뷰를 Take Over(권한 넘기기 가능)으로 바꿔주어여한다.
+// XRInteractionManager는 넣지 않는다. 넣으면 넣은 오브젝트끼리만 상호작용함(손에도 들어있기 때문)
+public class XRGrabInteractionPun : XRGrabInteractable // 이 항목이 있기에 인스펙터창에 그랩관련 인스펙터창이 생성
 {
     Player player_this;
-    //Transform t_this;
-    //Vector3 v3_grabbed;
     PhotonView pv;
 
     public bool isGrab = false;
 
-    //PC_Player_Move sc_PCPlayerMove = new PC_Player_Move();
-
     void Start()
     {
-        //t_this = GetComponent<Transform>();
-        //player_this = GetComponent<Player>();
         pv = GetComponent<PhotonView>();
         player_this = pv.Controller;
     }
@@ -30,8 +27,6 @@ public class XRGrabInteractionPun : XRGrabInteractable // 이 항목이 있기에 인스�
     {
         pv.RequestOwnership();
         pv.RPC("IsGrabReverse", RpcTarget.All);
-        //isGrab = true;
-        //sc_PCPlayerMove.st_PC = PC_Player_Move.PC_Player_State.IsGrab;
         base.OnSelectEntered(interactor);
     }
 
@@ -40,20 +35,18 @@ public class XRGrabInteractionPun : XRGrabInteractable // 이 항목이 있기에 인스�
     protected override void OnSelectEntering(XRBaseInteractor interactor)
     {
         pv.RequestOwnership();
-        //sc_PCPlayerMove.st_PC = PC_Player_Move.PC_Player_State.IsGrab;
         base.OnSelectEntering(interactor);
     }
 
     [System.Obsolete]
     protected override void OnSelectExited(XRBaseInteractor interactor)
     {
-        //StartCoroutine(DelayedTransferOwnership());
         pv.TransferOwnership(player_this);
         pv.RPC("IsGrabReverse", RpcTarget.All);
-        //isGrab = false;
         base.OnSelectExited(interactor);
     }
 
+    // 그랩이 되있을 경우, 컬라이더를 없애주면서 화면에서 떨리는 모습을 막아준다.
     [PunRPC]
     void IsGrabReverse()
     {

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
+// 대포 모델 최상단에 넣는다.
+// 이 부분이 오류가 날 경우, 게임매니저를 살펴본다.
 public class TurretLookVRTarget1 : MonoBehaviour
 {
     Transform tr_this;

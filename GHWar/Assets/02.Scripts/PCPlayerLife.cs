@@ -4,9 +4,12 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 
+// PC플레이어 최상단에 넣는다.
 public class PCPlayerLife : MonoBehaviour
 {
+    [Header("PC 플레이어 생명 이미지")]
     [SerializeField] GameObject[] lifeImage = new GameObject[2];
+    [Header("PC 플레이어 잃은 생명 이미지")]
     [SerializeField] Image[] lifeLossImage = new Image[2];
 
     private void Start()

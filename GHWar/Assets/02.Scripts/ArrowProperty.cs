@@ -4,13 +4,16 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
+// Resource 폴더에 있는 Arrow에 넣는다.
 [RequireComponent(typeof(AudioSource))]
 public class ArrowProperty : MonoBehaviour
 {
+    // 생성 후 날라가는 속도
     [SerializeField] float shotSpeed = 20.0f;
     Rigidbody rb_this;
     Transform tr_this;
 
+    // 부딪혔을때 계속 날라감을 방지
     bool isHit = false;
 
     // 소리부분 //
@@ -45,6 +48,7 @@ public class ArrowProperty : MonoBehaviour
         //}
         // 소리부분 //
 
+        // 부딪히지 않았을 경우, 앞으로 날라간다.(중력의 영향을 어느정도 받는것으로 보인다.)
         if(!isHit)
         {
             tr_this.Translate(Vector3.forward * shotSpeed * Time.fixedDeltaTime);

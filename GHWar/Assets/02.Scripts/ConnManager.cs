@@ -7,10 +7,13 @@ using Photon.Realtime;
 using System.Data;
 using UnityEngine.UI;
 
+// ConnManager에 넣는다. 사실 어느 곳이든 상관지만 게임매니저는 제외
 public class ConnManager : MonoBehaviourPunCallbacks
 {
+    // 포톤서버에 스폰할 플레이어의 오브젝트이름(0이면 VR, 1이면 PC)
     [SerializeField] string[] array_PlayerType = new string[2];
 
+    // 최대 접속인원
     public byte Byte_maxPlayer = 2;
 
     [Header("VR 플레이어 스폰 위치")]
@@ -18,9 +21,8 @@ public class ConnManager : MonoBehaviourPunCallbacks
     [Header("PC 플레이어 스폰 위치")]
     public Vector3 PC_Spawn;
 
+    // 싱글톤
     public static ConnManager Conn = null;
-
-    Quaternion spawnRotation;
 
     private void Awake()
     {
@@ -87,14 +89,16 @@ public class ConnManager : MonoBehaviourPunCallbacks
         {
             //Vector2 originPos = Random.insideUnitCircle * 2.0f;
             GameManager.instance.Array_AllPlayers[0] = PhotonNetwork.Instantiate(array_PlayerType[0], VR_Spawn, Quaternion.Euler(0,180,0));
+            // 싱글톤 게임매니저에 생성된 플레이어의 텍스트를 연결
             GameManager.instance.Array_txtWinner[0] = GameManager.instance.Array_AllPlayers[0].GetComponent<VRPlayerMove1>().Txt_winnerText_VR;
         }
-        // 반경 2m 이내에 랜덤 위치에서 PC 플레이어 생성
+        // PC 플레이어 생성
         else
         {
             //Vector2 originPos = Random.insideUnitCircle * 2.0f;
             //PhotonNetwork.Instantiate("PCPlayerXR", PC_Spawn, Quaternion.identity);
             GameManager.instance.Array_AllPlayers[1] = PhotonNetwork.Instantiate(array_PlayerType[1], PC_Spawn, Quaternion.identity);
+            // 싱글톤 게임매니저에 생성된 플레이어의 텍스트를 연결
             GameManager.instance.Array_txtWinner[1] = GameManager.instance.Array_AllPlayers[1].GetComponent<PC_Player_Move>().Txt_winnerText_PC;
         }
 

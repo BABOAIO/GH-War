@@ -5,6 +5,8 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.XR.Interaction.Toolkit;
 
+// VR 플레이어의 손(콜라이더가 있는)에 넣어준다.
+// 손이 바닥에 닿았을 경우, 통과하지 못하게 방지
 public class HandPresencePhysic : MonoBehaviour
 {
     [Header("같이 이동할 컨트롤러 위치")]
@@ -20,10 +22,6 @@ public class HandPresencePhysic : MonoBehaviour
     Collider[] col_hands;
     // 움직임에 제약을 주기 위한 리지드바디 컨트롤
     Rigidbody rb_this;
-    //[Header("땅을 칠때 나오는 이펙트")]
-    //[SerializeField] ParticleSystem ps_hitGround;
-    //[Header("땅을 칠때 나오는 큐브")]
-    //[SerializeField] GameObject o_stone;
 
     void Start()
     {
