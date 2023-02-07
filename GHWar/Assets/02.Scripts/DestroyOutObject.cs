@@ -7,7 +7,10 @@ public class DestroyOutObject : MonoBehaviourPun
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Obstacle") || other.gameObject.CompareTag("Arrow") || other.gameObject.CompareTag("CannonBall"))
+        if (other.gameObject.CompareTag("Obstacle")
+            || other.gameObject.CompareTag("Arrow")
+            || other.gameObject.CompareTag("CannonBall")
+            || other.gameObject.CompareTag("Rock"))
         {
             Destroy(other.gameObject);
         }

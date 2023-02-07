@@ -56,7 +56,7 @@ public class TurretManager : MonoBehaviourPunCallbacks
         if (currentTime > delayTime)
         {
             txt_countDown.text = "O.K.";
-            TurretButtonPress();
+            //TurretButtonPress();
             if (photonView.IsMine)
             {
                 photonView.RPC("TurretButtonPress", RpcTarget.All);
@@ -73,18 +73,21 @@ public class TurretManager : MonoBehaviourPunCallbacks
         yield return new WaitForSeconds(1.0f);
         a_turret.SetBool("Fire", true);
 
-        tr_firePos.LookAt(GameObject.FindGameObjectWithTag("VRPlayerHead").transform.position);
+        if (GameObject.FindGameObjectWithTag("VRPlayerHead"))
+        {
+            tr_firePos.LookAt(GameObject.FindGameObjectWithTag("VRPlayerHead").transform.position);
+        }
         GameObject ball = PhotonNetwork.Instantiate("CannonBall", tr_firePos.position, Quaternion.identity);
         GameObject fireEffect = PhotonNetwork.Instantiate("HitEffect", tr_firePos.position, tr_firePos.rotation);
         ball.GetComponent<Rigidbody>().AddForce(tr_firePos.forward * f_shotPower, ForceMode.Impulse);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
 
         Observable.NextFrame().Subscribe(_ => a_turret.SetBool("Fire", false));
         yield return new WaitForSeconds(0.5f);
         a_turret.SetBool("Open", false);
 
         // 이미 스크립트에 있어서 안없애도됨
-        PhotonNetwork.Destroy(fireEffect);
+        //PhotonNetwork.Destroy(fireEffect);
 
         yield return null;
     }

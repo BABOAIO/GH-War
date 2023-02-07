@@ -7,10 +7,9 @@ using Photon.Realtime;
 using UnityEngine.UI;
 using DG.Tweening;
 using UniRx.Triggers;
-using UnityEngine.Experimental.AI;
 
 [RequireComponent(typeof(AudioSource))]
-public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
+public class GameManager : MonoBehaviourPunCallbacks//, IPunObservable
 {
     public static GameManager instance;
 
@@ -47,6 +46,8 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
     public bool B_IsGameOver = false;
     [Header("게임이 시작했는지 알려주는 변수")]
     public bool B_GameStart = false;
+
+    [SerializeField] List<GameObject> o_PlayArea = new List<GameObject>();
 
     // 스카이박스 초당 회전 값 변수
     [Header("스카이박스 초당 회전 값 변수")]
@@ -93,7 +94,184 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
         //q_treesOriginRot = obj_trees.transform.rotation;
         //obj_FallingArea.SetActive(false);
 
+        StartCoroutine(WaitPlayerText());
         StartCoroutine(WaitPlayer());
+    }
+
+    // 띄엄띄엄 텍스트 출력
+    IEnumerator WaitPlayerText()
+    {
+        float delay = 0.1f;
+
+        while (!B_GameStart)
+        {
+            if (Array_AllPlayers[0])
+            {
+                switch (Array_txtWinner[0].text)
+                {
+                    case "":
+                        Array_txtWinner[0].text = "W";
+                        break;
+                    case "W":
+                        Array_txtWinner[0].text += "a";
+                        break;
+                    case "Wa":
+                        Array_txtWinner[0].text += "i";
+                        break;
+                    case "Wai":
+                        Array_txtWinner[0].text += "t";
+                        break;
+                    case "Wait":
+                        Array_txtWinner[0].text += " ";
+                        break;
+                    case "Wait ":
+                        Array_txtWinner[0].text += "f";
+                        break;
+                    case "Wait f":
+                        Array_txtWinner[0].text += "o";
+                        break;
+                    case "Wait fo":
+                        Array_txtWinner[0].text += "r";
+                        break;
+                    case "Wait for":
+                        Array_txtWinner[0].text += " ";
+                        break;
+                    case "Wait for ":
+                        Array_txtWinner[0].text += "O";
+                        break;
+                    case "Wait for O":
+                        Array_txtWinner[0].text += "t";
+                        break;
+                    case "Wait for Ot":
+                        Array_txtWinner[0].text += "h";
+                        break;
+                    case "Wait for Oth":
+                        Array_txtWinner[0].text += "e";
+                        break;
+                    case "Wait for Othe":
+                        Array_txtWinner[0].text += "r";
+                        break;
+                    case "Wait for Other":
+                        Array_txtWinner[0].text += " ";
+                        break;
+                    case "Wait for Other ":
+                        Array_txtWinner[0].text += "P";
+                        break;
+                    case "Wait for Other P":
+                        Array_txtWinner[0].text += "l";
+                        break;
+                    case "Wait for Other Pl":
+                        Array_txtWinner[0].text += "a";
+                        break;
+                    case "Wait for Other Pla":
+                        Array_txtWinner[0].text += "y";
+                        break;
+                    case "Wait for Other Play":
+                        Array_txtWinner[0].text += "e";
+                        break;
+                    case "Wait for Other Playe":
+                        Array_txtWinner[0].text += "r";
+                        break;
+                    case "Wait for Other Player":
+                        Array_txtWinner[0].text += ".";
+                        break;
+                    case "Wait for Other Player.":
+                        Array_txtWinner[0].text += ".";
+                        break;
+                    case "Wait for Other Player..":
+                        Array_txtWinner[0].text += ".";
+                        yield return new WaitForSeconds(1f);
+                        break;
+                    case "Wait for Other Player...":
+                        Array_txtWinner[0].text = "";
+                        break;
+                }
+            }
+
+            else if (Array_AllPlayers[1])
+            {
+                switch (Array_txtWinner[1].text)
+                {
+                    case "":
+                        Array_txtWinner[1].text = "W";
+                        break;
+                    case "W":
+                        Array_txtWinner[1].text += "a";
+                        break;
+                    case "Wa":
+                        Array_txtWinner[1].text += "i";
+                        break;
+                    case "Wai":
+                        Array_txtWinner[1].text += "t";
+                        break;
+                    case "Wait":
+                        Array_txtWinner[1].text += " ";
+                        break;
+                    case "Wait ":
+                        Array_txtWinner[1].text += "f";
+                        break;
+                    case "Wait f":
+                        Array_txtWinner[1].text += "o";
+                        break;
+                    case "Wait fo":
+                        Array_txtWinner[1].text += "r";
+                        break;
+                    case "Wait for":
+                        Array_txtWinner[1].text += " ";
+                        break;
+                    case "Wait for ":
+                        Array_txtWinner[1].text += "O";
+                        break;
+                    case "Wait for O":
+                        Array_txtWinner[1].text += "t";
+                        break;
+                    case "Wait for Ot":
+                        Array_txtWinner[1].text += "h";
+                        break;
+                    case "Wait for Oth":
+                        Array_txtWinner[1].text += "e";
+                        break;
+                    case "Wait for Othe":
+                        Array_txtWinner[1].text += "r";
+                        break;
+                    case "Wait for Other":
+                        Array_txtWinner[1].text += " ";
+                        break;
+                    case "Wait for Other ":
+                        Array_txtWinner[1].text += "P";
+                        break;
+                    case "Wait for Other P":
+                        Array_txtWinner[1].text += "l";
+                        break;
+                    case "Wait for Other Pl":
+                        Array_txtWinner[1].text += "a";
+                        break;
+                    case "Wait for Other Pla":
+                        Array_txtWinner[1].text += "y";
+                        break;
+                    case "Wait for Other Play":
+                        Array_txtWinner[1].text += "e";
+                        break;
+                    case "Wait for Other Playe":
+                        Array_txtWinner[1].text += "r";
+                        break;
+                    case "Wait for Other Player":
+                        Array_txtWinner[1].text += ".";
+                        break;
+                    case "Wait for Other Player.":
+                        Array_txtWinner[1].text += ".";
+                        break;
+                    case "Wait for Other Player..":
+                        Array_txtWinner[1].text += ".";
+                        yield return new WaitForSeconds(1f);
+                        break;
+                    case "Wait for Other Player...":
+                        Array_txtWinner[1].text = "";
+                        break;
+                }
+            }
+            yield return new WaitForSeconds(delay);
+        }
     }
 
     // 1 대 1 한정 다른 플레이어를 대기하는 함수
@@ -110,7 +288,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
                 // ConnManager에서 플레이어가 생성될 때, 싱글턴으로 넣어줌
                 if (Array_AllPlayers[0])
                 {
-                    Array_txtWinner[0].text = str;
+                    //Array_txtWinner[0].text = str;
                     Debug.Log(str);
                     GameObject o_otherPlayer = GameObject.FindGameObjectWithTag("PC_Player");
 
@@ -130,7 +308,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
                 // ConnManager에서 플레이어가 생성될 때, 싱글턴으로 넣어줌
                 else if (Array_AllPlayers[1])
                 {
-                    Array_txtWinner[1].text = str;
+                    //Array_txtWinner[1].text = str;
                     Debug.Log(str);
                     GameObject o_otherPlayer = GameObject.FindGameObjectWithTag("VR_Player");
 
@@ -153,7 +331,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
             {
                 if (Array_AllPlayers[0])
                 {
-                    Array_txtWinner[0].text = str;
+                    //Array_txtWinner[0].text = str;
                     Debug.Log(str);
                     GameObject o_otherPlayer = GameObject.FindGameObjectWithTag("PC_Player");
 
@@ -172,7 +350,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
                 }
                 else if (Array_AllPlayers[1])
                 {
-                    Array_txtWinner[1].text = str;
+                    //Array_txtWinner[1].text = str;
                     Debug.Log(str);
                     GameObject o_otherPlayer = GameObject.FindGameObjectWithTag("VR_Player");
 
@@ -203,6 +381,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
 
     void ResetDeathCount(int i)
     {
+        StopCoroutine(WaitPlayerText());
         i_VRDeathCount = i;
         i_PCDeathCount = i;
 
@@ -251,6 +430,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
     IEnumerator RebirthPCPlayer()
     {
         // 2초 동안 움직임 방지
+        --i_PCDeathCount;
         Array_AllPlayers[1].GetComponent<PC_Player_Move>().enabled = false;
 
         yield return new WaitForSeconds(2f);
@@ -258,7 +438,6 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
         if (PhotonNetwork.IsMasterClient)
         {
             Array_AllPlayers[1].GetComponent<PC_Player_Move>().enabled = true;
-            --i_PCDeathCount;
 
             // 일정 시간 무적 부여
             Array_AllPlayers[1].GetComponent<PCPlayerHit>().currentTime = 0;
@@ -266,7 +445,6 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
         else
         {
             Array_AllPlayers[1].GetComponent<PC_Player_Move>().enabled = true;
-            --i_PCDeathCount;
             // anim idle
 
             // 일정 시간 무적 부여
@@ -328,7 +506,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
             {
                 // PC가 이겼을 경우
                 //if (Array_AllPlayers[0].GetComponent<VRPlayerMove1>().o_vrFace.GetComponent<VRPlayerHit>().HP <= 0)
-                if (i_VRDeathCount <= 0)
+                if (Array_AllPlayers[0].GetComponent<VRPlayerHit>().HP <= 0)
                 {
                     B_IsGameOver = true;
 
@@ -369,7 +547,7 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
             {
                 // PC가 이겼을 경우
                 //if (Array_AllPlayers[0].GetComponent<VRPlayerMove1>().o_vrFace.GetComponent<VRPlayerHit>().HP <= 0)
-                if (i_VRDeathCount <= 0)
+                if (Array_AllPlayers[0].GetComponent<VRPlayerHit>().HP <= 0)
                 {
                     B_IsGameOver = true;
 
@@ -461,23 +639,28 @@ public class GameManager : MonoBehaviourPunCallbacks, IPunObservable
         //Application.Quit();
     }
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    void NarrowPlayArea(GameObject area)
     {
-        //if (stream.IsWriting)
-        //{
-        //    if (IsVR)
-        //    {
-        //        stream.SendNext(i_VRDeathCount);
-        //    }
-        //}
-        //if (stream.IsReading)
-        //{
-        //    if(!IsVR)
-        //    {
-        //        i_VRDeathCount = (int)stream.ReceiveNext();
-        //    }
-        //}
+
     }
 
-    
+    //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    //{
+    //    if (stream.IsWriting)
+    //    {
+    //        if (IsVR)
+    //        {
+    //            stream.SendNext(i_VRDeathCount);
+    //        }
+    //    }
+    //    if (stream.IsReading)
+    //    {
+    //        if (!IsVR)
+    //        {
+    //            i_VRDeathCount = (int)stream.ReceiveNext();
+    //        }
+    //    }
+    //}
+
+
 }

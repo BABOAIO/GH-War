@@ -149,9 +149,11 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
             {
                 HP = MaxHP;
                 GameManager.instance.CheckRebirthPCPlayer();
-                GameManager.instance.i_PCDeathCount--;
+                //GameManager.instance.i_PCDeathCount--;
                 PPM.GetComponent<PC_Player_Move>().isDie = false;
                 PPFA.GetComponent<PCPlayerFireArrow>().isDie = false;
+                print(GameManager.instance.i_PCDeathCount);
+                //gameObject.GetComponent<PCPlayerLife>().HeartBreak();
             }
         }
         else

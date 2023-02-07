@@ -65,7 +65,7 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
         if (HP <= 0)
         {
             print("VR Á×À½");
-            GameManager.instance.CheckRebirthVRPlayer();
+            //gameObject.GetComponent<VRPlayerMove1>().enabled= false;
         }
     }
 }
