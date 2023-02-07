@@ -5,14 +5,15 @@ using Photon.Pun;
 using UniRx;
 using UnityEngine.UI;
 using System.Collections;
-using Unity.VisualScripting;
-using Photon.Pun.Demo.PunBasics;
+using DG.Tweening;
 
 // PC플레이어 최상단에 넣는다.
 // 컬라이더를 넣고, 태그를 PC_Player로 바꾼다.
 public class PCPlayerHit : MonoBehaviourPunCallbacks
 {
     PhotonView pv;
+
+    [SerializeField] Camera cam_this;
 
     [Header("Max HP")]
     public float MaxHP = 2.0f;
@@ -28,6 +29,9 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
 
     float invincibilityTime = 2.0f;
     public float currentTime = 2.0f;
+
+    [SerializeField] float f_hapticTime = 0.5f;
+    [SerializeField] float f_hapticStrength = 0.8f;
 
     private void Start()
     {
@@ -147,6 +151,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
     [PunRPC]
     public void Hit_PCPlayer(int damage)
     {
+        cam_this.DOShakePosition(damage * f_hapticTime, f_hapticStrength);
         HP -= damage;
         Debug.Log($"PC Player {pv.Controller} is Damaged : Dmg {damage}");
 

@@ -8,6 +8,7 @@ using System.ComponentModel;
 using SimpleMan.VisualRaycast;
 using UnityEditor;
 
+// 플레이어 최상단에 넣는다.
 [RequireComponent(typeof(AudioSource))]
 public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
 {
