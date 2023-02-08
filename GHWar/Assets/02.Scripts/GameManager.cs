@@ -9,7 +9,6 @@ using DG.Tweening;
 using UniRx;
 
 // 게임매니저 오브젝트에 넣는다.
-
 [RequireComponent(typeof(AudioSource))]
 public class GameManager : MonoBehaviourPunCallbacks
 {
@@ -614,22 +613,23 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     void Update()
     {
-        UpdatePhotonNetwork();
-        RotateSkyBox(RotationPerSecond);
-
-        if(photonView.IsMine && B_GameStart)
+        if (B_GameStart)
         {
             currentTime += Time.deltaTime;
             if (num_destroyArea <= o_PlayArea.Count)
             {
                 if (currentTime > destroyAreaTime * num_destroyArea)
                 {
-                    photonView.RPC("NarrowPlayArea", RpcTarget.All, o_PlayArea[num_destroyArea - 1]);
-                    //NarrowPlayArea(o_PlayArea[num_destroyArea - 1]);
+                    //photonView.RPC("NarrowPlayArea", RpcTarget.AllBuffered, o_PlayArea[num_destroyArea - 1]);
+                    NarrowPlayArea(o_PlayArea[num_destroyArea - 1]);
                     num_destroyArea++;
                 }
             }
         }
+
+        UpdatePhotonNetwork();
+        RotateSkyBox(RotationPerSecond);
+
 
         if (as_gm.isPlaying) { return; }
         
@@ -686,13 +686,12 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     IEnumerator DelayedDestructionArea(GameObject _area)
     {
-        yield return new WaitForSeconds(2.0f);
         _area.transform.DOShakePosition(0.5f, 0.7f);
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(destroyAreaTime / 3f);
         _area.transform.DOShakePosition(0.5f, 1.0f);
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(destroyAreaTime / 3f);
         _area.transform.DOShakePosition(0.5f, 1.5f);
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(destroyAreaTime / 3f);
         FractureTest fratureTest = _area.GetComponent<FractureTest>();
         fratureTest.DestructionThisArea();
     }

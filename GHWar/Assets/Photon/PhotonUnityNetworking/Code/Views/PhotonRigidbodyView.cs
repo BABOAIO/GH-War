@@ -30,7 +30,7 @@ namespace Photon.Pun
         [HideInInspector]
         public bool m_SynchronizeVelocity = true;
         [HideInInspector]
-        public bool m_SynchronizeAngularVelocity = false;
+        public bool m_SynchronizeAngularVelocity = true;
 
         [HideInInspector]
         public bool m_TeleportEnabled = false;

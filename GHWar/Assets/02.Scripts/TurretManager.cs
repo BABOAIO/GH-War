@@ -70,10 +70,10 @@ public class TurretManager : MonoBehaviourPunCallbacks
             txt_countDown.text = "O.K.";
 
             
-            TurretButtonPress();
+            //TurretButtonPress();
             if (photonView.IsMine)
             {
-                //photonView.RPC("TurretButtonPress", RpcTarget.All);
+                photonView.RPC("TurretButtonPress", RpcTarget.All);
                 //GetPressOrRelease();
             }
         }
