@@ -48,15 +48,15 @@ public class GameManager : MonoBehaviourPunCallbacks
     [Header("게임이 시작했는지 알려주는 변수")]
     public bool B_GameStart = false;
 
-    [SerializeField] List<GameObject> o_PlayArea = new List<GameObject>();
+    public List<GameObject> o_PlayArea = new List<GameObject>();
 
     // 스카이박스 초당 회전 값 변수
     [Header("스카이박스 초당 회전 값 변수")]
     public float RotationPerSecond = 2;
 
-    [SerializeField] float destroyAreaTime = 20f;
-    [SerializeField] int num_destroyArea = 1;
-    [SerializeField] float currentTime = 0.0f;
+    public float destroyAreaTime = 20f;
+    public int num_destroyArea = 1;
+    public float currentTime = 0.0f;
 
     AudioSource as_gm;
 
@@ -323,7 +323,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                         Array_txtWinner[0] = Array_AllPlayers[0].GetComponent<VRPlayerMove1>().Txt_winnerText_VR;
                         Debug.Log("Game Start!");
 
-                        Array_txtWinner[0].text = "Game Start!";
+                        Array_txtWinner[1].text = "Game Start!";
 
                         ResetDeathCount(2);
                         Invoke("ResetText", delay);
@@ -365,7 +365,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                         Array_txtWinner[0] = Array_AllPlayers[0].GetComponent<VRPlayerMove1>().Txt_winnerText_VR;
                         Debug.Log("Game Start!");
 
-                        Array_txtWinner[0].text = "Game Start!";
+                        Array_txtWinner[1].text = "Game Start!";
 
                         ResetDeathCount(2);
                         Invoke("ResetText", delay);
@@ -621,7 +621,8 @@ public class GameManager : MonoBehaviourPunCallbacks
                 if (currentTime > destroyAreaTime * num_destroyArea)
                 {
                     //photonView.RPC("NarrowPlayArea", RpcTarget.AllBuffered, o_PlayArea[num_destroyArea - 1]);
-                    NarrowPlayArea(o_PlayArea[num_destroyArea - 1]);
+                    //NarrowPlayArea(o_PlayArea[num_destroyArea - 1]);
+                    StartCoroutine(DelayedDestructionArea(o_PlayArea[num_destroyArea - 1]));
                     num_destroyArea++;
                 }
             }
@@ -679,40 +680,41 @@ public class GameManager : MonoBehaviourPunCallbacks
     [PunRPC]
     void NarrowPlayArea(GameObject area)
     {
-
         StartCoroutine(DelayedDestructionArea(area));
         //o_PlayArea
     }
 
     IEnumerator DelayedDestructionArea(GameObject _area)
     {
+        _area.GetComponent<FractureTest>().i_destroyTime = 10;
+        yield return new WaitForSeconds(1f);
+        _area.GetComponent<FractureTest>().i_destroyTime = 9;
         _area.transform.DOShakePosition(0.5f, 0.7f);
-        yield return new WaitForSeconds(destroyAreaTime / 3f);
+        yield return new WaitForSeconds(1f);
+        --_area.GetComponent<FractureTest>().i_destroyTime; // 8
+        yield return new WaitForSeconds(1f);
+        --_area.GetComponent<FractureTest>().i_destroyTime; // 7
+        yield return new WaitForSeconds(1f);
+        --_area.GetComponent<FractureTest>().i_destroyTime; // 6
         _area.transform.DOShakePosition(0.5f, 1.0f);
-        yield return new WaitForSeconds(destroyAreaTime / 3f);
+        yield return new WaitForSeconds(1f);
+        --_area.GetComponent<FractureTest>().i_destroyTime; // 5
+        yield return new WaitForSeconds(1f);
+        --_area.GetComponent<FractureTest>().i_destroyTime; // 4
+        yield return new WaitForSeconds(1f);
+        --_area.GetComponent<FractureTest>().i_destroyTime; // 3
         _area.transform.DOShakePosition(0.5f, 1.5f);
-        yield return new WaitForSeconds(destroyAreaTime / 3f);
+        yield return new WaitForSeconds(1f);
+        --_area.GetComponent<FractureTest>().i_destroyTime; // 2
+        yield return new WaitForSeconds(1f);
+        --_area.GetComponent<FractureTest>().i_destroyTime; // 1
+        yield return new WaitForSeconds(1f);
+        --_area.GetComponent<FractureTest>().i_destroyTime; // 0
         FractureTest fratureTest = _area.GetComponent<FractureTest>();
         fratureTest.DestructionThisArea();
+
+        yield return new WaitForSeconds(1f);
+        _area.GetComponent<FractureTest>().i_destroyTime = 100;
     }
-
-    //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    //{
-    //    if (stream.IsWriting)
-    //    {
-    //        if (IsVR)
-    //        {
-    //            stream.SendNext(i_VRDeathCount);
-    //        }
-    //    }
-    //    if (stream.IsReading)
-    //    {
-    //        if (!IsVR)
-    //        {
-    //            i_VRDeathCount = (int)stream.ReceiveNext();
-    //        }
-    //    }
-    //}
-
 
 }

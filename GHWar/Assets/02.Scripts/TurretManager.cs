@@ -29,8 +29,8 @@ public class TurretManager : MonoBehaviourPunCallbacks
     // 버튼 인식에 대한 오차 범위
     [SerializeField] float f_errorRange = 0.025f;
     // 대포 쿨타임
-    [SerializeField] float delayTime = 2f;
-    float currentTime = 2f;
+    [SerializeField] float delayTime = 5f;
+    float currentTime;
 
     Transform tr_this;
     // 버튼이 눌린 정도를 인스펙터창에서 조절하며 그값을 가지고옴
@@ -70,10 +70,16 @@ public class TurretManager : MonoBehaviourPunCallbacks
             txt_countDown.text = "O.K.";
 
             
-            //TurretButtonPress();
             if (photonView.IsMine)
             {
-                photonView.RPC("TurretButtonPress", RpcTarget.All);
+                if (PhotonNetwork.CountOfPlayersInRooms >= 2)
+                {
+                    photonView.RPC("TurretButtonPress", RpcTarget.All);
+                }
+                else
+                {
+                    TurretButtonPress();
+                }
                 //GetPressOrRelease();
             }
         }
@@ -100,7 +106,7 @@ public class TurretManager : MonoBehaviourPunCallbacks
             (GameObject.FindGameObjectWithTag("VRPlayerHead") ? tr_firePos.forward * f_shotPower : tr_firePos.up * f_shotPower)
             , ForceMode.Impulse);
         // 대포가 쏘았을 경우, 들어가기까지 너무 짧음을 방지
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
 
         Observable.NextFrame().Subscribe(_ => a_turret.SetBool("Fire", false));
         // 쿨타임 돌리기 위해 넣음

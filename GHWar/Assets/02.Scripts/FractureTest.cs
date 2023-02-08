@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using DG.Tweening;
 
+// 부서지는 지형에 넣는다
+// 리지드바드 콘스트레인스트 전부 체크 + 메쉬컬라이더 콘벡스+이즈트리거 체크 필수
+// 이즈 트리거 없으면 플레이어가 땅을 밟을 수 없다.
 public class FractureTest : MonoBehaviourPunCallbacks
 {
     public Collider[] colliders;    // 충돌체를 배열로 가져옴
 
-    // Start is called before the first frame update
+    //[SerializeField] float f_quakeStrength = 1.0f;
+
+    // player가 인식하는 무너지는 시간, 초기화는 100으로 고정한다.
+    public int i_destroyTime = 100;
 
     private void Awake()
     {
@@ -21,6 +28,12 @@ public class FractureTest : MonoBehaviourPunCallbacks
             rb.constraints = (RigidbodyConstraints)126; // 컨스트레인 전부 체크
         }
     }
+
+    private void Update()
+    {
+        //if(Input.GetKeyUp(KeyCode.Alpha2)) { this.transform.DOShakePosition(0.5f, f_quakeStrength); }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Shatter")

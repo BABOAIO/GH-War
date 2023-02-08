@@ -11,8 +11,6 @@ using DG.Tweening;
 // VR플레이어의 헤드에 넣는다. 헤드는 컬라이더를 가지고, 태그를 VRPlayerHead로 바꾼다.
 public class VRPlayerHit : MonoBehaviourPunCallbacks
 {
-    [Header("진동할 카메라")]
-    [SerializeField] Camera _camera;
 
     [Header("Max HP")]
     public float MaxHP = 5.0f;
@@ -28,8 +26,11 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
     float invincibilityTime = 2.0f;
     public float currentTime = 2.0f;
 
-    [SerializeField] float f_hapticTime = 0.5f;
-    [SerializeField] float f_hapticStrength = 0.8f;
+    // 피격 시 진동하는 부분, 해도 VR에서는 진동이 안보임
+    //[Header("진동할 카메라")]
+    //[SerializeField] Camera _camera;
+    //[SerializeField] float f_hapticTime = 0.5f;
+    //[SerializeField] float f_hapticStrength = 0.8f;
 
     private void Start()
     {
@@ -75,7 +76,7 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
     [PunRPC]
     public void Hit_VRPlayer(int damage)
     {
-        _camera.DOShakePosition(f_hapticTime, f_hapticStrength);
+        //_camera.DOShakePosition(f_hapticTime, f_hapticStrength);
         HP -= damage;
         Debug.Log($"VR Player {photonView.Controller} is Damaged : Dmg {damage}");
 
