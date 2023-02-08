@@ -46,6 +46,9 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
 
     private void OnCollisionEnter(Collision collision)
     {
+        // 태그가 다르면 적용하지 않는다.
+        if (!gameObject.CompareTag("PC_Player")) { Debug.LogError("Need Player Tag!!"); return; }
+        if (PPM.GetComponent<PC_Player_Move>().isDie == true) { return; }
         // 대포 스위치가 눌리고 올라올 때 속도가 꽤 빠르므로 피격대상에서 제외시킨다.
         if(collision.gameObject.layer == LayerMask.NameToLayer("Turret")) { return; }
         // 리지드바디가 없으면 충돌대상으로 취급하지 않는다.
@@ -145,6 +148,10 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
 
         hpBar.value = HP / MaxHP;
 
+        if (Input.GetKeyDown(KeyCode.Alpha1) && !a_PCPlayer.GetBool("IsHit"))
+        {
+            Hit_PCPlayer(1);
+        }
     }
 
 
@@ -165,15 +172,12 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
             PPM.GetComponent<PC_Player_Move>().isDie = true;
             PPFA.GetComponent<PCPlayerFireArrow>().isDie = true;
 
-            if (GameManager.instance.i_PCDeathCount > 0)
+            if (GameManager.instance.i_PCDeathCount >= 1)
             {
-                HP = MaxHP;
-                GameManager.instance.CheckRebirthPCPlayer();
-                //GameManager.instance.i_PCDeathCount--;
+                --GameManager.instance.i_PCDeathCount;
                 PPM.GetComponent<PC_Player_Move>().isDie = false;
                 PPFA.GetComponent<PCPlayerFireArrow>().isDie = false;
-                print(GameManager.instance.i_PCDeathCount);
-                //gameObject.GetComponent<PCPlayerLife>().HeartBreak();
+                GameManager.instance.CheckRebirthPCPlayer();
             }
         }
         // 피격모션
@@ -182,6 +186,12 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
             a_PCPlayer.SetBool("IsHit", true);
             Observable.NextFrame().Subscribe(_ => a_PCPlayer.SetBool("IsHit", false));
         }
+    }
+
+    void Animation_Rebirth()
+    {
+        a_PCPlayer.SetBool("IsDIe", false);
+        HP = MaxHP;
     }
 
     [PunRPC]

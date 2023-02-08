@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
+// 점치 사라질 이미지에 넣는다.
+// 이미지가 1초 정도 페이드 아웃
 public class ActiveImageFade : MonoBehaviour
 {
     Image img_fade;
@@ -17,13 +19,6 @@ public class ActiveImageFade : MonoBehaviour
     {
         img_fade.DOFade(0, 1.0f);
 
-        img_fade.rectTransform.DOMoveY(-0.1f, 1.0f);
-    }
-
-    public void ActiveFade()
-    {
-        img_fade.DOFade(0, 1.0f);
-
-        img_fade.rectTransform.DOMoveY(-2.5f, 1.0f);
+        img_fade.rectTransform.DOLocalMoveY(-0.8f, 1.0f).SetEase(Ease.OutQuad);
     }
 }

@@ -6,7 +6,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
 using DG.Tweening;
-using UniRx.Triggers;
+using UniRx;
 
 // 게임매니저 오브젝트에 넣는다.
 
@@ -434,7 +434,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     IEnumerator RebirthPCPlayer()
     {
         // 2초 동안 움직임 방지
-        --i_PCDeathCount;
         Array_AllPlayers[1].GetComponent<PC_Player_Move>().enabled = false;
 
         yield return new WaitForSeconds(2f);
@@ -442,17 +441,29 @@ public class GameManager : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsMasterClient)
         {
             Array_AllPlayers[1].GetComponent<PC_Player_Move>().enabled = true;
+            Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("Rebirth", true);
+            Observable.NextFrame().Subscribe(_ => Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("Rebirth", false));
+            yield return new WaitForSeconds(2f);
+            Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("ReadyNextIdle", true);
+            Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.Rebind();
 
             // 일정 시간 무적 부여
             Array_AllPlayers[1].GetComponent<PCPlayerHit>().currentTime = 0;
+            Array_AllPlayers[1].GetComponent<PCPlayerHit>().HP = Array_AllPlayers[1].GetComponent<PCPlayerHit>().MaxHP;
         }
         else
         {
             Array_AllPlayers[1].GetComponent<PC_Player_Move>().enabled = true;
-            // anim idle
+            Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("Rebirth", true);
+            Observable.NextFrame().Subscribe(_ => Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("Rebirth", false));
+            yield return new WaitForSeconds(2f);
+            Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("ReadyNextIdle", true);
+            Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.Rebind();
+
 
             // 일정 시간 무적 부여
             Array_AllPlayers[1].GetComponent<PCPlayerHit>().currentTime = 0;
+            Array_AllPlayers[1].GetComponent<PCPlayerHit>().HP = Array_AllPlayers[1].GetComponent<PCPlayerHit>().MaxHP;
         }
     }
     IEnumerator RebirthVRPlayer()
