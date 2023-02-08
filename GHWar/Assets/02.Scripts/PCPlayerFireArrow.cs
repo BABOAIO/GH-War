@@ -51,35 +51,6 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
         B_isReadyToShot = false;
     }
 
-    //void FixedUpdate()
-    //{
-    //    currentTime += Time.fixedDeltaTime;
-
-    //    if ((pv.IsMine) && (Input.GetMouseButtonDown(0))
-    //        //&& (currentTime >= delayTime)
-    //        )
-    //    {
-    //        a_playerInFire.SetBool("ReadyToShot", true);
-    //        Observable.NextFrame().Subscribe(_ => a_playerInFire.SetBool("ReadyToShot", false));
-    //        //obj_tmp.transform.LookAt(firePosEnd.position - firePos.position);
-    //    }
-    //    if ((pv.IsMine) && (Input.GetMouseButtonUp(0))
-    //        && (currentTime >= delayTime)
-    //        )
-    //    {
-    //        // 家府 何盒 //
-    //        as_fireArrow.PlayOneShot(ac_shotInit);
-    //        // 家府 何盒 //
-
-    //        currentTime = 0;
-    //        a_playerInFire.SetBool("ReadyToShot", false);
-    //        a_playerInFire.SetBool("Shot", true);
-    //        Observable.NextFrame().Subscribe(_ => a_playerInFire.SetBool("Shot", false));
-    //        GameObject obj_tmp = PhotonNetwork.Instantiate("Arrow", firePos.position, firePosEnd.rotation);
-    //        //obj_tmp.transform.LookAt(firePosEnd.position - firePos.position);
-    //    }
-    //}
-
     private RaycastHit hit;
 
     void FixedUpdate()
@@ -110,8 +81,14 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
         {
             if (isDie == false)
             {
-                //Shot();
-                pv.RPC("Shot", RpcTarget.All);
+                if (PhotonNetwork.CountOfPlayers >= 2)
+                {
+                    pv.RPC("Shot", RpcTarget.All);
+                }
+                else
+                {
+                    Shot();
+                }
             }
         }
     }

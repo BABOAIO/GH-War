@@ -89,14 +89,20 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
         {
             if(!isDie)
             {
-                pv.RPC("Move", RpcTarget.All);
-                pv.RPC("Rotate", RpcTarget.All);
-                pv.RPC("Jump", RpcTarget.All);
-                pv.RPC("Dodge", RpcTarget.All);
-                //Move();
-                //Rotate();
-                //Jump();
-                //Dodge();
+                if (PhotonNetwork.CountOfPlayers >= 2)
+                {
+                    pv.RPC("Move", RpcTarget.All);
+                    pv.RPC("Rotate", RpcTarget.All);
+                    pv.RPC("Jump", RpcTarget.All);
+                    pv.RPC("Dodge", RpcTarget.All);
+                }
+                else
+                {
+                    Move();
+                    Rotate();
+                    Jump();
+                    Dodge();
+                }
             }
             Wiggle();
 

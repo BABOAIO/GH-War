@@ -178,10 +178,10 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
         }
 
         // 플레이어 피격 치트
-        //if (Input.GetKeyDown(KeyCode.Alpha1) && !a_PCPlayer.GetBool("IsHit"))
-        //{
-        //    Hit_PCPlayer(1);
-        //}
+        if (Input.GetKeyDown(KeyCode.Alpha1) && !a_PCPlayer.GetBool("IsHit"))
+        {
+            Hit_PCPlayer(1);
+        }
     }
 
     void DisplayWarning_On()
