@@ -55,6 +55,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     [Header("스카이박스 초당 회전 값 변수")]
     public float RotationPerSecond = 2;
 
+    [SerializeField] float destroyAreaTime = 20f;
+    [SerializeField] int num_destroyArea = 1;
+    [SerializeField] float currentTime = 0.0f;
+
     AudioSource as_gm;
 
     private void Awake()
@@ -524,6 +528,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 if (Array_AllPlayers[0].GetComponent<VRPlayerHit>().HP <= 0)
                 {
                     B_IsGameOver = true;
+                    currentTime = 0;
 
                     if (Array_txtWinner[0] != null)
                     {
@@ -541,8 +546,9 @@ public class GameManager : MonoBehaviourPunCallbacks
                 // VR이 이겼을 경우
                 //else if (Array_AllPlayers[1].GetComponent<PCPlayerHit>().HP <= 0)
                 else if (i_PCDeathCount <= 0)
-                        {
+                {
                     B_IsGameOver = true;
+                    currentTime = 0;
 
                     if (Array_txtWinner[0] != null)
                     {
@@ -565,6 +571,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 if (Array_AllPlayers[0].GetComponent<VRPlayerHit>().HP <= 0)
                 {
                     B_IsGameOver = true;
+                    currentTime = 0;
 
                     // canvas 추가, 부활막기
                     if (Array_txtWinner[0] != null)
@@ -585,6 +592,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 else if (i_PCDeathCount <= 0)
                 {
                     B_IsGameOver = true;
+                    currentTime = 0;
 
                     // canvas 추가
                     if (Array_txtWinner[0] != null)
@@ -608,6 +616,20 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         UpdatePhotonNetwork();
         RotateSkyBox(RotationPerSecond);
+
+        if(B_GameStart)
+        {
+            currentTime += Time.deltaTime;
+            if (num_destroyArea <= o_PlayArea.Count)
+            {
+                if (currentTime > destroyAreaTime * num_destroyArea)
+                {
+                    //photonView.RPC("NarrowPlayArea", RpcTarget.All, o_PlayArea[num_destroyArea - 1]);
+                    NarrowPlayArea(o_PlayArea[num_destroyArea - 1]);
+                    num_destroyArea++;
+                }
+            }
+        }
 
         if (as_gm.isPlaying) { return; }
         
@@ -654,9 +676,25 @@ public class GameManager : MonoBehaviourPunCallbacks
         //Application.Quit();
     }
 
+    [PunRPC]
     void NarrowPlayArea(GameObject area)
     {
 
+        StartCoroutine(DelayedDestructionArea(area));
+        //o_PlayArea
+    }
+
+    IEnumerator DelayedDestructionArea(GameObject _area)
+    {
+        yield return new WaitForSeconds(2.0f);
+        _area.transform.DOShakePosition(0.5f, 0.7f);
+        yield return new WaitForSeconds(2.0f);
+        _area.transform.DOShakePosition(0.5f, 1.0f);
+        yield return new WaitForSeconds(2.0f);
+        _area.transform.DOShakePosition(0.5f, 1.5f);
+        yield return new WaitForSeconds(2.0f);
+        FractureTest fratureTest = _area.GetComponent<FractureTest>();
+        fratureTest.DestructionThisArea();
     }
 
     //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
