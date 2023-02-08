@@ -13,7 +13,8 @@ public class NoChildrenDestroy : MonoBehaviour
 
     void Update()
     {
-        if (!ps_child.isPlaying || !ps_child)
+        ps_child = GetComponentInChildren<ParticleSystem>();
+        if (ps_child == null)
         {
             Destroy(gameObject);
         }

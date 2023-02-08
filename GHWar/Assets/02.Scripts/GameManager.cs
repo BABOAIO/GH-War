@@ -525,7 +525,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             {
                 // PC가 이겼을 경우
                 //if (Array_AllPlayers[0].GetComponent<VRPlayerMove1>().o_vrFace.GetComponent<VRPlayerHit>().HP <= 0)
-                if (Array_AllPlayers[0].GetComponent<VRPlayerHit>().HP <= 0)
+                if (Array_AllPlayers[0].GetComponentInChildren<VRPlayerHit>().HP <= 0)
                 {
                     B_IsGameOver = true;
                     currentTime = 0;
@@ -568,7 +568,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             {
                 // PC가 이겼을 경우
                 //if (Array_AllPlayers[0].GetComponent<VRPlayerMove1>().o_vrFace.GetComponent<VRPlayerHit>().HP <= 0)
-                if (Array_AllPlayers[0].GetComponent<VRPlayerHit>().HP <= 0)
+                if (Array_AllPlayers[0].GetComponentInChildren<VRPlayerHit>().HP <= 0)
                 {
                     B_IsGameOver = true;
                     currentTime = 0;
@@ -617,15 +617,15 @@ public class GameManager : MonoBehaviourPunCallbacks
         UpdatePhotonNetwork();
         RotateSkyBox(RotationPerSecond);
 
-        if(B_GameStart)
+        if(photonView.IsMine && B_GameStart)
         {
             currentTime += Time.deltaTime;
             if (num_destroyArea <= o_PlayArea.Count)
             {
                 if (currentTime > destroyAreaTime * num_destroyArea)
                 {
-                    //photonView.RPC("NarrowPlayArea", RpcTarget.All, o_PlayArea[num_destroyArea - 1]);
-                    NarrowPlayArea(o_PlayArea[num_destroyArea - 1]);
+                    photonView.RPC("NarrowPlayArea", RpcTarget.All, o_PlayArea[num_destroyArea - 1]);
+                    //NarrowPlayArea(o_PlayArea[num_destroyArea - 1]);
                     num_destroyArea++;
                 }
             }
