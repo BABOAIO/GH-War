@@ -123,7 +123,9 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
             if (other.gameObject.CompareTag("FallingZone"))
             {
                 // 싱글턴을 통한 원래 스폰 위치로 복귀
-                transform.position = ConnManager.Conn.PC_Spawn;
+                transform.position =
+                    GameManager.instance.o_PlayArea[GameManager.instance.num_destroyArea - 1].
+                    GetComponent<FractureTest>().tr_spawnPoint.position;
 
                 // 반동으로 떨어졌을때 힘 억제
                 gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -156,8 +158,6 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
             }
         }
     }
-
-    int count = 0;
 
     private void FixedUpdate()
     {

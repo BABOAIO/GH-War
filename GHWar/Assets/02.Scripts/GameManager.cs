@@ -414,6 +414,14 @@ public class GameManager : MonoBehaviourPunCallbacks
                 Destroy(tmp);
             }
         }
+        GameObject[] tmp_smallRock = GameObject.FindGameObjectsWithTag("SmallRock");
+        if (tmp_rock != null)
+        {
+            foreach (GameObject tmp in tmp_smallRock)
+            {
+                Destroy(tmp);
+            }
+        }
     }
 
     // VR 기기 연결 상태 확인
@@ -636,6 +644,12 @@ public class GameManager : MonoBehaviourPunCallbacks
             Destroy(tmp, 1.5f);
         }
 
+        if (Input.GetKeyUp(KeyCode.Alpha4))
+        {
+            B_GameStart = !B_GameStart;
+        }
+
+
         UpdatePhotonNetwork();
         RotateSkyBox(RotationPerSecond);
 
@@ -675,35 +689,54 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     IEnumerator DelayedDestructionArea(GameObject _area)
     {
-        _area.GetComponent<FractureTest>().i_destroyTime = 10;
-        yield return new WaitForSeconds(1f);
-        _area.GetComponent<FractureTest>().i_destroyTime = 9;
-        _area.transform.DOShakePosition(0.5f, 0.7f);
-        yield return new WaitForSeconds(1f);
-        --_area.GetComponent<FractureTest>().i_destroyTime; // 8
-        yield return new WaitForSeconds(1f);
-        --_area.GetComponent<FractureTest>().i_destroyTime; // 7
-        yield return new WaitForSeconds(1f);
-        --_area.GetComponent<FractureTest>().i_destroyTime; // 6
-        _area.transform.DOShakePosition(0.5f, 1.0f);
-        yield return new WaitForSeconds(1f);
-        --_area.GetComponent<FractureTest>().i_destroyTime; // 5
-        yield return new WaitForSeconds(1f);
-        --_area.GetComponent<FractureTest>().i_destroyTime; // 4
-        yield return new WaitForSeconds(1f);
-        --_area.GetComponent<FractureTest>().i_destroyTime; // 3
-        _area.transform.DOShakePosition(0.5f, 1.5f);
-        yield return new WaitForSeconds(1f);
-        --_area.GetComponent<FractureTest>().i_destroyTime; // 2
-        yield return new WaitForSeconds(1f);
-        --_area.GetComponent<FractureTest>().i_destroyTime; // 1
-        yield return new WaitForSeconds(1f);
-        --_area.GetComponent<FractureTest>().i_destroyTime; // 0
         FractureTest fratureTest = _area.GetComponent<FractureTest>();
-        fratureTest.DestructionThisArea();
+        fratureTest.i_destroyTime = 10;
+        int maxCouint = fratureTest.i_destroyTime;
+        for (int i = 0; i < maxCouint; i++)
+        {
+            yield return new WaitForSeconds(1f);
+            fratureTest.i_destroyTime -= 1;
+            print(fratureTest.i_destroyTime);
+
+            if (fratureTest.i_destroyTime <= 0)
+            {
+                fratureTest.DestructionThisArea();
+            }
+            if (fratureTest.i_destroyTime % 3 == 0)
+            {
+                _area.transform.DOShakePosition(0.5f, 3.0f / (fratureTest.i_destroyTime));
+            }
+        }
+
+        //FractureTest fratureTest = _area.GetComponent<FractureTest>();
+        //fratureTest.i_destroyTime = 10;
+        //yield return new WaitForSeconds(1f);
+        //--fratureTest.i_destroyTime; // 9
+        //_area.transform.DOShakePosition(0.5f, 0.5f);
+        //yield return new WaitForSeconds(1f);
+        //--fratureTest.i_destroyTime; // 8
+        //yield return new WaitForSeconds(1f);
+        //--fratureTest.i_destroyTime; // 7
+        //yield return new WaitForSeconds(1f);
+        //--fratureTest.i_destroyTime; // 6
+        //_area.transform.DOShakePosition(0.5f, 7.5f);
+        //yield return new WaitForSeconds(1f);
+        //--fratureTest.i_destroyTime; // 5
+        //yield return new WaitForSeconds(1f);
+        //--fratureTest.i_destroyTime; // 4
+        //yield return new WaitForSeconds(1f);
+        //--fratureTest.i_destroyTime; // 3
+        //_area.transform.DOShakePosition(0.5f, 1.0f);
+        //yield return new WaitForSeconds(1f);
+        //--fratureTest.i_destroyTime; // 2
+        //yield return new WaitForSeconds(1f);
+        //--fratureTest.i_destroyTime; // 1
+        //yield return new WaitForSeconds(1f);
+        //--fratureTest.i_destroyTime; // 0
+        //fratureTest.DestructionThisArea();
 
         yield return new WaitForSeconds(1f);
-        _area.GetComponent<FractureTest>().i_destroyTime = 100;
+        fratureTest.i_destroyTime = 100;
     }
 
 }
