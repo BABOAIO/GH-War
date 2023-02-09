@@ -60,19 +60,19 @@ public class GroundImpact : MonoBehaviourPunCallbacks
             switch (tmp_randomValue)
             {
                 case 1:
-                    tmp_pos = position + new Vector3(Random.Range(1, 2), 0, Random.Range(1, 2));
+                    tmp_pos = position + new Vector3(Random.Range(2, 3), 1.5f, Random.Range(2, 3));
                     position = tmp_pos;
                     break;
                 case 2:
-                    tmp_pos = position + new Vector3(Random.Range(-2, -1), 0, Random.Range(1, 2));
+                    tmp_pos = position + new Vector3(Random.Range(-3, -2), 1.5f, Random.Range(2, 3));
                     position = tmp_pos;
                     break;
                 case 3:
-                    tmp_pos = position + new Vector3(Random.Range(1, 2), 0, Random.Range(-2, -1));
+                    tmp_pos = position + new Vector3(Random.Range(2, 3), 1.5f, Random.Range(-3, -2));
                     position = tmp_pos;
                     break;
                 case 4:
-                    tmp_pos = position + new Vector3(Random.Range(-2, -1), 0, Random.Range(-2, -1));
+                    tmp_pos = position + new Vector3(Random.Range(-3, -2), 1.5f, Random.Range(-3, -2));
                     position = tmp_pos;
                     break;
             }

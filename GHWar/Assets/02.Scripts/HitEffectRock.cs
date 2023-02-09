@@ -31,14 +31,14 @@ public class HitEffectRock : MonoBehaviour
     {
         var velocityValue = rb_this.velocity.magnitude;
 
-        if(velocityValue < 10) { return; }
+        //if(velocityValue < 10) { return; }
 
-        // 家府何盒 //
-        if (!as_rock.isPlaying)
-        {
-            as_rock.PlayOneShot(ac_throwing);
-        }
-        // 家府何盒 //
+        //// 家府何盒 //
+        //if (!as_rock.isPlaying)
+        //{
+        //    as_rock.PlayOneShot(ac_throwing);
+        //}
+        //// 家府何盒 //
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -52,6 +52,29 @@ public class HitEffectRock : MonoBehaviour
 
             PhotonNetwork.Destroy(this.gameObject);
             //PhotonNetwork.Destroy(this.gameObject);
+        }
+
+        if (!collision.gameObject.CompareTag("PC_Player")
+            && !(collision.gameObject.layer == LayerMask.NameToLayer("LeftHandPhysics") || collision.gameObject.layer == LayerMask.NameToLayer("RightHandPhysics")))
+        {
+            GameObject o_effect = PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
+
+            //as_rock.Stop();
+            //as_rock.PlayOneShot(ac_throwHit);
+
+            if (collision.gameObject.GetComponent<Rigidbody>().mass >= GetComponent<Rigidbody>().mass
+                && GetComponent<Rigidbody>().velocity.magnitude > 20f)
+            {
+                print(collision.gameObject.layer);
+                GetComponent<MeshCollider>().enabled = false;
+                PhotonNetwork.Destroy(this.gameObject);
+
+                for(int i = 0; i < 5; i++)
+                {
+                    GameObject tmp = PhotonNetwork.Instantiate("SmallRock", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
+                    tmp.transform.localScale /= 3;
+                }
+            }
         }
     }
 

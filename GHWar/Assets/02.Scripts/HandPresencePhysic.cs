@@ -5,6 +5,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.XR.Interaction.Toolkit;
 using Unity.VisualScripting;
+using DG.Tweening;
 
 // VR 플레이어의 손(콜라이더가 있는)에 넣어준다.
 // 손이 바닥에 닿았을 경우, 통과하지 못하게 방지
@@ -24,20 +25,47 @@ public class HandPresencePhysic : MonoBehaviour
     // 움직임에 제약을 주기 위한 리지드바디 컨트롤
     Rigidbody rb_this;
 
+    // 대포와 부딪힘
+    public bool IsHit;
+
     void Start()
     {
         rb_this = GetComponent<Rigidbody>();
         col_hands = GetComponentsInChildren<Collider>();
-        
-        foreach(var col in col_hands)
+
+        IsHit = false;
+        //foreach(var col in col_hands)
+        //{
+        //    col.AddComponent<VRPlayerHandHit>();
+        //    col.GetComponent<VRPlayerHandHit>().ParentHand = this;
+        //}
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("CannonBall"))
         {
-            col.AddComponent<VRPlayerHandHit>();
-            col.GetComponent<VRPlayerHandHit>().ParentHand = this;
+            StartCoroutine(StopHandScript());
         }
+    }
+
+    IEnumerator StopHandScript()
+    {
+        IsHit = true;
+
+        transform.DOShakeRotation(0.5f, 30.0f).OnStart(() =>
+        {
+            transform.DOShakePosition(0.5f, 0.05f);
+        }
+        );
+
+        yield return new WaitForSeconds(3.0f);
+        IsHit = false;
     }
 
     private void Update()
     {
+        if (IsHit) return;
         float f_distance = Vector3.Distance(transform.position, t_target.position);
 
         if (f_distance > f_showDistance)
@@ -80,6 +108,7 @@ public class HandPresencePhysic : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (IsHit) return;
         rb_this.velocity = (t_target.position - transform.position) / Time.fixedDeltaTime;
 
         Quaternion q_rotationDifference = t_target.rotation * Quaternion.Inverse(transform.rotation);

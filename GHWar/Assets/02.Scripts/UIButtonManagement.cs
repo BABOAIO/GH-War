@@ -5,6 +5,9 @@ using Photon.Pun;
 using DG.Tweening;
 using UnityEngine.UI;
 using Oculus.Interaction;
+using UniRx;
+using System.Threading;
+using System;
 
 // 로비 관련 함수
 // 로비 오브젝트에 있는 버튼에 연결하여 서버 접속
@@ -39,13 +42,13 @@ public class UIButtonManagement : MonoBehaviourPun
         {
             img.DOFade(1, f_fadeDuration).OnStart(() =>
             {
+                // 페이드 시작 시 작동
                 deactiveObj_LineL.SetActive(false);
                 deactiveObj_LineR.SetActive(false);
-                // 페이드 시작 시 작동
             }).OnComplete(() =>
             {
                 // 페이드 끝날 시 작동
-                connManager.SetActive(true);
+                Observable.Timer(TimeSpan.FromMilliseconds(80)).Subscribe(_ => connManager.SetActive(true));                
             });
         }
         //connManager.SetActive(true);

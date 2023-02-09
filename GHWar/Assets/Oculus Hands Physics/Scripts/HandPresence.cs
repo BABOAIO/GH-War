@@ -56,6 +56,7 @@ public class HandPresence : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameObject.GetComponent<HandPresencePhysic>().IsHit) return;
         if(!targetDevice.isValid)
         {
             TryInitialize();

@@ -17,10 +17,8 @@ public class VRPlayerHandHit : MonoBehaviourPun
 
     private void OnCollisionEnter(Collision collision)
     {
-        print("충돌");
         if (collision.gameObject.CompareTag("CannonBall"))
         {
-            print("태그 인식");
             StartCoroutine(StopHandScript());
         }
     }

@@ -12,7 +12,8 @@ public class DestroyOutObject : MonoBehaviourPun
         if (other.gameObject.CompareTag("Obstacle")
             || other.gameObject.CompareTag("Arrow")
             || other.gameObject.CompareTag("CannonBall")
-            || other.gameObject.CompareTag("Rock"))
+            || other.gameObject.CompareTag("Rock")
+            || other.gameObject.CompareTag("Ground"))
         {
             Destroy(other.gameObject);
         }

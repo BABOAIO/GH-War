@@ -54,7 +54,7 @@ public class CannonBall : MonoBehaviour
         }
 
         // 대포알이 대포에 부딪힘방지, 주석풀면 플레이어가 자살 불가능
-        else if (
+        if (
             //!collision.gameObject.CompareTag("PC_Player") && 
             !(collision.gameObject.layer == LayerMask.NameToLayer("Turret")))
         {
@@ -63,30 +63,26 @@ public class CannonBall : MonoBehaviour
             GameObject o_ps =
             PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
 
+            if (collision.gameObject.CompareTag("Obstacle") || collision.gameObject.CompareTag("Rock"))
+            {
+                // 소리부분 //
+                //as_arrow.Stop();
+                //as_arrow.PlayOneShot(ac_shotHit);
+                // 소리부분 //
+
+                PhotonNetwork.Destroy(collision.gameObject);
+                //StartCoroutine(DestroyDelayed(gameObject, 0.1f));
+            }
+
             // 소리부분 //
             //as_arrow.Stop();
             //as_arrow.PlayOneShot(ac_shotHit);
             // 소리부분 // 
 
+            print(collision.gameObject.name);
             PhotonNetwork.Destroy(this.gameObject);
-            //StartCoroutine(DestroyDelayed(gameObject, 0.1f));
-        }
-
-        if (collision.gameObject.CompareTag("Obstacle")|| collision.gameObject.CompareTag("Rock"))
-        {
-            isHit = true;
-
-            GameObject o_ps =
-            PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
-
-            // 소리부분 //
-            //as_arrow.Stop();
-            //as_arrow.PlayOneShot(ac_shotHit);
-            // 소리부분 //
-
-            PhotonNetwork.Destroy(collision.gameObject);
-            PhotonNetwork.Destroy(this.gameObject);
-            //StartCoroutine(DestroyDelayed(gameObject, 0.1f));
+            //StartCoroutine(DestroyDelayed(gameObject, 0.1f))
+            
         }
     }
 
