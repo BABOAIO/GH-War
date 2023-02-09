@@ -15,6 +15,8 @@ public class UIButtonManagement : MonoBehaviourPun
     [SerializeField] GameObject connManager;
     // 게임시작시 꺼지는 로비
     [SerializeField] GameObject deactiveObj;
+    [SerializeField] GameObject deactiveObj_LineL;
+    [SerializeField] GameObject deactiveObj_LineR;
 
     // 화면전환 시 페이드인/아웃될 이미지 배열
     [SerializeField] Image[] img_fade = new Image[6];
@@ -37,6 +39,8 @@ public class UIButtonManagement : MonoBehaviourPun
         {
             img.DOFade(1, f_fadeDuration).OnStart(() =>
             {
+                deactiveObj_LineL.SetActive(false);
+                deactiveObj_LineR.SetActive(false);
                 // 페이드 시작 시 작동
             }).OnComplete(() =>
             {

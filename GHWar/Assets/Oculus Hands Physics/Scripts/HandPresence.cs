@@ -19,6 +19,7 @@ public class HandPresence : MonoBehaviour
         TryInitialize();
     }
 
+    // 손이 들어있는 디바이스 찾기
     void TryInitialize()
     {
         List<InputDevice> devices = new List<InputDevice>();
@@ -30,6 +31,7 @@ public class HandPresence : MonoBehaviour
         }
     }
 
+    // 각 버튼에 따른 애니메이션
     void UpdateHandAnimation()
     {
         if(targetDevice.TryGetFeatureValue(CommonUsages.trigger, out triggerValue))

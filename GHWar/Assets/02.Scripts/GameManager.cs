@@ -628,6 +628,14 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
         }
 
+        if (Input.GetKeyUp(KeyCode.Alpha3)) 
+        { 
+            GameObject tmp =
+            PhotonNetwork.Instantiate("Rock", new Vector3(0.22314f, 0f, -13.8f), Quaternion.identity);
+            tmp.layer = LayerMask.NameToLayer("PCPlayer");
+            Destroy(tmp, 1.5f);
+        }
+
         UpdatePhotonNetwork();
         RotateSkyBox(RotationPerSecond);
 
@@ -641,18 +649,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         RenderSettings.skybox.SetFloat("_Rotation", Time.time * rotationSpeedPerSecond);
     }
-
-    //[PunRPC]
-    //public void PCPlayerDeath()
-    //{
-    //    i_PCDeathCount++;
-    //}
-
-    //[PunRPC]
-    //public void VRPlayerDeath()
-    //{
-    //    i_VRDeathCount++;
-    //}
 
     public IEnumerator LeaveEnd(float delay)
     {
@@ -675,13 +671,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         // 승패 결정 시 게임종료
         PhotonNetwork.LeaveRoom();
         //Application.Quit();
-    }
-
-    [PunRPC]
-    void NarrowPlayArea(GameObject area)
-    {
-        StartCoroutine(DelayedDestructionArea(area));
-        //o_PlayArea
     }
 
     IEnumerator DelayedDestructionArea(GameObject _area)
