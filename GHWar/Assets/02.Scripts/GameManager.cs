@@ -283,7 +283,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     IEnumerator WaitPlayer()
     {
         string str = "Wait for Other Players...";
-        float delay = 1f;
+        float delay = 2f;
 
         while (!B_GameStart)
         {
