@@ -33,14 +33,18 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
     private PCPlayerFireArrow PPFA;
     Animator a_PCPlayer;
 
-    float invincibilityTime = 2.0f;
+    [Header("피격 후 무적이 부여될 시간")]
+    public float invincibilityTime = 2.0f;
+    [Header("무적 초기화 후 시간")]
     public float currentTime = 2.0f;
 
+    [Header("피격 시 화면 진동 시간")]
     [SerializeField] float f_hapticTime = 0.5f;
+    [Header("피격 시 화면 진동 세기")]
     [SerializeField] float f_hapticStrength = 0.8f;
 
+    // 무적 시간동안 잠시 감출 스킨드메쉬렌더러
     SkinnedMeshRenderer[] all_child_skinnedMeshRenderer;
-    Material[] all_child_material;
 
     private void Start()
     {
@@ -53,7 +57,6 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
         txt_warning.text = "";
 
         all_child_skinnedMeshRenderer = GetComponentsInChildren<SkinnedMeshRenderer>();
-        all_child_material = GetComponentsInChildren<Material>();
 
         HP = MaxHP;
         hpBar.value = HP / MaxHP;
@@ -139,16 +142,15 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
                 else
                 {
                     transform.position =
-                        GameManager.instance.o_PlayArea[^1].
+                        GameManager.instance.o_PlayArea[^1]. // 리스트의 마지막 인덱스는 [^1]로 표시
                         GetComponent<FractureTest>().tr_spawnPoint.position;
                 }
 
                 // 반동으로 떨어졌을때 힘 억제
                 gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-
-                currentTime = 0.0f;
-
-                if (GameManager.instance.B_GameStart)
+                
+                // 떨어질 때도 무적판정 존재
+                if (GameManager.instance.B_GameStart && currentTime >= invincibilityTime)
                 {
                     pv.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
                 }
@@ -197,10 +199,11 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
         if (Input.GetKeyDown(KeyCode.Alpha1) && !a_PCPlayer.GetBool("IsHit"))
         {
             //Hit_PCPlayer(1);
-            FadeSkinMesh();
+            OnSKinMesh();
         }
     }
 
+    // 지형붕괴 시간을 알려주는 경고 문고 및 표지판
     void DisplayWarning_On()
     {
         int inverseCount = o_touchArea.GetComponent<FractureTest>().i_destroyTime;
@@ -241,11 +244,13 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
         // 피격모션
         else
         {
+            OnSKinMesh();
             a_PCPlayer.SetBool("IsHit", true);
             Observable.NextFrame().Subscribe(_ => a_PCPlayer.SetBool("IsHit", false));
         }
     }
 
+    // VR의 손을 이탈하고 나서 튕기는 힘을 억제
     [PunRPC]
     public void FunctionForceReducing()
     {
@@ -253,12 +258,28 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    public void FadeSkinMesh()
+    public void OnSKinMesh()
     {
-        foreach(var mr in all_child_skinnedMeshRenderer)
-        {
-
-        }
+        StartCoroutine(SkinMeshFade());
     }
 
+    // 피격 시 깜빡이는 코루틴
+    IEnumerator SkinMeshFade()
+    {
+        // 데미지를 입으면 무적시간 만큼 깜빡이는 효과, 일단은 2초를 기준으로 짰으나,
+        // 가능하면 While문으로 지속효과를 주어도 될듯
+        for (int i = 0; i < 10; i++)
+        {
+            for(int j = 0; j < all_child_skinnedMeshRenderer.Length;j++)
+            {
+                all_child_skinnedMeshRenderer[j].enabled = false;
+            }
+            yield return new WaitForSeconds(0.1f);
+            for (int j = 0; j < all_child_skinnedMeshRenderer.Length; j++)
+            {
+                all_child_skinnedMeshRenderer[j].enabled = true;
+            }
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
 }

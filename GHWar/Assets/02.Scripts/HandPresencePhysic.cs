@@ -6,6 +6,7 @@ using Photon.Realtime;
 using UnityEngine.XR.Interaction.Toolkit;
 using Unity.VisualScripting;
 using DG.Tweening;
+using UnityEngine.Experimental.AI;
 
 // VR 플레이어의 손(콜라이더가 있는)에 넣어준다.
 // 손이 바닥에 닿았을 경우, 통과하지 못하게 방지
@@ -109,16 +110,18 @@ public class HandPresencePhysic : MonoBehaviour
     void FixedUpdate()
     {
         if (IsHit) return;
-        rb_this.velocity = (t_target.position - transform.position) / Time.fixedDeltaTime;
+        // 손에 위치를 따라오게 하는 부분(방향벡터)
+        rb_this.velocity = (t_target.position - transform.position) / (Time.fixedDeltaTime);
 
+        // 손의 각도에 맞게 고정시켜주는 부분, inverse 없음 축이 꼬여서 인식못함
         Quaternion q_rotationDifference = t_target.rotation * Quaternion.Inverse(transform.rotation);
         q_rotationDifference.ToAngleAxis(out float f_angleInDegree, out Vector3 v3_rotationAxis);
 
         // 이 코드가 없으면 특정 각도에서 손이 180도를 넘어가서 한바퀴 돌아감 > 아직 돌아가지만 손을 비틀정도만 아니면 됨..., 왼손, 오른손 비교도 필수 불가결, 일단 코드 해석 먼저 해야함
         f_angleInDegree = Mathf.Clamp(f_angleInDegree, v2_rangeOfHandRotation.x, v2_rangeOfHandRotation.y);
-
         Vector3 v3_rotationDifferenceInDegree = f_angleInDegree * v3_rotationAxis;
 
         rb_this.angularVelocity = (v3_rotationDifferenceInDegree * Mathf.Deg2Rad / Time.fixedDeltaTime);
+
     }
 }

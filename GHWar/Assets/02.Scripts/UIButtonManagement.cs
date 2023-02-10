@@ -29,18 +29,18 @@ public class UIButtonManagement : MonoBehaviourPun
     private void Start()
     {
         // 시작 시 페이드 아웃으로 시작
-        foreach(var img in img_fade)
+        for(int i = 0;i< img_fade.Length; i++)
         {
-            img.DOFade(0, f_fadeDuration);
+            img_fade[i].DOFade(0, f_fadeDuration);
         }
     }
 
     // 로비에 있는 버튼 연결 함수
     public void OnClickButton_GameStart()
     {
-        foreach (var img in img_fade)
+        for (int i = 0; i < img_fade.Length; i++)
         {
-            img.DOFade(1, f_fadeDuration).OnStart(() =>
+            img_fade[i].DOFade(1, f_fadeDuration).OnStart(() =>
             {
                 // 페이드 시작 시 작동
                 deactiveObj_LineL.SetActive(false);
@@ -48,7 +48,8 @@ public class UIButtonManagement : MonoBehaviourPun
             }).OnComplete(() =>
             {
                 // 페이드 끝날 시 작동
-                Observable.Timer(TimeSpan.FromMilliseconds(80)).Subscribe(_ => connManager.SetActive(true));                
+                // 0.8초 이후 ㅊonnManager 실행
+                Observable.Timer(TimeSpan.FromMilliseconds(100)).Subscribe(_ => connManager.SetActive(true));                
             });
         }
         //connManager.SetActive(true);

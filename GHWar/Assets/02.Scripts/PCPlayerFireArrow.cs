@@ -17,8 +17,10 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
     Animator a_playerInFire;
     PC_Player_Move _Move;
 
+    [Header("플레이어 죽음 표시")]
     public bool isDie;
 
+    [Header("활 쏘는 주기")]
     [SerializeField] float delayTime = 2.0f;
     float currentTime = 0;
 
@@ -32,6 +34,7 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
     [SerializeField] AudioClip ac_shotInit;
     // 소리 부분 //
 
+    [Header("활쏠 준비 완")]
     public bool B_isReadyToShot = false;
 
     void Start()
@@ -51,30 +54,8 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
         B_isReadyToShot = false;
     }
 
-    private RaycastHit hit;
-
     void FixedUpdate()
     {
-        //if (photonView.IsMine)
-        //{
-
-        //    //Debug.Log(pv.Synchronization);
-
-        //    //메인 카메라를 마우스 커서의 위치로 캐스팅되는 레이를 생성
-        //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //    //생성된 Ray를 Scene 뷰에 녹색 광선으로 표현
-        //    Debug.DrawRay(ray.origin, ray.direction * 100.0f, Color.green);
-        //    //8번째 레이어(TERRAIN)와 레이가 부딪혔다면
-        //    if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-        //    {
-        //        //Ray에 맞은 위치를 로컬좌표로 변환
-        //        Vector3 relative = tr_this.InverseTransformPoint(hit.point);
-        //        //역탄젠트 함수로 두 점 간 각도를 게산
-        //        float angle = Mathf.Atan2(relative.x, relative.z) * Mathf.Rad2Deg;
-        //    }
-        //}
-
-
         currentTime += Time.fixedDeltaTime;
 
         if (pv.IsMine)
@@ -157,10 +138,4 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
     //    //a_playerInFire.SetIKRotation(AvatarIKGoal.RightHand, firePosEnd.rotation);
 
     //}
-
-    [PunRPC]
-    public void InitShootingArrow()
-    {
-        
-    }
 }

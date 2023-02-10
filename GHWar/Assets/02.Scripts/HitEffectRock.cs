@@ -54,25 +54,42 @@ public class HitEffectRock : MonoBehaviour
             //PhotonNetwork.Destroy(this.gameObject);
         }
 
-        if (!collision.gameObject.CompareTag("PC_Player")
-            && !(collision.gameObject.layer == LayerMask.NameToLayer("LeftHandPhysics") || collision.gameObject.layer == LayerMask.NameToLayer("RightHandPhysics")))
+        if (!collision.gameObject.CompareTag("PC_Player"))
         {
             GameObject o_effect = PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
 
             //as_rock.Stop();
             //as_rock.PlayOneShot(ac_throwHit);
 
-            if (collision.gameObject.GetComponent<Rigidbody>().mass >= GetComponent<Rigidbody>().mass
-                && GetComponent<Rigidbody>().velocity.magnitude > 20f)
+            // 손으로 후려 쳤을때 돌 부서지게 하는 부분
+            if (collision.gameObject.layer == LayerMask.NameToLayer("LeftHandPhysics") || collision.gameObject.layer == LayerMask.NameToLayer("RightHandPhysics"))
             {
-                print(collision.gameObject.layer);
-                GetComponent<MeshCollider>().enabled = false;
-                PhotonNetwork.Destroy(this.gameObject);
-
-                for(int i = 0; i < 5; i++)
+                if (collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude > 100f)
                 {
-                    GameObject tmp = PhotonNetwork.Instantiate("SmallRock", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
-                    tmp.transform.localScale /= 3;
+                    GetComponent<MeshCollider>().enabled = false;
+                    PhotonNetwork.Destroy(this.gameObject);
+
+                    for (int i = 0; i < 5; i++)
+                    {
+                        GameObject tmp = PhotonNetwork.Instantiate("SmallRock", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
+                        tmp.transform.localScale /= 3;
+                    }
+                }
+            }
+
+            // 무거운 물체(땅이나 돌)에 부딪히면 뭉게짐
+            else if (collision.gameObject.GetComponent<Rigidbody>().mass >= GetComponent<Rigidbody>().mass)
+            {
+                if (GetComponent<Rigidbody>().velocity.magnitude > 20f)
+                {
+                    GetComponent<MeshCollider>().enabled = false;
+                    PhotonNetwork.Destroy(this.gameObject);
+
+                    for (int i = 0; i < 5; i++)
+                    {
+                        GameObject tmp = PhotonNetwork.Instantiate("SmallRock", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
+                        tmp.transform.localScale /= 3;
+                    }
                 }
             }
         }

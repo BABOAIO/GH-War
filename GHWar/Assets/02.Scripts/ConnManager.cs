@@ -90,7 +90,7 @@ public class ConnManager : MonoBehaviourPunCallbacks
             //Vector2 originPos = Random.insideUnitCircle * 2.0f;
             GameManager.instance.Array_AllPlayers[0] = PhotonNetwork.Instantiate(array_PlayerType[0], VR_Spawn, Quaternion.Euler(0,180,0));
             // 싱글톤 게임매니저에 생성된 플레이어의 텍스트를 연결
-            GameManager.instance.Array_txtWinner[0] = GameManager.instance.Array_AllPlayers[0].GetComponent<VRPlayerMove1>().Txt_winnerText_VR;
+            GameManager.instance.Array_txtWinner[0] = GameManager.instance.Array_AllPlayers[0].GetComponent<VRPlayerMove>().Txt_winnerText_VR;
         }
         // PC 플레이어 생성
         else

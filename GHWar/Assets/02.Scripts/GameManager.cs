@@ -40,8 +40,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     // 게임 시작 시 리셋
     [Header("PC 플레이어 목숨 수")]
     public int i_PCDeathCount = 0;
-    [Header("VR 플레이어 목숨 수")]
-    public int i_VRDeathCount = 0;
 
     [Header("게임이 끝났는지 알려주는 변수")]
     public bool B_IsGameOver = false;
@@ -54,8 +52,11 @@ public class GameManager : MonoBehaviourPunCallbacks
     [Header("스카이박스 초당 회전 값 변수")]
     public float RotationPerSecond = 2;
 
+    [Header("지형이 무너지는 초기 시간")]
     public float destroyAreaTime = 20f;
+    [Header("무너질 지형의 인덱스")]
     public int num_destroyArea = 1;
+    [Header("게임 시작 시, 경과된 시간")]
     public float currentTime = 0.0f;
 
     AudioSource as_gm;
@@ -65,16 +66,14 @@ public class GameManager : MonoBehaviourPunCallbacks
         // 싱글톤
         if (instance == null) instance = this;
 
-        foreach (var t in turrets)
+        for (int i = 0; i < turrets.Count; i++)
         {
-            t.enabled = false;
+            turrets[i].enabled = false;
         }
 
         // VR 기기인지 체크
         Debug.Log("VR Device = " + IsPresent().ToString());
         IsVR = IsPresent();
-
-        //ResetDeathCount(2);
     }
 
     void Start()
@@ -279,7 +278,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
-    // 1 대 1 한정 다른 플레이어를 대기하는 함수
+    // 1 대 1 한정 다른 플레이어를 대기하는 코루틴
     IEnumerator WaitPlayer()
     {
         string str = "Wait for Other Players...";
@@ -293,7 +292,6 @@ public class GameManager : MonoBehaviourPunCallbacks
                 // ConnManager에서 플레이어가 생성될 때, 싱글턴으로 넣어줌
                 if (Array_AllPlayers[0])
                 {
-                    //Array_txtWinner[0].text = str;
                     Debug.Log(str);
                     GameObject o_otherPlayer = GameObject.FindGameObjectWithTag("PC_Player");
 
@@ -306,7 +304,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                         Array_txtWinner[0].text = "Game Start!";
 
                         ResetDeathCount(2);
-                        Invoke("ResetText", delay);
+                        Invoke("StartGame", delay);
                         // sound 등 게임시작 알림
                     }
                 }
@@ -320,13 +318,13 @@ public class GameManager : MonoBehaviourPunCallbacks
                     if (o_otherPlayer)
                     {
                         Array_AllPlayers[0] = o_otherPlayer;
-                        Array_txtWinner[0] = Array_AllPlayers[0].GetComponent<VRPlayerMove1>().Txt_winnerText_VR;
+                        Array_txtWinner[0] = Array_AllPlayers[0].GetComponent<VRPlayerMove>().Txt_winnerText_VR;
                         Debug.Log("Game Start!");
 
                         Array_txtWinner[1].text = "Game Start!";
 
                         ResetDeathCount(2);
-                        Invoke("ResetText", delay);
+                        Invoke("StartGame", delay);
                         // sound 등 게임시작 알림
                     }
                 }
@@ -349,7 +347,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                         Array_txtWinner[0].text = "Game Start!";
 
                         ResetDeathCount(2);
-                        Invoke("ResetText", delay);
+                        Invoke("StartGame", delay);
                         // sound 등 게임시작 알림
                     }
                 }
@@ -362,13 +360,13 @@ public class GameManager : MonoBehaviourPunCallbacks
                     if (o_otherPlayer)
                     {
                         Array_AllPlayers[0] = o_otherPlayer;
-                        Array_txtWinner[0] = Array_AllPlayers[0].GetComponent<VRPlayerMove1>().Txt_winnerText_VR;
+                        Array_txtWinner[0] = Array_AllPlayers[0].GetComponent<VRPlayerMove>().Txt_winnerText_VR;
                         Debug.Log("Game Start!");
 
                         Array_txtWinner[1].text = "Game Start!";
 
                         ResetDeathCount(2);
-                        Invoke("ResetText", delay);
+                        Invoke("StartGame", delay);
                         // sound 등 게임시작 알림
                     }
                 }
@@ -377,7 +375,8 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
-    void ResetText()
+    // 텍스트 초기화 + 게임 스타트
+    void StartGame()
     {
         Array_txtWinner[0].text = "";
         Array_txtWinner[1].text = "";
@@ -387,7 +386,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     void ResetDeathCount(int i)
     {
         StopCoroutine(WaitPlayerText());
-        i_VRDeathCount = i;
         i_PCDeathCount = i;
 
         //for (int j = 0; j < i_VRDeathCount; j++)
@@ -400,26 +398,28 @@ public class GameManager : MonoBehaviourPunCallbacks
         //obj_FallingArea.SetActive(true);
 
         // 터렛 활성화 >> Start함수에서 VR플레이어 인식
-        foreach (var t in turrets)
+
+        for (int j = 0; j < turrets.Count; j++)
         {
-            t.enabled = true;
+            turrets[j].enabled = true;
         }
 
         // 게임 시작 전, 방해되는 돌들 제거
         GameObject[] tmp_rock = GameObject.FindGameObjectsWithTag("Rock");
         if(tmp_rock != null)
         {
-            foreach(GameObject tmp in tmp_rock)
+            for (int j = 0; j< tmp_rock.Length; j++)
             {
-                Destroy(tmp);
+                Destroy(tmp_rock[j]);
             }
+
         }
         GameObject[] tmp_smallRock = GameObject.FindGameObjectsWithTag("SmallRock");
-        if (tmp_rock != null)
+        if (tmp_smallRock != null)
         {
-            foreach (GameObject tmp in tmp_smallRock)
+            for (int j = 0; j < tmp_smallRock.Length; j++)
             {
-                Destroy(tmp);
+                Destroy(tmp_smallRock[j]);
             }
         }
     }
@@ -477,41 +477,10 @@ public class GameManager : MonoBehaviourPunCallbacks
             Array_AllPlayers[1].GetComponent<PCPlayerHit>().HP = Array_AllPlayers[1].GetComponent<PCPlayerHit>().MaxHP;
         }
     }
-    IEnumerator RebirthVRPlayer()
-    {
-        // 2초 동안 움직임 방지
-        Array_AllPlayers[0].GetComponent<VRPlayerMove1>().enabled = false;
-
-        yield return new WaitForSeconds(2f);
-
-        if (PhotonNetwork.IsMasterClient)
-        {
-            Array_AllPlayers[0].GetComponent<VRPlayerMove1>().enabled = true;
-            --i_PCDeathCount;
-
-            // 일정 시간 무적 부여
-            Array_AllPlayers[0].GetComponent<VRPlayerMove1>().o_vrFace.GetComponent<VRPlayerHit>().currentTime = 0;
-            //Array_AllPlayers[0].GetComponent<VRPlayerHit>().currentTime = 0;
-        }
-        else
-        {
-            Array_AllPlayers[1].GetComponent<VRPlayerMove1>().enabled = true;
-            --i_PCDeathCount;
-            // anim idle
-
-            // 일정 시간 무적 부여
-            Array_AllPlayers[0].GetComponent<VRPlayerMove1>().o_vrFace.GetComponent<VRPlayerHit>().currentTime = 0;
-        }
-    }
 
     public void CheckRebirthPCPlayer()
     {
         StartCoroutine(RebirthPCPlayer());
-    }
-
-    public void CheckRebirthVRPlayer()
-    {
-        StartCoroutine(RebirthVRPlayer());
     }
 
     // 업데이트문으로 돌릴 포톤네트워크 함수
@@ -528,10 +497,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         if (!B_IsGameOver)
         {
+            // 게임매니저에서 마스터클라이언트와 이즈마인은 같음
             if (PhotonNetwork.IsMasterClient)
             {
                 // PC가 이겼을 경우
-                //if (Array_AllPlayers[0].GetComponent<VRPlayerMove1>().o_vrFace.GetComponent<VRPlayerHit>().HP <= 0)
                 if (Array_AllPlayers[0].GetComponentInChildren<VRPlayerHit>().HP <= 0)
                 {
                     B_IsGameOver = true;
@@ -621,19 +590,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     void Update()
     {
-        if (B_GameStart)
-        {
-            currentTime += Time.deltaTime;
-            if (currentTime > destroyAreaTime * num_destroyArea * 2)
-            {
-                if (o_PlayArea.Count > num_destroyArea)
-                {
-                    StartCoroutine(DelayedDestructionArea(o_PlayArea[num_destroyArea - 1]));
-                    num_destroyArea++;
-                }
-            }
-        }
-
+        NarrowGround();
         UpdatePhotonNetwork();
         RotateSkyBox(RotationPerSecond);
 
@@ -656,6 +613,25 @@ public class GameManager : MonoBehaviourPunCallbacks
         as_gm.Play();
     }
 
+    // 일정 시간이 지나면 지형 붕괴 코루틴을 발생시키는 스크립트
+    void NarrowGround()
+    {
+        if (B_GameStart)
+        {
+            currentTime += Time.deltaTime;
+            // *2 를 하지 않으면 붕괴될 10초가 중복되서 어색함, 10초를 넘기지 않으면 *2
+            if (currentTime > destroyAreaTime * num_destroyArea * 2)
+            {
+                if (o_PlayArea.Count > num_destroyArea)
+                {
+                    StartCoroutine(DelayedDestructionArea(o_PlayArea[num_destroyArea - 1]));
+                    num_destroyArea++;
+                }
+            }
+        }
+    }
+
+    // 스카이박스 회전 스크립트
     void RotateSkyBox(float rotationSpeedPerSecond)
     {
         RenderSettings.skybox.SetFloat("_Rotation", Time.time * rotationSpeedPerSecond);
@@ -669,6 +645,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public void LeaveRoom()
     {
+        // 초기화
         Array_AllPlayers[0] = null;
         Array_AllPlayers[1] = null;
 
@@ -679,11 +656,13 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         // Canvas, Animator State 초기화
 
-        // 승패 결정 시 게임종료
+        // 승패 결정 시 서버종료
         PhotonNetwork.LeaveRoom();
         //Application.Quit();
     }
 
+    // 일정 시간이 지나면 발동하는 지형붕괴 코루틴
+    // PC 플레이어에게는 10초 전에 알려준다. 다른 지형에 닿으면 그 지형의 지형붕괴시간을 보여준다.
     IEnumerator DelayedDestructionArea(GameObject _area)
     {
         FractureTest fratureTest = _area.GetComponent<FractureTest>();
@@ -704,33 +683,6 @@ public class GameManager : MonoBehaviourPunCallbacks
                 _area.transform.DOShakePosition(0.5f, 3.0f / (fratureTest.i_destroyTime));
             }
         }
-
-        //FractureTest fratureTest = _area.GetComponent<FractureTest>();
-        //fratureTest.i_destroyTime = 10;
-        //yield return new WaitForSeconds(1f);
-        //--fratureTest.i_destroyTime; // 9
-        //_area.transform.DOShakePosition(0.5f, 0.5f);
-        //yield return new WaitForSeconds(1f);
-        //--fratureTest.i_destroyTime; // 8
-        //yield return new WaitForSeconds(1f);
-        //--fratureTest.i_destroyTime; // 7
-        //yield return new WaitForSeconds(1f);
-        //--fratureTest.i_destroyTime; // 6
-        //_area.transform.DOShakePosition(0.5f, 7.5f);
-        //yield return new WaitForSeconds(1f);
-        //--fratureTest.i_destroyTime; // 5
-        //yield return new WaitForSeconds(1f);
-        //--fratureTest.i_destroyTime; // 4
-        //yield return new WaitForSeconds(1f);
-        //--fratureTest.i_destroyTime; // 3
-        //_area.transform.DOShakePosition(0.5f, 1.0f);
-        //yield return new WaitForSeconds(1f);
-        //--fratureTest.i_destroyTime; // 2
-        //yield return new WaitForSeconds(1f);
-        //--fratureTest.i_destroyTime; // 1
-        //yield return new WaitForSeconds(1f);
-        //--fratureTest.i_destroyTime; // 0
-        //fratureTest.DestructionThisArea();
 
         yield return new WaitForSeconds(1f);
         fratureTest.i_destroyTime = 100;
