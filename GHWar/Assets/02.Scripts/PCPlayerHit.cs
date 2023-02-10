@@ -39,6 +39,9 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
     [SerializeField] float f_hapticTime = 0.5f;
     [SerializeField] float f_hapticStrength = 0.8f;
 
+    SkinnedMeshRenderer[] all_child_skinnedMeshRenderer;
+    Material[] all_child_material;
+
     private void Start()
     {
         pv = GetComponent<PhotonView>();
@@ -48,6 +51,9 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
         img_warning.SetActive(false);
         txt_warning = img_warning.GetComponentInChildren<Text>();
         txt_warning.text = "";
+
+        all_child_skinnedMeshRenderer = GetComponentsInChildren<SkinnedMeshRenderer>();
+        all_child_material = GetComponentsInChildren<Material>();
 
         HP = MaxHP;
         hpBar.value = HP / MaxHP;
@@ -122,10 +128,20 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
 
             if (other.gameObject.CompareTag("FallingZone"))
             {
-                // 싱글턴을 통한 원래 스폰 위치로 복귀
-                transform.position =
-                    GameManager.instance.o_PlayArea[GameManager.instance.num_destroyArea - 1].
-                    GetComponent<FractureTest>().tr_spawnPoint.position;
+                if (GameManager.instance.o_PlayArea.Count > GameManager.instance.num_destroyArea)
+                {
+                    // 싱글턴을 통한 원래 스폰 위치로 복귀
+                    transform.position =
+                        GameManager.instance.o_PlayArea[GameManager.instance.num_destroyArea - 1].
+                        GetComponent<FractureTest>().tr_spawnPoint.position;
+
+                }
+                else
+                {
+                    transform.position =
+                        GameManager.instance.o_PlayArea[^1].
+                        GetComponent<FractureTest>().tr_spawnPoint.position;
+                }
 
                 // 반동으로 떨어졌을때 힘 억제
                 gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -180,7 +196,8 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
         // 플레이어 피격 치트
         if (Input.GetKeyDown(KeyCode.Alpha1) && !a_PCPlayer.GetBool("IsHit"))
         {
-            Hit_PCPlayer(1);
+            //Hit_PCPlayer(1);
+            FadeSkinMesh();
         }
     }
 
@@ -233,6 +250,15 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
     public void FunctionForceReducing()
     {
         this.GetComponent<Rigidbody>().velocity = Vector3.zero;
+    }
+
+    [PunRPC]
+    public void FadeSkinMesh()
+    {
+        foreach(var mr in all_child_skinnedMeshRenderer)
+        {
+
+        }
     }
 
 }

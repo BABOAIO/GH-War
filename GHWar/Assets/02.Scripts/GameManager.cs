@@ -624,17 +624,19 @@ public class GameManager : MonoBehaviourPunCallbacks
         if (B_GameStart)
         {
             currentTime += Time.deltaTime;
-            if (num_destroyArea <= o_PlayArea.Count)
+            if (currentTime > destroyAreaTime * num_destroyArea * 2)
             {
-                if (currentTime > destroyAreaTime * num_destroyArea)
+                if (o_PlayArea.Count > num_destroyArea)
                 {
-                    //photonView.RPC("NarrowPlayArea", RpcTarget.AllBuffered, o_PlayArea[num_destroyArea - 1]);
-                    //NarrowPlayArea(o_PlayArea[num_destroyArea - 1]);
                     StartCoroutine(DelayedDestructionArea(o_PlayArea[num_destroyArea - 1]));
                     num_destroyArea++;
                 }
             }
         }
+
+        UpdatePhotonNetwork();
+        RotateSkyBox(RotationPerSecond);
+
 
         if (Input.GetKeyUp(KeyCode.Alpha3)) 
         { 
@@ -648,11 +650,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             B_GameStart = !B_GameStart;
         }
-
-
-        UpdatePhotonNetwork();
-        RotateSkyBox(RotationPerSecond);
-
 
         if (as_gm.isPlaying) { return; }
         

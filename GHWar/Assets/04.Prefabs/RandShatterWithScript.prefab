@@ -115,37 +115,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 5200085010299288075, guid: a84e2e5eb85698a419334784acf05bbc, type: 3}
---- !u!1 &151870735176622377
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1761306766883760086}
-  m_Layer: 10
-  m_Name: SpawnPivot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1761306766883760086
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 151870735176622377}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 0.03, z: 0.07}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 958621972130123002}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &469099687470630616
 GameObject:
   m_ObjectHideFlags: 0
@@ -1220,8 +1189,7 @@ Transform:
   m_LocalPosition: {x: -0.0038610455, y: -0.004065748, z: -0.0037250163}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1761306766883760086}
+  m_Children: []
   m_Father: {fileID: 5372226374384717852}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1793,7 +1761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colliders: []
-  tr_spawnPoint: {fileID: 1761306766883760086}
+  tr_spawnPoint: {fileID: 0}
   i_destroyTime: 100
 --- !u!64 &6541152660625582965
 MeshCollider:

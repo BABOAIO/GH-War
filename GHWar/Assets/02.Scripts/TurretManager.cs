@@ -105,12 +105,10 @@ public class TurretManager : MonoBehaviourPunCallbacks
             // 삼항연산자로 VR없으면 대포따라 움직이고, 있으면 대포쪽으로 발사
             (GameObject.FindGameObjectWithTag("VRPlayerHead") ? tr_firePos.forward * f_shotPower : tr_firePos.up * f_shotPower)
             , ForceMode.Impulse);
-        // 대포가 쏘았을 경우, 들어가기까지 너무 짧음을 방지
-        yield return new WaitForSeconds(1.0f);
+        // 대포가 쏘았을 경우, 들어가서 쿨타임을 돌리기까지 시간
+        yield return new WaitForSeconds(0.8f);
 
         Observable.NextFrame().Subscribe(_ => a_turret.SetBool("Fire", false));
-        // 쿨타임 돌리기 위해 넣음
-        yield return new WaitForSeconds(0.5f);
         a_turret.SetBool("Open", false);
 
         // 이미 스크립트에 있어서 안없애도됨

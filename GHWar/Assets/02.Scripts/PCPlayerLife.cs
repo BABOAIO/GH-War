@@ -12,11 +12,6 @@ public class PCPlayerLife : MonoBehaviour
     [Header("PC 플레이어 잃은 생명 이미지")]
     [SerializeField] GameObject[] lifeLossImage = new GameObject[2];
 
-    private void Start()
-    {
-
-    }
-
     void Update()
     {
         switch (GameManager.instance.i_PCDeathCount)
