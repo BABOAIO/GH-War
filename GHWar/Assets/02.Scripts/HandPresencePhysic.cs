@@ -12,6 +12,8 @@ using UnityEngine.Experimental.AI;
 // 손이 바닥에 닿았을 경우, 통과하지 못하게 방지
 public class HandPresencePhysic : MonoBehaviour
 {
+    public AudioSource as_parent;
+
     [Header("같이 이동할 컨트롤러 위치")]
     [SerializeField] Transform t_target;
     [Header("움직임 제한 초과 시 나올 투명 매터리얼")]
@@ -46,6 +48,8 @@ public class HandPresencePhysic : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("CannonBall"))
         {
+            as_parent.Stop();
+            as_parent.Play();
             StartCoroutine(StopHandScript());
         }
     }

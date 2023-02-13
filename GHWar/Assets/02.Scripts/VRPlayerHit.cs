@@ -12,6 +12,7 @@ using DG.Tweening;
 public class VRPlayerHit : MonoBehaviourPunCallbacks
 {
     AudioSource as_VRPlayerHit;
+    public AudioSource as_parent;
 
     [Header("Max HP")]
     public float MaxHP = 5.0f;
@@ -57,6 +58,12 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
 
                 photonView.RPC("Hit_VRPlayer", RpcTarget.AllBuffered, 1);
                 currentTime = 0.0f;
+
+                if (collision.gameObject.CompareTag("CannonBall"))
+                {
+                    as_parent.Stop();
+                    as_parent.Play();
+                }
             }
         }
     }

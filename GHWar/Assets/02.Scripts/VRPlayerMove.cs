@@ -12,6 +12,7 @@ public class VRPlayerMove : MonoBehaviourPun//, IPunObservable
 {
     public Text Txt_winnerText_VR;
     public GameObject o_vrFace;
+    public AudioSource as_VR;
 
     [SerializeField] GameObject o_cam;
     [SerializeField] Transform t_player;
@@ -24,6 +25,8 @@ public class VRPlayerMove : MonoBehaviourPun//, IPunObservable
 
     void Start()
     {
+        as_VR = GetComponent<AudioSource>();
+
         // 위치 및 카메라 시선 고정 >> 실패
         o_cam.SetActive(true);
 
