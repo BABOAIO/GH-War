@@ -10,6 +10,11 @@ using DG.Tweening;
 // 이즈 트리거 없으면 플레이어가 땅을 밟을 수 없다.
 public class FractureTest : MonoBehaviourPunCallbacks
 {
+    public AudioSource as_parent;
+    public AudioClip ac_destruction;
+    public AudioClip ac_shake;
+    public AudioClip ac_warning;
+
     public Collider[] colliders;    // 충돌체를 배열로 가져옴
 
     // 플레이어가 떨어지면 스폰할 위치, PCPlayerHit 참고

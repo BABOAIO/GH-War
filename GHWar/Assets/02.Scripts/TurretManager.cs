@@ -10,6 +10,10 @@ using UniRx;
 // Configurable Joint의 값에 따라 트리거로 인식
 public class TurretManager : MonoBehaviourPunCallbacks
 {
+    AudioSource as_turret;
+    [SerializeField] AudioClip ac_openTurret;
+    [SerializeField] AudioClip ac_closeTurret;
+    [SerializeField] AudioClip ac_shotTurret;
     // 없어도 되지만 포톤서버가 아닐때 넣을 대포알
     [SerializeField] GameObject cannonBall;
     // 대포알이 발사되는 지점(대포에 있는 armatur3 > bone > bone_end 에 넣는다.(대포 포신에 따라 움직임))
@@ -46,6 +50,7 @@ public class TurretManager : MonoBehaviourPunCallbacks
 
     void Start()
     {
+        as_turret = GetComponent<AudioSource>();
         currentTime = delayTime;
         b_isPress = false;
         tr_this = GetComponent<Transform>();
@@ -89,9 +94,12 @@ public class TurretManager : MonoBehaviourPunCallbacks
     {
         txt_countDown.text = "shot!!";
 
+        as_turret.PlayOneShot(ac_openTurret, 0.5f);
         a_turret.SetBool("Open", true);
         // 애니메이션이 끝까지 가지않아 대포가 중간에 멈춤방지
         yield return new WaitForSeconds(1.0f);
+        as_turret.Stop();
+        as_turret.PlayOneShot(ac_shotTurret, 0.5f);
         a_turret.SetBool("Fire", true);
 
         if (GameObject.FindGameObjectWithTag("VRPlayerHead"))
@@ -104,11 +112,15 @@ public class TurretManager : MonoBehaviourPunCallbacks
         ball.GetComponent<Rigidbody>().AddForce(
             // 삼항연산자로 VR없으면 대포따라 움직이고, 있으면 대포쪽으로 발사
             (GameObject.FindGameObjectWithTag("VRPlayerHead") ? tr_firePos.forward * f_shotPower : tr_firePos.up * f_shotPower)
+            // 한번에 쏘는 대포같은 느낌을 주기 위해
             , ForceMode.Impulse);
         // 대포가 쏘았을 경우, 들어가서 쿨타임을 돌리기까지 시간
         yield return new WaitForSeconds(0.8f);
+        as_turret.Stop();
 
         Observable.NextFrame().Subscribe(_ => a_turret.SetBool("Fire", false));
+        as_turret.Stop();
+        as_turret.PlayOneShot(ac_closeTurret, 0.5f);
         a_turret.SetBool("Open", false);
 
         // 이미 스크립트에 있어서 안없애도됨

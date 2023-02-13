@@ -14,6 +14,9 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
 {
     PhotonView pv;
 
+    AudioSource as_hitPCPlayer;
+    [SerializeField] AudioClip ac_hitPCPlayer;
+
     [SerializeField] Camera cam_this;
 
     [Header("Max HP")]
@@ -52,6 +55,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
         a_PCPlayer = GetComponent<PC_Player_Move>().a_player;
         PPM = GetComponent<PC_Player_Move>();
         PPFA = GetComponent<PCPlayerFireArrow>();
+        as_hitPCPlayer = GetComponent<AudioSource>();
         img_warning.SetActive(false);
         txt_warning = img_warning.GetComponentInChildren<Text>();
         txt_warning.text = "";

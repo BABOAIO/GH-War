@@ -13,7 +13,7 @@ using UnityEditor;
 public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
 {
     PhotonView pv;
-    
+ 
     Animator a_playerInFire;
     PC_Player_Move _Move;
 
@@ -43,7 +43,7 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
         tr_this = GetComponent<Transform>();
 
         // 家府 何盒 //
-        as_fireArrow = GetComponent<AudioSource>();
+        as_fireArrow = firePos.GetComponent<AudioSource>();
         // 家府 何盒 //
 
         isDie = false;
@@ -91,19 +91,21 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
         }
         if (Input.GetMouseButtonUp(0)
             && B_isReadyToShot
+            && currentTime != 0
             )
         {
+            a_playerInFire.SetBool("ReadyToShot", false);
+            a_playerInFire.SetBool("RunToAimWalk", false);
+
             // 家府 何盒 //
-            as_fireArrow.PlayOneShot(ac_shotInit);
+            as_fireArrow.PlayOneShot(ac_shotInit, 0.5f);
             // 家府 何盒 //
 
             currentTime = 0;
 
-            a_playerInFire.SetBool("ReadyToShot", false);
-            a_playerInFire.SetBool("RunToAimWalk", false);
             a_playerInFire.SetBool("Shot", true);
             Observable.NextFrame().Subscribe(_ => a_playerInFire.SetBool("Shot", false));
-            Invoke("DelayedActive", 0.8f);
+            Invoke("DelayedActive", 0.4f);
 
             //Vector2 v2_tmp = (firePosEnd.position - firePos.position);
             GameObject obj_tmp = PhotonNetwork.Instantiate("Arrow", firePos.position, firePos.rotation);
@@ -114,9 +116,11 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
             //    Observable.NextFrame().Subscribe(_ => a_playerInFire.SetBool("ToIdle", false));
             //}
         }
-        else
+        if(!B_isReadyToShot)
         {
-            // 檬扁拳
+            a_playerInFire.SetBool("ReadyToShot", false);
+            a_playerInFire.SetBool("RunToAimWalk", false);
+            a_playerInFire.SetBool("Shot", false);
         }
     }
 

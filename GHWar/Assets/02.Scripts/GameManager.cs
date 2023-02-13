@@ -9,7 +9,6 @@ using DG.Tweening;
 using UniRx;
 
 // 게임매니저 오브젝트에 넣는다.
-[RequireComponent(typeof(AudioSource))]
 public class GameManager : MonoBehaviourPunCallbacks
 {
     public static GameManager instance;
@@ -59,8 +58,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     [Header("게임 시작 시, 경과된 시간")]
     public float currentTime = 0.0f;
 
-    AudioSource as_gm;
-
     private void Awake()
     {
         // 싱글톤
@@ -85,9 +82,8 @@ public class GameManager : MonoBehaviourPunCallbacks
         PhotonNetwork.SendRate = 30;
         PhotonNetwork.SerializationRate = 30;
 
-        as_gm = GetComponent<AudioSource>();
-
         B_GameStart = false; B_IsGameOver = false;
+
         //for (int i = 0; i < Trees.Count; i++)
         //{
         //    v3_treesOriginPos[i] = Trees[i].GetComponent<SetActiveKinetic>().V3_origonPos;
@@ -594,7 +590,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         UpdatePhotonNetwork();
         RotateSkyBox(RotationPerSecond);
 
-
         if (Input.GetKeyUp(KeyCode.Alpha3)) 
         { 
             GameObject tmp =
@@ -607,10 +602,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             B_GameStart = !B_GameStart;
         }
-
-        if (as_gm.isPlaying) { return; }
-        
-        as_gm.Play();
     }
 
     // 일정 시간이 지나면 지형 붕괴 코루틴을 발생시키는 스크립트
@@ -665,27 +656,32 @@ public class GameManager : MonoBehaviourPunCallbacks
     // PC 플레이어에게는 10초 전에 알려준다. 다른 지형에 닿으면 그 지형의 지형붕괴시간을 보여준다.
     IEnumerator DelayedDestructionArea(GameObject _area)
     {
-        FractureTest fratureTest = _area.GetComponent<FractureTest>();
-        fratureTest.i_destroyTime = 10;
-        int maxCouint = fratureTest.i_destroyTime;
+        FractureTest fractureTest = _area.GetComponent<FractureTest>();
+        fractureTest.i_destroyTime = 10;
+        AudioSource as_fracture = fractureTest.as_parent;
+        int maxCouint = fractureTest.i_destroyTime;
         for (int i = 0; i < maxCouint; i++)
         {
             yield return new WaitForSeconds(1f);
-            fratureTest.i_destroyTime -= 1;
-            print(fratureTest.i_destroyTime);
+            fractureTest.i_destroyTime -= 1;
+            print(fractureTest.i_destroyTime);
 
-            if (fratureTest.i_destroyTime <= 0)
+            if (fractureTest.i_destroyTime <= 0)
             {
-                fratureTest.DestructionThisArea();
+                as_fracture.Stop();
+                fractureTest.DestructionThisArea();
             }
-            if (fratureTest.i_destroyTime % 3 == 0)
+            if (fractureTest.i_destroyTime % 3 == 0 && fractureTest.i_destroyTime != 0)
             {
-                _area.transform.DOShakePosition(0.5f, 3.0f / (fratureTest.i_destroyTime));
+                as_fracture.Stop();
+                as_fracture.PlayOneShot(fractureTest.ac_shake);
+                _area.transform.DOShakePosition(0.5f, 3.0f / (fractureTest.i_destroyTime));
             }
         }
 
+        as_fracture.PlayOneShot(fractureTest.ac_destruction);
         yield return new WaitForSeconds(1f);
-        fratureTest.i_destroyTime = 100;
+        fractureTest.i_destroyTime = 100;
     }
 
 }
