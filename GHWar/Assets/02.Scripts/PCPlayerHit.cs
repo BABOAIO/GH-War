@@ -223,6 +223,9 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
     [PunRPC]
     public void Hit_PCPlayer(int damage)
     {
+        as_hitPCPlayer.Stop();
+        as_hitPCPlayer.PlayOneShot(ac_hitPCPlayer);
+
         cam_this.DOShakePosition(damage * f_hapticTime, f_hapticStrength);
         HP -= damage;
         Debug.Log($"PC Player {pv.Controller} is Damaged : Dmg {damage}");

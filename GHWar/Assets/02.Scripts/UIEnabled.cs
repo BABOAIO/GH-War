@@ -11,11 +11,13 @@ public class UIEnabled : MonoBehaviour
 {
     InputSystemUIInputModule pcUI;
     XRUIInputModule vrUI;
+    AudioSource as_eventSystem;
 
     private void Awake()
     {
         pcUI = GetComponent<InputSystemUIInputModule>();
         vrUI = GetComponent<XRUIInputModule>();
+        as_eventSystem = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -27,6 +29,18 @@ public class UIEnabled : MonoBehaviour
         else if(GameManager.instance.IsVR)
         {
             vrUI.enabled = false;
+        }
+    }
+
+    private void Update()
+    {
+        if(!as_eventSystem.isPlaying && GameManager.instance.B_GameStart)
+        {
+            as_eventSystem.Play();
+        }
+        else if(GameManager.instance.B_IsGameOver|| !GameManager.instance.B_GameStart)
+        {
+            as_eventSystem.Stop();
         }
     }
 }

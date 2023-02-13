@@ -11,6 +11,7 @@ using DG.Tweening;
 // VR플레이어의 헤드에 넣는다. 헤드는 컬라이더를 가지고, 태그를 VRPlayerHead로 바꾼다.
 public class VRPlayerHit : MonoBehaviourPunCallbacks
 {
+    AudioSource as_VRPlayerHit;
 
     [Header("Max HP")]
     public float MaxHP = 5.0f;
@@ -34,6 +35,7 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
 
     private void Start()
     {
+        as_VRPlayerHit = GetComponent<AudioSource>();
         if (!gameObject.CompareTag("VRPlayerHead"))
         {
             gameObject.tag = "VRPlayerHead";
@@ -77,6 +79,8 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
     public void Hit_VRPlayer(int damage)
     {
         //_camera.DOShakePosition(f_hapticTime, f_hapticStrength);
+        as_VRPlayerHit.Stop();
+        as_VRPlayerHit.Play();
         HP -= damage;
         Debug.Log($"VR Player {photonView.Controller} is Damaged : Dmg {damage}");
 

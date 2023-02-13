@@ -645,7 +645,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5114,7 +5114,7 @@ MonoBehaviour:
     SynchronizeType: 2
     Name: ToIdle
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: IsHit
   - Type: 1
     SynchronizeType: 2
@@ -5141,10 +5141,10 @@ MonoBehaviour:
     SynchronizeType: 2
     Name: _RunForward
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: Rebirth
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: ReadyNextIdle
   m_SynchronizeLayers:
   - SynchronizeType: 2
@@ -5163,7 +5163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 504259c711d859a4087adb1770007080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ac_hitPCPlayer: {fileID: 8300000, guid: 46b8a699745dcdc42af3d81e7cb91404, type: 3}
+  ac_hitPCPlayer: {fileID: 8300000, guid: e8006d046f5984544833f11efd1775ad, type: 3}
   cam_this: {fileID: 445059221249270055}
   MaxHP: 2
   HP: 2
