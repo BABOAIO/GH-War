@@ -229,6 +229,7 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
             }
             else
             {
+                PC_Player_Cam.transform.rotation = Quaternion.identity;
                 PC_Player_Cam.transform.LookAt(gameObject.transform);
                 transform.rotation = Quaternion.identity;
             }
@@ -242,7 +243,7 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (isGround && !isDodge)
+                if (!isDodge)
                 {
                     if (jumpCount > 0)
                     {

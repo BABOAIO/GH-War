@@ -22,7 +22,10 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
 
     [Header("È° ½î´Â ÁÖ±â")]
     [SerializeField] float delayTime = 2.0f;
-    float currentTime = 0;
+    float currentTime = 0f;
+
+    [SerializeField] float shotPow = 1f;
+    float shotPowerOrigin;
 
     [SerializeField] Transform firePos;
     [SerializeField] Transform firePosEnd;
@@ -49,6 +52,8 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
         isDie = false;
         _Move = GetComponent<PC_Player_Move>();
         a_playerInFire = this.gameObject.GetComponent<PC_Player_Move>().a_player;
+
+        shotPowerOrigin = shotPow;
 
         currentTime = delayTime;
         B_isReadyToShot = false;
@@ -87,17 +92,23 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
             && !_Move.isJump
             )
         {
+            shotPow = 1;
+            StartCoroutine(ShotPowerUp());
             a_playerInFire.SetBool("ReadyToShot", true);
             a_playerInFire.SetBool("RunToAimWalk", true);
             B_isReadyToShot = true;
             //Observable.NextFrame().Subscribe(_ => a_playerInFire.SetBool("ReadyToShot", false));
             //obj_tmp.transform.LookAt(firePosEnd.position - firePos.position);
         }
-        if (Input.GetMouseButtonUp(0)
+        if ((Input.GetMouseButtonUp(0)
             && B_isReadyToShot
-            && currentTime > 0
+            && currentTime >= delayTime)
+            || shotPow >= 5
             )
         {
+            //StopCoroutine(ShotPowerUp());
+            StopAllCoroutines();
+            print(shotPow);
             a_playerInFire.SetBool("ReadyToShot", false);
             a_playerInFire.SetBool("RunToAimWalk", false);
 
@@ -113,6 +124,9 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
 
             //Vector2 v2_tmp = (firePosEnd.position - firePos.position);
             GameObject obj_tmp = PhotonNetwork.Instantiate("Arrow", firePos.position, firePos.rotation);
+            obj_tmp.GetComponent<Rigidbody>().AddForce(shotPow * (firePosEnd.position - firePos.position), ForceMode.Impulse);
+
+            shotPow = 1;
             //obj_tmp.transform.LookAt(firePosEnd.position - firePos.position);
             //else
             //{
@@ -126,6 +140,18 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
             a_playerInFire.SetBool("RunToAimWalk", false);
             a_playerInFire.SetBool("Shot", false);
         }
+    }
+
+    IEnumerator ShotPowerUp()
+    {
+        yield return new WaitForSeconds(1.0f);
+        shotPow = 2;
+        yield return new WaitForSeconds(1.0f);
+        shotPow = 3;
+        yield return new WaitForSeconds(1.0f);
+        shotPow = 4;
+        yield return new WaitForSeconds(1.0f);
+        shotPow = 5;
     }
 
     void DelayedActive()
