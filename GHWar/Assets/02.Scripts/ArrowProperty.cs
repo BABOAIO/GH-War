@@ -41,14 +41,8 @@ public class ArrowProperty : MonoBehaviour
 
     void FixedUpdate()
     {
-        // 소리부분 //
-        //if (!as_arrow.isPlaying)
-        //{
-        //    as_arrow.PlayOneShot(ac_shotArrow);
-        //}
-        // 소리부분 //
-
         // 부딪히지 않았을 경우, 앞으로 날라간다.(중력의 영향을 어느정도 받는것으로 보인다.)
+        // 같은 화살끼리 부딪히지 않게 주의(레이어 피직스로 조정가능)
         if(!isHit)
         {
             tr_this.Translate(Vector3.forward * shotSpeed * Time.fixedDeltaTime);
@@ -57,7 +51,22 @@ public class ArrowProperty : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("VR_Player"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("LeftHandPhysics") || collision.gameObject.layer == LayerMask.NameToLayer("RightHandPhysics"))
+        {
+            isHit = true;
+
+            GameObject o_ps =
+            PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
+
+            // 소리부분 //
+            //as_arrow.Stop();
+            //as_arrow.PlayOneShot(ac_shotHit);
+            // 소리부분 // 
+
+            PhotonNetwork.Destroy(this.gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("VRPlayerHead"))
         {
             isHit = true;
 
@@ -71,6 +80,11 @@ public class ArrowProperty : MonoBehaviour
 
             PhotonNetwork.Destroy(this.gameObject);
             //StartCoroutine(DestroyDelayed(gameObject, 0.1f));
+        }
+
+        // 땅의 메쉬가 안보여서 이렇게 안하면 땅에 박힘
+        else if (!collision.gameObject.CompareTag("Ground"))
+        {
         }
 
         else if(!collision.gameObject.CompareTag("PC_Player"))

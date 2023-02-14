@@ -81,6 +81,7 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
 
         as_move = GetComponent<AudioSource>();
         as_move.Stop();
+        isGround = false;
 
         if (!photonView.IsMine)
         {
@@ -98,26 +99,30 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
         {
             if(!isDie)
             {
-                if (PhotonNetwork.CountOfPlayers >= 2)
-                {
-                    pv.RPC("Move", RpcTarget.All);
-                    pv.RPC("Rotate", RpcTarget.All);
-                    pv.RPC("Jump", RpcTarget.All);
-                    pv.RPC("Dodge", RpcTarget.All);
-                }
-                else
-                {
-                    Move();
-                    Rotate();
-                    Jump();
-                    Dodge();
-                }
+                pv.RPC("Move", RpcTarget.All);
+                pv.RPC("Rotate", RpcTarget.All);
+                pv.RPC("Jump", RpcTarget.All);
+                pv.RPC("Dodge", RpcTarget.All);
+                //if (PhotonNetwork.CountOfPlayers >= 2)
+                //{
+                //    pv.RPC("Move", RpcTarget.All);
+                //    pv.RPC("Rotate", RpcTarget.All);
+                //    pv.RPC("Jump", RpcTarget.All);
+                //    pv.RPC("Dodge", RpcTarget.All);
+                //}
+                //else
+                //{
+                //    Move();
+                //    Rotate();
+                //    Jump();
+                //    Dodge();
+                //}
             }
             Wiggle();
 
-            if(isJump)
+            if(!isGround)
             {
-                PC_Player_Rigidbody.AddForce(Vector3.down * Time.deltaTime * f_jumpPower, ForceMode.Force);
+                PC_Player_Rigidbody.AddForce(Vector3.down * Time.deltaTime * f_jumpPower, ForceMode.Acceleration);
             }
         }
 
@@ -136,14 +141,6 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
     void Wiggle()
     {
         a_player.SetBool("Wiggle", xrgrabinteractionPun.isGrab);
-        //if (xrgrabinteractionPun.isGrab == true)
-        //{
-        //    a_player.SetBool("Wiggle", true);
-        //}
-        //else if (xrgrabinteractionPun.isGrab == false)
-        //{
-        //    a_player.SetBool("Wiggle", false);
-        //}
     }
 
     [PunRPC]
@@ -174,15 +171,17 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
                     a_player.SetBool("IdleToRun", true);
                     a_player.SetFloat("_RunLeft", f_h);
                     a_player.SetFloat("_RunForward", f_v);
-                    if (!as_move.isPlaying && !isJump)
+
+                    // 소리부분 //
+                    if (!as_move.isPlaying && isGround)
                     {
-                        as_move.PlayOneShot(ac_run);
+                        as_move.PlayOneShot(ac_run, 0.7f);
                     }
                     //a_player.SetBool("Run", true);
                 }
             }
 
-            else if (fireArrow.B_isReadyToShot && !isJump)
+            else if (fireArrow.B_isReadyToShot && isGround)
             {
                 float f_h = Input.GetAxis("Horizontal");
                 float f_v = Input.GetAxis("Vertical");      // 플레이어 움직임 입력 받기 (상하좌우)
@@ -191,7 +190,6 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
 
                 transform.Translate(v3_moveDirection * Time.deltaTime * f_moveSpeed / 2.0f);
 
-                // 
                 if (Mathf.Abs(f_h) <= 0.1f && Mathf.Abs(f_v) <= 0.1f)
                 {
                     a_player.SetBool("IdleToRun", false);
@@ -203,7 +201,8 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
                     a_player.SetBool("IdleToRun", true);
                     a_player.SetFloat("_AimWalkLeft", f_h);
                     a_player.SetFloat("_AimWalkForward", f_v);
-                    if (!as_move.isPlaying && !isJump)
+
+                    if (!as_move.isPlaying && isGround)
                     {
                         as_move.PlayOneShot(ac_aimWalk);
                     }
@@ -218,13 +217,21 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
     {
         if (pv.IsMine)
         {
-            f_mouseX += Input.GetAxis("Mouse X") * f_rotSpeed * Time.deltaTime;
-            f_mouseY -= Input.GetAxis("Mouse Y") * f_rotSpeed * Time.deltaTime;
-            transform.eulerAngles = new Vector3(0, f_mouseX, 0);
+            if (!isDie)
+            {
+                f_mouseX += Input.GetAxis("Mouse X") * f_rotSpeed * Time.deltaTime;
+                f_mouseY -= Input.GetAxis("Mouse Y") * f_rotSpeed * Time.deltaTime;
+                transform.eulerAngles = new Vector3(0, f_mouseX, 0);
 
-            f_mouseYlim = f_mouseYlim + f_mouseY;
-            f_mouseY = Mathf.Clamp(f_mouseY, -70, 30);
-            PC_Player_Cam.transform.eulerAngles = new Vector3(f_mouseY, f_mouseX, 0);
+                f_mouseYlim = f_mouseYlim + f_mouseY;
+                f_mouseY = Mathf.Clamp(f_mouseY, -70, 30);
+                PC_Player_Cam.transform.eulerAngles = new Vector3(f_mouseY, f_mouseX, 0);
+            }
+            else
+            {
+                PC_Player_Cam.transform.LookAt(gameObject.transform);
+                transform.rotation = Quaternion.identity;
+            }
         }
     }
 
@@ -233,13 +240,12 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
     {
         if (pv.IsMine)
         {
-            if (isGround && !isDodge)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (jumpCount > 0)
+                if (isGround && !isDodge)
                 {
-                    if (Input.GetKeyDown(KeyCode.Space))
+                    if (jumpCount > 0)
                     {
-                        as_move.Stop();
                         as_move.PlayOneShot(ac_jumpUP);
 
                         PC_Player_Rigidbody.AddForce(Vector3.up * f_jumpPower * 1000f * Time.deltaTime, ForceMode.Impulse);
@@ -263,7 +269,7 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
     {
         if (pv.IsMine)
         {
-            if (!isJump && !isDodge)
+            if (!isDodge)
             {
                 if (dodgeCount > 0)
                 {
@@ -278,7 +284,6 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
                         dodgeCount--;
                         isDodge = true;
 
-                        as_move.Stop();
                         as_move.PlayOneShot(ac_roll);
 
                         Invoke("DodgeOut", 0.7f);
@@ -311,14 +316,17 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
         //if (collision.gameObject.CompareTag("Ground"))
         //{
         //}
-        if (isJump)
-        {
-            as_move.Stop();
-            as_move.PlayOneShot(ac_jumpDown);
-        }
-
-        isGround = true;
         isJump = false;
         jumpCount = 2;
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        isGround = true;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        isGround = false;
     }
 }

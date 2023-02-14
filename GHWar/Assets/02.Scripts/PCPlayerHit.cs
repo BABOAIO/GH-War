@@ -121,6 +121,10 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
         }
     }
 
+    
+    List<Vector3> list_v3_localPosition = new List<Vector3>();
+    List<Quaternion> list_q_localRotation = new List<Quaternion>();
+
     // 플레이어가 바닥으로 떨어질 경우, 스폰장소로 리스폰
     // 게임 중일 경우 피격 판정
     private void OnTriggerEnter(Collider other)
@@ -129,18 +133,28 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
         {
             if (other.gameObject.CompareTag("Ground"))
             {
-                print(other.name);
                 o_touchArea = other.gameObject;
             }
 
             if (other.gameObject.CompareTag("FallingZone"))
             {
+                for (int i = 0; i < GameManager.instance.o_PlayArea.Count; i++)
+                {
+                    if (GameManager.instance.o_PlayArea[i] != null)
+                    {
+                        GameObject la = GameManager.instance.o_PlayArea[i];
+                        list_v3_localPosition.Add((la.transform.position - cam_this.transform.position));
+                        list_q_localRotation.Add(la.transform.rotation);
+
+                        GameObject tmp = PhotonNetwork.Instantiate("RandSet", GameManager.instance.o_PlayArea[GameManager.instance.num_destroyArea - 1].GetComponent<FractureTest>().tr_spawnPoint.position + list_v3_localPosition[i], list_q_localRotation[i]);
+                        Destroy(tmp, 3.0f);
+                    }
+                }
                 if (GameManager.instance.o_PlayArea.Count > GameManager.instance.num_destroyArea)
                 {
                     // 싱글턴을 통한 원래 스폰 위치로 복귀
                     transform.position =
-                        GameManager.instance.o_PlayArea[GameManager.instance.num_destroyArea - 1].
-                        GetComponent<FractureTest>().tr_spawnPoint.position;
+                        GameManager.instance.o_PlayArea[GameManager.instance.num_destroyArea - 1].GetComponent<FractureTest>().tr_spawnPoint.position;
 
                 }
                 else
@@ -151,9 +165,9 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
                 }
 
                 // 반동으로 떨어졌을때 힘 억제
-                gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-                
-                // 떨어질 때도 무적판정 존재
+                gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, gameObject.GetComponent<Rigidbody>().velocity.y, 0);
+
+                // 떨어질 때도 무적판정 존재, 큰의미는 없음
                 if (GameManager.instance.B_GameStart && currentTime >= invincibilityTime)
                 {
                     pv.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
@@ -202,8 +216,8 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
         // 플레이어 피격 치트
         if (Input.GetKeyDown(KeyCode.Alpha1) && !a_PCPlayer.GetBool("IsHit"))
         {
-            //Hit_PCPlayer(1);
-            OnSKinMesh();
+            Hit_PCPlayer(1);
+            //OnSKinMesh();
         }
     }
 
@@ -226,6 +240,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
         as_hitPCPlayer.Stop();
         as_hitPCPlayer.PlayOneShot(ac_hitPCPlayer);
 
+        OnSKinMesh();
         cam_this.DOShakePosition(damage * f_hapticTime, f_hapticStrength);
         HP -= damage;
         Debug.Log($"PC Player {pv.Controller} is Damaged : Dmg {damage}");
@@ -240,7 +255,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
             PPM.GetComponent<PC_Player_Move>().isDie = true;
             PPFA.GetComponent<PCPlayerFireArrow>().isDie = true;
 
-            if (GameManager.instance.i_PCDeathCount >= 1)
+            if (GameManager.instance.i_PCDeathCount > 0)
             {
                 --GameManager.instance.i_PCDeathCount;
                 PPM.GetComponent<PC_Player_Move>().isDie = false;
@@ -251,7 +266,6 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
         // 피격모션
         else
         {
-            OnSKinMesh();
             a_PCPlayer.SetBool("IsHit", true);
             Observable.NextFrame().Subscribe(_ => a_PCPlayer.SetBool("IsHit", false));
         }

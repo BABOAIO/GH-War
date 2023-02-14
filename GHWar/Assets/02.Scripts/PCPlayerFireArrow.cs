@@ -62,14 +62,18 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
         {
             if (isDie == false)
             {
-                if (PhotonNetwork.CountOfPlayers >= 2)
-                {
-                    pv.RPC("Shot", RpcTarget.All);
-                }
-                else
-                {
-                    Shot();
-                }
+                // 서버에 접속할 경우에만 작동
+                pv.RPC("Shot", RpcTarget.All);
+
+                // 서버 접속하지 않을 경우 확인용
+                //if (PhotonNetwork.CountOfPlayers >= 2)
+                //{
+                //    pv.RPC("Shot", RpcTarget.All);
+                //}
+                //else
+                //{
+                //    Shot();
+                //}
             }
         }
     }
@@ -91,7 +95,7 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
         }
         if (Input.GetMouseButtonUp(0)
             && B_isReadyToShot
-            && currentTime != 0
+            && currentTime > 0
             )
         {
             a_playerInFire.SetBool("ReadyToShot", false);

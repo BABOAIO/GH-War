@@ -371,6 +371,24 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
+    // 준비완료 체크 미완
+    IEnumerator ReadyToGameStart()
+    {
+        while (!B_GameStart)
+        {
+            // 마스터 클라이언트는 항상 존재하기 때문에 구분해놓음
+            if (PhotonNetwork.IsMasterClient)
+            {
+
+            }
+            else
+            {
+                
+            }
+            yield return null;
+        }
+    }
+
     // 텍스트 초기화 + 게임 스타트
     void StartGame()
     {
@@ -441,36 +459,44 @@ public class GameManager : MonoBehaviourPunCallbacks
     IEnumerator RebirthPCPlayer()
     {
         // 2초 동안 움직임 방지
-        Array_AllPlayers[1].GetComponent<PC_Player_Move>().enabled = false;
+        Array_AllPlayers[1].GetComponent<PC_Player_Move>().isDie = true;
+        Array_AllPlayers[1].GetComponent<PCPlayerFireArrow>().isDie = true;
 
         yield return new WaitForSeconds(2f);
 
-        if (PhotonNetwork.IsMasterClient)
+        if (!B_IsGameOver)
         {
-            Array_AllPlayers[1].GetComponent<PC_Player_Move>().enabled = true;
-            Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("Rebirth", true);
-            Observable.NextFrame().Subscribe(_ => Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("Rebirth", false));
-            yield return new WaitForSeconds(2f);
-            Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("ReadyNextIdle", true);
-            Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.Rebind();
+            if (PhotonNetwork.IsMasterClient)
+            {
+                Array_AllPlayers[1].GetComponent<PC_Player_Move>().enabled = true;
+                Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("Rebirth", true);
+                Observable.NextFrame().Subscribe(_ => Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("Rebirth", false));
+                yield return new WaitForSeconds(2f);
+                Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("ReadyNextIdle", true);
+                Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.Rebind();
 
-            // 일정 시간 무적 부여
-            Array_AllPlayers[1].GetComponent<PCPlayerHit>().currentTime = 0;
-            Array_AllPlayers[1].GetComponent<PCPlayerHit>().HP = Array_AllPlayers[1].GetComponent<PCPlayerHit>().MaxHP;
-        }
-        else
-        {
-            Array_AllPlayers[1].GetComponent<PC_Player_Move>().enabled = true;
-            Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("Rebirth", true);
-            Observable.NextFrame().Subscribe(_ => Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("Rebirth", false));
-            yield return new WaitForSeconds(2f);
-            Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("ReadyNextIdle", true);
-            Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.Rebind();
+                // 일정 시간 무적 부여
+                Array_AllPlayers[1].GetComponent<PCPlayerHit>().currentTime = 0;
+                Array_AllPlayers[1].GetComponent<PCPlayerHit>().HP = Array_AllPlayers[1].GetComponent<PCPlayerHit>().MaxHP;
+                Array_AllPlayers[1].GetComponent<PC_Player_Move>().isDie = false;
+                Array_AllPlayers[1].GetComponent<PCPlayerFireArrow>().isDie = false;
+            }
+            else
+            {
+                Array_AllPlayers[1].GetComponent<PC_Player_Move>().enabled = true;
+                Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("Rebirth", true);
+                Observable.NextFrame().Subscribe(_ => Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("Rebirth", false));
+                yield return new WaitForSeconds(2f);
+                Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("ReadyNextIdle", true);
+                Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.Rebind();
 
 
-            // 일정 시간 무적 부여
-            Array_AllPlayers[1].GetComponent<PCPlayerHit>().currentTime = 0;
-            Array_AllPlayers[1].GetComponent<PCPlayerHit>().HP = Array_AllPlayers[1].GetComponent<PCPlayerHit>().MaxHP;
+                // 일정 시간 무적 부여
+                Array_AllPlayers[1].GetComponent<PCPlayerHit>().currentTime = 0;
+                Array_AllPlayers[1].GetComponent<PCPlayerHit>().HP = Array_AllPlayers[1].GetComponent<PCPlayerHit>().MaxHP;
+                Array_AllPlayers[1].GetComponent<PC_Player_Move>().isDie = false;
+                Array_AllPlayers[1].GetComponent<PCPlayerFireArrow>().isDie = false;
+            }
         }
     }
 
@@ -616,6 +642,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 if (o_PlayArea.Count > num_destroyArea)
                 {
                     StartCoroutine(DelayedDestructionArea(o_PlayArea[num_destroyArea - 1]));
+                    o_PlayArea[num_destroyArea - 1] = null;
                     num_destroyArea++;
                 }
             }
