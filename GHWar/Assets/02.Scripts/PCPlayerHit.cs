@@ -121,9 +121,8 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
         }
     }
 
-    
-    List<Vector3> list_v3_localPosition = new List<Vector3>();
-    List<Quaternion> list_q_localRotation = new List<Quaternion>();
+    Vector3 v3_areaSpawnPosition = Vector3.zero;
+    Quaternion q_areaSpawnRotation = Quaternion.identity;
 
     // 플레이어가 바닥으로 떨어질 경우, 스폰장소로 리스폰
     // 게임 중일 경우 피격 판정
@@ -138,15 +137,18 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
 
             if (other.gameObject.CompareTag("FallingZone"))
             {
-                for (int i = 0; i < GameManager.instance.o_PlayArea.Count; i++)
+                v3_areaSpawnPosition = Vector3.zero;
+                q_areaSpawnRotation = Quaternion.identity;
+
+                for (int i = GameManager.instance.num_destroyArea-1; i < GameManager.instance.o_PlayArea.Count; i++)
                 {
                     if (GameManager.instance.o_PlayArea[i] != null)
                     {
                         GameObject la = GameManager.instance.o_PlayArea[i];
-                        list_v3_localPosition.Add((la.transform.position - cam_this.transform.position));
-                        list_q_localRotation.Add(la.transform.rotation);
+                        v3_areaSpawnPosition = (la.transform.position - cam_this.transform.position);
+                        q_areaSpawnRotation = la.transform.rotation;
 
-                        GameObject tmp = PhotonNetwork.Instantiate("RandSet", GameManager.instance.o_PlayArea[GameManager.instance.num_destroyArea - 1].GetComponent<FractureTest>().tr_spawnPoint.position + list_v3_localPosition[i], list_q_localRotation[i]);
+                        GameObject tmp = PhotonNetwork.Instantiate("RandSet", GameManager.instance.o_PlayArea[GameManager.instance.num_destroyArea - 1].GetComponent<FractureTest>().tr_spawnPoint.position + v3_areaSpawnPosition, q_areaSpawnRotation);
                         Destroy(tmp, 3.0f);
                     }
                 }

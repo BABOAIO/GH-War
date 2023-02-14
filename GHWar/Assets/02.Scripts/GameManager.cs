@@ -642,7 +642,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 if (o_PlayArea.Count > num_destroyArea)
                 {
                     StartCoroutine(DelayedDestructionArea(o_PlayArea[num_destroyArea - 1]));
-                    o_PlayArea[num_destroyArea - 1] = null;
+                    //o_PlayArea[num_destroyArea - 1] = null;
                     num_destroyArea++;
                 }
             }

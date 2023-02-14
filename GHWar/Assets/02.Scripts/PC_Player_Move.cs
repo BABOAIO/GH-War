@@ -120,7 +120,7 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
             }
             Wiggle();
 
-            if(!isGround)
+            if (!isGround)
             {
                 PC_Player_Rigidbody.AddForce(Vector3.down * Time.deltaTime * f_jumpPower, ForceMode.Acceleration);
             }
@@ -163,7 +163,7 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
                 if (Mathf.Abs(f_h) <= 0.1f && Mathf.Abs(f_v) <= 0.1f)
                 {
                     a_player.SetBool("IdleToRun", false);
-                    as_move.Stop();
+                    //as_move.Stop();
                     //a_player.SetBool("Run", false);
                 }
                 else
@@ -193,7 +193,7 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
                 if (Mathf.Abs(f_h) <= 0.1f && Mathf.Abs(f_v) <= 0.1f)
                 {
                     a_player.SetBool("IdleToRun", false);
-                    as_move.Stop();
+                    //as_move.Stop();
                     //a_player.SetBool("Run", false);
                 }
                 else
@@ -247,7 +247,6 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
                     if (jumpCount > 0)
                     {
                         as_move.PlayOneShot(ac_jumpUP);
-
                         PC_Player_Rigidbody.AddForce(Vector3.up * f_jumpPower * 1000f * Time.deltaTime, ForceMode.Impulse);
                         jumpCount--;
                         isJump = true;
@@ -271,22 +270,27 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
         {
             if (!isDodge)
             {
-                if (dodgeCount > 0)
+                float f_h = Input.GetAxis("Horizontal");
+                float f_v = Input.GetAxis("Vertical");
+                if (Mathf.Abs(f_v) > 0.0f)
                 {
-                    if (Input.GetKeyDown(KeyCode.LeftShift))
+                    if (dodgeCount > 0)
                     {
-                        f_moveSpeed *= 2f;
-                        //PC_Player_Rigidbody.AddForce(PC_Player_Transform.forward * 300f, ForceMode.Impulse);
-                        //a_player.SetTrigger("Roll")
-                        fireArrow.B_isReadyToShot = false;
-                        a_player.SetBool("IsRoll", true);
-                        Observable.NextFrame().Subscribe(_ => a_player.SetBool("IsRoll", false));
-                        dodgeCount--;
-                        isDodge = true;
+                        if (Input.GetKeyDown(KeyCode.LeftShift))
+                        {
+                            f_moveSpeed *= 2f;
+                            //PC_Player_Rigidbody.AddForce(PC_Player_Transform.forward * 300f, ForceMode.Impulse);
+                            //a_player.SetTrigger("Roll")
+                            fireArrow.B_isReadyToShot = false;
+                            a_player.SetBool("IsRoll", true);
+                            Observable.NextFrame().Subscribe(_ => a_player.SetBool("IsRoll", false));
+                            dodgeCount--;
+                            isDodge = true;
 
-                        as_move.PlayOneShot(ac_roll);
+                            as_move.PlayOneShot(ac_roll);
 
-                        Invoke("DodgeOut", 0.7f);
+                            Invoke("DodgeOut", 0.7f);
+                        }
                     }
                 }
             }
