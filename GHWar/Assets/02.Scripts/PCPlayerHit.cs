@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 using Photon.Realtime;
 using Photon.Pun;
 using UniRx;
@@ -7,6 +6,7 @@ using UnityEngine.UI;
 using System.Collections;
 using DG.Tweening;
 using OVR.OpenVR;
+using UnityEngine;
 
 // PC플레이어 최상단에 넣는다.
 // 컬라이더를 넣고, 태그를 PC_Player로 바꾼다.
@@ -168,7 +168,8 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
                 }
 
                 // 반동으로 떨어졌을때 힘 억제
-                gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, gameObject.GetComponent<Rigidbody>().velocity.y, 0);
+                //gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, gameObject.GetComponent<Rigidbody>().velocity.y, 0);
+                gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
                 // 떨어질 때도 무적판정 존재, 큰의미는 없음
                 if (GameManager.instance.B_GameStart && currentTime >= invincibilityTime)
