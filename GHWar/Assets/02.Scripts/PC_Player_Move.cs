@@ -6,6 +6,7 @@ using Photon.Realtime;
 using UniRx;
 using UnityEngine.UI;
 using UniRx.Triggers;
+using System;
 
 public class PC_Player_Move : MonoBehaviourPunCallbacks
 {
@@ -79,7 +80,6 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
 
         as_move = GetComponent<AudioSource>();
         as_move.Stop();
-        isGround = false;
 
         if (!photonView.IsMine)
         {
@@ -88,6 +88,7 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
             // 트랜스폼 뷰 할때 떨림 방지
             gameObject.GetComponent<Rigidbody>().isKinematic = false;
         }
+        isGround = false;
     }
 
     void FixedUpdate()
@@ -243,20 +244,20 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
             {
                 //if (!isDodge)
                 //{
-                    if (jumpCount > 0)
-                    {
-                        as_move.PlayOneShot(ac_jumpUP);
-                        PC_Player_Rigidbody.AddForce(Vector3.up * f_jumpPower * 1000f * Time.deltaTime, ForceMode.Impulse);
-                        jumpCount--;
-                        isJump = true;
-                        //a_player.SetTrigger("Jump");
+                if (jumpCount > 0)
+                {
+                    as_move.PlayOneShot(ac_jumpUP);
+                    PC_Player_Rigidbody.AddForce(Vector3.up * f_jumpPower * 1000f * Time.deltaTime, ForceMode.Impulse);
+                    jumpCount--;
+                    isJump = true;
+                    //a_player.SetTrigger("Jump");
 
-                        fireArrow.B_isReadyToShot = false;
+                    fireArrow.B_isReadyToShot = false;
 
-                        // setbool을 settrigger처럼 쓸 수 있음
-                        a_player.SetBool("IsJump", true);
-                        Observable.NextFrame().Subscribe(_ => a_player.SetBool("IsJump", false));
-                    }
+                    // setbool을 settrigger처럼 쓸 수 있음
+                    a_player.SetBool("IsJump", true);
+                    Observable.NextFrame().Subscribe(_ => a_player.SetBool("IsJump", false));
+                }
                 //}
             }
         }
@@ -316,10 +317,6 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
     [PunRPC]
     private void OnCollisionEnter(Collision collision)
     {
-        // 필요한지 의문
-        //if (collision.gameObject.CompareTag("Ground"))
-        //{
-        //}
         isJump = false;
         jumpCount = 2;
     }

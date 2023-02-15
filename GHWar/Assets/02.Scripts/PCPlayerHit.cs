@@ -243,6 +243,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
         as_hitPCPlayer.Stop();
         as_hitPCPlayer.PlayOneShot(ac_hitPCPlayer);
 
+        gameObject.GetComponent<PCPlayerFireArrow>().B_isReadyToShot = false;
         OnSKinMesh();
         cam_this.DOShakePosition(damage * f_hapticTime, f_hapticStrength);
         HP -= damage;

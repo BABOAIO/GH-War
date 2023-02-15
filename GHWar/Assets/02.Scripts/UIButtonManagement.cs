@@ -48,16 +48,17 @@ public class UIButtonManagement : MonoBehaviourPun
             }).OnComplete(() =>
             {
                 // 페이드 끝날 시 작동
-                // 0.8초 이후 ㅊonnManager 실행
-                Observable.Timer(TimeSpan.FromMilliseconds(100)).Subscribe(_ => connManager.SetActive(true));                
+                // 0.8초 이후 ConnManager 실행
+                Invoke("DelayedGenerate", 0.5f);            
             });
         }
         //connManager.SetActive(true);
-        Invoke("DelayedGenerate", 1.0f);
     }
 
     void DelayedGenerate()
     {
+        connManager.SetActive(true);
+        //Observable.Timer(TimeSpan.FromSeconds(1)).Subscribe(_ => connManager.SetActive(true));
         deactiveObj.SetActive(false);
     }
 

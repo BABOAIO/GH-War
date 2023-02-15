@@ -14,6 +14,6 @@ public class LookForwardPCPlayerHead : MonoBehaviour
 
     void Update()
     {
-        tr_this.LookAt(lookForward);
+        tr_this.rotation = Quaternion.Euler(Vector3.left);
     }
 }
