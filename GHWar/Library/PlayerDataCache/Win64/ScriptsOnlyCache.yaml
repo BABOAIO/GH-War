@@ -22,7 +22,6 @@ ScriptsOnlyBuild:
     - HitEffectRock
     - IsVROrPC
     - LookCamera
-    - LookForwardPCPlayerHead
     - NoChildrenDestroy
     - NotPhotonviewisNull
     - OVRTouchSample.Hand
@@ -32,9 +31,11 @@ ScriptsOnlyBuild:
     - PCPlayerHit
     - PCPlayerLife
     - PCPlayerMove
+    - PCPlayerMoveSound
     - PC_Player_Move
     - PhotonviewCanTSee
     - SetActiveKinetic
+    - SmallRockProperty
     - TurretFire
     - TurretLookVRTarget1
     - TurretManager
@@ -42,7 +43,6 @@ ScriptsOnlyBuild:
     - UIEnabled
     - VRPlayerHit
     - VRPlayerMove
-    - VRPlayerMove1
     - XRGrabInteractionPun
     DOTween.dll:
     - DG.Tweening.Core.DOTweenSettings
@@ -198,18 +198,6 @@ ScriptsOnlyBuild:
     fullTypeName: HandPresencePhysic
     methodName: OnSelect_EnableHandCollider_Delay
   - assembly: Assembly-CSharp
-    fullTypeName: HandPresencePhysic
-    methodName: OnSelect_DisableHandCollider
-  - assembly: Assembly-CSharp
-    fullTypeName: HandPresencePhysic
-    methodName: OnSelect_EnableHandCollider_Delay
-  - assembly: Assembly-CSharp
-    fullTypeName: HandPresencePhysic
-    methodName: OnSelect_DisableHandCollider
-  - assembly: Assembly-CSharp
-    fullTypeName: HandPresencePhysic
-    methodName: OnSelect_EnableHandCollider_Delay
-  - assembly: Assembly-CSharp
     fullTypeName: UIButtonManagement
     methodName: OnClickButton_GameStart
   - assembly: Assembly-CSharp
@@ -218,6 +206,18 @@ ScriptsOnlyBuild:
   - assembly: Assembly-CSharp
     fullTypeName: OnClickButtonManager
     methodName: OnClickReadyButton_PC
+  - assembly: Assembly-CSharp
+    fullTypeName: HandPresencePhysic
+    methodName: OnSelect_DisableHandCollider
+  - assembly: Assembly-CSharp
+    fullTypeName: HandPresencePhysic
+    methodName: OnSelect_EnableHandCollider_Delay
+  - assembly: Assembly-CSharp
+    fullTypeName: HandPresencePhysic
+    methodName: OnSelect_DisableHandCollider
+  - assembly: Assembly-CSharp
+    fullTypeName: HandPresencePhysic
+    methodName: OnSelect_EnableHandCollider_Delay
   - assembly: Assembly-CSharp
     fullTypeName: HandPresencePhysic
     methodName: OnSelect_DisableHandCollider
@@ -295,183 +295,185 @@ ScriptsOnlyBuild:
     - Class: 111
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1824}
-    - Class: 114
-      Script: {instanceID: 1830}
+      Script: {instanceID: 1826}
     - Class: 114
       Script: {instanceID: 1832}
     - Class: 114
-      Script: {instanceID: 1950}
+      Script: {instanceID: 1834}
     - Class: 114
-      Script: {instanceID: 2138}
+      Script: {instanceID: 1952}
     - Class: 114
-      Script: {instanceID: 2290}
+      Script: {instanceID: 2140}
     - Class: 114
-      Script: {instanceID: 2722}
+      Script: {instanceID: 2292}
     - Class: 114
-      Script: {instanceID: 2788}
+      Script: {instanceID: 2724}
     - Class: 114
-      Script: {instanceID: 2852}
+      Script: {instanceID: 2790}
     - Class: 114
-      Script: {instanceID: 3122}
+      Script: {instanceID: 2854}
     - Class: 114
-      Script: {instanceID: 3228}
+      Script: {instanceID: 3124}
     - Class: 114
-      Script: {instanceID: 3342}
+      Script: {instanceID: 3230}
     - Class: 114
-      Script: {instanceID: 3520}
+      Script: {instanceID: 3318}
     - Class: 114
-      Script: {instanceID: 3706}
+      Script: {instanceID: 3346}
     - Class: 114
-      Script: {instanceID: 3744}
+      Script: {instanceID: 3524}
     - Class: 114
-      Script: {instanceID: 3814}
+      Script: {instanceID: 3710}
     - Class: 114
-      Script: {instanceID: 3854}
+      Script: {instanceID: 3748}
     - Class: 114
-      Script: {instanceID: 3860}
+      Script: {instanceID: 3818}
     - Class: 114
-      Script: {instanceID: 4598}
+      Script: {instanceID: 3858}
     - Class: 114
-      Script: {instanceID: 4648}
+      Script: {instanceID: 3864}
     - Class: 114
-      Script: {instanceID: 5034}
+      Script: {instanceID: 4602}
     - Class: 114
-      Script: {instanceID: 5164}
+      Script: {instanceID: 4652}
     - Class: 114
-      Script: {instanceID: 5448}
+      Script: {instanceID: 5038}
     - Class: 114
-      Script: {instanceID: 5534}
+      Script: {instanceID: 5168}
     - Class: 114
-      Script: {instanceID: 5588}
+      Script: {instanceID: 5452}
     - Class: 114
-      Script: {instanceID: 5758}
+      Script: {instanceID: 5592}
     - Class: 114
-      Script: {instanceID: 5886}
+      Script: {instanceID: 5762}
     - Class: 114
-      Script: {instanceID: 5972}
+      Script: {instanceID: 5890}
     - Class: 114
-      Script: {instanceID: 6068}
+      Script: {instanceID: 5976}
     - Class: 114
-      Script: {instanceID: 6306}
+      Script: {instanceID: 6072}
     - Class: 114
-      Script: {instanceID: 6352}
+      Script: {instanceID: 6310}
     - Class: 114
-      Script: {instanceID: 6376}
+      Script: {instanceID: 6356}
     - Class: 114
-      Script: {instanceID: 6530}
+      Script: {instanceID: 6380}
     - Class: 114
-      Script: {instanceID: 6564}
+      Script: {instanceID: 6534}
     - Class: 114
-      Script: {instanceID: 6578}
+      Script: {instanceID: 6568}
     - Class: 114
-      Script: {instanceID: 6726}
+      Script: {instanceID: 6582}
     - Class: 114
-      Script: {instanceID: 6908}
+      Script: {instanceID: 6728}
     - Class: 114
-      Script: {instanceID: 6968}
+      Script: {instanceID: 6732}
     - Class: 114
-      Script: {instanceID: 7006}
+      Script: {instanceID: 6974}
     - Class: 114
-      Script: {instanceID: 7174}
+      Script: {instanceID: 7012}
     - Class: 114
-      Script: {instanceID: 7200}
+      Script: {instanceID: 7180}
     - Class: 114
-      Script: {instanceID: 7246}
+      Script: {instanceID: 7206}
     - Class: 114
-      Script: {instanceID: 7462}
+      Script: {instanceID: 7252}
     - Class: 114
-      Script: {instanceID: 7832}
+      Script: {instanceID: 7470}
     - Class: 114
-      Script: {instanceID: 7850}
+      Script: {instanceID: 7840}
     - Class: 114
-      Script: {instanceID: 7962}
+      Script: {instanceID: 7858}
     - Class: 114
-      Script: {instanceID: 7984}
+      Script: {instanceID: 7970}
     - Class: 114
-      Script: {instanceID: 8024}
+      Script: {instanceID: 7992}
     - Class: 114
-      Script: {instanceID: 8212}
+      Script: {instanceID: 8032}
     - Class: 114
-      Script: {instanceID: 8216}
+      Script: {instanceID: 8220}
     - Class: 114
-      Script: {instanceID: 8410}
+      Script: {instanceID: 8224}
     - Class: 114
-      Script: {instanceID: 8656}
+      Script: {instanceID: 8418}
     - Class: 114
-      Script: {instanceID: 8874}
+      Script: {instanceID: 8664}
     - Class: 114
-      Script: {instanceID: 9010}
+      Script: {instanceID: 8882}
     - Class: 114
-      Script: {instanceID: 9500}
+      Script: {instanceID: 9018}
     - Class: 114
-      Script: {instanceID: 9688}
+      Script: {instanceID: 9508}
     - Class: 114
-      Script: {instanceID: 9692}
+      Script: {instanceID: 9696}
     - Class: 114
-      Script: {instanceID: 9838}
+      Script: {instanceID: 9700}
     - Class: 114
-      Script: {instanceID: 9962}
+      Script: {instanceID: 9846}
     - Class: 114
-      Script: {instanceID: 10012}
+      Script: {instanceID: 9968}
     - Class: 114
-      Script: {instanceID: 10216}
+      Script: {instanceID: 10018}
     - Class: 114
-      Script: {instanceID: 10276}
+      Script: {instanceID: 10222}
     - Class: 114
-      Script: {instanceID: 10486}
+      Script: {instanceID: 10282}
     - Class: 114
-      Script: {instanceID: 10608}
+      Script: {instanceID: 10492}
     - Class: 114
-      Script: {instanceID: 10742}
+      Script: {instanceID: 10614}
     - Class: 114
-      Script: {instanceID: 10808}
+      Script: {instanceID: 10748}
     - Class: 114
-      Script: {instanceID: 10860}
+      Script: {instanceID: 10814}
     - Class: 114
-      Script: {instanceID: 10870}
+      Script: {instanceID: 10866}
     - Class: 114
-      Script: {instanceID: 10962}
+      Script: {instanceID: 10876}
     - Class: 114
-      Script: {instanceID: 11014}
+      Script: {instanceID: 10968}
     - Class: 114
-      Script: {instanceID: 11142}
+      Script: {instanceID: 11020}
     - Class: 114
-      Script: {instanceID: 11186}
+      Script: {instanceID: 11148}
     - Class: 114
-      Script: {instanceID: 11282}
+      Script: {instanceID: 11192}
     - Class: 114
-      Script: {instanceID: 11304}
+      Script: {instanceID: 11288}
     - Class: 114
-      Script: {instanceID: 11394}
+      Script: {instanceID: 11310}
     - Class: 114
-      Script: {instanceID: 11454}
+      Script: {instanceID: 11400}
     - Class: 114
-      Script: {instanceID: 11480}
+      Script: {instanceID: 11460}
     - Class: 114
-      Script: {instanceID: 11530}
+      Script: {instanceID: 11486}
     - Class: 114
-      Script: {instanceID: 11656}
+      Script: {instanceID: 11536}
     - Class: 114
-      Script: {instanceID: 11924}
+      Script: {instanceID: 11662}
     - Class: 114
-      Script: {instanceID: 11948}
+      Script: {instanceID: 11930}
     - Class: 114
-      Script: {instanceID: 11962}
+      Script: {instanceID: 11954}
     - Class: 114
-      Script: {instanceID: 12340}
+      Script: {instanceID: 11968}
     - Class: 114
-      Script: {instanceID: 12884}
+      Script: {instanceID: 12346}
     - Class: 114
-      Script: {instanceID: 13204}
+      Script: {instanceID: 12890}
     - Class: 114
-      Script: {instanceID: 13324}
+      Script: {instanceID: 13210}
     - Class: 114
-      Script: {instanceID: 13486}
+      Script: {instanceID: 13330}
     - Class: 114
-      Script: {instanceID: 13580}
+      Script: {instanceID: 13492}
     - Class: 114
-      Script: {instanceID: 13614}
+      Script: {instanceID: 13586}
+    - Class: 114
+      Script: {instanceID: 13620}
+    - Class: 114
+      Script: {instanceID: 96842}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -891,7 +893,7 @@ ScriptsOnlyBuild:
     className: CurrentRoomPropertiesListedInLobbyProperty
   - hash:
       serializedVersion: 2
-      Hash: 8183921099b8908b4a6e1962c7bbe8f3
+      Hash: 405cd2884ea9d6338e292d19c4b3b919
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PCPlayerFireArrow
@@ -1089,7 +1091,7 @@ ScriptsOnlyBuild:
     className: UnityOnDropdownValueChangedMessageListener
   - hash:
       serializedVersion: 2
-      Hash: ee083081171d6006191bf15eef4c253f
+      Hash: 26a2dca97d3c83920bb97eb8dc552047
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TurretManager
@@ -1171,6 +1173,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnMouseDragMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: d71f42eb19d23c0001911637fb7a5ae5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PCPlayerMoveSound
   - hash:
       serializedVersion: 2
       Hash: 72f0e262cec16c9f4520dc3bf2b81796
@@ -1887,7 +1895,7 @@ ScriptsOnlyBuild:
     className: SecondaryInteractorConnection
   - hash:
       serializedVersion: 2
-      Hash: 9a3bd91f25166ad69a85fe15c3f7ce8a
+      Hash: 1e9f829ff5c27bfd0732270cb7918618
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: XRGrabInteractionPun
@@ -2139,7 +2147,7 @@ ScriptsOnlyBuild:
     className: TTSSpeaker
   - hash:
       serializedVersion: 2
-      Hash: a63b3fbcb5520b47d6d0cc33ac012108
+      Hash: da6413ed6b9e3120e081ca381d0fb8a5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: HandPresencePhysic
@@ -2313,12 +2321,6 @@ ScriptsOnlyBuild:
     className: OVRLipSyncMicInput
   - hash:
       serializedVersion: 2
-      Hash: 64119c5fae53c80158e22388f345be7e
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: VRPlayerMove
-  - hash:
-      serializedVersion: 2
       Hash: c0e1b0d604911159b3b950ff47976845
     assemblyName: PhotonUnityNetworking.dll
     namespaceName: Photon.Pun
@@ -2331,7 +2333,13 @@ ScriptsOnlyBuild:
     className: NamePickGui
   - hash:
       serializedVersion: 2
-      Hash: 93459730ed1fc0312f756e9e5ed01a0c
+      Hash: 4ec0c1dfb88f21b9bc7f3ebd8dbe9239
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AimWalkStateMachine
+  - hash:
+      serializedVersion: 2
+      Hash: 33bdc75c508f8b42f792ecc4ab533998
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: VRPlayerHit
@@ -2889,6 +2897,12 @@ ScriptsOnlyBuild:
     className: My_HandPresence
   - hash:
       serializedVersion: 2
+      Hash: 02f5a995b626063d05d9bd3322d07c17
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SmallRockProperty
+  - hash:
+      serializedVersion: 2
       Hash: d42377262b72251b4fa1d781bfc7cfc3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -3135,7 +3149,7 @@ ScriptsOnlyBuild:
     className: PhotonStatsGui
   - hash:
       serializedVersion: 2
-      Hash: 6edcc0833701f26f1d2043267d339b7d
+      Hash: 88c6a8192521530eef11d36b8cd5a2fd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PC_Player_Move
@@ -3283,6 +3297,12 @@ ScriptsOnlyBuild:
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Cockpit
     className: FriendListCell
+  - hash:
+      serializedVersion: 2
+      Hash: 3f3c470e3b6fca3ac82c528ac9fdcb39
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FallingPlayerRespawn
   - hash:
       serializedVersion: 2
       Hash: 47cb13937d80a450aefeced75a0d46a3
@@ -4365,12 +4385,6 @@ ScriptsOnlyBuild:
     className: OVRGazePointer
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PhotonViewAutoCheck
-  - hash:
-      serializedVersion: 2
       Hash: c1016cfc16fe48c680d4c1ff7dc341f5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -4557,7 +4571,7 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
-      Hash: ccee6adeb8bb0e520a16f5dae264eb7c
+      Hash: 19393cca7eb49eb53de6ffc28d61ca07
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PCPlayerHit
@@ -4665,10 +4679,10 @@ ScriptsOnlyBuild:
     className: CylinderProximityField
   - hash:
       serializedVersion: 2
-      Hash: 9619b2129c35a2acbe00503ab8856d57
+      Hash: 4bccc40ab871c33ff1523587b157ec93
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: VRPlayerMove1
+    className: VRPlayerMove
   - hash:
       serializedVersion: 2
       Hash: baaff3513c586cf973eb5866e562f729
@@ -4797,7 +4811,7 @@ ScriptsOnlyBuild:
     className: PassthroughBrush
   - hash:
       serializedVersion: 2
-      Hash: d2747319b1602acbbac6f0ad0c3314bf
+      Hash: 7f969ee6aa26bca056f72d7074e8275a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: FractureTest
@@ -4905,7 +4919,7 @@ ScriptsOnlyBuild:
     className: OVRCubemapCapture
   - hash:
       serializedVersion: 2
-      Hash: c481387f11effedf9fa3c6a3dd6036a3
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CannonBall
@@ -4965,7 +4979,7 @@ ScriptsOnlyBuild:
     className: IngameControlPanel
   - hash:
       serializedVersion: 2
-      Hash: fd0d9c06566995c82020030047e06718
+      Hash: 9e12b28d63680210a648ed248207c4c6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: HitEffectRock
@@ -5169,7 +5183,7 @@ ScriptsOnlyBuild:
     className: ObjectPullProvider
   - hash:
       serializedVersion: 2
-      Hash: e2afa0e3a4b6726e5a8e7d220687ba6d
+      Hash: 0483f2a75ef37e4a81fc49141b659d4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -5379,7 +5393,7 @@ ScriptsOnlyBuild:
     className: CurrentRoomNameProperty
   - hash:
       serializedVersion: 2
-      Hash: a863990fd4f4fe0794e34f2d1a21857b
+      Hash: 154c8862a8d4cbe9ed2a3f5b1313a341
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GroundImpact
@@ -6087,7 +6101,7 @@ ScriptsOnlyBuild:
     className: AppVersionProperty
   - hash:
       serializedVersion: 2
-      Hash: 154677f77d897c4e6e0104ff2c880c19
+      Hash: 6d99d88664012732cbfd326178f67c91
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIButtonManagement
