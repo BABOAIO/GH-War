@@ -59,11 +59,10 @@ public class HitEffectRock : MonoBehaviour
         {
             GameObject o_effect = PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
 
-            as_rock.PlayOneShot(ac_throwHit);
-
             // 손으로 후려 쳤을때 돌 부서지게 하는 부분
             if (collision.gameObject.layer == LayerMask.NameToLayer("LeftHandPhysics") || collision.gameObject.layer == LayerMask.NameToLayer("RightHandPhysics"))
             {
+                as_rock.PlayOneShot(ac_throwHit);
                 if (collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude > 100f)
                 {
                     GetComponent<MeshCollider>().enabled = false;
@@ -80,7 +79,8 @@ public class HitEffectRock : MonoBehaviour
             // 무거운 물체(땅이나 돌)에 부딪히면 뭉게짐
             else if (collision.gameObject.GetComponent<Rigidbody>().mass >= GetComponent<Rigidbody>().mass)
             {
-                if (GetComponent<Rigidbody>().velocity.magnitude > 20f)
+                as_rock.PlayOneShot(ac_throwHit);
+                if (GetComponent<Rigidbody>().velocity.magnitude > 20f || collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude > 20f)
                 {
                     GetComponent<MeshCollider>().enabled = false;
                     PhotonNetwork.Destroy(this.gameObject);
