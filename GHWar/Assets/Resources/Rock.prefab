@@ -218,6 +218,7 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+  ac_grab: {fileID: 8300000, guid: 6e3d7e34af2f90c46b4dfca19299dcb1, type: 3}
   isGrab: 0
 --- !u!114 &431966716692832258
 MonoBehaviour:
@@ -317,7 +318,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2278f525d79dbe14eba41ed1222fc4d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ac_throwing: {fileID: 8300000, guid: 4c722d860f5007349a19bf3e18c53753, type: 3}
   ac_throwHit: {fileID: 8300000, guid: 66bf82f5b4503ec4da7adc628c186ad0, type: 3}
 --- !u!82 &7944601370722383982
 AudioSource:
@@ -330,7 +330,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

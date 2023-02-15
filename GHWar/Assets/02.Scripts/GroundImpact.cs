@@ -12,6 +12,9 @@ using UniRx;
 [RequireComponent(typeof(PhotonView))]
 public class GroundImpact : MonoBehaviourPunCallbacks
 {
+    AudioSource as_underHand;
+    [SerializeField] AudioClip ac_HitGround;
+
     [SerializeField] XRController controller;
     [Header("¶¥À» Ä¡´Â ÀÌÆåÆ® µô·¹ÀÌ")]
     [SerializeField] float delayTime = 1.0f;
@@ -21,6 +24,7 @@ public class GroundImpact : MonoBehaviourPunCallbacks
 
     private void Start()
     {
+        as_underHand = GetComponent<AudioSource>();
         pv = GetComponent<PhotonView>();
 
         currentTime = delayTime;
@@ -51,7 +55,7 @@ public class GroundImpact : MonoBehaviourPunCallbacks
     public void Hit_Ground_withEffect(Vector3 position, Quaternion rotation)
     {
         GameObject o_ps = PhotonNetwork.Instantiate("Effect_Smoke", position, rotation);
-
+        as_underHand.PlayOneShot(ac_HitGround);
         int tmp_randomValue = Random.Range(1, 4);
         Vector3 tmp_pos;
 
@@ -79,7 +83,7 @@ public class GroundImpact : MonoBehaviourPunCallbacks
             GameObject o_tmp = PhotonNetwork.Instantiate("Rock", position, rotation);
 
         }
-
+        
         StartCoroutine(Delayed_Destroy(0.5f, o_ps));
 
     }

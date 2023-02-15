@@ -10,6 +10,8 @@ using UnityEngine.XR.Interaction.Toolkit;
 // XRInteractionManager는 넣지 않는다. 넣으면 넣은 오브젝트끼리만 상호작용함(손에도 들어있기 때문)
 public class XRGrabInteractionPun : XRGrabInteractable // 이 항목이 있기에 인스펙터창에 그랩관련 인스펙터창이 생성
 {
+    [SerializeField] AudioClip ac_grab;
+
     Player player_this;
     PhotonView pv;
 
@@ -51,6 +53,14 @@ public class XRGrabInteractionPun : XRGrabInteractable // 이 항목이 있기에 인스�
     void IsGrabReverse()
     {
         isGrab = !isGrab;
+    }
+    [PunRPC]
+    void GrabSound()
+    {
+        if(gameObject.GetComponent<AudioSource>() != null)
+        {
+            gameObject.GetComponent<AudioSource>().PlayOneShot(ac_grab);
+        }
     }
 
     IEnumerator DelayedTransferOwnership()

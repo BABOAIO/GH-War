@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 662078561957742792}
   - component: {fileID: 1962287096356418448}
   - component: {fileID: 8465524220323695379}
+  - component: {fileID: 38281740040245126}
   m_Layer: 0
   m_Name: SmallRock
   m_TagString: SmallRock
@@ -217,6 +218,7 @@ MonoBehaviour:
   m_ForceGravityOnDetach: 0
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
+  ac_grab: {fileID: 8300000, guid: 6e3d7e34af2f90c46b4dfca19299dcb1, type: 3}
   isGrab: 0
 --- !u!114 &2217414541961433983
 MonoBehaviour:
@@ -315,7 +317,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -400,6 +402,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &38281740040245126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3749374886786131889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28901c6435196a84fbfc26c245ffa991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ac_smallRockHit: {fileID: 8300000, guid: 31be410ae0a063a428890540bfd6d455, type: 3}
 --- !u!1 &7976609698133425956
 GameObject:
   m_ObjectHideFlags: 0

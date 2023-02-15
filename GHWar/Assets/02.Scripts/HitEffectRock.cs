@@ -13,7 +13,6 @@ public class HitEffectRock : MonoBehaviour
 
     // 소리부분 //
     AudioSource as_rock;
-    [SerializeField] AudioClip ac_throwing;
     [SerializeField] AudioClip ac_throwHit;
     // 소리부분 //
 
@@ -45,6 +44,8 @@ public class HitEffectRock : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("PC_Player"))
         {
+            as_rock.PlayOneShot(ac_throwHit);
+
             GameObject o_effect = PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
 
             //as_rock.Stop();
@@ -58,8 +59,7 @@ public class HitEffectRock : MonoBehaviour
         {
             GameObject o_effect = PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
 
-            //as_rock.Stop();
-            //as_rock.PlayOneShot(ac_throwHit);
+            as_rock.PlayOneShot(ac_throwHit);
 
             // 손으로 후려 쳤을때 돌 부서지게 하는 부분
             if (collision.gameObject.layer == LayerMask.NameToLayer("LeftHandPhysics") || collision.gameObject.layer == LayerMask.NameToLayer("RightHandPhysics"))
