@@ -70,7 +70,7 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
             if (isDie == false)
             {
                 // 서버에 접속할 경우에만 작동
-                pv.RPC("Shot", RpcTarget.AllBuffered);
+                pv.RPC("Shot", RpcTarget.All);
 
                 // 서버 접속하지 않을 경우 확인용
                 //if (PhotonNetwork.CountOfPlayers >= 2)

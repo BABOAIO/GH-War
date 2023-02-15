@@ -149,7 +149,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
                         q_areaSpawnRotation = la.transform.rotation;
 
                         GameObject tmp = PhotonNetwork.Instantiate("RandSet", GameManager.instance.o_PlayArea[GameManager.instance.num_destroyArea - 1].GetComponent<FractureTest>().tr_spawnPoint.position + v3_areaSpawnPosition, q_areaSpawnRotation);
-                        Destroy(tmp, 3.0f);
+                        StartCoroutine(DelayedPhotonNetworkDestroy(tmp));
                     }
                 }
 
@@ -178,6 +178,12 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
                 }
             }
         }
+    }
+
+    IEnumerator DelayedPhotonNetworkDestroy(GameObject _o) 
+    {
+        yield return new WaitForSeconds(3.0f);
+        PhotonNetwork.Destroy(_o);
     }
 
     // 손에서 이탈하고도 너무 많이 튕기는 것을 방지
