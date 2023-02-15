@@ -126,7 +126,7 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
 
             //Vector2 v2_tmp = (firePosEnd.position - firePos.position);
             GameObject obj_tmp = PhotonNetwork.Instantiate("Arrow", firePos.position, firePos.rotation);
-            obj_tmp.GetComponent<Rigidbody>().AddForce(shotPowInGame * (firePosEnd.position - firePos.position), ForceMode.Impulse);
+            //obj_tmp.GetComponent<Rigidbody>().AddForce(shotPowInGame * (firePosEnd.position - firePos.position), ForceMode.Impulse);
 
             shotPowInGame = shotPow;
             //obj_tmp.transform.LookAt(firePosEnd.position - firePos.position);

@@ -61,7 +61,6 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
 
                 if (collision.gameObject.CompareTag("CannonBall"))
                 {
-                    as_parent.Stop();
                     as_parent.Play();
                 }
             }

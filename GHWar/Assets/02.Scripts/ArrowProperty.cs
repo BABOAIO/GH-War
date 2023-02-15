@@ -45,10 +45,10 @@ public class ArrowProperty : MonoBehaviour
     {
         // 부딪히지 않았을 경우, 앞으로 날라간다.(중력의 영향을 어느정도 받는것으로 보인다.)
         // 같은 화살끼리 부딪히지 않게 주의(레이어 피직스로 조정가능)
-        //if(!isHit)
-        //{
-        //    tr_this.Translate(Vector3.forward * shotSpeed * Time.fixedDeltaTime);
-        //}
+        if (!isHit)
+        {
+            tr_this.Translate(Vector3.forward * shotSpeed * Time.fixedDeltaTime);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -60,11 +60,6 @@ public class ArrowProperty : MonoBehaviour
             GameObject o_ps =
             PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
 
-            // 소리부분 //
-            //as_arrow.Stop();
-            //as_arrow.PlayOneShot(ac_shotHit);
-            // 소리부분 // 
-
             PhotonNetwork.Destroy(this.gameObject);
         }
 
@@ -74,11 +69,6 @@ public class ArrowProperty : MonoBehaviour
 
             GameObject o_ps =
             PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
-
-            // 소리부분 //
-            //as_arrow.Stop();
-            //as_arrow.PlayOneShot(ac_shotHit);
-            // 소리부분 //
 
             PhotonNetwork.Destroy(this.gameObject);
             //StartCoroutine(DestroyDelayed(gameObject, 0.1f));
@@ -95,11 +85,6 @@ public class ArrowProperty : MonoBehaviour
 
             GameObject o_ps = 
             PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
-
-            // 소리부분 //
-            //as_arrow.Stop();
-            //as_arrow.PlayOneShot(ac_shotHit);
-            // 소리부분 // 
 
             PhotonNetwork.Destroy(this.gameObject);
             //StartCoroutine(DestroyDelayed(gameObject, 0.1f));
