@@ -44,7 +44,6 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
     bool isGround = false;
     public bool isJump = false;
 
-    public int dodgeCount = 2;
     public bool isDodge = false;
     #endregion
 
@@ -75,7 +74,6 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
         a_player = GetComponent<Animator>();
 
         jumpCount = 0;
-        dodgeCount = 2;
 
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -243,8 +241,8 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (!isDodge)
-                {
+                //if (!isDodge)
+                //{
                     if (jumpCount > 0)
                     {
                         as_move.PlayOneShot(ac_jumpUP);
@@ -259,7 +257,7 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
                         a_player.SetBool("IsJump", true);
                         Observable.NextFrame().Subscribe(_ => a_player.SetBool("IsJump", false));
                     }
-                }
+                //}
             }
         }
     }
@@ -275,23 +273,19 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
                 float f_v = Input.GetAxis("Vertical");
                 if (Mathf.Abs(f_v) > 0.0f)
                 {
-                    if (dodgeCount > 0)
+                    if (Input.GetKeyDown(KeyCode.LeftShift))
                     {
-                        if (Input.GetKeyDown(KeyCode.LeftShift))
-                        {
-                            f_moveSpeed *= 2f;
-                            //PC_Player_Rigidbody.AddForce(PC_Player_Transform.forward * 300f, ForceMode.Impulse);
-                            //a_player.SetTrigger("Roll")
-                            fireArrow.B_isReadyToShot = false;
-                            a_player.SetBool("IsRoll", true);
-                            Observable.NextFrame().Subscribe(_ => a_player.SetBool("IsRoll", false));
-                            dodgeCount--;
-                            isDodge = true;
+                        f_moveSpeed *= 2f;
+                        //PC_Player_Rigidbody.AddForce(PC_Player_Transform.forward * 300f, ForceMode.Impulse);
+                        //a_player.SetTrigger("Roll")
+                        fireArrow.B_isReadyToShot = false;
+                        a_player.SetBool("IsRoll", true);
+                        Observable.NextFrame().Subscribe(_ => a_player.SetBool("IsRoll", false));
+                        isDodge = true;
 
-                            as_move.PlayOneShot(ac_roll);
+                        as_move.PlayOneShot(ac_roll);
 
-                            Invoke("DodgeOut", 0.7f);
-                        }
+                        Invoke("DodgeOut", 0.7f);
                     }
                 }
             }
@@ -309,9 +303,14 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
         {
             PC_Player_Rigidbody.velocity = Vector3.zero;
             f_moveSpeed /= 2f;
-            dodgeCount = 2;
-            isDodge = false;
+            Invoke("DelayedDodgeFalse", 1.3f);
         }
+    }
+
+    [PunRPC]
+    void DelayedDodgeFalse()
+    {
+        isDodge = false;
     }
 
     [PunRPC]

@@ -24,7 +24,7 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
     [SerializeField] float delayTime = 2.0f;
     float currentTime = 0f;
 
-    [SerializeField] float shotPow = 1f;
+    [SerializeField] float shotPow = 0.5f;
     float shotPowerOrigin;
 
     [SerializeField] Transform firePos;
@@ -35,6 +35,7 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
     // 소리 부분 //
     AudioSource as_fireArrow;
     [SerializeField] AudioClip ac_shotInit;
+    [SerializeField] AudioClip ac_shot;
     // 소리 부분 //
 
     [Header("활쏠 준비 완")]
@@ -92,7 +93,7 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
             && !_Move.isJump
             )
         {
-            shotPow = 1;
+            shotPow = 0.5f;
             StartCoroutine(ShotPowerUp());
             a_playerInFire.SetBool("ReadyToShot", true);
             a_playerInFire.SetBool("RunToAimWalk", true);
@@ -100,10 +101,11 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
             //Observable.NextFrame().Subscribe(_ => a_playerInFire.SetBool("ReadyToShot", false));
             //obj_tmp.transform.LookAt(firePosEnd.position - firePos.position);
         }
+        // 당겨진 상태에서 마우스를 놓거나, 활을 최대로 당기면 발사
         if ((Input.GetMouseButtonUp(0)
             && B_isReadyToShot
             && currentTime >= delayTime)
-            || shotPow >= 5
+            || shotPow >= 10
             )
         {
             //StopCoroutine(ShotPowerUp());
@@ -113,7 +115,7 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
             a_playerInFire.SetBool("RunToAimWalk", false);
 
             // 소리 부분 //
-            as_fireArrow.PlayOneShot(ac_shotInit, 0.5f);
+            as_fireArrow.PlayOneShot(ac_shot, 0.5f);
             // 소리 부분 //
 
             currentTime = 0;
@@ -126,7 +128,7 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
             GameObject obj_tmp = PhotonNetwork.Instantiate("Arrow", firePos.position, firePos.rotation);
             obj_tmp.GetComponent<Rigidbody>().AddForce(shotPow * (firePosEnd.position - firePos.position), ForceMode.Impulse);
 
-            shotPow = 1;
+            shotPow = 0.5f;
             //obj_tmp.transform.LookAt(firePosEnd.position - firePos.position);
             //else
             //{
@@ -144,14 +146,15 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
 
     IEnumerator ShotPowerUp()
     {
-        yield return new WaitForSeconds(1.0f);
-        shotPow = 2;
+        as_fireArrow.PlayOneShot(ac_shotInit, 0.5f);
         yield return new WaitForSeconds(1.0f);
         shotPow = 3;
         yield return new WaitForSeconds(1.0f);
-        shotPow = 4;
-        yield return new WaitForSeconds(1.0f);
         shotPow = 5;
+        yield return new WaitForSeconds(1.0f);
+        shotPow = 7;
+        yield return new WaitForSeconds(1.0f);
+        shotPow = 10;
     }
 
     void DelayedActive()

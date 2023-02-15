@@ -145,13 +145,14 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
                     if (GameManager.instance.o_PlayArea[i] != null)
                     {
                         GameObject la = GameManager.instance.o_PlayArea[i];
-                        v3_areaSpawnPosition = (la.transform.position - cam_this.transform.position);
+                        v3_areaSpawnPosition = (la.transform.position - transform.position);
                         q_areaSpawnRotation = la.transform.rotation;
 
                         GameObject tmp = PhotonNetwork.Instantiate("RandSet", GameManager.instance.o_PlayArea[GameManager.instance.num_destroyArea - 1].GetComponent<FractureTest>().tr_spawnPoint.position + v3_areaSpawnPosition, q_areaSpawnRotation);
                         Destroy(tmp, 3.0f);
                     }
                 }
+
                 if (GameManager.instance.o_PlayArea.Count > GameManager.instance.num_destroyArea)
                 {
                     // 싱글턴을 통한 원래 스폰 위치로 복귀
