@@ -522,8 +522,8 @@ public class GameManager : MonoBehaviourPunCallbacks
             // 게임매니저에서 마스터클라이언트와 이즈마인은 같음
             if (PhotonNetwork.IsMasterClient)
             {
-                // PC가 이겼을 경우
-                if (Array_AllPlayers[0].GetComponentInChildren<VRPlayerHit>().HP <= 0)
+                // PC가 이겼을 경우, VR이 나갔을 경우,
+                if (Array_AllPlayers[0].GetComponentInChildren<VRPlayerHit>().HP <= 0 || Array_AllPlayers[0] == null)
                 {
                     B_IsGameOver = true;
                     currentTime = 0;
@@ -541,9 +541,9 @@ public class GameManager : MonoBehaviourPunCallbacks
                     // 3초 뒤 서버 종료
                     StartCoroutine(LeaveEnd(3f));
                 }
-                // VR이 이겼을 경우
+                // VR이 이겼을 경우, PC가 나갔을 경우,
                 //else if (Array_AllPlayers[1].GetComponent<PCPlayerHit>().HP <= 0)
-                else if (i_PCDeathCount <= 0)
+                else if (i_PCDeathCount <= 0 || Array_AllPlayers[1] == null)
                 {
                     B_IsGameOver = true;
                     currentTime = 0;
@@ -564,9 +564,9 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
             else
             {
-                // PC가 이겼을 경우
+                // PC가 이겼을 경우, VR이 나갔을 경우
                 //if (Array_AllPlayers[0].GetComponent<VRPlayerMove1>().o_vrFace.GetComponent<VRPlayerHit>().HP <= 0)
-                if (Array_AllPlayers[0].GetComponentInChildren<VRPlayerHit>().HP <= 0)
+                if (Array_AllPlayers[0].GetComponentInChildren<VRPlayerHit>().HP <= 0 || Array_AllPlayers[0] == null)
                 {
                     B_IsGameOver = true;
                     currentTime = 0;
@@ -585,9 +585,9 @@ public class GameManager : MonoBehaviourPunCallbacks
                     // 3초 뒤 서버 종료
                     StartCoroutine(LeaveEnd(3f));
                 }
-                // VR이 이겼을 경우
+                // VR이 이겼을 경우, PC가 나갔을 경우,
                 //else if (Array_AllPlayers[1].GetComponent<PCPlayerHit>().HP <= 0)
-                else if (i_PCDeathCount <= 0)
+                else if (i_PCDeathCount <= 0 || Array_AllPlayers[1] == null)
                 {
                     B_IsGameOver = true;
                     currentTime = 0;
