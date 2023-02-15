@@ -468,7 +468,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             if (PhotonNetwork.IsMasterClient)
             {
-                Array_AllPlayers[1].GetComponent<PC_Player_Move>().enabled = true;
                 Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("Rebirth", true);
                 Observable.NextFrame().Subscribe(_ => Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("Rebirth", false));
                 yield return new WaitForSeconds(2f);
@@ -483,7 +482,6 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
             else
             {
-                Array_AllPlayers[1].GetComponent<PC_Player_Move>().enabled = true;
                 Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("Rebirth", true);
                 Observable.NextFrame().Subscribe(_ => Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("Rebirth", false));
                 yield return new WaitForSeconds(2f);

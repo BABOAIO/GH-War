@@ -28,8 +28,6 @@ public class HitEffectRock : MonoBehaviourPun
 
     void Update()
     {
-        var velocityValue = rb_this.velocity.magnitude;
-
         //if(velocityValue < 10) { return; }
 
         //// 소리부분 //
