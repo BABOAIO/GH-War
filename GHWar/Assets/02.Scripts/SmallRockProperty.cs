@@ -14,9 +14,9 @@ public class SmallRockProperty : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(gameObject.GetComponent<Rigidbody>().velocity.magnitude >= 5f)
+        if (GetComponent<Rigidbody>().velocity.magnitude >= 5f)
         {
-            as_smallRock.PlayOneShot(ac_smallRockHit);
+            as_smallRock.Play();
         }
     }
 }
