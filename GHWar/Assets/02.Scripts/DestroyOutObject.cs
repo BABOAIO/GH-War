@@ -13,7 +13,8 @@ public class DestroyOutObject : MonoBehaviourPun
             || other.gameObject.CompareTag("Arrow")
             || other.gameObject.CompareTag("CannonBall")
             || other.gameObject.CompareTag("Rock")
-            || other.gameObject.CompareTag("Ground"))
+            || other.gameObject.CompareTag("Ground")
+            || other.gameObject.CompareTag("SmallRock"))
         {
             Destroy(other.gameObject);
         }

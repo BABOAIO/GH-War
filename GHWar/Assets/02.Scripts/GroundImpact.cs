@@ -37,6 +37,7 @@ public class GroundImpact : MonoBehaviourPunCallbacks
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (!photonView.IsMine) return;
         if (collision.gameObject.CompareTag("Ground"))
         {
             if ((currentTime >= delayTime) &&
