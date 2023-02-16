@@ -33,10 +33,11 @@ Transform:
   m_GameObject: {fileID: 1313799643673640031}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7984495233410058930}
+  - {fileID: 5170811771611446460}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -52,7 +53,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c8816c86812d6e4496b2288e21b4b15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotSpeed: 150
+  shotSpeed: 100
+  tr_COM: {fileID: 5170811771611446460}
   ac_shotHit: {fileID: 8300000, guid: 28fbf90d813b0c242a6ba679cf92b95a, type: 3}
 --- !u!54 &8758579468024941878
 Rigidbody:
@@ -65,7 +67,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -153,10 +155,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.07
+  m_Radius: 0.02
   m_Height: 0.64038587
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0.31519294}
+  m_Center: {x: 0, y: 0, z: 0.28}
 --- !u!96 &8079962700474324480
 TrailRenderer:
   serializedVersion: 2
@@ -361,6 +363,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &5735347087766153867
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5170811771611446460}
+  m_Layer: 0
+  m_Name: CenterOfMass
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5170811771611446460
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5735347087766153867}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.54}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1313799643673640030}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7315377074850795528
 GameObject:
   m_ObjectHideFlags: 0

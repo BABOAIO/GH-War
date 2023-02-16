@@ -13,6 +13,8 @@ public class ArrowProperty : MonoBehaviour
     Rigidbody rb_this;
     Transform tr_this;
 
+    [SerializeField] Transform tr_COM;
+
     // 부딪혔을때 계속 날라감을 방지
     bool isHit = false;
 
@@ -37,7 +39,7 @@ public class ArrowProperty : MonoBehaviour
         tr_this = GetComponent<Transform>();
         as_arrow= GetComponent<AudioSource>();
         rb_this = GetComponent<Rigidbody>();
-        rb_this.centerOfMass = Vector3.forward * 0.57f;
+        rb_this.centerOfMass = tr_COM.position;
         //rb_this.AddForce(new Vector3(0, 0, shotPower));
     }
 
