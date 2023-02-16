@@ -174,7 +174,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
                 // 떨어질 때도 무적판정 존재, 큰의미는 없음
                 if (GameManager.instance.B_GameStart && currentTime >= invincibilityTime)
                 {
-                    pv.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
+                    pv.RPC("Hit_PCPlayer", RpcTarget.All, 1);
                 }
             }
         }
@@ -199,7 +199,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
             {
                 if ((collision.gameObject.CompareTag("RightHand") || collision.gameObject.CompareTag("LeftHand")))
                 {
-                    pv.RPC("FunctionForceReducing", RpcTarget.AllBuffered);
+                    pv.RPC("FunctionForceReducing", RpcTarget.All);
                 }
             }
         }
@@ -313,5 +313,11 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
             }
             yield return new WaitForSeconds(0.1f);
         }
+    }
+    public override void OnLeftRoom()
+    {
+        print("룸 나가기");
+        PhotonNetwork.Destroy(this.gameObject);
+        print("캐릭터 삭제");
     }
 }

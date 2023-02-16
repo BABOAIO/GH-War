@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 // UI 등 바라보았음 편리한 것들에 넣는다.
 // HP바 등...
@@ -18,7 +19,7 @@ public class LookCamera : MonoBehaviour
 
     void Update()
     {
-        if (!cameraToLookAt)
+        if (cameraToLookAt == null)
         {
             cameraToLookAt = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         }

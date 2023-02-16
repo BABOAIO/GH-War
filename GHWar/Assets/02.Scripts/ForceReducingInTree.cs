@@ -6,7 +6,7 @@ using Photon.Pun;
 public class ForceReducingInTree : MonoBehaviourPun
 {
     [Header("저항력, 값이 커질수록 저항값이 작아짐")]
-    [SerializeField] float f_forceReducingValue = 1.5f;
+    //[SerializeField] float f_forceReducingValue = 1.5f;
 
     Rigidbody rb_this;
 

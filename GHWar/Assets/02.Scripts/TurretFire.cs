@@ -8,7 +8,7 @@ public class TurretFire : MonoBehaviourPunCallbacks
 {
     [SerializeField] GameObject cannonBall;
 
-    [SerializeField] float f_shotPower = 50f;
+    //[SerializeField] float f_shotPower = 50f;
     Animation anim_this;
 
     GameObject o_target;

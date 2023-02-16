@@ -6,7 +6,7 @@ using UnityEngine;
 // Resource 에 있는 대포알에 넣는다.
 public class CannonBall : MonoBehaviour
 {
-    bool isHit = false;
+    //bool isHit = false;
 
     void Awake()
     {
@@ -15,7 +15,6 @@ public class CannonBall : MonoBehaviour
 
     private void OnEnable()
     {
-        isHit = false;
     }
 
     private void Start()
@@ -32,7 +31,7 @@ public class CannonBall : MonoBehaviour
         // VR플레이어가 피격될 시
         if (collision.gameObject.CompareTag("VRPlayerHead"))
         {
-            isHit = true;
+            //isHit = true;
 
             GameObject o_ps =
             PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
@@ -46,7 +45,7 @@ public class CannonBall : MonoBehaviour
             //!collision.gameObject.CompareTag("PC_Player") && 
             !(collision.gameObject.layer == LayerMask.NameToLayer("Turret")))
         {
-            isHit = true;
+            //isHit = true;
 
             GameObject o_ps =
             PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));

@@ -4872,12 +4872,12 @@ GameObject:
   - component: {fileID: 3169174855367890223}
   - component: {fileID: 336167366558163626}
   - component: {fileID: 2758402945383645393}
-  - component: {fileID: 8663142151764401293}
   - component: {fileID: 2094558177950042213}
   - component: {fileID: 8698734641206498671}
   - component: {fileID: 4018855086650176668}
   - component: {fileID: 75191228725644341}
   - component: {fileID: 1679914191004834809}
+  - component: {fileID: 1986515995477117411}
   m_Layer: 11
   m_Name: UniversalMale
   m_TagString: PC_Player
@@ -5008,7 +5008,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 3169174855367890223}
   - {fileID: 336167366558163626}
-  - {fileID: 8663142151764401293}
+  - {fileID: 1986515995477117411}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -5178,80 +5178,6 @@ MonoBehaviour:
   m_AttachPointCompatibilityMode: 0
   ac_grab: {fileID: 8300000, guid: 6e3d7e34af2f90c46b4dfca19299dcb1, type: 3}
   isGrab: 0
---- !u!114 &8663142151764401293
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1482964356427942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowLayerWeightsInspector: 1
-  ShowParameterInspector: 1
-  m_SynchronizeParameters:
-  - Type: 4
-    SynchronizeType: 2
-    Name: IsRoll
-  - Type: 4
-    SynchronizeType: 2
-    Name: IsJump
-  - Type: 4
-    SynchronizeType: 2
-    Name: Wiggle
-  - Type: 4
-    SynchronizeType: 2
-    Name: ReadyToShot
-  - Type: 4
-    SynchronizeType: 2
-    Name: Shot
-  - Type: 4
-    SynchronizeType: 2
-    Name: IsDie
-  - Type: 4
-    SynchronizeType: 2
-    Name: ToIdle
-  - Type: 4
-    SynchronizeType: 2
-    Name: IsHit
-  - Type: 1
-    SynchronizeType: 2
-    Name: Blend
-  - Type: 4
-    SynchronizeType: 2
-    Name: IdleToAimWalk
-  - Type: 4
-    SynchronizeType: 2
-    Name: RunToAimWalk
-  - Type: 4
-    SynchronizeType: 2
-    Name: IdleToRun
-  - Type: 1
-    SynchronizeType: 2
-    Name: _AimWalkLeft
-  - Type: 1
-    SynchronizeType: 2
-    Name: _AimWalkForward
-  - Type: 1
-    SynchronizeType: 2
-    Name: _RunLeft
-  - Type: 1
-    SynchronizeType: 2
-    Name: _RunForward
-  - Type: 4
-    SynchronizeType: 2
-    Name: Rebirth
-  - Type: 4
-    SynchronizeType: 2
-    Name: ReadyNextIdle
-  m_SynchronizeLayers:
-  - SynchronizeType: 2
-    LayerIndex: 0
-  - SynchronizeType: 2
-    LayerIndex: 1
 --- !u!114 &2094558177950042213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5421,6 +5347,78 @@ MonoBehaviour:
   lifeLossImage:
   - {fileID: 5842471031026605373}
   - {fileID: 4466099464932552664}
+--- !u!114 &1986515995477117411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482964356427942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 2
+    Name: IsRoll
+  - Type: 4
+    SynchronizeType: 2
+    Name: IsDie
+  - Type: 4
+    SynchronizeType: 2
+    Name: IsHit
+  - Type: 4
+    SynchronizeType: 2
+    Name: Rebirth
+  - Type: 4
+    SynchronizeType: 2
+    Name: ReadyNextIdle
+  - Type: 4
+    SynchronizeType: 2
+    Name: Wiggle
+  - Type: 4
+    SynchronizeType: 2
+    Name: IsJump
+  - Type: 4
+    SynchronizeType: 2
+    Name: Shot
+  - Type: 4
+    SynchronizeType: 2
+    Name: ReadyToShot
+  - Type: 4
+    SynchronizeType: 2
+    Name: ToIdle
+  - Type: 1
+    SynchronizeType: 2
+    Name: Blend
+  - Type: 4
+    SynchronizeType: 2
+    Name: IdleToAimWalk
+  - Type: 4
+    SynchronizeType: 2
+    Name: RunToAimWalk
+  - Type: 4
+    SynchronizeType: 2
+    Name: IdleToRun
+  - Type: 1
+    SynchronizeType: 2
+    Name: _AimWalkLeft
+  - Type: 1
+    SynchronizeType: 2
+    Name: _AimWalkForward
+  - Type: 1
+    SynchronizeType: 2
+    Name: _RunLeft
+  - Type: 1
+    SynchronizeType: 2
+    Name: _RunForward
+  m_SynchronizeLayers:
+  - SynchronizeType: 2
+    LayerIndex: 0
 --- !u!1 &1491972061635932
 GameObject:
   m_ObjectHideFlags: 0

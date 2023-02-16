@@ -39,7 +39,7 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
     public Text Txt_winnerText_PC;
 
     #region 캐릭터 점프, 구르기 관련
-    bool Run = false;
+    //bool Run = false;
 
     public int jumpCount = 2;
     bool isGround = false;
@@ -98,10 +98,10 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
         {
             if(!isDie)
             {
-                pv.RPC("Move", RpcTarget.All);
-                pv.RPC("Rotate", RpcTarget.All);
-                pv.RPC("Jump", RpcTarget.All);
-                pv.RPC("Dodge", RpcTarget.All);
+                Move();
+                Rotate();
+                Jump();
+                Dodge();
                 //if (PhotonNetwork.CountOfPlayers >= 2)
                 //{
                 //    pv.RPC("Move", RpcTarget.All);
