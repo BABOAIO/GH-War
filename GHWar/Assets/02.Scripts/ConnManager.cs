@@ -59,10 +59,10 @@ public class ConnManager : MonoBehaviourPunCallbacks
     // 서버 나가기
     public override void OnDisconnected(DisconnectCause cause)
     {
-        GameObject tmp = GameObject.FindGameObjectWithTag("PC_Player");
-        print("찾았다!");
-        PhotonNetwork.Destroy(tmp);
-        print("죽였다!");
+        if(photonView.IsMine)
+        {
+            photonView.RPC("DESTROY", RpcTarget.Others);
+        }
         Debug.LogError("오프라인 : 접속 해제...");
         PhotonNetwork.ConnectUsingSettings();
     }
@@ -107,4 +107,13 @@ public class ConnManager : MonoBehaviourPunCallbacks
         }
     }
 
+
+    [PunRPC]
+    void DESTROY()
+    {
+        GameObject tmp = GameObject.FindGameObjectWithTag("PC_Player");
+        print("찾았다!");
+        PhotonNetwork.Destroy(tmp);
+        print("죽였다!");
+    }
 }
