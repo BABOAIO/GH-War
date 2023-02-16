@@ -56,9 +56,13 @@ public class ConnManager : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinLobby(TypedLobby.Default);
     }
 
-    // 서버 접속 실패 시 재시도
+    // 서버 나가기
     public override void OnDisconnected(DisconnectCause cause)
     {
+        GameObject tmp = GameObject.FindGameObjectWithTag("PC_Player");
+        print("찾았다!");
+        PhotonNetwork.Destroy(tmp);
+        print("죽였다!");
         Debug.LogError("오프라인 : 접속 해제...");
         PhotonNetwork.ConnectUsingSettings();
     }
@@ -75,7 +79,7 @@ public class ConnManager : MonoBehaviourPunCallbacks
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         Debug.LogError("룸 접속 실패...");
-        RoomOptions ro_0 = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = Byte_maxPlayer };
+        RoomOptions ro_0 = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = Byte_maxPlayer, CleanupCacheOnLeave = false };
         PhotonNetwork.JoinOrCreateRoom("NetTest", ro_0, TypedLobby.Default);
     }
 
@@ -101,7 +105,6 @@ public class ConnManager : MonoBehaviourPunCallbacks
             // 싱글톤 게임매니저에 생성된 플레이어의 텍스트를 연결
             GameManager.instance.Array_txtWinner[1] = GameManager.instance.Array_AllPlayers[1].GetComponent<PC_Player_Move>().Txt_winnerText_PC;
         }
-
     }
 
 }

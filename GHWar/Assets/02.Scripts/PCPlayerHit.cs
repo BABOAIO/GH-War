@@ -314,10 +314,10 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
             yield return new WaitForSeconds(0.1f);
         }
     }
-    public override void OnLeftRoom()
-    {
-        print("룸 나가기");
-        PhotonNetwork.Destroy(this.gameObject);
-        print("캐릭터 삭제");
-    }
+    //public override void OnLeftRoom()
+    //{
+    //    print("룸 나가기");
+    //    PhotonNetwork.Destroy(this.gameObject);
+    //    print("캐릭터 삭제");
+    //}
 }
