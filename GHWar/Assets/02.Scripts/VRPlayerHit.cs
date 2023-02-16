@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 using DG.Tweening;
+using Oculus.Interaction;
 
 // VR플레이어의 헤드에 넣는다. 헤드는 컬라이더를 가지고, 태그를 VRPlayerHead로 바꾼다.
 public class VRPlayerHit : MonoBehaviourPunCallbacks
@@ -66,6 +67,30 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
             }
         }
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (photonView.IsMine)
+        {
+            if (currentTime >= invincibilityTime
+            && (other.gameObject.CompareTag("Arrow") || other.gameObject.CompareTag("CannonBall"))
+            )
+            {
+                print("VR 히트");
+
+                xRBaseControllers[0].SendHapticImpulse(0.5f, 0.3f);
+                xRBaseControllers[1].SendHapticImpulse(0.5f, 0.3f);
+
+                photonView.RPC("Hit_VRPlayer", RpcTarget.AllBuffered, 1);
+                currentTime = 0.0f;
+
+                if (other.gameObject.CompareTag("CannonBall"))
+                {
+                    as_parent.Play();
+                }
+            }
+        }
+    }
+
 
     private void FixedUpdate()
     {
