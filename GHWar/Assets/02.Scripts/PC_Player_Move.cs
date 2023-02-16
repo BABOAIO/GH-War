@@ -8,7 +8,7 @@ using UnityEngine.UI;
 using UniRx.Triggers;
 using System;
 
-public class PC_Player_Move : MonoBehaviourPunCallbacks
+public class PC_Player_Move : MonoBehaviourPunCallbacks, IPunObservable
 {
     [Header("이동속도")]
     [SerializeField] float f_moveSpeed = 3.0f;
@@ -91,6 +91,9 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
         isGround = false;
     }
 
+    Vector3 pos;
+    Quaternion rot;
+
     void FixedUpdate()
     {
         //print(xrgrabinteractionPun.isGrab);
@@ -123,6 +126,11 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
             {
                 PC_Player_Rigidbody.AddForce(Vector3.down * Time.deltaTime * f_jumpPower, ForceMode.Acceleration);
             }
+        }
+        else
+        {
+            transform.position = pos;
+            transform.rotation = rot;
         }
 
         this.GetComponent<CapsuleCollider>().enabled = !xrgrabinteractionPun.isGrab;
@@ -329,5 +337,19 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks
     private void OnCollisionExit(Collision collision)
     {
         isGround = false;
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if(stream.IsReading)
+        {
+            pos = (Vector3)stream.ReceiveNext();
+            rot= (Quaternion)stream.ReceiveNext();
+        }
+        if(stream.IsWriting)
+        {
+            stream.SendNext(transform.position);
+            stream.SendNext(transform.rotation);
+        }
     }
 }
