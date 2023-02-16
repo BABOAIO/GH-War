@@ -129,6 +129,11 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
     {
         if (pv.IsMine)
         {
+            if(photonView.CreatorActorNr == 0)
+            {
+                PhotonNetwork.Destroy(this.gameObject);
+            }
+
             if (other.gameObject.CompareTag("Ground"))
             {
                 o_touchArea = other.gameObject;
@@ -313,16 +318,6 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
                 all_child_skinnedMeshRenderer[j].enabled = true;
             }
             yield return new WaitForSeconds(0.1f);
-        }
-    }
-    public override void OnDisconnected(DisconnectCause cause)
-    {
-        if (cause != DisconnectCause.None)
-        {
-
-            print("룸 나가기" + cause);
-            PhotonNetwork.Destroy(this.gameObject);
-            print("캐릭터 삭제");
         }
     }
 }
