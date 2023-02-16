@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     [Header("VR 상태 변수")]
     public bool IsVR;
 
+    [Header("땅 무너지는 모드 셀프체크")]
+    public bool B_DetroyGround = true;
+
     // VR 플레이어는 0, PC 플레이어는 1
     [Header("상태텍스트 / 0이면 VR, 1이면 PC")]
     public Text[] Array_txtWinner = new Text[2];
@@ -582,6 +585,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     // 일정 시간이 지나면 지형 붕괴 코루틴을 발생시키는 스크립트
     void NarrowGround()
     {
+        if(!B_DetroyGround) { return; }
         if (B_GameStart)
         {
             currentTime += Time.deltaTime;
