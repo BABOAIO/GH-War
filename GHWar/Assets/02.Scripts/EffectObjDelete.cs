@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,5 +20,7 @@ public class EffectObjDelete : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        // 이후 참가자들에게 안보이게 하기 위한 장치
+        PhotonNetwork.SendAllOutgoingCommands();
     }
 }

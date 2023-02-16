@@ -454,55 +454,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         return false;
     }
 
-    // PC 플레이어 2초 후 그 자리에서 부활, 애니메이션 초기화를 하지 않을 경우 꼬일 수 있으니 주의!
-    // 추가로 움직임을 멈추게 하는 장치 필요
-    IEnumerator RebirthPCPlayer()
-    {
-        // 2초 동안 움직임 방지
-        Array_AllPlayers[1].GetComponent<PC_Player_Move>().isDie = true;
-        Array_AllPlayers[1].GetComponent<PCPlayerFireArrow>().isDie = true;
-
-        yield return new WaitForSeconds(2f);
-
-        if (!B_IsGameOver)
-        {
-            if (PhotonNetwork.IsMasterClient)
-            {
-                Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("Rebirth", true);
-                Observable.NextFrame().Subscribe(_ => Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("Rebirth", false));
-                yield return new WaitForSeconds(2f);
-                Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("ReadyNextIdle", true);
-                Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.Rebind();
-
-                // 일정 시간 무적 부여
-                Array_AllPlayers[1].GetComponent<PCPlayerHit>().currentTime = 0;
-                Array_AllPlayers[1].GetComponent<PCPlayerHit>().HP = Array_AllPlayers[1].GetComponent<PCPlayerHit>().MaxHP;
-                Array_AllPlayers[1].GetComponent<PC_Player_Move>().isDie = false;
-                Array_AllPlayers[1].GetComponent<PCPlayerFireArrow>().isDie = false;
-            }
-            else
-            {
-                Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("Rebirth", true);
-                Observable.NextFrame().Subscribe(_ => Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("Rebirth", false));
-                yield return new WaitForSeconds(2f);
-                Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.SetBool("ReadyNextIdle", true);
-                Array_AllPlayers[1].GetComponent<PC_Player_Move>().a_player.Rebind();
-
-
-                // 일정 시간 무적 부여
-                Array_AllPlayers[1].GetComponent<PCPlayerHit>().currentTime = 0;
-                Array_AllPlayers[1].GetComponent<PCPlayerHit>().HP = Array_AllPlayers[1].GetComponent<PCPlayerHit>().MaxHP;
-                Array_AllPlayers[1].GetComponent<PC_Player_Move>().isDie = false;
-                Array_AllPlayers[1].GetComponent<PCPlayerFireArrow>().isDie = false;
-            }
-        }
-    }
-
-    public void CheckRebirthPCPlayer()
-    {
-        StartCoroutine(RebirthPCPlayer());
-    }
-
     // 업데이트문으로 돌릴 포톤네트워크 함수
     void UpdatePhotonNetwork()
     {

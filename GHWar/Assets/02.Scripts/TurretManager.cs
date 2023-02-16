@@ -74,19 +74,22 @@ public class TurretManager : MonoBehaviourPunCallbacks
         {
             txt_countDown.text = "O.K.";
 
-            
-            if (photonView.IsMine)
-            {
-                if (PhotonNetwork.CountOfPlayersInRooms >= 2)
-                {
-                    photonView.RPC("TurretButtonPress", RpcTarget.AllBuffered);
-                }
-                else
-                {
-                    TurretButtonPress();
-                }
-                //GetPressOrRelease();
-            }
+            photonView.RPC("TurretButtonPress", RpcTarget.AllBuffered);
+            //TurretButtonPress();
+            //if (photonView.IsMine)
+            //{
+            //    if (PhotonNetwork.CountOfPlayersInRooms >= 2)
+            //    {
+            //        photonView.RPC("TurretButtonPress", RpcTarget.All);
+            //    }
+            //    else
+            //    {
+            //        TurretButtonPress();
+            //    }
+            //    //GetPressOrRelease();
+            //}
+            // 이후 참가자들에게 안보이게 하기 위한 장치
+            PhotonNetwork.SendAllOutgoingCommands();
         }
     }
 
@@ -107,7 +110,7 @@ public class TurretManager : MonoBehaviourPunCallbacks
             tr_firePos.LookAt(GameObject.FindGameObjectWithTag("VRPlayerHead").transform.position);
         }
 
-        GameObject ball = PhotonNetwork.Instantiate("CannonBall", tr_firePos.position, Quaternion.identity);
+        GameObject ball = PhotonNetwork.Instantiate("CannonBall", tr_firePos.position, Quaternion.identity, 0, null);
         GameObject fireEffect = PhotonNetwork.Instantiate("HitEffect", tr_firePos.position, tr_firePos.rotation);
         ball.GetComponent<Rigidbody>().AddForce(
             // 삼항연산자로 VR없으면 대포따라 움직이고, 있으면 대포쪽으로 발사

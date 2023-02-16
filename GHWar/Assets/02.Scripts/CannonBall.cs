@@ -8,23 +8,11 @@ public class CannonBall : MonoBehaviour
 {
     //bool isHit = false;
 
-    void Awake()
-    {
-        //rb_this.GetComponent<Rigidbody>();
-    }
-
-    private void OnEnable()
-    {
-    }
-
     private void Start()
     {
         //rb_this.AddForce(new Vector3(0, 0, shotPower));
     }
 
-    void FixedUpdate()
-    {
-    }
 
     private void OnCollisionEnter(Collision collision)
     {

@@ -9,7 +9,7 @@ using UnityEngine;
 
 // PC플레이어 최상단에 넣는다.
 // 컬라이더를 넣고, 태그를 PC_Player로 바꾼다.
-public class PCPlayerHit : MonoBehaviourPunCallbacks
+public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
 {
     PhotonView pv;
 
@@ -22,6 +22,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
     public float MaxHP = 2.0f;
     [Header("HP")]
     public float HP = 2.0f;
+    float HP_other;
 
     [Header("HP 슬라이더바")]
     [SerializeField] Slider hpBar;
@@ -129,11 +130,6 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
     {
         if (pv.IsMine)
         {
-            if(photonView.CreatorActorNr == 0)
-            {
-                PhotonNetwork.Destroy(this.gameObject);
-            }
-
             if (other.gameObject.CompareTag("Ground"))
             {
                 o_touchArea = other.gameObject;
@@ -230,7 +226,10 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
         // 플레이어 피격 치트
         if (Input.GetKeyDown(KeyCode.Alpha1) && !a_PCPlayer.GetBool("IsHit"))
         {
-            Hit_PCPlayer(1);
+            if (photonView.IsMine)
+            {
+                photonView.RPC("Hit_PCPlayer", RpcTarget.All, 1);
+            }
             //OnSKinMesh();
         }
     }
@@ -275,9 +274,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
             if (GameManager.instance.i_PCDeathCount > 0)
             {
                 --GameManager.instance.i_PCDeathCount;
-                PPM.GetComponent<PC_Player_Move>().isDie = false;
-                PPFA.GetComponent<PCPlayerFireArrow>().isDie = false;
-                GameManager.instance.CheckRebirthPCPlayer();
+                CheckRebirthPCPlayer();
             }
         }
         // 피격모션
@@ -319,5 +316,45 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
             }
             yield return new WaitForSeconds(0.1f);
         }
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if(stream.IsReading)
+        {
+            HP_other = (float)stream.ReceiveNext();
+        }
+        if(stream.IsWriting)
+        {
+            stream.SendNext(HP);
+        }
+    }
+    // PC 플레이어 2초 후 그 자리에서 부활, 애니메이션 초기화를 하지 않을 경우 꼬일 수 있으니 주의!
+    // 추가로 움직임을 멈추게 하는 장치 필요
+    IEnumerator RebirthPCPlayer()
+    {
+        // 2초 동안 움직임 방지
+
+        yield return new WaitForSeconds(2f);
+
+        if (!GameManager.instance.B_IsGameOver)
+        {
+            GetComponent<PC_Player_Move>().a_player.SetBool("Rebirth", true);
+            Observable.NextFrame().Subscribe(_ => GetComponent<PC_Player_Move>().a_player.SetBool("Rebirth", false));
+            yield return new WaitForSeconds(2f);
+            GetComponent<PC_Player_Move>().a_player.SetBool("ReadyNextIdle", true);
+            GetComponent<PC_Player_Move>().a_player.Rebind();
+
+            // 일정 시간 무적 부여
+            GetComponent<PCPlayerHit>().currentTime = 0;
+            GetComponent<PCPlayerHit>().HP = GetComponent<PCPlayerHit>().MaxHP;
+            GetComponent<PC_Player_Move>().isDie = false;
+            GetComponent<PCPlayerFireArrow>().isDie = false;
+        }
+    }
+
+    public void CheckRebirthPCPlayer()
+    {
+        StartCoroutine(RebirthPCPlayer());
     }
 }

@@ -16,7 +16,7 @@ public class DestroyOutObject : MonoBehaviourPun
             || other.gameObject.CompareTag("Ground")
             || other.gameObject.CompareTag("SmallRock"))
         {
-            Destroy(other.gameObject);
+            PhotonNetwork.Destroy(other.gameObject);
         }
 
         //if (other.gameObject.CompareTag("PC_Player"))

@@ -83,6 +83,8 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
                 //}
             }
         }
+        // 이후 참가자들에게 안보이게 하기 위한 장치
+        PhotonNetwork.SendAllOutgoingCommands();
     }
 
     [PunRPC]
