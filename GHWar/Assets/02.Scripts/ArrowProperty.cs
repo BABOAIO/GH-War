@@ -37,7 +37,7 @@ public class ArrowProperty : MonoBehaviour
         tr_this = GetComponent<Transform>();
         as_arrow= GetComponent<AudioSource>();
         rb_this = GetComponent<Rigidbody>();
-        rb_this.centerOfMass = Vector3.forward * 0.53f;
+        rb_this.centerOfMass = Vector3.forward * 0.57f;
         //rb_this.AddForce(new Vector3(0, 0, shotPower));
     }
 

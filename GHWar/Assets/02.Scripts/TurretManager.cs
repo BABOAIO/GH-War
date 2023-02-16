@@ -79,7 +79,7 @@ public class TurretManager : MonoBehaviourPunCallbacks
             {
                 if (PhotonNetwork.CountOfPlayersInRooms >= 2)
                 {
-                    photonView.RPC("TurretButtonPress", RpcTarget.All);
+                    photonView.RPC("TurretButtonPress", RpcTarget.AllBuffered);
                 }
                 else
                 {

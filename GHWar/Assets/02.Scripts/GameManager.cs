@@ -624,7 +624,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         if (Input.GetKeyUp(KeyCode.Alpha4))
         {
-            B_GameStart = !B_GameStart;
+            //B_GameStart = !B_GameStart;
         }
     }
 

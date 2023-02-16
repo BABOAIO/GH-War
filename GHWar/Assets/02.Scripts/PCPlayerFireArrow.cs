@@ -140,9 +140,6 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
         {
             StopAllCoroutines();
             shotPowInGame = shotPow;
-            a_playerInFire.SetBool("ReadyToShot", false);
-            a_playerInFire.SetBool("RunToAimWalk", false);
-            a_playerInFire.SetBool("Shot", false);
         }
     }
 

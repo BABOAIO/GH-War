@@ -67,7 +67,7 @@ public class ConnManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("로비 접속 완료!");
         // 방에 접속할 수 있는 최대 플레이어 2명
-        RoomOptions ro_0 = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = Byte_maxPlayer };
+        RoomOptions ro_0 = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = Byte_maxPlayer, CleanupCacheOnLeave = false };
         PhotonNetwork.JoinOrCreateRoom("NetTest", ro_0, TypedLobby.Default);
     }
 
