@@ -59,7 +59,6 @@ public class ConnManager : MonoBehaviourPunCallbacks
     // 서버 나가기
     public override void OnDisconnected(DisconnectCause cause)
     {
-        photonView.RPC("DESTROY", RpcTarget.All);
         Debug.LogError("오프라인 : 접속 해제...");
         PhotonNetwork.ConnectUsingSettings();
     }

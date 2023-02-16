@@ -5,7 +5,6 @@ using UniRx;
 using UnityEngine.UI;
 using System.Collections;
 using DG.Tweening;
-using OVR.OpenVR;
 using UnityEngine;
 
 // PC플레이어 최상단에 넣는다.
@@ -231,6 +230,8 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
         }
     }
 
+    
+
     // 지형붕괴 시간을 알려주는 경고 문고 및 표지판
     void DisplayWarning_On()
     {
@@ -314,10 +315,14 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks
             yield return new WaitForSeconds(0.1f);
         }
     }
-    //public override void OnLeftRoom()
-    //{
-    //    print("룸 나가기");
-    //    PhotonNetwork.Destroy(this.gameObject);
-    //    print("캐릭터 삭제");
-    //}
+    public override void OnDisconnected(DisconnectCause cause)
+    {
+        if (cause != DisconnectCause.None)
+        {
+
+            print("룸 나가기" + cause);
+            PhotonNetwork.Destroy(this.gameObject);
+            print("캐릭터 삭제");
+        }
+    }
 }

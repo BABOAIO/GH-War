@@ -339,6 +339,8 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks, IPunObservable
         isGround = false;
     }
 
+
+    // 오류 없애는 동기화
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if(stream.IsReading)
