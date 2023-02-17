@@ -13,7 +13,6 @@ public class CannonBall : MonoBehaviour
         //rb_this.AddForce(new Vector3(0, 0, shotPower));
     }
 
-
     private void OnCollisionEnter(Collision collision)
     {
         // VR플레이어가 피격될 시
