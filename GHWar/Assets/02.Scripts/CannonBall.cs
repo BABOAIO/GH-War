@@ -54,7 +54,7 @@ public class CannonBall : MonoBehaviour
             // 소리부분 // 
 
             print(collision.gameObject.name);
-            PhotonNetwork.Destroy(this.gameObject);
+            //PhotonNetwork.Destroy(this.gameObject);
             //StartCoroutine(DestroyDelayed(gameObject, 0.1f))
             
         }

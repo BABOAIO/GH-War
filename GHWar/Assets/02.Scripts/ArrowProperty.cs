@@ -51,8 +51,6 @@ public class ArrowProperty : MonoBehaviour
         {
             tr_this.Translate(Vector3.forward * shotSpeed * Time.fixedDeltaTime);
         }
-        // 이후 참가자들에게 안보이게 하기 위한 장치
-        PhotonNetwork.SendAllOutgoingCommands();
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -7,6 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 using Unity.VisualScripting;
 using DG.Tweening;
 using UnityEngine.Experimental.AI;
+using static UnityEngine.GraphicsBuffer;
 
 // VR 플레이어의 손(콜라이더가 있는)에 넣어준다.
 // 손이 바닥에 닿았을 경우, 통과하지 못하게 방지
@@ -117,12 +118,15 @@ public class HandPresencePhysic : MonoBehaviour
         // 손에 위치를 따라오게 하는 부분(방향벡터)
         rb_this.velocity = (t_target.position - transform.position) / (Time.fixedDeltaTime);
 
-        // 손의 각도에 맞게 고정시켜주는 부분, inverse 없음 축이 꼬여서 인식못함
-        Quaternion q_rotationDifference = t_target.rotation * Quaternion.Inverse(transform.rotation);
+        // 쿼터니언은 3x3행렬을 변환시킨 것 >> 각도의 연산을 하려면, 역산할 부분이 앞에 곱해짐(결합법칙이 성립하지 않음)
+        Quaternion q_rotationDifference = Quaternion.Inverse(transform.rotation) * t_target.rotation;
+        // 쿼터니언을 회전축과 회전각으로 변환시킴
         q_rotationDifference.ToAngleAxis(out float f_angleInDegree, out Vector3 v3_rotationAxis);
 
-        // 이 코드가 없으면 특정 각도에서 손이 180도를 넘어가서 한바퀴 돌아감 > 아직 돌아가지만 손을 비틀정도만 아니면 됨..., 왼손, 오른손 비교도 필수 불가결, 일단 코드 해석 먼저 해야함
+        // 축을 모르는 상황에서 상하한을 주는 것은 의미가 없음 >> 실험으로 0보다 작은 값을 주면 안되는 이유가 여기있음
         f_angleInDegree = Mathf.Clamp(f_angleInDegree, v2_rangeOfHandRotation.x, v2_rangeOfHandRotation.y);
+
+        // 쿼터니언을 그대로 채용할 것을 오일러로 다시 변환 >> 의미가 없음
         Vector3 v3_rotationDifferenceInDegree = f_angleInDegree * v3_rotationAxis;
 
         rb_this.angularVelocity = (v3_rotationDifferenceInDegree * Mathf.Deg2Rad / Time.fixedDeltaTime);

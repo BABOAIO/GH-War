@@ -11,8 +11,6 @@ using UnityEngine;
 // 컬라이더를 넣고, 태그를 PC_Player로 바꾼다.
 public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
 {
-    PhotonView pv;
-
     AudioSource as_hitPCPlayer;
     [SerializeField] AudioClip ac_hitPCPlayer;
 
@@ -51,7 +49,6 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
 
     private void Start()
     {
-        pv = GetComponent<PhotonView>();
         a_PCPlayer = GetComponent<PC_Player_Move>().a_player;
         PPM = GetComponent<PC_Player_Move>();
         PPFA = GetComponent<PCPlayerFireArrow>();
@@ -70,14 +67,14 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
     {
         // 태그가 다르면 적용하지 않는다.
         if (!gameObject.CompareTag("PC_Player")) { Debug.LogError("Need Player Tag!!"); return; }
-        if (PPM.GetComponent<PC_Player_Move>().isDie == true) { return; }
+        if (PPM.isDie == true) { return; }
         // 대포 스위치가 눌리고 올라올 때 속도가 꽤 빠르므로 피격대상에서 제외시킨다.
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Turret")) { return; }
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Turret")) { return; }
         // 리지드바디가 없으면 충돌대상으로 취급하지 않는다.
         if (collision.gameObject.GetComponent<Rigidbody>() == null) { return; }
 
         // RPC 동기화를 위해 자기 자신에 대해서만 동작한다.
-        if (pv.IsMine)
+        if (photonView.IsMine)
         {
             float f_objVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
             //print("PC Player Hit Object Velocity : " + f_objVelocity);
@@ -92,19 +89,19 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
                         // 주먹을 쥐었을 경우, 피격
                         if (collision.gameObject.GetComponent<HandPresence>().gripValue >= 0.5f)
                         {
-                            pv.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
+                            photonView.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
                             currentTime = 0.0f;
                         }
                         // 주먹을 쥐지 않을 경우, 튕겨남 방지
                         else
                         {
-                            pv.RPC("FunctionForceReducing", RpcTarget.AllBuffered);
+                            photonView.RPC("FunctionForceReducing", RpcTarget.AllBuffered);
                         }
                     }
                     // 매우 작은 진동에도 튕기므로 보험용
                     else
                     {
-                        pv.RPC("FunctionForceReducing", RpcTarget.AllBuffered);
+                        photonView.RPC("FunctionForceReducing", RpcTarget.AllBuffered);
                     }
                 }
                 else
@@ -113,7 +110,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
                     if (f_objVelocity >= 5f)
                     {
                         //Hit_PCPlayer(1);
-                        pv.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
+                        photonView.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
                         currentTime = 0.0f;
                     }
                 }
@@ -128,7 +125,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
     // 게임 중일 경우 피격 판정
     private void OnTriggerEnter(Collider other)
     {
-        if (pv.IsMine)
+        if (photonView.IsMine)
         {
             if (other.gameObject.CompareTag("Ground"))
             {
@@ -174,7 +171,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
                 // 떨어질 때도 무적판정 존재, 큰의미는 없음
                 if (GameManager.instance.B_GameStart && currentTime >= invincibilityTime)
                 {
-                    pv.RPC("Hit_PCPlayer", RpcTarget.All, 1);
+                    photonView.RPC("Hit_PCPlayer", RpcTarget.All, 1);
                 }
             }
         }
@@ -190,7 +187,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.GetComponent<Rigidbody>() == null) { return; }
-        if (pv.IsMine)
+        if (photonView.IsMine)
         {
             float f_objVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
             //print("PC Player Hit Object Velocity : " + f_objVelocity);
@@ -199,7 +196,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
             {
                 if ((collision.gameObject.CompareTag("RightHand") || collision.gameObject.CompareTag("LeftHand")))
                 {
-                    pv.RPC("FunctionForceReducing", RpcTarget.All);
+                    photonView.RPC("FunctionForceReducing", RpcTarget.All);
                 }
             }
         }
@@ -259,7 +256,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
         OnSKinMesh();
         cam_this.DOShakePosition(damage * f_hapticTime, f_hapticStrength);
         HP -= damage;
-        Debug.Log($"PC Player {pv.Controller} is Damaged : Dmg {damage}");
+        Debug.Log($"PC Player {photonView.Controller} is Damaged : Dmg {damage}");
 
         // 죽음모션, 부활
         if (HP <= 0)
@@ -322,11 +319,9 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
     {
         if(stream.IsReading)
         {
-            HP_other = (float)stream.ReceiveNext();
         }
         if(stream.IsWriting)
         {
-            stream.SendNext(HP);
         }
     }
     // PC 플레이어 2초 후 그 자리에서 부활, 애니메이션 초기화를 하지 않을 경우 꼬일 수 있으니 주의!

@@ -73,8 +73,7 @@ public class TurretManager : MonoBehaviourPunCallbacks
         if (currentTime > delayTime)
         {
             txt_countDown.text = "O.K.";
-
-            photonView.RPC("TurretButtonPress", RpcTarget.AllBuffered);
+            photonView.RPC("TurretButtonPress", RpcTarget.All);
             //TurretButtonPress();
             //if (photonView.IsMine)
             //{
@@ -89,12 +88,14 @@ public class TurretManager : MonoBehaviourPunCallbacks
             //    //GetPressOrRelease();
             //}
             // 이후 참가자들에게 안보이게 하기 위한 장치
+            // 로컬 지연없애며, RPC 중단
             PhotonNetwork.SendAllOutgoingCommands();
         }
     }
 
     IEnumerator TurretActive()
     {
+        print("발사");
         txt_countDown.text = "shot!!";
 
         as_turret.PlayOneShot(ac_openTurret, 0.5f);
