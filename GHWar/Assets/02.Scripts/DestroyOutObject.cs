@@ -7,6 +7,10 @@ using UnityEngine;
 // 밖으로 빠져나간 오브젝트에 대한 연산을 줄여주기 위한 벽
 public class DestroyOutObject : MonoBehaviourPun
 {
+    private void Awake()
+    {
+        //photonView.TransferOwnership(PhotonNetwork.MasterClient);
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Obstacle")

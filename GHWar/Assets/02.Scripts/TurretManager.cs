@@ -73,8 +73,8 @@ public class TurretManager : MonoBehaviourPunCallbacks
         if (currentTime > delayTime)
         {
             txt_countDown.text = "O.K.";
-            photonView.RPC("TurretButtonPress", RpcTarget.All);
-            //TurretButtonPress();
+            //photonView.RPC("TurretButtonPress", RpcTarget.All);
+            TurretButtonPress();
 
             // 이후 참가자들에게 안보이게 하기 위한 장치
             // 로컬 지연없애며, RPC 중단
@@ -156,6 +156,14 @@ public class TurretManager : MonoBehaviourPunCallbacks
 
         }
     }
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("PC_Player"))
+    //    {
+    //        photonView.RequestOwnership();
+    //    }
+    //}
 
     // 애니메이션 이벤트, 특정 애니메이션 도중에 함수를 넣어서 이벤트 발생, 대포를 쏘는 등...
     //[PunRPC]

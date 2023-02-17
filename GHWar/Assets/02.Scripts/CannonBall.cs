@@ -11,6 +11,7 @@ public class CannonBall : MonoBehaviourPun
     private void Start()
     {
         //rb_this.AddForce(new Vector3(0, 0, shotPower));
+        //photonView.TransferOwnership(PhotonNetwork.MasterClient);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -21,7 +22,7 @@ public class CannonBall : MonoBehaviourPun
             //isHit = true;
 
             GameObject o_ps =
-            PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
+            PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
 
             PhotonNetwork.Destroy(this.gameObject);
             //StartCoroutine(DestroyDelayed(gameObject, 0.1f));
@@ -35,7 +36,7 @@ public class CannonBall : MonoBehaviourPun
             //isHit = true;
 
             GameObject o_ps =
-            PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
+            PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
 
             if (collision.gameObject.CompareTag("Obstacle") || collision.gameObject.CompareTag("Rock"))
             {
