@@ -75,18 +75,7 @@ public class TurretManager : MonoBehaviourPunCallbacks
             txt_countDown.text = "O.K.";
             photonView.RPC("TurretButtonPress", RpcTarget.All);
             //TurretButtonPress();
-            //if (photonView.IsMine)
-            //{
-            //    if (PhotonNetwork.CountOfPlayersInRooms >= 2)
-            //    {
-            //        photonView.RPC("TurretButtonPress", RpcTarget.All);
-            //    }
-            //    else
-            //    {
-            //        TurretButtonPress();
-            //    }
-            //    //GetPressOrRelease();
-            //}
+
             // 이후 참가자들에게 안보이게 하기 위한 장치
             // 로컬 지연없애며, RPC 중단
             PhotonNetwork.SendAllOutgoingCommands();
@@ -111,13 +100,16 @@ public class TurretManager : MonoBehaviourPunCallbacks
             tr_firePos.LookAt(GameObject.FindGameObjectWithTag("VRPlayerHead").transform.position);
         }
 
-        GameObject ball = PhotonNetwork.Instantiate("CannonBall", tr_firePos.position, Quaternion.identity, 0, null);
-        GameObject fireEffect = PhotonNetwork.Instantiate("HitEffect", tr_firePos.position, tr_firePos.rotation);
-        ball.GetComponent<Rigidbody>().AddForce(
-            // 삼항연산자로 VR없으면 대포따라 움직이고, 있으면 대포쪽으로 발사
-            (GameObject.FindGameObjectWithTag("VRPlayerHead") ? tr_firePos.forward * f_shotPower : tr_firePos.up * f_shotPower)
-            // 한번에 쏘는 대포같은 느낌을 주기 위해
-            , ForceMode.Impulse);
+        if (photonView.IsMine)
+        {
+            GameObject ball = PhotonNetwork.Instantiate("CannonBall", tr_firePos.position, Quaternion.identity, 0, null);
+            GameObject fireEffect = PhotonNetwork.Instantiate("HitEffect", tr_firePos.position, tr_firePos.rotation);
+            ball.GetComponent<Rigidbody>().AddForce(
+                // 삼항연산자로 VR없으면 대포따라 움직이고, 있으면 대포쪽으로 발사
+                (GameObject.FindGameObjectWithTag("VRPlayerHead") ? tr_firePos.forward * f_shotPower : tr_firePos.up * f_shotPower)
+                // 한번에 쏘는 대포같은 느낌을 주기 위해
+                , ForceMode.Impulse);
+        }
         // 대포가 쏘았을 경우, 들어가서 쿨타임을 돌리기까지 시간
         yield return new WaitForSeconds(0.8f);
         as_turret.Stop();

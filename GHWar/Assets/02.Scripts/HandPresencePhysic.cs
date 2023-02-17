@@ -123,13 +123,14 @@ public class HandPresencePhysic : MonoBehaviour
         // 쿼터니언을 회전축과 회전각으로 변환시킴
         q_rotationDifference.ToAngleAxis(out float f_angleInDegree, out Vector3 v3_rotationAxis);
 
-        // 축을 모르는 상황에서 상하한을 주는 것은 의미가 없음 >> 실험으로 0보다 작은 값을 주면 안되는 이유가 여기있음
-        f_angleInDegree = Mathf.Clamp(f_angleInDegree, v2_rangeOfHandRotation.x, v2_rangeOfHandRotation.y);
+        //// 축을 모르는 상황에서 상하한을 주는 것은 의미가 없음 >> 실험으로 0보다 작은 값을 주면 안되는 이유가 여기있음
+        //f_angleInDegree = Mathf.Clamp(f_angleInDegree, v2_rangeOfHandRotation.x, v2_rangeOfHandRotation.y);
 
-        // 쿼터니언을 그대로 채용할 것을 오일러로 다시 변환 >> 의미가 없음
-        Vector3 v3_rotationDifferenceInDegree = f_angleInDegree * v3_rotationAxis;
+        //// 쿼터니언을 그대로 채용할 것을 오일러로 다시 변환 >> 의미가 없음
+        //Vector3 v3_rotationDifferenceInDegree = f_angleInDegree * v3_rotationAxis;
 
-        rb_this.angularVelocity = (v3_rotationDifferenceInDegree * Mathf.Deg2Rad / Time.fixedDeltaTime);
+        //rb_this.angularVelocity = (v3_rotationDifferenceInDegree * Mathf.Deg2Rad / Time.fixedDeltaTime);
 
+        
     }
 }

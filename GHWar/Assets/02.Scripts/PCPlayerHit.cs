@@ -67,7 +67,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
     {
         // 태그가 다르면 적용하지 않는다.
         if (!gameObject.CompareTag("PC_Player")) { Debug.LogError("Need Player Tag!!"); return; }
-        if (PPM.isDie == true) { return; }
+        //if (PPM.isDie == true) { return; }
         // 대포 스위치가 눌리고 올라올 때 속도가 꽤 빠르므로 피격대상에서 제외시킨다.
         if (collision.gameObject.layer == LayerMask.NameToLayer("Turret")) { return; }
         // 리지드바디가 없으면 충돌대상으로 취급하지 않는다.

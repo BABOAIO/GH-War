@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Resource 에 있는 대포알에 넣는다.
-public class CannonBall : MonoBehaviour
+public class CannonBall : MonoBehaviourPun
 {
     //bool isHit = false;
 
