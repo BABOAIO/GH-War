@@ -99,7 +99,6 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
             shotPowInGame = shotPow;
             StartCoroutine(ShotPowerUp());
             a_playerInFire.SetBool("ReadyToShot", true);
-            a_playerInFire.SetBool("RunToAimWalk", true);
             B_isReadyToShot = true;
             //Observable.NextFrame().Subscribe(_ => a_playerInFire.SetBool("ReadyToShot", false));
             //obj_tmp.transform.LookAt(firePosEnd.position - firePos.position);
@@ -111,38 +110,34 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
             || shotPowInGame >= 10
             )
         {
-            //StopCoroutine(ShotPowerUp());
-            StopAllCoroutines();
-            a_playerInFire.SetBool("ReadyToShot", false);
-            a_playerInFire.SetBool("RunToAimWalk", false);
-
-            // 家府 何盒 //
-            as_fireArrow.PlayOneShot(ac_shot, 0.5f);
-            // 家府 何盒 //
-
-            currentTime = 0;
-
-            a_playerInFire.SetBool("Shot", true);
-            Observable.NextFrame().Subscribe(_ => a_playerInFire.SetBool("Shot", false));
-            Invoke("DelayedActive", 0.4f);
-
-            //Vector2 v2_tmp = (firePosEnd.position - firePos.position);
+            AnimOperator(); 
             GameObject obj_tmp = PhotonNetwork.Instantiate("Arrow", firePos.position, firePos.rotation);
             //obj_tmp.GetComponent<Rigidbody>().AddForce(shotPowInGame * (firePosEnd.position - firePos.position), ForceMode.Impulse);
-
-            shotPowInGame = shotPow;
-            //obj_tmp.transform.LookAt(firePosEnd.position - firePos.position);
-            //else
-            //{
-            //    a_playerInFire.SetBool("ToIdle", true);
-            //    Observable.NextFrame().Subscribe(_ => a_playerInFire.SetBool("ToIdle", false));
-            //}
         }
-        if(!B_isReadyToShot)
+        if (!B_isReadyToShot)
         {
             StopAllCoroutines();
             shotPowInGame = shotPow;
         }
+    }
+
+    void AnimOperator()
+    {
+        //StopCoroutine(ShotPowerUp());
+        StopAllCoroutines();
+        a_playerInFire.SetBool("ReadyToShot", false);
+
+        // 家府 何盒 //
+        as_fireArrow.PlayOneShot(ac_shot, 0.5f);
+        // 家府 何盒 //
+
+        currentTime = 0;
+
+        a_playerInFire.SetBool("Shot", true);
+        Observable.NextFrame().Subscribe(_ => a_playerInFire.SetBool("Shot", false));
+        Invoke("DelayedActive", 0.4f);
+
+        shotPowInGame = shotPow;
     }
 
     IEnumerator ShotPowerUp()
