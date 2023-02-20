@@ -302,7 +302,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
                         Array_txtWinner[0].text = "Game Start!";
 
-                        ResetDeathCount(2);
+                        ResetBeforeGameStart(2);
                         Invoke("StartGame", delay);
                         // sound 등 게임시작 알림
                     }
@@ -322,7 +322,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
                         Array_txtWinner[1].text = "Game Start!";
 
-                        ResetDeathCount(2);
+                        ResetBeforeGameStart(2);
                         Invoke("StartGame", delay);
                         // sound 등 게임시작 알림
                     }
@@ -345,7 +345,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
                         Array_txtWinner[0].text = "Game Start!";
 
-                        ResetDeathCount(2);
+                        ResetBeforeGameStart(2);
                         Invoke("StartGame", delay);
                         // sound 등 게임시작 알림
                     }
@@ -364,7 +364,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
                         Array_txtWinner[1].text = "Game Start!";
 
-                        ResetDeathCount(2);
+                        ResetBeforeGameStart(2);
                         Invoke("StartGame", delay);
                         // sound 등 게임시작 알림
                     }
@@ -400,10 +400,10 @@ public class GameManager : MonoBehaviourPunCallbacks
         B_GameStart = true;
     }
 
-    void ResetDeathCount(int i)
+    void ResetBeforeGameStart(int resetLife)
     {
         StopCoroutine(WaitPlayerText());
-        i_PCDeathCount = i;
+        i_PCDeathCount = resetLife;
 
         //for (int j = 0; j < i_VRDeathCount; j++)
         //{
@@ -623,7 +623,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         B_IsGameOver = false;
         B_GameStart = false;
 
-        ResetDeathCount(2);
+        ResetBeforeGameStart(2);
 
         // Canvas, Animator State 초기화
 

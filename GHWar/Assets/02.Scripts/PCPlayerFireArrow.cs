@@ -27,8 +27,8 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
     [SerializeField] float delayTime = 2.0f;
     float currentTime = 0f;
     float PowerShotDelay = 2.0f;
-    [SerializeField] ParticleSystem ps_ReadyToPowerShot;
-    float[] array_HDRMultiflier_Origin = new float[4];
+    //[SerializeField] ParticleSystem ps_ReadyToPowerShot;
+    [SerializeField] ParticleSystem[] ps_ReadyToPowerShot;
     bool b_ReadyToPowerShot;
 
     float shotPow = 0.5f;
@@ -68,7 +68,10 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
         B_isReadyToShot = false;
 
         b_ReadyToPowerShot = false;
-        ps_ReadyToPowerShot.Stop();
+        for(int i = 0; i < ps_ReadyToPowerShot.Length; i++)
+        {
+            ps_ReadyToPowerShot[i].Stop();
+        }
     }
 
     void FixedUpdate()
@@ -77,7 +80,7 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
 
         if (pv.IsMine)
         {
-            if (isDie == false)
+            if (!isDie)
             {
                 // 서버에 접속할 경우에만 작동
                 Shot();
@@ -100,17 +103,25 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
 
     void PowerShot()
     {
-        if (!isDie)
+        if (Input.GetKeyDown(KeyCode.Q)
+            && (currentTime >= PowerShotDelay)
+            && !_Move.isJump
+            && !b_ReadyToPowerShot
+            )
         {
-            if (Input.GetKeyDown(KeyCode.Q)
-                && (currentTime >= PowerShotDelay)
-                && !_Move.isJump
-                && !b_ReadyToPowerShot
-                )
+            for (int i = 0; i < ps_ReadyToPowerShot.Length; i++)
             {
-                ps_ReadyToPowerShot.Play();
-                b_ReadyToPowerShot = true;
+                ps_ReadyToPowerShot[i].Play();
             }
+            b_ReadyToPowerShot = true;
+        }
+        if (ps_ReadyToPowerShot[0].isStopped
+            && ps_ReadyToPowerShot[1].isStopped
+            && ps_ReadyToPowerShot[2].isStopped
+            && ps_ReadyToPowerShot[3].isStopped
+            )
+        {
+            b_ReadyToPowerShot = false;
         }
     }
 
@@ -138,7 +149,10 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
             AnimOperator();
             if (b_ReadyToPowerShot)
             {
-                ps_ReadyToPowerShot.Stop();
+                for (int i = 0; i < ps_ReadyToPowerShot.Length; i++)
+                {
+                    ps_ReadyToPowerShot[i].Stop();
+                }
                 GameObject obj_tmp = PhotonNetwork.Instantiate("UltArrow", firePos.position, firePos.rotation);
                 b_ReadyToPowerShot = false;
                 PowerShotDelay = 0.0f;

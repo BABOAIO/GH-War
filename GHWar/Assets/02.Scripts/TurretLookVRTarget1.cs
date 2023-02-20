@@ -28,7 +28,15 @@ public class TurretLookVRTarget1 : MonoBehaviour
     [PunRPC]
     void LookVRPlayer()
     {
-        Vector3 v3_direction = (o_target.transform.position - tr_this.position).normalized;
-        transform.rotation = Quaternion.LookRotation(new Vector3(v3_direction.x, 0*v3_direction.y, v3_direction.z));
+        if(o_target!= null)
+        {
+            Vector3 v3_direction = (o_target.transform.position - tr_this.position).normalized;
+            //transform.rotation = Quaternion.LookRotation(new Vector3(v3_direction.x, v3_direction.y, v3_direction.z));
+            transform.LookAt(new Vector3(o_target.transform.position.x, tr_this.transform.position.y, o_target.transform.position.z), Vector3.up);
+        }
+        else
+        {
+            o_target = GameObject.FindGameObjectWithTag("VRPlayerHead").transform;
+        }
     }
 }
