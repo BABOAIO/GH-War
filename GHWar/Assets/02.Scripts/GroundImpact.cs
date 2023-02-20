@@ -55,7 +55,7 @@ public class GroundImpact : MonoBehaviourPunCallbacks
     [PunRPC]
     public void Hit_Ground_withEffect(Vector3 position, Quaternion rotation)
     {
-        GameObject o_ps = PhotonNetwork.Instantiate("Effect_Smoke", position, rotation);
+        GameObject o_ps = PhotonNetwork.Instantiate("HitEffect2", position, rotation);
         as_underHand.PlayOneShot(ac_HitGround);
         int tmp_randomValue = Random.Range(1, 4);
         Vector3 tmp_pos;

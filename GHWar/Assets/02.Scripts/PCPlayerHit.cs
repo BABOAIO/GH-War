@@ -194,7 +194,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
 
             if (currentTime >= invincibilityTime)
             {
-                if ((collision.gameObject.CompareTag("RightHand") || collision.gameObject.CompareTag("LeftHand")))
+                if ((collision.gameObject.CompareTag("RightHand") || collision.gameObject.CompareTag("LeftHand") || collision.gameObject.CompareTag("VRPlayerHead")))
                 {
                     photonView.RPC("FunctionForceReducing", RpcTarget.All);
                 }

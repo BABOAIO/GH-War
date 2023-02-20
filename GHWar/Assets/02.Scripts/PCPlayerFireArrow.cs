@@ -7,6 +7,9 @@ using Photon.Realtime;
 using System.ComponentModel;
 using SimpleMan.VisualRaycast;
 using UnityEditor;
+using Unity.VisualScripting;
+using CartoonFX;
+using JetBrains.Annotations;
 
 // 플레이어 최상단에 넣는다.
 [RequireComponent(typeof(AudioSource))]
@@ -23,8 +26,12 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
     [Header("활 쏘는 주기")]
     [SerializeField] float delayTime = 2.0f;
     float currentTime = 0f;
+    float PowerShotDelay = 2.0f;
+    [SerializeField] ParticleSystem ps_ReadyToPowerShot;
+    float[] array_HDRMultiflier_Origin = new float[4];
+    bool b_ReadyToPowerShot;
 
-    [SerializeField] float shotPow = 0.5f;
+    float shotPow = 0.5f;
 
     float shotPowInGame;
 
@@ -59,6 +66,9 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
 
         currentTime = delayTime;
         B_isReadyToShot = false;
+
+        b_ReadyToPowerShot = false;
+        ps_ReadyToPowerShot.Stop();
     }
 
     void FixedUpdate()
@@ -71,6 +81,7 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
             {
                 // 서버에 접속할 경우에만 작동
                 Shot();
+                PowerShot();
                 //pv.RPC("Shot", RpcTarget.AllBuffered);
                 // 서버 접속하지 않을 경우 확인용
                 //if (PhotonNetwork.CountOfPlayers >= 2)
@@ -87,6 +98,22 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
         }
     }
 
+    void PowerShot()
+    {
+        if (!isDie)
+        {
+            if (Input.GetKeyDown(KeyCode.Q)
+                && (currentTime >= PowerShotDelay)
+                && !_Move.isJump
+                && !b_ReadyToPowerShot
+                )
+            {
+                ps_ReadyToPowerShot.Play();
+                b_ReadyToPowerShot = true;
+            }
+        }
+    }
+
     [PunRPC]
 
     private void Shot()
@@ -100,8 +127,6 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
             StartCoroutine(ShotPowerUp());
             a_playerInFire.SetBool("ReadyToShot", true);
             B_isReadyToShot = true;
-            //Observable.NextFrame().Subscribe(_ => a_playerInFire.SetBool("ReadyToShot", false));
-            //obj_tmp.transform.LookAt(firePosEnd.position - firePos.position);
         }
         // 당겨진 상태에서 마우스를 놓거나, 활을 최대로 당기면 발사
         if ((Input.GetMouseButtonUp(0)
@@ -110,8 +135,19 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
             || shotPowInGame >= 10
             )
         {
-            AnimOperator(); 
-            GameObject obj_tmp = PhotonNetwork.Instantiate("Arrow", firePos.position, firePos.rotation);
+            AnimOperator();
+            if (b_ReadyToPowerShot)
+            {
+                ps_ReadyToPowerShot.Stop();
+                GameObject obj_tmp = PhotonNetwork.Instantiate("UltArrow", firePos.position, firePos.rotation);
+                b_ReadyToPowerShot = false;
+                PowerShotDelay = 0.0f;
+            }
+            else
+            {
+                GameObject obj_tmp = PhotonNetwork.Instantiate("Arrow", firePos.position, firePos.rotation);
+            }
+
             //obj_tmp.GetComponent<Rigidbody>().AddForce(shotPowInGame * (firePosEnd.position - firePos.position), ForceMode.Impulse);
         }
         if (!B_isReadyToShot)
