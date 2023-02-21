@@ -182,7 +182,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 495737408180162591}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
   m_Name: 
@@ -1023,6 +1023,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6792848599431506667}
   - component: {fileID: 6792848599431506666}
+  - component: {fileID: 4230406284875008838}
+  - component: {fileID: 654269451617019117}
+  - component: {fileID: 6865852347511312861}
+  - component: {fileID: 2514110295437470228}
   m_Layer: 10
   m_Name: Cannon_set
   m_TagString: Untagged
@@ -1058,6 +1062,95 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3112a07855a4c54fa2907388986108f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4230406284875008838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6792848599431506664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PositionModel:
+    SynchronizeEnabled: 1
+    TeleportEnabled: 1
+    TeleportIfDistanceGreaterThan: 3
+    InterpolateOption: 3
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 1
+    ExtrapolateOption: 1
+    ExtrapolateSpeed: 1
+    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateNumberOfStoredPositions: 1
+  m_RotationModel:
+    SynchronizeEnabled: 1
+    InterpolateOption: 1
+    InterpolateRotateTowardsSpeed: 180
+    InterpolateLerpSpeed: 5
+  m_ScaleModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 0
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 0
+--- !u!114 &654269451617019117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6792848599431506664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 1
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 4230406284875008838}
+  - {fileID: 2514110295437470228}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!54 &6865852347511312861
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6792848599431506664}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!114 &2514110295437470228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6792848599431506664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 1
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 3
 --- !u!1 &6792848599496220108
 GameObject:
   m_ObjectHideFlags: 0
@@ -1800,13 +1893,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404b5ba0017e9cf4cb24eee49de1bab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  str_TargetTag: VRPlayerHead
   ac_openTurret: {fileID: 8300000, guid: 4d23b5933db8e9a4fb4ae474ac392563, type: 3}
   ac_closeTurret: {fileID: 8300000, guid: 41a96b8a9346ae643bdfe19ef0ce1e37, type: 3}
   ac_shotTurret: {fileID: 8300000, guid: e92cd96ed8d7f55469177605b7f167e0, type: 3}
   cannonBall: {fileID: 6919127507552103494, guid: 891e4c1c709c8b24980e3cc70b699ca8, type: 3}
   tr_firePos: {fileID: 6792848599496220111}
   o_exp: {fileID: 1037226207790710660, guid: b23f3c57697f01c4997b052c9a98310e, type: 3}
-  f_shotPower: 50000
+  f_shotPower: 1000
   txt_countDown: {fileID: 6792848598825766172}
   a_turret: {fileID: 495737408180162585}
   f_errorRange: 0.025

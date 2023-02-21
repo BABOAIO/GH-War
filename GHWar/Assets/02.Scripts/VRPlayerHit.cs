@@ -10,6 +10,7 @@ using DG.Tweening;
 using Oculus.Interaction;
 
 // VR플레이어의 헤드에 넣는다. 헤드는 컬라이더를 가지고, 태그를 VRPlayerHead로 바꾼다.
+// 대미지를 받는 오브젝트는 enter를 쓴다. 대미지를 주는 오브젝트는 stay를 쓴다.(exit의 경우, contacts를 활용할 수 없는 단점이 있다.)
 public class VRPlayerHit : MonoBehaviourPunCallbacks
 {
     AudioSource as_VRPlayerHit;
@@ -45,46 +46,55 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
         }
     }
 
+    //isTrigger를 이용할 것이기 때문에 쓰지 않는다.
     private void OnCollisionEnter(Collision collision)
     {
         if (photonView.IsMine)
         {
             if (currentTime >= invincibilityTime
-                && (collision.gameObject.CompareTag("Arrow") || collision.gameObject.CompareTag("CannonBall"))
-                ) 
-            {
-                print("VR 히트");
-
-                xRBaseControllers[0].SendHapticImpulse(0.5f, 0.3f);
-                xRBaseControllers[1].SendHapticImpulse(0.5f, 0.3f);
-
-                photonView.RPC("Hit_VRPlayer", RpcTarget.AllBuffered, 1);
-                currentTime = 0.0f;
-
-                if (collision.gameObject.CompareTag("CannonBall"))
-                {
-                    as_parent.Play();
-                }
-            }
-        }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (photonView.IsMine)
-        {
-            if (currentTime >= invincibilityTime
-            && (other.gameObject.CompareTag("Arrow") || other.gameObject.CompareTag("CannonBall"))
+                && (collision.gameObject.layer == LayerMask.NameToLayer("Arrow"))
+            //&& (other.gameObject.CompareTag("Arrow") || other.gameObject.CompareTag("CannonBall"))
             )
             {
                 print("VR 히트");
 
-                // 부딪히면 진동
+                // 부딪히면 진동, 회사에 방해되서 주석
                 //xRBaseControllers[0].SendHapticImpulse(0.5f, 0.3f);
                 //xRBaseControllers[1].SendHapticImpulse(0.5f, 0.3f);
 
                 //photonView.RPC("DestroyPhotonObject", RpcTarget.All, other.gameObject);
 
-                if ((other.gameObject.GetComponent<Rigidbody>().mass >= 500))
+                if ((collision.gameObject.GetComponent<Rigidbody>().mass >= 10))
+                {
+                    HitVRPlayer_PhotonView(2);
+                    as_parent.Play();
+                }
+                else
+                {
+                    HitVRPlayer_PhotonView(1);
+                }
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (photonView.IsMine)
+        {
+            if (currentTime >= invincibilityTime
+                && (other.gameObject.layer == LayerMask.NameToLayer("Arrow"))
+            //&& (other.gameObject.CompareTag("Arrow") || other.gameObject.CompareTag("CannonBall"))
+            )
+            {
+                print("VR 히트");
+
+                // 부딪히면 진동, 회사에 방해되서 주석
+                //xRBaseControllers[0].SendHapticImpulse(0.5f, 0.3f);
+                //xRBaseControllers[1].SendHapticImpulse(0.5f, 0.3f);
+
+                //photonView.RPC("DestroyPhotonObject", RpcTarget.All, other.gameObject);
+
+                if ((other.gameObject.GetComponent<Rigidbody>().mass >= 10))
                 {
                     HitVRPlayer_PhotonView(2);
                     as_parent.Play();

@@ -4,6 +4,8 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
+// 플레이어가 2명 이상인 경우, 한명이 Disconnect를 할 때 플레이어의 포톤뷰가 마스터 클라이언트로 넘어간다.
+// 나간 플레이어를 없애기 위한 스크립트, 플레이어들에게 넣는다.
 public class DisconnectIsOutPlayer : MonoBehaviourPunCallbacks
 {
     private void FixedUpdate()

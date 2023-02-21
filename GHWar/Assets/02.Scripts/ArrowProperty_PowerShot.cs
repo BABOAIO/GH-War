@@ -5,6 +5,7 @@ using Photon.Pun;
 using Photon.Realtime;
 
 // Resource 폴더에 있는 Arrow에 넣는다.
+// 대미지를 받는 오브젝트는 enter를 쓴다. 대미지를 주는 오브젝트는 stay를 쓴다.(exit의 경우, contacts를 활용할 수 없는 단점이 있다.)
 [RequireComponent(typeof(AudioSource))]
 public class ArrowProperty_PowerShot : MonoBehaviour
 {

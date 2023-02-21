@@ -10,6 +10,8 @@ using UniRx;
 // Configurable Joint의 값에 따라 트리거로 인식
 public class TurretManager : MonoBehaviourPunCallbacks
 {
+    [SerializeField] string str_TargetTag = "VRPlayerHead";
+
     AudioSource as_turret;
     [SerializeField] AudioClip ac_openTurret;
     [SerializeField] AudioClip ac_closeTurret;
@@ -73,7 +75,9 @@ public class TurretManager : MonoBehaviourPunCallbacks
         if (currentTime > delayTime)
         {
             txt_countDown.text = "O.K.";
-            //photonView.RPC("TurretButtonPress", RpcTarget.All);
+            // photonView.RPC("TurretButtonPress", RpcTarget.All);
+            // RPC를 넣을 경우, 모든 곳에서 동시다발적으로 대포알이 생성됨
+            // 차라리 위치동기화를 정확히 잡아 누르면 발사하도록 함
             TurretButtonPress();
 
             // 이후 참가자들에게 안보이게 하기 위한 장치
@@ -95,9 +99,9 @@ public class TurretManager : MonoBehaviourPunCallbacks
         as_turret.PlayOneShot(ac_shotTurret, 0.5f);
         a_turret.SetBool("Fire", true);
 
-        if (GameObject.FindGameObjectWithTag("VRPlayerHead"))
+        if (GameObject.FindGameObjectWithTag(str_TargetTag))
         {
-            tr_firePos.LookAt(GameObject.FindGameObjectWithTag("VRPlayerHead").transform.position);
+            tr_firePos.LookAt(GameObject.FindGameObjectWithTag(str_TargetTag).transform.position);
         }
 
         if (photonView.IsMine)
@@ -106,7 +110,7 @@ public class TurretManager : MonoBehaviourPunCallbacks
             GameObject fireEffect = PhotonNetwork.Instantiate("HitEffect", tr_firePos.position, tr_firePos.rotation);
             ball.GetComponent<Rigidbody>().AddForce(
                 // 삼항연산자로 VR없으면 대포따라 움직이고, 있으면 대포쪽으로 발사
-                (GameObject.FindGameObjectWithTag("VRPlayerHead") ? tr_firePos.forward * f_shotPower : tr_firePos.up * f_shotPower)
+                (GameObject.FindGameObjectWithTag(str_TargetTag) ? tr_firePos.forward * f_shotPower : tr_firePos.up * f_shotPower)
                 // 한번에 쏘는 대포같은 느낌을 주기 위해
                 , ForceMode.Impulse);
         }

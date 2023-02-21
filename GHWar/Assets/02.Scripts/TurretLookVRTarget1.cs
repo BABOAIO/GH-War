@@ -16,6 +16,7 @@ public class TurretLookVRTarget1 : MonoBehaviour
     {
         tr_this = GetComponent<Transform>();
         o_target = GameObject.FindGameObjectWithTag("VRPlayerHead").transform;
+        print("Yes");
     }
 
     // Update is called once per frame
@@ -36,6 +37,7 @@ public class TurretLookVRTarget1 : MonoBehaviour
         }
         else
         {
+            print("Yes");
             o_target = GameObject.FindGameObjectWithTag("VRPlayerHead").transform;
         }
     }

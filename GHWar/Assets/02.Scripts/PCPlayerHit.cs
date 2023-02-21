@@ -9,6 +9,7 @@ using UnityEngine;
 
 // PC플레이어 최상단에 넣는다.
 // 컬라이더를 넣고, 태그를 PC_Player로 바꾼다.
+// 대미지를 받는 오브젝트는 enter를 쓴다. 대미지를 주는 오브젝트는 stay를 쓴다.(exit의 경우, contacts를 활용할 수 없는 단점이 있다.)
 public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
 {
     AudioSource as_hitPCPlayer;
@@ -114,6 +115,8 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
                         //Hit_PCPlayer(1);
                         GameObject o_effect = PhotonNetwork.Instantiate("HitEffect2", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
                         HitPCPlayer_PhotonView(1);
+                        FunctionForceReducing();
+                        photonView.RPC("FunctionForceReducing", RpcTarget.AllBuffered);
                     }
                 }
             }

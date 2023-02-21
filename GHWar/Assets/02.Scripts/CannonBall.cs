@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Resource 에 있는 대포알에 넣는다.
+// 대미지를 받는 오브젝트는 enter를 쓴다. 대미지를 주는 오브젝트는 stay를 쓴다.(exit의 경우, contacts를 활용할 수 없는 단점이 있다.)
 public class CannonBall : MonoBehaviourPun
 {
     //bool isHit = false;
@@ -25,16 +26,13 @@ public class CannonBall : MonoBehaviourPun
 
             if (photonView.IsMine)
             {
-                print(photonView.CreatorActorNr);
                 PhotonNetwork.Destroy(this.gameObject);
             }
             //StartCoroutine(DestroyDelayed(gameObject, 0.1f));
         }
 
-        // 대포알이 대포에 부딪힘방지, 주석풀면 플레이어가 자살 불가능
-        if (
-            //!collision.gameObject.CompareTag("PC_Player") && 
-            !(collision.gameObject.layer == LayerMask.NameToLayer("Turret")))
+        // 대포알이 대포에 부딪힘방지
+        if (!(collision.gameObject.layer == LayerMask.NameToLayer("Turret")))
         {
             //isHit = true;
 
