@@ -77,7 +77,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
         if (photonView.IsMine)
         {
             float f_objVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
-            //print("PC Player Hit Object Velocity : " + f_objVelocity);
+            print("PC Player Hit Object Velocity : " + f_objVelocity);
 
             if (currentTime >= invincibilityTime)
             {
@@ -273,7 +273,8 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
             if (GameManager.instance.i_PCDeathCount > 0)
             {
                 --GameManager.instance.i_PCDeathCount;
-                CheckRebirthPCPlayer();
+                photonView.RPC("CheckRebirthPCPlayer", RpcTarget.All);
+                //CheckRebirthPCPlayer();
             }
         }
         // 피격모션
@@ -350,6 +351,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
 
+    [PunRPC]
     public void CheckRebirthPCPlayer()
     {
         StartCoroutine(RebirthPCPlayer());
