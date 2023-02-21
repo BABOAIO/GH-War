@@ -77,7 +77,6 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
         if (photonView.IsMine)
         {
             float f_objVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
-            print("PC Player Hit Object Velocity : " + f_objVelocity);
 
             if (currentTime >= invincibilityTime)
             {
@@ -115,7 +114,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
                         photonView.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
                         currentTime = 0.0f;
 
-                        PhotonNetwork.Destroy(collision.gameObject);
+                        photonView.RPC("DestroyPhotonObject", RpcTarget.All, collision.gameObject);
                     }
                 }
             }
@@ -235,7 +234,11 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
 
-    
+    [PunRPC]
+    void DestroyPhotonObject(GameObject _Object)
+    {
+        PhotonNetwork.Destroy(_Object);
+    }
 
     // 지형붕괴 시간을 알려주는 경고 문고 및 표지판
     void DisplayWarning_On()

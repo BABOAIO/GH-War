@@ -80,10 +80,9 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
                 xRBaseControllers[0].SendHapticImpulse(0.5f, 0.3f);
                 xRBaseControllers[1].SendHapticImpulse(0.5f, 0.3f);
 
-                photonView.RPC("Hit_VRPlayer", RpcTarget.AllBuffered, 1);
                 currentTime = 0.0f;
 
-                PhotonNetwork.Destroy(other.gameObject);
+                photonView.RPC("DestroyPhotonObject", RpcTarget.All, other.gameObject);
 
                 if ((other.gameObject.GetComponent<Rigidbody>().mass >= 500))
                 {
