@@ -6,7 +6,7 @@ using Photon.Realtime;
 
 // Resource 폴더에 있는 Arrow에 넣는다.
 [RequireComponent(typeof(AudioSource))]
-public class ArrowProperty : MonoBehaviour
+public class ArrowProperty : MonoBehaviourPun
 {
     // 생성 후 날라가는 속도
     [SerializeField] float shotSpeed = 20.0f;
@@ -62,7 +62,10 @@ public class ArrowProperty : MonoBehaviour
             GameObject o_ps =
             PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
 
-            PhotonNetwork.Destroy(this.gameObject);
+            if (photonView.IsMine)
+            {
+                PhotonNetwork.Destroy(this.gameObject);
+            }
         }
 
         if (collision.gameObject.CompareTag("VRPlayerHead"))
@@ -72,7 +75,10 @@ public class ArrowProperty : MonoBehaviour
             GameObject o_ps =
             PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
 
-            PhotonNetwork.Destroy(this.gameObject);
+            if (photonView.IsMine)
+            {
+                PhotonNetwork.Destroy(this.gameObject);
+            }
             //StartCoroutine(DestroyDelayed(gameObject, 0.1f));
         }
 
@@ -88,7 +94,10 @@ public class ArrowProperty : MonoBehaviour
             GameObject o_ps = 
             PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
 
-            PhotonNetwork.Destroy(this.gameObject);
+            if (photonView.IsMine)
+            {
+                PhotonNetwork.Destroy(this.gameObject);
+            }
             //StartCoroutine(DestroyDelayed(gameObject, 0.1f));
         }
     }
