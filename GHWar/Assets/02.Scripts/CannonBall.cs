@@ -22,7 +22,7 @@ public class CannonBall : MonoBehaviourPun
             //isHit = true;
 
             GameObject o_ps =
-            PhotonNetwork.Instantiate("HitEffectWithEXP", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
+            PhotonNetwork.Instantiate("HitEffectWithEXP", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
 
             PhotonNetwork.Destroy(this.gameObject);
             //StartCoroutine(DestroyDelayed(gameObject, 0.1f));
