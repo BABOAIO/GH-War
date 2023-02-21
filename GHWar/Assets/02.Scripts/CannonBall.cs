@@ -25,6 +25,7 @@ public class CannonBall : MonoBehaviourPun
 
             if (photonView.IsMine)
             {
+                print(photonView.CreatorActorNr);
                 PhotonNetwork.Destroy(this.gameObject);
             }
             //StartCoroutine(DestroyDelayed(gameObject, 0.1f));
@@ -47,7 +48,10 @@ public class CannonBall : MonoBehaviourPun
                 //as_arrow.PlayOneShot(ac_shotHit);
                 // 소리부분 //
 
-                PhotonNetwork.Destroy(collision.gameObject);
+                if (photonView.IsMine)
+                {
+                    PhotonNetwork.Destroy(this.gameObject);
+                }
                 //StartCoroutine(DestroyDelayed(gameObject, 0.1f));
             }
 

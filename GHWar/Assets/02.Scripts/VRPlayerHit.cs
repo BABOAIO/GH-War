@@ -78,8 +78,9 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
             {
                 print("VR 히트");
 
-                xRBaseControllers[0].SendHapticImpulse(0.5f, 0.3f);
-                xRBaseControllers[1].SendHapticImpulse(0.5f, 0.3f);
+                // 부딪히면 진동
+                //xRBaseControllers[0].SendHapticImpulse(0.5f, 0.3f);
+                //xRBaseControllers[1].SendHapticImpulse(0.5f, 0.3f);
 
                 //photonView.RPC("DestroyPhotonObject", RpcTarget.All, other.gameObject);
 
