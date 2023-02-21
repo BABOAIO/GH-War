@@ -69,8 +69,6 @@ public class ArrowProperty : MonoBehaviour
         {
             isHit = true;
 
-            collision.gameObject.GetComponent<VRPlayerHit>().HitVRPlayer_PhotonView(1);
-
             GameObject o_ps =
             PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
 

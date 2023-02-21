@@ -89,7 +89,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
                         if (collision.gameObject.GetComponent<HandPresence>().gripValue >= 0.5f)
                         {
                             GameObject o_effect = PhotonNetwork.Instantiate("HitEffect2", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
-                            HitPCPlayer_PhotonView(1);
+                            photonView.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
                             currentTime = 0.0f;
                         }
                         // 주먹을 쥐지 않을 경우, 튕겨남 방지
@@ -111,6 +111,10 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
                     {
                         //Hit_PCPlayer(1);
                         GameObject o_effect = PhotonNetwork.Instantiate("HitEffect2", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
+                        photonView.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
+                        currentTime = 0.0f;
+
+                        photonView.RPC("DestroyPhotonObject", RpcTarget.All, collision.gameObject);
                     }
                 }
             }
@@ -170,7 +174,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
                 // 떨어질 때도 무적판정 존재, 큰의미는 없음
                 if (GameManager.instance.B_GameStart && currentTime >= invincibilityTime)
                 {
-                    HitPCPlayer_PhotonView(1);
+                    photonView.RPC("Hit_PCPlayer", RpcTarget.All, 1);
                 }
             }
         }
@@ -230,6 +234,12 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
 
+    [PunRPC]
+    void DestroyPhotonObject(GameObject _Object)
+    {
+        PhotonNetwork.Destroy(_Object);
+    }
+
     // 지형붕괴 시간을 알려주는 경고 문고 및 표지판
     void DisplayWarning_On()
     {
@@ -241,14 +251,6 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
     {
         img_warning.SetActive(false);
         txt_warning.text = "";
-    }
-
-    public void HitPCPlayer_PhotonView(int damage)
-    {
-        if (photonView.IsMine)
-        {
-            photonView.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, damage);
-        }
     }
 
     [PunRPC]
@@ -286,7 +288,6 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
             a_PCPlayer.SetBool("IsHit", true);
             Observable.NextFrame().Subscribe(_ => a_PCPlayer.SetBool("IsHit", false));
         }
-        currentTime = 0;
     }
 
     // VR의 손을 이탈하고 나서 튕기는 힘을 억제

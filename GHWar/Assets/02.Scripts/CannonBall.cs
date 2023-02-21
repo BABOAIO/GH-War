@@ -20,12 +20,10 @@ public class CannonBall : MonoBehaviourPun
         if (collision.gameObject.CompareTag("VRPlayerHead"))
         {
             //isHit = true;
-            collision.gameObject.GetComponent<VRPlayerHit>().HitVRPlayer_PhotonView(2);
 
             GameObject o_ps =
             PhotonNetwork.Instantiate("HitEffectWithEXP", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
 
-            PhotonNetwork.Destroy(this.gameObject);
             //StartCoroutine(DestroyDelayed(gameObject, 0.1f));
         }
 
