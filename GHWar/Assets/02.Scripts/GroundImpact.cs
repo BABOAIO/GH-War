@@ -45,7 +45,7 @@ public class GroundImpact : MonoBehaviourPunCallbacks
             {
                 if (isGrab)
                 {
-                    pv.RPC("Hit_Ground_withEffect", RpcTarget.All, collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
+                    pv.RPC("Hit_Ground_withEffect", RpcTarget.All, collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal - new Vector3(90, 0, 0)));
                     currentTime = 0;
                 }
             }
@@ -55,7 +55,7 @@ public class GroundImpact : MonoBehaviourPunCallbacks
     [PunRPC]
     public void Hit_Ground_withEffect(Vector3 position, Quaternion rotation)
     {
-        GameObject o_ps = PhotonNetwork.Instantiate("HitEffect2", position, rotation);
+        GameObject o_ps = PhotonNetwork.Instantiate("Ground Hit", position, rotation);
         as_underHand.PlayOneShot(ac_HitGround);
         int tmp_randomValue = Random.Range(1, 4);
         Vector3 tmp_pos;

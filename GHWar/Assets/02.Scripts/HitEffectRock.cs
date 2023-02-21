@@ -46,15 +46,12 @@ public class HitEffectRock : MonoBehaviourPun
             {
                 as_rock.PlayOneShot(ac_throwHit);
 
-                GameObject o_effect = PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
-
                 PhotonNetwork.Destroy(this.gameObject);
                 //PhotonNetwork.Destroy(this.gameObject);
             }
 
             if (!collision.gameObject.CompareTag("PC_Player"))
             {
-                GameObject o_effect = PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
 
                 // 손으로 후려 쳤을때 돌 부서지게 하는 부분
                 if (collision.gameObject.layer == LayerMask.NameToLayer("LeftHandPhysics") || collision.gameObject.layer == LayerMask.NameToLayer("RightHandPhysics"))
@@ -67,7 +64,7 @@ public class HitEffectRock : MonoBehaviourPun
 
                         for (int i = 0; i < 5; i++)
                         {
-                            GameObject tmp = PhotonNetwork.Instantiate("SmallRock", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
+                            GameObject tmp = PhotonNetwork.Instantiate("SmallRock", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
                         }
                     }
                 }
@@ -78,12 +75,13 @@ public class HitEffectRock : MonoBehaviourPun
                     as_rock.PlayOneShot(ac_throwHit);
                     if (GetComponent<Rigidbody>().velocity.magnitude > 20f || collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude > 20f)
                     {
+                        GameObject o_effect = PhotonNetwork.Instantiate("HitEffect2", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
                         GetComponent<MeshCollider>().enabled = false;
                         PhotonNetwork.Destroy(this.gameObject);
 
                         for (int i = 0; i < 5; i++)
                         {
-                            GameObject tmp = PhotonNetwork.Instantiate("SmallRock", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
+                            GameObject tmp = PhotonNetwork.Instantiate("SmallRock", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
                         }
                     }
                 }

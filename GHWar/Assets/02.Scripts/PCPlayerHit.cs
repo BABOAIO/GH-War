@@ -89,6 +89,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
                         // ÁÖ¸ÔÀ» Áã¾úÀ» °æ¿ì, ÇÇ°Ý
                         if (collision.gameObject.GetComponent<HandPresence>().gripValue >= 0.5f)
                         {
+                            GameObject o_effect = PhotonNetwork.Instantiate("HitEffect2", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
                             photonView.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
                             currentTime = 0.0f;
                         }
@@ -110,6 +111,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
                     if (f_objVelocity >= 5f)
                     {
                         //Hit_PCPlayer(1);
+                        GameObject o_effect = PhotonNetwork.Instantiate("HitEffect2", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
                         photonView.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
                         currentTime = 0.0f;
                     }
@@ -189,7 +191,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
         if (collision.gameObject.GetComponent<Rigidbody>() == null) { return; }
         if (photonView.IsMine)
         {
-            float f_objVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
+            //float f_objVelocity = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
             //print("PC Player Hit Object Velocity : " + f_objVelocity);
 
             if (currentTime >= invincibilityTime)
