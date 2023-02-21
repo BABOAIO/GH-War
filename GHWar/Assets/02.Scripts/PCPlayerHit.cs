@@ -108,12 +108,14 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
                 else
                 {
                     // 어떠한 오브젝트로 속도가 일정이상 빠르면 플레이어 피격
-                    if (f_objVelocity >= 2f)
+                    if (f_objVelocity >= 5f)
                     {
                         //Hit_PCPlayer(1);
                         GameObject o_effect = PhotonNetwork.Instantiate("HitEffect2", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
                         photonView.RPC("Hit_PCPlayer", RpcTarget.AllBuffered, 1);
                         currentTime = 0.0f;
+
+                        PhotonNetwork.Destroy(collision.gameObject);
                     }
                 }
             }

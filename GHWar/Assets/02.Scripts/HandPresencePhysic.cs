@@ -47,6 +47,7 @@ public class HandPresencePhysic : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("CannonBall"))
         {
+            PhotonNetwork.Destroy(collision.gameObject);
             as_parent.Stop();
             as_parent.Play();
             StartCoroutine(StopHandScript());

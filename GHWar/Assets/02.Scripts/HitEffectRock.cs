@@ -42,13 +42,13 @@ public class HitEffectRock : MonoBehaviourPun
     {
         if (photonView.IsMine)
         {
-            if (collision.gameObject.CompareTag("PC_Player"))
-            {
-                as_rock.PlayOneShot(ac_throwHit);
+            //if (collision.gameObject.CompareTag("PC_Player"))
+            //{
+            //    as_rock.PlayOneShot(ac_throwHit);
 
-                PhotonNetwork.Destroy(this.gameObject);
-                //PhotonNetwork.Destroy(this.gameObject);
-            }
+            //    PhotonNetwork.Destroy(this.gameObject);
+            //    //PhotonNetwork.Destroy(this.gameObject);
+            //}
 
             if (!collision.gameObject.CompareTag("PC_Player"))
             {

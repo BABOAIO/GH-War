@@ -83,6 +83,8 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
                 photonView.RPC("Hit_VRPlayer", RpcTarget.AllBuffered, 1);
                 currentTime = 0.0f;
 
+                PhotonNetwork.Destroy(other.gameObject);
+
                 if ((other.gameObject.GetComponent<Rigidbody>().mass >= 500))
                 {
                     photonView.RPC("Hit_VRPlayer", RpcTarget.AllBuffered, 2);
