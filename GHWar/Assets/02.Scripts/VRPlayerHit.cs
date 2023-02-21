@@ -98,6 +98,14 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
     }
 
 
+    public void HitVRPlayer_PhotonView(int damage)
+    {
+        if (photonView.IsMine)
+        {
+            photonView.RPC("Hit_VRPlayer", RpcTarget.AllBuffered, damage);
+        }
+    }
+
     private void FixedUpdate()
     {
         currentTime += Time.fixedDeltaTime;
