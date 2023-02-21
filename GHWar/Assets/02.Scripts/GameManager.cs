@@ -480,13 +480,13 @@ public class GameManager : MonoBehaviourPunCallbacks
                     B_IsGameOver = true;
                     currentTime = 0;
 
-                    if (Array_txtWinner[0] != null)
-                    {
-                        Array_txtWinner[0].text = "VR Player Lose..";
-                    }
                     if (Array_txtWinner[1] != null)
                     {
                         Array_txtWinner[1].text = "PC Player Win!!";
+                    }
+                    if (Array_txtWinner[0] != null)
+                    {
+                        Array_txtWinner[0].text = "VR Player Lose..";
                     }
 
                     Debug.Log("PC Player Win!!");
@@ -523,14 +523,13 @@ public class GameManager : MonoBehaviourPunCallbacks
                     B_IsGameOver = true;
                     currentTime = 0;
 
-                    // canvas 추가, 부활막기
-                    if (Array_txtWinner[0] != null)
-                    {
-                        Array_txtWinner[0].text = "VR Player Lose..";
-                    }
                     if (Array_txtWinner[1] != null)
                     {
                         Array_txtWinner[1].text = "PC Player Win!!";
+                    }
+                    if (Array_txtWinner[0] != null)
+                    {
+                        Array_txtWinner[0].text = "VR Player Lose..";
                     }
 
                     Debug.Log("PC Player Win!!");
