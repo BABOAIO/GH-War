@@ -26,6 +26,7 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
 
     [SerializeField] XRBaseController[] xRBaseControllers = new XRBaseController[2];
 
+    [SerializeField]
     float invincibilityTime = 2.0f;
     public float currentTime = 2.0f;
 
@@ -84,12 +85,12 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
 
                 if ((other.gameObject.GetComponent<Rigidbody>().mass >= 500))
                 {
-                    photonView.RPC("Hit_VRPlayer", RpcTarget.AllBuffered, 2);
+                    HitVRPlayer_PhotonView(2);
                     as_parent.Play();
                 }
                 else
                 {
-                    photonView.RPC("Hit_VRPlayer", RpcTarget.AllBuffered, 1);
+                    HitVRPlayer_PhotonView(1);
                 }
             }
         }

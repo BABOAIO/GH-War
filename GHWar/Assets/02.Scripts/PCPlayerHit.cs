@@ -113,6 +113,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
                     {
                         //Hit_PCPlayer(1);
                         GameObject o_effect = PhotonNetwork.Instantiate("HitEffect2", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
+                        HitPCPlayer_PhotonView(1);
                     }
                 }
             }
