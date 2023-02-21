@@ -80,9 +80,7 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
                 xRBaseControllers[0].SendHapticImpulse(0.5f, 0.3f);
                 xRBaseControllers[1].SendHapticImpulse(0.5f, 0.3f);
 
-                currentTime = 0.0f;
-
-                photonView.RPC("DestroyPhotonObject", RpcTarget.All, other.gameObject);
+                //photonView.RPC("DestroyPhotonObject", RpcTarget.All, other.gameObject);
 
                 if ((other.gameObject.GetComponent<Rigidbody>().mass >= 500))
                 {
@@ -128,6 +126,8 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
         as_VRPlayerHit.Play();
         HP -= damage;
         Debug.Log($"VR Player {photonView.Controller} is Damaged : Dmg {damage}");
+
+        currentTime = 0.0f;
 
         if (HP <= 0)
         {

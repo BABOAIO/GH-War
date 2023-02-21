@@ -5,6 +5,7 @@ ScriptsOnlyBuild:
     - ActiveImageFadeRecycle
     - ArrowLineRendering
     - ArrowProperty
+    - ArrowProperty_PowerShot
     - CannonBall
     - ConnManager
     - DestroyOutObject
@@ -45,6 +46,8 @@ ScriptsOnlyBuild:
     - VRPlayerHit
     - VRPlayerMove
     - XRGrabInteractionPun
+    CFXRRuntime.dll:
+    - CartoonFX.CFXR_Effect
     DOTween.dll:
     - DG.Tweening.Core.DOTweenSettings
     Oculus.Spatializer.dll:
@@ -132,6 +135,9 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
   serializedClasses:
+    CFXRRuntime:
+    - CartoonFX.CFXR_Effect/AnimatedLight
+    - CartoonFX.CFXR_Effect/CameraShake
     DOTween:
     - DG.Tweening.Core.DOTweenSettings/ModulesSetup
     - DG.Tweening.Core.DOTweenSettings/SafeModeOptions
@@ -298,187 +304,191 @@ ScriptsOnlyBuild:
     - Class: 111
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1826}
+      Script: {instanceID: 1840}
     - Class: 114
-      Script: {instanceID: 1832}
+      Script: {instanceID: 1846}
     - Class: 114
-      Script: {instanceID: 1834}
+      Script: {instanceID: 1848}
     - Class: 114
-      Script: {instanceID: 1952}
+      Script: {instanceID: 1966}
     - Class: 114
-      Script: {instanceID: 2140}
+      Script: {instanceID: 2156}
     - Class: 114
-      Script: {instanceID: 2292}
+      Script: {instanceID: 2308}
     - Class: 114
-      Script: {instanceID: 2724}
+      Script: {instanceID: 2746}
     - Class: 114
-      Script: {instanceID: 2790}
+      Script: {instanceID: 2814}
     - Class: 114
-      Script: {instanceID: 2854}
+      Script: {instanceID: 2878}
     - Class: 114
-      Script: {instanceID: 3124}
+      Script: {instanceID: 3150}
     - Class: 114
-      Script: {instanceID: 3230}
+      Script: {instanceID: 3256}
     - Class: 114
-      Script: {instanceID: 3318}
+      Script: {instanceID: 3344}
     - Class: 114
-      Script: {instanceID: 3346}
+      Script: {instanceID: 3372}
     - Class: 114
-      Script: {instanceID: 3524}
+      Script: {instanceID: 3550}
     - Class: 114
-      Script: {instanceID: 3710}
+      Script: {instanceID: 3738}
     - Class: 114
-      Script: {instanceID: 3748}
+      Script: {instanceID: 3776}
     - Class: 114
-      Script: {instanceID: 3818}
+      Script: {instanceID: 3846}
     - Class: 114
-      Script: {instanceID: 3858}
+      Script: {instanceID: 3886}
     - Class: 114
-      Script: {instanceID: 3864}
+      Script: {instanceID: 3892}
     - Class: 114
-      Script: {instanceID: 4602}
+      Script: {instanceID: 4634}
     - Class: 114
-      Script: {instanceID: 4652}
+      Script: {instanceID: 4684}
     - Class: 114
-      Script: {instanceID: 5038}
+      Script: {instanceID: 5070}
     - Class: 114
-      Script: {instanceID: 5166}
+      Script: {instanceID: 5198}
     - Class: 114
-      Script: {instanceID: 5450}
+      Script: {instanceID: 5482}
     - Class: 114
-      Script: {instanceID: 5590}
+      Script: {instanceID: 5622}
     - Class: 114
-      Script: {instanceID: 5760}
+      Script: {instanceID: 5792}
     - Class: 114
-      Script: {instanceID: 5888}
+      Script: {instanceID: 5920}
     - Class: 114
-      Script: {instanceID: 5974}
+      Script: {instanceID: 6006}
     - Class: 114
-      Script: {instanceID: 6070}
+      Script: {instanceID: 6102}
     - Class: 114
-      Script: {instanceID: 6308}
+      Script: {instanceID: 6342}
     - Class: 114
-      Script: {instanceID: 6354}
+      Script: {instanceID: 6388}
     - Class: 114
-      Script: {instanceID: 6378}
-    - Class: 114
-      Script: {instanceID: 6532}
+      Script: {instanceID: 6412}
     - Class: 114
       Script: {instanceID: 6566}
     - Class: 114
-      Script: {instanceID: 6580}
+      Script: {instanceID: 6602}
     - Class: 114
-      Script: {instanceID: 6726}
+      Script: {instanceID: 6616}
     - Class: 114
-      Script: {instanceID: 6730}
+      Script: {instanceID: 6762}
     - Class: 114
-      Script: {instanceID: 6972}
+      Script: {instanceID: 6766}
     - Class: 114
-      Script: {instanceID: 7010}
+      Script: {instanceID: 7012}
     - Class: 114
-      Script: {instanceID: 7178}
+      Script: {instanceID: 7050}
     - Class: 114
-      Script: {instanceID: 7204}
+      Script: {instanceID: 7220}
     - Class: 114
-      Script: {instanceID: 7250}
+      Script: {instanceID: 7246}
     - Class: 114
-      Script: {instanceID: 7468}
+      Script: {instanceID: 7294}
     - Class: 114
-      Script: {instanceID: 7838}
+      Script: {instanceID: 7514}
     - Class: 114
-      Script: {instanceID: 7856}
+      Script: {instanceID: 7884}
     - Class: 114
-      Script: {instanceID: 7968}
+      Script: {instanceID: 7892}
     - Class: 114
-      Script: {instanceID: 7990}
+      Script: {instanceID: 7904}
     - Class: 114
-      Script: {instanceID: 8030}
+      Script: {instanceID: 8016}
     - Class: 114
-      Script: {instanceID: 8052}
+      Script: {instanceID: 8038}
     - Class: 114
-      Script: {instanceID: 8220}
+      Script: {instanceID: 8080}
     - Class: 114
-      Script: {instanceID: 8224}
+      Script: {instanceID: 8102}
     - Class: 114
-      Script: {instanceID: 8418}
+      Script: {instanceID: 8270}
     - Class: 114
-      Script: {instanceID: 8664}
+      Script: {instanceID: 8274}
     - Class: 114
-      Script: {instanceID: 8882}
+      Script: {instanceID: 8470}
     - Class: 114
-      Script: {instanceID: 9018}
+      Script: {instanceID: 8716}
     - Class: 114
-      Script: {instanceID: 9508}
+      Script: {instanceID: 8936}
     - Class: 114
-      Script: {instanceID: 9696}
+      Script: {instanceID: 9072}
     - Class: 114
-      Script: {instanceID: 9700}
+      Script: {instanceID: 9562}
     - Class: 114
-      Script: {instanceID: 9846}
+      Script: {instanceID: 9750}
     - Class: 114
-      Script: {instanceID: 9968}
+      Script: {instanceID: 9754}
     - Class: 114
-      Script: {instanceID: 10018}
+      Script: {instanceID: 9900}
     - Class: 114
-      Script: {instanceID: 10222}
+      Script: {instanceID: 10022}
     - Class: 114
-      Script: {instanceID: 10282}
+      Script: {instanceID: 10072}
     - Class: 114
-      Script: {instanceID: 10492}
+      Script: {instanceID: 10276}
     - Class: 114
-      Script: {instanceID: 10614}
+      Script: {instanceID: 10336}
     - Class: 114
-      Script: {instanceID: 10748}
+      Script: {instanceID: 10546}
     - Class: 114
-      Script: {instanceID: 10814}
+      Script: {instanceID: 10668}
     - Class: 114
-      Script: {instanceID: 10866}
+      Script: {instanceID: 10804}
     - Class: 114
-      Script: {instanceID: 10876}
+      Script: {instanceID: 10870}
     - Class: 114
-      Script: {instanceID: 10968}
+      Script: {instanceID: 10922}
     - Class: 114
-      Script: {instanceID: 11020}
+      Script: {instanceID: 10932}
     - Class: 114
-      Script: {instanceID: 11148}
+      Script: {instanceID: 11026}
     - Class: 114
-      Script: {instanceID: 11192}
+      Script: {instanceID: 11078}
     - Class: 114
-      Script: {instanceID: 11288}
+      Script: {instanceID: 11208}
     - Class: 114
-      Script: {instanceID: 11310}
+      Script: {instanceID: 11254}
     - Class: 114
-      Script: {instanceID: 11400}
+      Script: {instanceID: 11350}
     - Class: 114
-      Script: {instanceID: 11460}
+      Script: {instanceID: 11372}
     - Class: 114
-      Script: {instanceID: 11486}
+      Script: {instanceID: 11464}
     - Class: 114
-      Script: {instanceID: 11536}
+      Script: {instanceID: 11524}
     - Class: 114
-      Script: {instanceID: 11662}
+      Script: {instanceID: 11550}
     - Class: 114
-      Script: {instanceID: 11930}
+      Script: {instanceID: 11600}
     - Class: 114
-      Script: {instanceID: 11954}
+      Script: {instanceID: 11726}
     - Class: 114
-      Script: {instanceID: 11968}
+      Script: {instanceID: 11994}
     - Class: 114
-      Script: {instanceID: 12346}
+      Script: {instanceID: 12018}
     - Class: 114
-      Script: {instanceID: 12890}
+      Script: {instanceID: 12032}
     - Class: 114
-      Script: {instanceID: 13210}
+      Script: {instanceID: 12322}
     - Class: 114
-      Script: {instanceID: 13330}
+      Script: {instanceID: 12412}
     - Class: 114
-      Script: {instanceID: 13492}
+      Script: {instanceID: 12958}
     - Class: 114
-      Script: {instanceID: 13586}
+      Script: {instanceID: 13278}
     - Class: 114
-      Script: {instanceID: 13620}
+      Script: {instanceID: 13398}
     - Class: 114
-      Script: {instanceID: 54944}
+      Script: {instanceID: 13562}
+    - Class: 114
+      Script: {instanceID: 13656}
+    - Class: 114
+      Script: {instanceID: 13690}
+    - Class: 114
+      Script: {instanceID: 67066}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -676,6 +686,12 @@ ScriptsOnlyBuild:
     className: HIDDescriptorWindow
   - hash:
       serializedVersion: 2
+      Hash: f8de6405394e6cd87ee5860a2b7b3231
+    assemblyName: CFXRDemo.dll
+    namespaceName: CartoonFX
+    className: CFXR_Demo
+  - hash:
+      serializedVersion: 2
       Hash: 7a3d922f2b08a004ad6764d7bb4be292
     assemblyName: Unity.XR.Interaction.Toolkit.dll
     namespaceName: UnityEngine.XR.Interaction.Toolkit
@@ -826,6 +842,12 @@ ScriptsOnlyBuild:
     className: ScoreHelper
   - hash:
       serializedVersion: 2
+      Hash: 9cf4a50e1f425d06b81c01050a0b2950
+    assemblyName: CFXRDemo.dll
+    namespaceName: CartoonFX
+    className: CFXR_Demo_Translate
+  - hash:
+      serializedVersion: 2
       Hash: 370c58af133a169e2273ae007435d4cd
     assemblyName: Oculus.Interaction.dll
     namespaceName: Oculus.Interaction
@@ -868,6 +890,12 @@ ScriptsOnlyBuild:
     className: TwoGrabPlaneTransformer
   - hash:
       serializedVersion: 2
+      Hash: dad3a1f1e1ecb4691721bab721edd60a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CFX_AutoRotate
+  - hash:
+      serializedVersion: 2
       Hash: e4c511fcf31a39b6e614595be7309046
     assemblyName: Oculus.LipSync.dll
     namespaceName: 
@@ -898,10 +926,16 @@ ScriptsOnlyBuild:
     className: CurrentRoomPropertiesListedInLobbyProperty
   - hash:
       serializedVersion: 2
-      Hash: 405cd2884ea9d6338e292d19c4b3b919
+      Hash: 0e0f691f8022a42d8e3e8e918a968130
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PCPlayerFireArrow
+  - hash:
+      serializedVersion: 2
+      Hash: 79e9b233ff431fec1263e2ac250337ee
+    assemblyName: CFXRRuntime.dll
+    namespaceName: CartoonFX
+    className: CFXR_ParticleText
   - hash:
       serializedVersion: 2
       Hash: fc7de65c86732c89745a0a4a83bdf7fc
@@ -1064,6 +1098,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: InputField
+  - hash:
+      serializedVersion: 2
+      Hash: 1d0beb1a2d4edee4c06b6835632e83a3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CFX_AutoStopLoopedEffect
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1298,6 +1338,12 @@ ScriptsOnlyBuild:
     assemblyName: UniRx.dll
     namespaceName: UniRx.Triggers
     className: ObservableDestroyTrigger
+  - hash:
+      serializedVersion: 2
+      Hash: 4aac268d7e435f7a65add91aaba819a4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CFX_Demo_RandomDir
   - hash:
       serializedVersion: 2
       Hash: d13b947342cb10f5bb0376cfd46ed50d
@@ -1810,10 +1856,22 @@ ScriptsOnlyBuild:
     className: IAPManager
   - hash:
       serializedVersion: 2
+      Hash: 5d27c6e85ec89cfab8577e9e26695e88
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CFX_AutoDestructShuriken
+  - hash:
+      serializedVersion: 2
       Hash: 4e9d24233367617e0190aca049646eb8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: VRPlayerHandHit
+  - hash:
+      serializedVersion: 2
+      Hash: 7efadfdb80725dfd2a983d4998b4a2a8
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PropertyCubeTransform
   - hash:
       serializedVersion: 2
       Hash: e37675de1ea5e56da90f5600d33587bd
@@ -2596,6 +2654,12 @@ ScriptsOnlyBuild:
     className: LightToggler
   - hash:
       serializedVersion: 2
+      Hash: e70e7b311a1620c2e899545b2e1fdfae
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CFX_Demo_RandomDirectionTranslate
+  - hash:
+      serializedVersion: 2
       Hash: 55e82a8a3e3fb6a5866ec61b18795810
     assemblyName: Assembly-CSharp.dll
     namespaceName: OculusSampleFramework
@@ -2962,6 +3026,12 @@ ScriptsOnlyBuild:
     className: SignalTrack
   - hash:
       serializedVersion: 2
+      Hash: 32ad028668126aa886e22e0e6ea7927b
+    assemblyName: CFXRRuntime.dll
+    namespaceName: CartoonFX
+    className: CFXR_EmissionBySurface
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Oculus.Spatializer.dll
     namespaceName: 
@@ -3038,6 +3108,12 @@ ScriptsOnlyBuild:
     assemblyName: PhotonUnityNetworking.dll
     namespaceName: Photon.Pun
     className: PhotonRigidbodyView
+  - hash:
+      serializedVersion: 2
+      Hash: 5065f436a319f7d4eabef552e95362b4
+    assemblyName: CFXRRuntime.dll
+    namespaceName: CartoonFX
+    className: CFXR_ParticleTextFontAsset
   - hash:
       serializedVersion: 2
       Hash: 157538f8f4891e8727c599fd613d7108
@@ -3160,6 +3236,12 @@ ScriptsOnlyBuild:
     className: FlashlightController
   - hash:
       serializedVersion: 2
+      Hash: 421b20ccd7815ebee5e2b14a986d2efc
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CFX_Demo_New
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
@@ -3242,6 +3324,12 @@ ScriptsOnlyBuild:
     assemblyName: Oculus.VR.dll
     namespaceName: 
     className: OVRSceneAnchor
+  - hash:
+      serializedVersion: 2
+      Hash: e4db0ddf42150a3b60bd39cf2bc3def2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CFX_LightFlicker
   - hash:
       serializedVersion: 2
       Hash: ee1dba1a186ac062d564e9eb73a1c56f
@@ -3484,6 +3572,12 @@ ScriptsOnlyBuild:
     className: PlayerUI
   - hash:
       serializedVersion: 2
+      Hash: baaac105bf76d971b7794126da6d55d6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ArrowProperty_PowerShot
+  - hash:
+      serializedVersion: 2
       Hash: 2335518e55abe338b0470814723e1f70
     assemblyName: Oculus.Interaction.dll
     namespaceName: Oculus.Interaction.PoseDetection
@@ -3584,6 +3678,12 @@ ScriptsOnlyBuild:
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Cockpit
     className: CurrentRoomIsOpenProperty
+  - hash:
+      serializedVersion: 2
+      Hash: 660deb0ce569359218f0ba85b7ce0e3a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CFX_LightIntensityFade
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -4858,6 +4958,12 @@ ScriptsOnlyBuild:
     className: Spaceship
   - hash:
       serializedVersion: 2
+      Hash: 3f5031037e63abe5dcf87c278e01a4de
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CFX_Demo_RotateCamera
+  - hash:
+      serializedVersion: 2
       Hash: 5a6d9f00e591301e25d8ceb70b29af35
     assemblyName: Oculus.Interaction.dll
     namespaceName: Oculus.Interaction
@@ -4990,6 +5096,12 @@ ScriptsOnlyBuild:
     className: HitEffectRock
   - hash:
       serializedVersion: 2
+      Hash: b10f0f008d787b95a5928eed8ceaa36e
+    assemblyName: KinoBloom.Runtime.dll
+    namespaceName: Kino
+    className: Bloom
+  - hash:
+      serializedVersion: 2
       Hash: e14ff447aaf62d9737c2447a225fa4ec
     assemblyName: Oculus.Interaction.dll
     namespaceName: Oculus.Interaction.Input
@@ -5060,6 +5172,12 @@ ScriptsOnlyBuild:
     assemblyName: Oculus.Interaction.OVR.Samples.dll
     namespaceName: Oculus.Interaction.Demo
     className: BasicPBRGlobals
+  - hash:
+      serializedVersion: 2
+      Hash: 4e875e1432fadf1f077549b388792f99
+    assemblyName: CFXRDemo.dll
+    namespaceName: CartoonFX
+    className: CFXR_Demo_Rotate
   - hash:
       serializedVersion: 2
       Hash: d85b490177c3124d2335460060a2b807
@@ -5560,6 +5678,12 @@ ScriptsOnlyBuild:
     className: IgnoreUiRaycastWhenInactive
   - hash:
       serializedVersion: 2
+      Hash: 053af5cf08eb21aace7d1d5622658246
+    assemblyName: CFXRRuntime.dll
+    namespaceName: CartoonFX
+    className: CFXR_Effect
+  - hash:
+      serializedVersion: 2
       Hash: 4ce15e99c635d2567873d27549d1f16f
     assemblyName: PhotonUnityNetworking.Utilities.dll
     namespaceName: Photon.Pun.UtilityScripts
@@ -5780,6 +5904,12 @@ ScriptsOnlyBuild:
     assemblyName: PhotonUnityNetworking.Demos.dll
     namespaceName: Photon.Pun.Demo.Cockpit
     className: CurrentRoomMaxPlayersProperty
+  - hash:
+      serializedVersion: 2
+      Hash: 671420ad2c33f1ddaf6d076461adf15a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CFX_Demo_Translate
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f

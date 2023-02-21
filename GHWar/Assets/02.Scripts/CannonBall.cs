@@ -14,14 +14,12 @@ public class CannonBall : MonoBehaviourPun
         //photonView.TransferOwnership(PhotonNetwork.MasterClient);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionExit(Collision collision)
     {
         // VR플레이어가 피격될 시
         if (collision.gameObject.CompareTag("VRPlayerHead"))
         {
             //isHit = true;
-            collision.gameObject.GetComponent<VRPlayerHit>().HitVRPlayer_PhotonView(2);
-
             GameObject o_ps =
             PhotonNetwork.Instantiate("HitEffectWithEXP", collision.contacts[0].point, Quaternion.Euler(collision.contacts[0].normal));
 

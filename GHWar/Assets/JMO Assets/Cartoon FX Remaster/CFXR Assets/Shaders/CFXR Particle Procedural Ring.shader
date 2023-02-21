@@ -198,7 +198,7 @@ Shader "Cartoon FX/Remaster/Particle Procedural Ring"
 
 				UNITY_SETUP_INSTANCE_ID(v);
 				UNITY_TRANSFER_INSTANCE_ID(v, o);
-				UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
+				//UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
 				//--------------------------------
 				// procedural ring

@@ -95,12 +95,14 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
                         // 주먹을 쥐지 않을 경우, 튕겨남 방지
                         else
                         {
+                            FunctionForceReducing();
                             photonView.RPC("FunctionForceReducing", RpcTarget.AllBuffered);
                         }
                     }
                     // 매우 작은 진동에도 튕기므로 보험용
                     else
                     {
+                        FunctionForceReducing();
                         photonView.RPC("FunctionForceReducing", RpcTarget.AllBuffered);
                     }
                 }

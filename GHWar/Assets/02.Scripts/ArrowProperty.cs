@@ -53,7 +53,7 @@ public class ArrowProperty : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("LeftHandPhysics") || collision.gameObject.layer == LayerMask.NameToLayer("RightHandPhysics"))
         {
@@ -68,8 +68,6 @@ public class ArrowProperty : MonoBehaviour
         if (collision.gameObject.CompareTag("VRPlayerHead"))
         {
             isHit = true;
-
-            collision.gameObject.GetComponent<VRPlayerHit>().HitVRPlayer_PhotonView(1);
 
             GameObject o_ps =
             PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
