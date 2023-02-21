@@ -53,14 +53,13 @@ public class ArrowProperty : MonoBehaviourPun
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("LeftHandPhysics") || collision.gameObject.layer == LayerMask.NameToLayer("RightHandPhysics"))
         {
             isHit = true;
 
-            GameObject o_ps =
-            PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
+            GameObject o_ps = PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
 
             if (photonView.IsMine)
             {
@@ -72,8 +71,7 @@ public class ArrowProperty : MonoBehaviourPun
         {
             isHit = true;
 
-            GameObject o_ps =
-            PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
+            GameObject o_ps = PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
 
             if (photonView.IsMine)
             {
@@ -91,8 +89,7 @@ public class ArrowProperty : MonoBehaviourPun
         {
             isHit = true;
 
-            GameObject o_ps = 
-            PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
+            GameObject o_ps = PhotonNetwork.Instantiate("HitEffect", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
 
             if (photonView.IsMine)
             {
