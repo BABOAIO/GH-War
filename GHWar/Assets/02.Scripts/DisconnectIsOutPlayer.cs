@@ -6,37 +6,15 @@ using Photon.Realtime;
 
 public class DisconnectIsOutPlayer : MonoBehaviourPunCallbacks
 {
-    XRGrabInteractionPun _XRGrabInteractionPun;
-
-    private void Start()
+    private void FixedUpdate()
     {
-        _XRGrabInteractionPun = GetComponent<XRGrabInteractionPun>();    
-    }
-
-    public override void OnDisconnected(DisconnectCause cause)
-    {
-        if(photonView.IsMine)
+        if (photonView.IsMine)
         {
-            photonView.RPC("OnDisconnect", RpcTarget.All);
-        }   
+            if (photonView.CreatorActorNr == 0)
+            {
+                PhotonNetwork.Destroy(this.gameObject);
+            }
+        }
     }
-
-    [PunRPC]
-    void OnDisconnect()
-    {
-        PhotonNetwork.Destroy(gameObject);
-    }
-
-    //private void FixedUpdate()
-    //{
-    //    if (_XRGrabInteractionPun.isGrab) return;
-    //    if (photonView.IsMine)
-    //    {
-    //        if(photonView.ControllerActorNr != photonView.CreatorActorNr)
-    //        {
-    //            PhotonNetwork.Destroy(this.gameObject);
-    //        }
-    //    }   
-    //}
 
 }
