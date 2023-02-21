@@ -8,13 +8,22 @@ public class DisconnectIsOutPlayer : MonoBehaviourPunCallbacks
 {
     private void FixedUpdate()
     {
-        if (photonView.IsMine)
+        if (PhotonNetwork.IsMasterClient)
         {
-            if (photonView.CreatorActorNr == 0)
+            if (photonView.ControllerActorNr != photonView.CreatorActorNr)
             {
                 PhotonNetwork.Destroy(this.gameObject);
             }
         }
+        //PhotonNetwork.Destroy(this.gameObject);
+
+        //if (photonView.IsMine)
+        //{
+        //    if (photonView.ControllerActorNr != photonView.CreatorActorNr)
+        //    {
+        //        PhotonNetwork.Destroy(this.gameObject);
+        //    }
+        //}
     }
 
 }
