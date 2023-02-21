@@ -83,9 +83,14 @@ public class VRPlayerHit : MonoBehaviourPunCallbacks
                 photonView.RPC("Hit_VRPlayer", RpcTarget.AllBuffered, 1);
                 currentTime = 0.0f;
 
-                if (other.gameObject.CompareTag("CannonBall"))
+                if ((other.gameObject.GetComponent<Rigidbody>().mass >= 500))
                 {
+                    photonView.RPC("Hit_VRPlayer", RpcTarget.AllBuffered, 2);
                     as_parent.Play();
+                }
+                else
+                {
+                    photonView.RPC("Hit_VRPlayer", RpcTarget.AllBuffered, 1);
                 }
             }
         }
