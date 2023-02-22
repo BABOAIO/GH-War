@@ -137,6 +137,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
                 o_touchArea = other.gameObject;
             }
 
+            // 6면에 외벽 설치 + 각 오브젝트가 닿으면 사라지지만 플레이어의 경우, 게임매니저를 참고하여 정해진 위치에 스폰 > 게임성을 위해서는 랜덤 스폰도 괜찮을거 같음
             if (other.gameObject.CompareTag("FallingZone"))
             {
                 v3_areaSpawnPosition = Vector3.zero;
@@ -150,7 +151,8 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
                         v3_areaSpawnPosition = (la.transform.position - transform.position);
                         q_areaSpawnRotation = la.transform.rotation;
 
-                        GameObject tmp = PhotonNetwork.Instantiate("RandSet", GameManager.instance.o_PlayArea[GameManager.instance.num_destroyArea - 1].GetComponent<FractureTest>().tr_spawnPoint.position + v3_areaSpawnPosition, q_areaSpawnRotation);
+                        // 이후 지형 추가하면 각각의 이름과 동일한 resource를 찾아서 인스턴스시키는 방향으로 가려함
+                        GameObject tmp = PhotonNetwork.Instantiate("RandSet1", GameManager.instance.o_PlayArea[GameManager.instance.num_destroyArea - 1].GetComponent<FractureTest>().tr_spawnPoint.position + v3_areaSpawnPosition, q_areaSpawnRotation);
                         StartCoroutine(DelayedPhotonNetworkDestroy(tmp));
                     }
                 }

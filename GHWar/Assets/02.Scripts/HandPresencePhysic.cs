@@ -122,6 +122,7 @@ public class HandPresencePhysic : MonoBehaviour
 
         //// 쿼터니언은 3x3행렬을 변환시킨 것 >> 각도의 연산을 하려면, 역산할 부분이 앞에 곱해짐(결합법칙이 성립하지 않음)
         //// 연산은 기본적으로 이후 방향 + (- 지난 방향) (-1은 쿼터니언의 경우 역행렬)
+        //// 원점으로 옮긴 후 원하는 방향으로 회전한다는 의미
         //Quaternion q_rotationDifference = t_target.rotation * Quaternion.Inverse(transform.rotation);
         //// 쿼터니언을 회전축과 회전각으로 변환시킴
         //q_rotationDifference.ToAngleAxis(out float f_angleInDegree, out Vector3 v3_rotationAxis);
@@ -136,12 +137,8 @@ public class HandPresencePhysic : MonoBehaviour
         //rb_this.angularVelocity = (v3_rotationDifferenceInDegree * Mathf.Deg2Rad / Time.fixedDeltaTime);
 
         //해결책 1 : 손의 회전각을 그대로 따라감
-        // 이부분이면 한번에 해결되지만, 땅과 닿는 부분에서 어색함이 느껴짐
+        // 이 부분이면 한번에 해결되지만, 땅과 닿는 부분에서 어색함이 느껴짐
         transform.rotation = t_target.rotation;
-
-        ////해결책 2 : 각속도 = 두 축 사이의 각 / 단위시간
-        //transform.rotation.ToAngleAxis(out float angle_this, out Vector3 v3_thisAxis);
-        //t_target.rotation.ToAngleAxis(out float angle_target, out Vector3 v3_targetAxis);
 
     }
 }

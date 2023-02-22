@@ -7,7 +7,7 @@ using Photon.Realtime;
 // Resource 폴더에 있는 Arrow에 넣는다.
 // 대미지를 받는 오브젝트는 enter를 쓴다. 대미지를 주는 오브젝트는 stay를 쓴다.(exit의 경우, contacts를 활용할 수 없는 단점이 있다.)
 [RequireComponent(typeof(AudioSource))]
-public class ArrowProperty_PowerShot : MonoBehaviour
+public class ArrowProperty_PowerShot : MonoBehaviourPun
 {
     // 생성 후 날라가는 속도
     [SerializeField] float shotSpeed = 20.0f;
@@ -54,7 +54,7 @@ public class ArrowProperty_PowerShot : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("LeftHandPhysics") || collision.gameObject.layer == LayerMask.NameToLayer("RightHandPhysics"))
         {
@@ -63,7 +63,10 @@ public class ArrowProperty_PowerShot : MonoBehaviour
             GameObject o_ps =
             PhotonNetwork.Instantiate("HitEffectWithEXP", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
 
-            PhotonNetwork.Destroy(this.gameObject);
+            if (photonView.IsMine)
+            {
+                PhotonNetwork.Destroy(this.gameObject);
+            }
         }
 
         if (collision.gameObject.CompareTag("VRPlayerHead"))
@@ -73,7 +76,10 @@ public class ArrowProperty_PowerShot : MonoBehaviour
             GameObject o_ps =
             PhotonNetwork.Instantiate("HitEffectWithEXP", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
 
-            PhotonNetwork.Destroy(this.gameObject);
+            if (photonView.IsMine)
+            {
+                PhotonNetwork.Destroy(this.gameObject);
+            }
             //StartCoroutine(DestroyDelayed(gameObject, 0.1f));
         }
 
@@ -89,7 +95,10 @@ public class ArrowProperty_PowerShot : MonoBehaviour
             GameObject o_ps = 
             PhotonNetwork.Instantiate("HitEffectWithEXP", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
 
-            PhotonNetwork.Destroy(this.gameObject);
+            if (photonView.IsMine)
+            {
+                PhotonNetwork.Destroy(this.gameObject);
+            }
             //StartCoroutine(DestroyDelayed(gameObject, 0.1f));
         }
     }

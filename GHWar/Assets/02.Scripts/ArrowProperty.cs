@@ -68,7 +68,7 @@ public class ArrowProperty : MonoBehaviourPun
             }
         }
 
-        if (collision.gameObject.CompareTag("VRPlayerHead"))
+        else if (collision.gameObject.CompareTag("VRPlayerHead"))
         {
             isHit = true;
 

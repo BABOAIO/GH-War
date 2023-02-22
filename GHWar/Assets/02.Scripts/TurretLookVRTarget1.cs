@@ -16,7 +16,6 @@ public class TurretLookVRTarget1 : MonoBehaviour
     {
         tr_this = GetComponent<Transform>();
         o_target = GameObject.FindGameObjectWithTag("VRPlayerHead").transform;
-        print("Yes");
     }
 
     // Update is called once per frame
@@ -32,12 +31,10 @@ public class TurretLookVRTarget1 : MonoBehaviour
         if(o_target!= null)
         {
             Vector3 v3_direction = (o_target.transform.position - tr_this.position).normalized;
-            //transform.rotation = Quaternion.LookRotation(new Vector3(v3_direction.x, v3_direction.y, v3_direction.z));
             transform.LookAt(new Vector3(o_target.transform.position.x, tr_this.transform.position.y, o_target.transform.position.z), Vector3.up);
         }
         else
         {
-            print("Yes");
             o_target = GameObject.FindGameObjectWithTag("VRPlayerHead").transform;
         }
     }
