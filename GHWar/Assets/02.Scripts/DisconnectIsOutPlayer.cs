@@ -17,15 +17,6 @@ public class DisconnectIsOutPlayer : MonoBehaviourPunCallbacks
                 PhotonNetwork.Destroy(this.gameObject);
             }
         }
-        //PhotonNetwork.Destroy(this.gameObject);
-
-        //if (photonView.IsMine)
-        //{
-        //    if (photonView.ControllerActorNr != photonView.CreatorActorNr)
-        //    {
-        //        PhotonNetwork.Destroy(this.gameObject);
-        //    }
-        //}
     }
 
 }

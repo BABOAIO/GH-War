@@ -332,6 +332,7 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks, IPunObservable
     private void OnCollisionStay(Collision collision)
     {
         isGround = true;
+        a_player.SetBool("Wiggle", false);
     }
 
     private void OnCollisionExit(Collision collision)
