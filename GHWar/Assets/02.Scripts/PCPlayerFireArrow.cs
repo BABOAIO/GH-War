@@ -22,7 +22,6 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
     [Header("È° ½î´Â ÁÖ±â")]
     [SerializeField] float delayTime = 2.0f;
     float currentTime = 0f;
-    float PowerShotDelay = 2.0f;
     //[SerializeField] ParticleSystem ps_ReadyToPowerShot;
     [SerializeField] ParticleSystem[] ps_ReadyToPowerShot;
     bool b_ReadyToPowerShot;
@@ -88,9 +87,6 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
 
     void FixedUpdate()
     {
-        if(Input.GetKeyDown(KeyCode.Z)) { GaugeFullChage(); }
-        //img_Skill.rectTransform.RotateAround(img_Skill.rectTransform.position, Vector3.forward, 60*Time.fixedDeltaTime);
-
         currentTime += Time.fixedDeltaTime;
 
         if (pv.IsMine)
@@ -154,6 +150,20 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
+    GameObject ParticleGenerate()
+    {
+        GameObject returnObj = 
+        PhotonNetwork.Instantiate("PowerShotMagicCircle", transform.position, transform.rotation);
+        return returnObj;
+    }
+
+    [PunRPC]
+    void ParticleDegenerate(GameObject _ps)
+    {
+        PhotonNetwork.Destroy(_ps);
+    }
+
+    [PunRPC]
 
     private void Shot()
     {
@@ -183,7 +193,6 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
                 }
                 GameObject obj_tmp = PhotonNetwork.Instantiate("UltArrow", firePos.position, firePos.rotation);
                 b_ReadyToPowerShot = false;
-                PowerShotDelay = 0.0f;
                 currentUlt = 0.0f;
                 img_Skill.fillAmount = 0f;
             }
@@ -288,7 +297,6 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
                 as_fireArrow.PlayOneShot(ac_Ult);
                 GameObject obj_tmp = PhotonNetwork.Instantiate("UltArrow", firePos.position, firePos.rotation);
                 b_ReadyToPowerShot = false;
-                PowerShotDelay = 0.0f;
             }
             else
             {
