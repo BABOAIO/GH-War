@@ -8,13 +8,25 @@ using Photon.Realtime;
 // 나간 플레이어를 없애기 위한 스크립트, 플레이어들에게 넣는다.
 public class DisconnectIsOutPlayer : MonoBehaviourPunCallbacks
 {
+    bool IsVR;
+    bool IsGrab;
+
+    private void Start()
+    {
+        IsVR = GameManager.instance.IsVR;
+        IsGrab = GetComponent<XRGrabInteractionPun>().isGrab;
+    }
+
     private void FixedUpdate()
     {
-        if (PhotonNetwork.IsMasterClient)
+        if (!IsGrab)
         {
-            if (photonView.ControllerActorNr != photonView.CreatorActorNr)
+            if (PhotonNetwork.IsMasterClient)
             {
-                PhotonNetwork.Destroy(this.gameObject);
+                if (photonView.ControllerActorNr != photonView.CreatorActorNr)
+                {
+                    PhotonNetwork.Destroy(this.gameObject);
+                }
             }
         }
     }

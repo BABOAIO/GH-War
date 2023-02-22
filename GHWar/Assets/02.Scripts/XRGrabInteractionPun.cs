@@ -54,6 +54,7 @@ public class XRGrabInteractionPun : XRGrabInteractable // 이 항목이 있기에 인스�
     {
         isGrab = !isGrab;
     }
+
     [PunRPC]
     void GrabSound()
     {
