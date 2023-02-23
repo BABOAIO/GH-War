@@ -9,6 +9,7 @@ using Photon.Realtime;
 public class DisconnectIsOutPlayer : MonoBehaviourPunCallbacks
 {
     bool IsVR;
+    public bool IsGrab = false;
     XRGrabInteractionPun _xr;
 
     private void Start()
@@ -19,7 +20,7 @@ public class DisconnectIsOutPlayer : MonoBehaviourPunCallbacks
 
     private void FixedUpdate()
     {
-        if (!_xr.isGrab)
+        if (IsGrab)
         {
             if (PhotonNetwork.IsMasterClient)
             {
