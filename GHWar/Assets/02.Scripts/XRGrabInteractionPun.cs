@@ -44,15 +44,15 @@ public class XRGrabInteractionPun : XRGrabInteractable // 이 항목이 있기에 인스�
     [System.Obsolete]
     protected override void OnSelectExited(XRBaseInteractor interactor)
     {
-        IsGrabReverse();
-        pv.RPC("IsGrabReverse", RpcTarget.Others);
-        Invoke("PassOwnership", 0.1f);
+        pv.TransferOwnership(player_this);
+        Invoke("PassNextGrabbalbe", 0.3f);
         base.OnSelectExited(interactor);
     }
 
-    void PassOwnership()
+    void PassNextGrabbalbe()
     {
-        pv.TransferOwnership(player_this);
+        IsGrabReverse();
+        pv.RPC("IsGrabReverse", RpcTarget.Others);
     }
 
     // 그랩이 되있을 경우, 컬라이더를 없애주면서 화면에서 떨리는 모습을 막아준다.
