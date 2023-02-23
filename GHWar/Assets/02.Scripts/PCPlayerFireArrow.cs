@@ -88,6 +88,7 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
     void FixedUpdate()
     {
         currentTime += Time.fixedDeltaTime;
+        currentUlt += Time.fixedDeltaTime;
 
         if (pv.IsMine)
         {
@@ -116,17 +117,17 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
     void PowerShot()
     {
         if (Input.GetKeyDown(KeyCode.Q)
-            && (currentTime >= maxUlt)
-            && !_Move.isJump
+            && (currentUlt > maxUlt)
             && !b_ReadyToPowerShot
             )
         {
-            GaugeFullChage();
             for (int i = 0; i < ps_ReadyToPowerShot.Length; i++)
             {
                 ps_ReadyToPowerShot[i].Play();
             }
             b_ReadyToPowerShot = true;
+            GaugeFullChage();
+            currentUlt = maxUlt;
         }
         if (ps_ReadyToPowerShot[0].isStopped
             && b_ReadyToPowerShot
@@ -137,16 +138,15 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
         {
             b_ReadyToPowerShot = false;
             currentUlt = 0.0f;
+            print("동작");
         }
 
         if (currentUlt <= maxUlt)
         {
-            currentUlt += perUlt * Time.deltaTime;
             currentUlt = Mathf.Min(currentUlt, maxUlt);
             float fillValue = currentUlt / maxUlt;
             img_Skill.fillAmount = fillValue;
         }
-        Debug.Log(currentUlt.ToString());
     }
 
     [PunRPC]
@@ -245,7 +245,7 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
     void GaugeFullChage()
     {
         // q누르면 바운스하는 효과
-        img_Skill.rectTransform.DOScale(img_Skill.rectTransform.localScale * 1.5f, 0.3f).
+        img_Skill.rectTransform.DOScale(img_Skill.rectTransform.localScale * 1.3f, 0.3f).
             OnStart(() => { img_CoolDown.enabled = false; }).
             OnComplete(() => { img_Skill.rectTransform.DOScale(Vector3.one, 0.3f)
                 .OnComplete(() => { img_CoolDown.enabled = true; });   });
@@ -259,6 +259,7 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
     // 파워 샷 부분
     void CoolTimeUI()
     {
+        currentUlt = 0f;
         img_Skill.fillAmount = 0f;
         img_Skill.type = Image.Type.Filled;
         img_Skill.fillMethod = Image.FillMethod.Radial360;
@@ -272,7 +273,6 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
         if (Input.GetKeyDown(KeyCode.Q)
             && (currentTime >= delayTime)
             && currentUlt >= maxUlt
-            && !_Move.isJump
             )
         {
             shotPowInGame = shotPow;

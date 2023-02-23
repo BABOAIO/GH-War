@@ -9,12 +9,18 @@ using Photon.Realtime;
 public class DisconnectIsOutPlayer : MonoBehaviourPunCallbacks
 {
     bool IsVR;
-    bool IsGrab;
+    bool IsGrab
+    {
+        get { return GetComponent<XRGrabInteractionPun>().isGrab; }
+        set
+        {
+            value = GetComponent<XRGrabInteractionPun>().isGrab;
+        }
+    }
 
     private void Start()
     {
         IsVR = GameManager.instance.IsVR;
-        IsGrab = GetComponent<XRGrabInteractionPun>().isGrab;
     }
 
     private void FixedUpdate()

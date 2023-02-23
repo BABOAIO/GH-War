@@ -173,7 +173,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
 
                 // 반동으로 떨어졌을때 힘 억제
                 //gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, gameObject.GetComponent<Rigidbody>().velocity.y, 0);
-                gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+                //gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
                 // 떨어질 때도 무적판정 존재, 큰의미는 없음
                 if (GameManager.instance.B_GameStart && currentTime >= invincibilityTime)
