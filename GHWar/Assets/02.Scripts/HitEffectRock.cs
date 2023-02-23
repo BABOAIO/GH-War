@@ -71,7 +71,7 @@ public class HitEffectRock : MonoBehaviourPun
                 else if (collision.gameObject.GetComponent<Rigidbody>().mass >= GetComponent<Rigidbody>().mass)
                 {
                     as_rock.PlayOneShot(ac_throwHit);
-                    if (GetComponent<Rigidbody>().velocity.magnitude > 20f || collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude > 20f)
+                    if (GetComponent<Rigidbody>().velocity.magnitude > 10f || collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude > 20f)
                     {
                         GameObject o_effect = PhotonNetwork.Instantiate("HitEffect2", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
                         GetComponent<MeshCollider>().enabled = false;
