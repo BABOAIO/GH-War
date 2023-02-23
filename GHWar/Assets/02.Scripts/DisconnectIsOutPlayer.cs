@@ -20,7 +20,7 @@ public class DisconnectIsOutPlayer : MonoBehaviourPunCallbacks
 
     private void FixedUpdate()
     {
-        if (IsGrab)
+        if (!IsGrab)
         {
             if (PhotonNetwork.IsMasterClient)
             {
