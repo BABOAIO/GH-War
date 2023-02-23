@@ -28,7 +28,8 @@ public class XRGrabInteractionPun : XRGrabInteractable // 이 항목이 있기에 인스�
     protected override void OnSelectEntered(XRBaseInteractor interactor)
     {
         pv.RequestOwnership();
-        pv.RPC("IsGrabReverse", RpcTarget.All);
+        IsGrabReverse();
+        pv.RPC("IsGrabReverse", RpcTarget.Others);
         base.OnSelectEntered(interactor);
     }
 
@@ -44,7 +45,8 @@ public class XRGrabInteractionPun : XRGrabInteractable // 이 항목이 있기에 인스�
     protected override void OnSelectExited(XRBaseInteractor interactor)
     {
         pv.TransferOwnership(player_this);
-        pv.RPC("IsGrabReverse", RpcTarget.All);
+        IsGrabReverse();
+        pv.RPC("IsGrabReverse", RpcTarget.Others);
         base.OnSelectExited(interactor);
     }
 

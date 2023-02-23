@@ -7,6 +7,7 @@ using Photon.Realtime;
 using UnityEngine.UI;
 using DG.Tweening;
 using UniRx;
+using UnityEngine.SceneManagement;
 
 // 게임매니저 오브젝트에 넣는다.
 public class GameManager : MonoBehaviourPunCallbacks
@@ -568,11 +569,18 @@ public class GameManager : MonoBehaviourPunCallbacks
         RotateSkyBox(RotationPerSecond);
 
         if (Input.GetKeyUp(KeyCode.Alpha3)) 
-        { 
-            GameObject tmp =
-            PhotonNetwork.Instantiate("Rock", new Vector3(0.22314f, 0f, -13.8f), Quaternion.identity);
-            tmp.layer = LayerMask.NameToLayer("PCPlayer");
-            Destroy(tmp, 1.5f);
+        {
+            //GameObject tmp =
+            //PhotonNetwork.Instantiate("Rock", new Vector3(0.22314f, 0f, -13.8f), Quaternion.identity);
+            //tmp.layer = LayerMask.NameToLayer("PCPlayer");
+            //Destroy(tmp, 1.5f);
+            if(PhotonNetwork.IsMasterClient)
+            {
+                PhotonNetwork.DestroyAll();
+                PhotonNetwork.LeaveRoom();
+                PhotonNetwork.Disconnect();
+                SceneManager.LoadScene("MainScene");
+            }
         }
 
         if (Input.GetKeyUp(KeyCode.Alpha4))
@@ -627,7 +635,10 @@ public class GameManager : MonoBehaviourPunCallbacks
         // Canvas, Animator State 초기화
 
         // 승패 결정 시 서버종료
+        PhotonNetwork.DestroyAll();
         PhotonNetwork.LeaveRoom();
+        PhotonNetwork.Disconnect();
+        SceneManager.LoadScene("MainScene");
         //Application.Quit();
     }
 
