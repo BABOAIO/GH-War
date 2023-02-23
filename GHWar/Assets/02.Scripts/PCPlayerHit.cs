@@ -324,20 +324,15 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
             {
                 all_child_skinnedMeshRenderer[j].enabled = false;
             }
-            yield return new WaitForSeconds(0.1f);
-            for (int j = 0; j < all_child_skinnedMeshRenderer.Length; j++)
-            {
-                all_child_skinnedMeshRenderer[j].enabled = true;
-            }
-            yield return new WaitForSeconds(0.1f);
-        }
-        for (int i = 0; i < 10; i++)
-        {
             for (int j = 0; j < all_child_meshRenderer.Length; j++)
             {
                 all_child_meshRenderer[j].enabled = false;
             }
             yield return new WaitForSeconds(0.1f);
+            for (int j = 0; j < all_child_skinnedMeshRenderer.Length; j++)
+            {
+                all_child_skinnedMeshRenderer[j].enabled = true;
+            }
             for (int j = 0; j < all_child_meshRenderer.Length; j++)
             {
                 all_child_meshRenderer[j].enabled = true;
