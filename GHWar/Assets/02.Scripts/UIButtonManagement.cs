@@ -15,7 +15,7 @@ using System;
 public class UIButtonManagement : MonoBehaviourPun
 {
     // 꺼놓고 시작
-    [SerializeField] GameObject connManager;
+    public GameObject connManager;
     // 게임시작시 꺼지는 로비
     [SerializeField] GameObject deactiveObj;
     [SerializeField] GameObject deactiveObj_LineL;

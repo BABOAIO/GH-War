@@ -11,7 +11,7 @@ using UnityEngine.UI;
 public class ConnManager : MonoBehaviourPunCallbacks
 {
     // 포톤서버에 스폰할 플레이어의 오브젝트이름(0이면 VR, 1이면 PC)
-    [SerializeField] string[] array_PlayerType = new string[2];
+    public string[] array_PlayerType = new string[2];
 
     // 최대 접속인원
     public byte Byte_maxPlayer = 2;
