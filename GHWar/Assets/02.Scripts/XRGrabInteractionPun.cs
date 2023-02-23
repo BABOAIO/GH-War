@@ -27,9 +27,9 @@ public class XRGrabInteractionPun : XRGrabInteractable // 이 항목이 있기에 인스�
     [System.Obsolete]
     protected override void OnSelectEntered(XRBaseInteractor interactor)
     {
-        pv.RequestOwnership();
         IsGrabReverse();
         pv.RPC("IsGrabReverse", RpcTarget.Others);
+        pv.RequestOwnership();
         base.OnSelectEntered(interactor);
     }
 
@@ -55,6 +55,15 @@ public class XRGrabInteractionPun : XRGrabInteractable // 이 항목이 있기에 인스�
     void IsGrabReverse()
     {
         isGrab = !isGrab;
+    }
+
+    void IsTrue(bool _b)
+    {
+        _b = true;
+    }
+    void IsFalse(bool _b)
+    {
+        _b = false;
     }
 
     [PunRPC]
