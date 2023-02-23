@@ -120,25 +120,25 @@ public class HandPresencePhysic : MonoBehaviour
         // 손에 위치를 따라오게 하는 부분(방향벡터)
         rb_this.velocity = (t_target.position - transform.position) / (Time.fixedDeltaTime);
 
-        //// 쿼터니언은 3x3행렬을 변환시킨 것 >> 각도의 연산을 하려면, 역산할 부분이 앞에 곱해짐(결합법칙이 성립하지 않음)
-        //// 연산은 기본적으로 이후 방향 + (- 지난 방향) (-1은 쿼터니언의 경우 역행렬)
-        //// 원점으로 옮긴 후 원하는 방향으로 회전한다는 의미
-        //Quaternion q_rotationDifference = t_target.rotation * Quaternion.Inverse(transform.rotation);
-        //// 쿼터니언을 회전축과 회전각으로 변환시킴
-        //q_rotationDifference.ToAngleAxis(out float f_angleInDegree, out Vector3 v3_rotationAxis);
+        // 쿼터니언은 3x3행렬을 변환시킨 것 >> 각도의 연산을 하려면, 역산할 부분이 앞에 곱해짐(결합법칙이 성립하지 않음)
+        // 연산은 기본적으로 이후 방향 + (- 지난 방향) (-1은 쿼터니언의 경우 역행렬)
+        // 원점으로 옮긴 후 원하는 방향으로 회전한다는 의미
+        Quaternion q_rotationDifference = t_target.rotation * Quaternion.Inverse(transform.rotation);
+        // 쿼터니언을 회전축과 회전각으로 변환시킴
+        q_rotationDifference.ToAngleAxis(out float f_angleInDegree, out Vector3 v3_rotationAxis);
 
-        //// 축을 모르는 상황에서 상하한을 주는 것은 의미가 없음 >> 실험에서 0보다 작은 값을 주면 안되는 이유가 여기있음
-        //f_angleInDegree = Mathf.Clamp(f_angleInDegree, v2_rangeOfHandRotation.x, v2_rangeOfHandRotation.y);
+        // 축을 모르는 상황에서 상하한을 주는 것은 의미가 없음 >> 실험에서 0보다 작은 값을 주면 안되는 이유가 여기있음
+        f_angleInDegree = Mathf.Clamp(f_angleInDegree, v2_rangeOfHandRotation.x, v2_rangeOfHandRotation.y);
 
-        //// 쿼터니언을 그대로 채용할 것을 오일러로 다시 변환 >> 위의 계산에 의미가 없어짐
-        //Vector3 v3_rotationDifferenceInDegree = f_angleInDegree * v3_rotationAxis;
+        // 쿼터니언을 그대로 채용할 것을 오일러로 다시 변환 >> 위의 계산에 의미가 없어짐
+        Vector3 v3_rotationDifferenceInDegree = f_angleInDegree * v3_rotationAxis;
 
-        //// 오일러로 변환한 값을 라디안으로 수정하여 단위시간에 따른 각속도로 변환
-        //rb_this.angularVelocity = (v3_rotationDifferenceInDegree * Mathf.Deg2Rad / Time.fixedDeltaTime);
+        // 오일러로 변환한 값을 라디안으로 수정하여 단위시간에 따른 각속도로 변환
+        rb_this.angularVelocity = (v3_rotationDifferenceInDegree * Mathf.Deg2Rad / Time.fixedDeltaTime);
 
         //해결책 1 : 손의 회전각을 그대로 따라감
         // 이 부분이면 한번에 해결되지만, 땅과 닿는 부분에서 어색함이 느껴짐
-        transform.rotation = t_target.rotation;
+        //transform.rotation = t_target.rotation;
 
     }
 }
