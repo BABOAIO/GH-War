@@ -9,6 +9,11 @@ public class LobbyMouseEvent : MonoBehaviour
 {
     [SerializeField] GameObject O_EventSystem;
 
+    [SerializeField]
+    AudioClip ac_Enter;
+    [SerializeField]
+    AudioClip ac_Select;
+
     AudioSource as_This;
 
     Animator a_Player;
@@ -31,6 +36,7 @@ public class LobbyMouseEvent : MonoBehaviour
         a_Player = GetComponent<Animator>();
 
         _selectPlayerState = SelectPlayerState.Idle;
+        as_This.Stop();
     }
 
     private void Update()
@@ -70,6 +76,7 @@ public class LobbyMouseEvent : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        as_This.PlayOneShot(ac_Enter);
         _selectPlayerState = SelectPlayerState.Selecting;
         // Start anim...
     }
@@ -82,6 +89,7 @@ public class LobbyMouseEvent : MonoBehaviour
 
     private void OnMouseDown()
     {
+        as_This.PlayOneShot(ac_Select);
         _selectPlayerState = SelectPlayerState.CheckSelect;
         a_Other.GetComponent<LobbyMouseEvent>()._selectPlayerState = SelectPlayerState.Rejected;
         O_EventSystem.GetComponent<UIButtonManagement>().connManager.GetComponent<ConnManager>().array_PlayerType[1] = gameObject.name;
