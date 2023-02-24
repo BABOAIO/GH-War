@@ -635,6 +635,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         // Canvas, Animator State 초기화
 
         // 승패 결정 시 서버종료
+        DOTween.Clear();
         PhotonNetwork.LeaveRoom();
         PhotonNetwork.Disconnect();
         SceneManager.LoadScene("MainScene");

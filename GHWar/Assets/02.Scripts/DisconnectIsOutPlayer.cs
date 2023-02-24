@@ -41,7 +41,7 @@ public class DisconnectIsOutPlayer : MonoBehaviourPunCallbacks
                 }
             }
         }
-        if (GameManager.instance.IsVR)
+        if (_xr == null)
         {
             if (PhotonNetwork.IsMasterClient)
             {
