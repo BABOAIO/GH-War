@@ -461,6 +461,14 @@ public class GameManager : MonoBehaviourPunCallbacks
     // 업데이트문으로 돌릴 포톤네트워크 함수
     void UpdatePhotonNetwork()
     {
+        if (Array_AllPlayers[0] == null)
+        {
+            print("NOVR");
+        }
+        if (Array_AllPlayers[1] == null)
+        {
+            print("NOPC");
+        }
         if (B_GameStart)
         {
             CheckWinner();
@@ -496,7 +504,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 // VR이 이겼을 경우, PC가 나갔을 경우,
                 //else if (Array_AllPlayers[1].GetComponent<PCPlayerHit>().HP <= 0)
-                else if (i_PCDeathCount <= 0 || Array_AllPlayers[1] == null)
+                if (Array_AllPlayers[1] == null || i_PCDeathCount <= 0)
                 {
                     B_IsGameOver = true;
                     currentTime = 0;
@@ -517,8 +525,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
             else
             {
-                // PC가 이겼을 경우, VR이 나갔을 경우
-                //if (Array_AllPlayers[0].GetComponent<VRPlayerMove1>().o_vrFace.GetComponent<VRPlayerHit>().HP <= 0)
+                // PC가 이겼을 경우, VR이 나갔을 경우,
                 if (Array_AllPlayers[0].GetComponentInChildren<VRPlayerHit>().HP <= 0 || Array_AllPlayers[0] == null)
                 {
                     B_IsGameOver = true;
@@ -539,12 +546,11 @@ public class GameManager : MonoBehaviourPunCallbacks
                 }
                 // VR이 이겼을 경우, PC가 나갔을 경우,
                 //else if (Array_AllPlayers[1].GetComponent<PCPlayerHit>().HP <= 0)
-                else if (i_PCDeathCount <= 0 || Array_AllPlayers[1] == null)
+                if (Array_AllPlayers[1] == null || i_PCDeathCount <= 0)
                 {
                     B_IsGameOver = true;
                     currentTime = 0;
 
-                    // canvas 추가
                     if (Array_txtWinner[0] != null)
                     {
                         Array_txtWinner[0].text = "VR Player Win!!";
