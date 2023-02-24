@@ -33,12 +33,16 @@ public class GameManager : MonoBehaviourPunCallbacks
     public bool B_DetroyGround = true;
 
     // VR 플레이어는 0, PC 플레이어는 1
-    [Header("상태텍스트 / 0이면 VR, 1이면 PC")]
-    public Text[] Array_txtWinner = new Text[2];
+    [Header("상태텍스트 VR")]
+    public Text VRText;
+    [Header("상태텍스트 PC")]
+    public Text PCText;
 
-    // VR 플레이어는 0, PC 플레이어는 1
-    [Header("대전 플레이어 / 0이면 VR, 1이면 PC")]
-    public GameObject[] Array_AllPlayers = new GameObject[2];
+    [Header("대전 플레이어 VR")]
+    public GameObject VRPlayer;
+    [Header("대전 플레이어 PC")]
+    public GameObject PCPlayer;
+
 
     // 게임 시작 시 리셋
     [Header("PC 플레이어 목숨 수")]
@@ -109,168 +113,168 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         while (!B_GameStart)
         {
-            if (Array_AllPlayers[0])
+            if (VRPlayer)
             {
-                switch (Array_txtWinner[0].text)
+                switch (VRText.text)
                 {
                     case "":
-                        Array_txtWinner[0].text = "W";
+                        VRText.text = "W";
                         break;
                     case "W":
-                        Array_txtWinner[0].text += "a";
+                        VRText.text += "a";
                         break;
                     case "Wa":
-                        Array_txtWinner[0].text += "i";
+                        VRText.text += "i";
                         break;
                     case "Wai":
-                        Array_txtWinner[0].text += "t";
+                        VRText.text += "t";
                         break;
                     case "Wait":
-                        Array_txtWinner[0].text += " ";
+                        VRText.text += " ";
                         break;
                     case "Wait ":
-                        Array_txtWinner[0].text += "f";
+                        VRText.text += "f";
                         break;
                     case "Wait f":
-                        Array_txtWinner[0].text += "o";
+                        VRText.text += "o";
                         break;
                     case "Wait fo":
-                        Array_txtWinner[0].text += "r";
+                        VRText.text += "r";
                         break;
                     case "Wait for":
-                        Array_txtWinner[0].text += " ";
+                        VRText.text += " ";
                         break;
                     case "Wait for ":
-                        Array_txtWinner[0].text += "O";
+                        VRText.text += "O";
                         break;
                     case "Wait for O":
-                        Array_txtWinner[0].text += "t";
+                        VRText.text += "t";
                         break;
                     case "Wait for Ot":
-                        Array_txtWinner[0].text += "h";
+                        VRText.text += "h";
                         break;
                     case "Wait for Oth":
-                        Array_txtWinner[0].text += "e";
+                        VRText.text += "e";
                         break;
                     case "Wait for Othe":
-                        Array_txtWinner[0].text += "r";
+                        VRText.text += "r";
                         break;
                     case "Wait for Other":
-                        Array_txtWinner[0].text += " ";
+                        VRText.text += " ";
                         break;
                     case "Wait for Other ":
-                        Array_txtWinner[0].text += "P";
+                        VRText.text += "P";
                         break;
                     case "Wait for Other P":
-                        Array_txtWinner[0].text += "l";
+                        VRText.text += "l";
                         break;
                     case "Wait for Other Pl":
-                        Array_txtWinner[0].text += "a";
+                        VRText.text += "a";
                         break;
                     case "Wait for Other Pla":
-                        Array_txtWinner[0].text += "y";
+                        VRText.text += "y";
                         break;
                     case "Wait for Other Play":
-                        Array_txtWinner[0].text += "e";
+                        VRText.text += "e";
                         break;
                     case "Wait for Other Playe":
-                        Array_txtWinner[0].text += "r";
+                        VRText.text += "r";
                         break;
                     case "Wait for Other Player":
-                        Array_txtWinner[0].text += ".";
+                        VRText.text += ".";
                         break;
                     case "Wait for Other Player.":
-                        Array_txtWinner[0].text += ".";
+                        VRText.text += ".";
                         break;
                     case "Wait for Other Player..":
-                        Array_txtWinner[0].text += ".";
+                        VRText.text += ".";
                         yield return new WaitForSeconds(1f);
                         break;
                     case "Wait for Other Player...":
-                        Array_txtWinner[0].text = "";
+                        VRText.text = "";
                         break;
                 }
             }
 
-            else if (Array_AllPlayers[1])
+            else if (PCPlayer)
             {
-                switch (Array_txtWinner[1].text)
+                switch (PCText.text)
                 {
                     case "":
-                        Array_txtWinner[1].text = "W";
+                        PCText.text = "W";
                         break;
                     case "W":
-                        Array_txtWinner[1].text += "a";
+                        PCText.text += "a";
                         break;
                     case "Wa":
-                        Array_txtWinner[1].text += "i";
+                        PCText.text += "i";
                         break;
                     case "Wai":
-                        Array_txtWinner[1].text += "t";
+                        PCText.text += "t";
                         break;
                     case "Wait":
-                        Array_txtWinner[1].text += " ";
+                        PCText.text += " ";
                         break;
                     case "Wait ":
-                        Array_txtWinner[1].text += "f";
+                        PCText.text += "f";
                         break;
                     case "Wait f":
-                        Array_txtWinner[1].text += "o";
+                        PCText.text += "o";
                         break;
                     case "Wait fo":
-                        Array_txtWinner[1].text += "r";
+                        PCText.text += "r";
                         break;
                     case "Wait for":
-                        Array_txtWinner[1].text += " ";
+                        PCText.text += " ";
                         break;
                     case "Wait for ":
-                        Array_txtWinner[1].text += "O";
+                        PCText.text += "O";
                         break;
                     case "Wait for O":
-                        Array_txtWinner[1].text += "t";
+                        PCText.text += "t";
                         break;
                     case "Wait for Ot":
-                        Array_txtWinner[1].text += "h";
+                        PCText.text += "h";
                         break;
                     case "Wait for Oth":
-                        Array_txtWinner[1].text += "e";
+                        PCText.text += "e";
                         break;
                     case "Wait for Othe":
-                        Array_txtWinner[1].text += "r";
+                        PCText.text += "r";
                         break;
                     case "Wait for Other":
-                        Array_txtWinner[1].text += " ";
+                        PCText.text += " ";
                         break;
                     case "Wait for Other ":
-                        Array_txtWinner[1].text += "P";
+                        PCText.text += "P";
                         break;
                     case "Wait for Other P":
-                        Array_txtWinner[1].text += "l";
+                        PCText.text += "l";
                         break;
                     case "Wait for Other Pl":
-                        Array_txtWinner[1].text += "a";
+                        PCText.text += "a";
                         break;
                     case "Wait for Other Pla":
-                        Array_txtWinner[1].text += "y";
+                        PCText.text += "y";
                         break;
                     case "Wait for Other Play":
-                        Array_txtWinner[1].text += "e";
+                        PCText.text += "e";
                         break;
                     case "Wait for Other Playe":
-                        Array_txtWinner[1].text += "r";
+                        PCText.text += "r";
                         break;
                     case "Wait for Other Player":
-                        Array_txtWinner[1].text += ".";
+                        PCText.text += ".";
                         break;
                     case "Wait for Other Player.":
-                        Array_txtWinner[1].text += ".";
+                        PCText.text += ".";
                         break;
                     case "Wait for Other Player..":
-                        Array_txtWinner[1].text += ".";
+                        PCText.text += ".";
                         yield return new WaitForSeconds(1f);
                         break;
                     case "Wait for Other Player...":
-                        Array_txtWinner[1].text = "";
+                        PCText.text = "";
                         break;
                 }
             }
@@ -290,18 +294,18 @@ public class GameManager : MonoBehaviourPunCallbacks
             if (PhotonNetwork.IsMasterClient)
             {
                 // ConnManager에서 플레이어가 생성될 때, 싱글턴으로 넣어줌
-                if (Array_AllPlayers[0])
+                if (VRPlayer)
                 {
                     Debug.Log(str);
                     GameObject o_otherPlayer = GameObject.FindGameObjectWithTag("PC_Player");
 
                     if (o_otherPlayer)
                     {
-                        Array_AllPlayers[1] = o_otherPlayer;
-                        Array_txtWinner[1] = Array_AllPlayers[1].GetComponent<PC_Player_Move>().Txt_winnerText_PC;
+                        PCPlayer = o_otherPlayer;
+                        PCText = PCPlayer.GetComponent<PC_Player_Move>().Txt_winnerText_PC;
                         Debug.Log("Game Start!");
 
-                        Array_txtWinner[0].text = "Game Start!";
+                        VRText.text = "Game Start!";
 
                         ResetBeforeGameStart(2);
                         Invoke("StartGame", delay);
@@ -309,19 +313,19 @@ public class GameManager : MonoBehaviourPunCallbacks
                     }
                 }
                 // ConnManager에서 플레이어가 생성될 때, 싱글턴으로 넣어줌
-                else if (Array_AllPlayers[1])
+                else if (PCPlayer)
                 {
-                    //Array_txtWinner[1].text = str;
+                    //PCText.text = str;
                     Debug.Log(str);
                     GameObject o_otherPlayer = GameObject.FindGameObjectWithTag("VR_Player");
 
                     if (o_otherPlayer)
                     {
-                        Array_AllPlayers[0] = o_otherPlayer;
-                        Array_txtWinner[0] = Array_AllPlayers[0].GetComponent<VRPlayerMove>().Txt_winnerText_VR;
+                        VRPlayer = o_otherPlayer;
+                        VRText = VRPlayer.GetComponent<VRPlayerMove>().Txt_winnerText_VR;
                         Debug.Log("Game Start!");
 
-                        Array_txtWinner[1].text = "Game Start!";
+                        PCText.text = "Game Start!";
 
                         ResetBeforeGameStart(2);
                         Invoke("StartGame", delay);
@@ -332,38 +336,38 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
             else
             {
-                if (Array_AllPlayers[0])
+                if (VRPlayer)
                 {
-                    //Array_txtWinner[0].text = str;
+                    //VRText.text = str;
                     Debug.Log(str);
                     GameObject o_otherPlayer = GameObject.FindGameObjectWithTag("PC_Player");
 
                     if (o_otherPlayer)
                     {
-                        Array_AllPlayers[1] = o_otherPlayer;
-                        Array_txtWinner[1] = Array_AllPlayers[1].GetComponent<PC_Player_Move>().Txt_winnerText_PC;
+                        PCPlayer = o_otherPlayer;
+                        PCText = PCPlayer.GetComponent<PC_Player_Move>().Txt_winnerText_PC;
                         Debug.Log("Game Start!");
 
-                        Array_txtWinner[0].text = "Game Start!";
+                        VRText.text = "Game Start!";
 
                         ResetBeforeGameStart(2);
                         Invoke("StartGame", delay);
                         // sound 등 게임시작 알림
                     }
                 }
-                else if (Array_AllPlayers[1])
+                else if (PCPlayer)
                 {
-                    //Array_txtWinner[1].text = str;
+                    //PCText.text = str;
                     Debug.Log(str);
                     GameObject o_otherPlayer = GameObject.FindGameObjectWithTag("VR_Player");
 
                     if (o_otherPlayer)
                     {
-                        Array_AllPlayers[0] = o_otherPlayer;
-                        Array_txtWinner[0] = Array_AllPlayers[0].GetComponent<VRPlayerMove>().Txt_winnerText_VR;
+                        VRPlayer = o_otherPlayer;
+                        VRText = VRPlayer.GetComponent<VRPlayerMove>().Txt_winnerText_VR;
                         Debug.Log("Game Start!");
 
-                        Array_txtWinner[1].text = "Game Start!";
+                        PCText.text = "Game Start!";
 
                         ResetBeforeGameStart(2);
                         Invoke("StartGame", delay);
@@ -396,8 +400,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     // 텍스트 초기화 + 게임 스타트
     void StartGame()
     {
-        Array_txtWinner[0].text = "";
-        Array_txtWinner[1].text = "";
+        VRText.text = "";
+        PCText.text = "";
         B_GameStart = true;
     }
 
@@ -461,14 +465,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     // 업데이트문으로 돌릴 포톤네트워크 함수
     void UpdatePhotonNetwork()
     {
-        if (Array_AllPlayers[0] == null)
-        {
-            print("NOVR");
-        }
-        if (Array_AllPlayers[1] == null)
-        {
-            print("NOPC");
-        }
         if (B_GameStart)
         {
             CheckWinner();
@@ -484,18 +480,18 @@ public class GameManager : MonoBehaviourPunCallbacks
             if (PhotonNetwork.IsMasterClient)
             {
                 // PC가 이겼을 경우, VR이 나갔을 경우,
-                if (Array_AllPlayers[0].GetComponentInChildren<VRPlayerHit>().HP <= 0 || Array_AllPlayers[0] == null)
+                if (VRPlayer.GetComponentInChildren<VRPlayerHit>().HP <= 0 || VRPlayer == null)
                 {
                     B_IsGameOver = true;
                     currentTime = 0;
 
-                    if (Array_txtWinner[1] != null)
+                    if (PCText != null)
                     {
-                        Array_txtWinner[1].text = "PC Player Win!!";
+                        PCText.text = "PC Player Win!!";
                     }
-                    if (Array_txtWinner[0] != null)
+                    if (VRText != null)
                     {
-                        Array_txtWinner[0].text = "VR Player Lose..";
+                        VRText.text = "VR Player Lose..";
                     }
 
                     Debug.Log("PC Player Win!!");
@@ -503,19 +499,19 @@ public class GameManager : MonoBehaviourPunCallbacks
                     StartCoroutine(LeaveEnd(3f));
                 }
                 // VR이 이겼을 경우, PC가 나갔을 경우,
-                //else if (Array_AllPlayers[1].GetComponent<PCPlayerHit>().HP <= 0)
-                if (Array_AllPlayers[1] == null || i_PCDeathCount <= 0)
+                //else if (PCPlayer.GetComponent<PCPlayerHit>().HP <= 0)
+                if (PCPlayer == null || i_PCDeathCount <= 0)
                 {
                     B_IsGameOver = true;
                     currentTime = 0;
 
-                    if (Array_txtWinner[0] != null)
+                    if (VRText != null)
                     {
-                        Array_txtWinner[0].text = "VR Player Win!!";
+                        VRText.text = "VR Player Win!!";
                     }
-                    if (Array_txtWinner[1] != null)
+                    if (PCText != null)
                     {
-                        Array_txtWinner[1].text = "PC Player Lose..";
+                        PCText.text = "PC Player Lose..";
                     }
 
                     Debug.Log("VR Player Win!!");
@@ -526,18 +522,18 @@ public class GameManager : MonoBehaviourPunCallbacks
             else
             {
                 // PC가 이겼을 경우, VR이 나갔을 경우,
-                if (Array_AllPlayers[0].GetComponentInChildren<VRPlayerHit>().HP <= 0 || Array_AllPlayers[0] == null)
+                if (VRPlayer.GetComponentInChildren<VRPlayerHit>().HP <= 0 || VRPlayer == null)
                 {
                     B_IsGameOver = true;
                     currentTime = 0;
 
-                    if (Array_txtWinner[1] != null)
+                    if (PCText != null)
                     {
-                        Array_txtWinner[1].text = "PC Player Win!!";
+                        PCText.text = "PC Player Win!!";
                     }
-                    if (Array_txtWinner[0] != null)
+                    if (VRText != null)
                     {
-                        Array_txtWinner[0].text = "VR Player Lose..";
+                        VRText.text = "VR Player Lose..";
                     }
 
                     Debug.Log("PC Player Win!!");
@@ -545,19 +541,19 @@ public class GameManager : MonoBehaviourPunCallbacks
                     StartCoroutine(LeaveEnd(3f));
                 }
                 // VR이 이겼을 경우, PC가 나갔을 경우,
-                //else if (Array_AllPlayers[1].GetComponent<PCPlayerHit>().HP <= 0)
-                if (Array_AllPlayers[1] == null || i_PCDeathCount <= 0)
+                //else if (PCPlayer.GetComponent<PCPlayerHit>().HP <= 0)
+                if (PCPlayer == null || i_PCDeathCount <= 0)
                 {
                     B_IsGameOver = true;
                     currentTime = 0;
 
-                    if (Array_txtWinner[0] != null)
+                    if (VRText != null)
                     {
-                        Array_txtWinner[0].text = "VR Player Win!!";
+                        VRText.text = "VR Player Win!!";
                     }
-                    if (Array_txtWinner[1] != null)
+                    if (PCText != null)
                     {
-                        Array_txtWinner[1].text = "PC Player Lose..";
+                        PCText.text = "PC Player Lose..";
                     }
 
                     Debug.Log("VR Player Win!!");
@@ -630,8 +626,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     public void LeaveRoom()
     {
         // 초기화
-        Array_AllPlayers[0] = null;
-        Array_AllPlayers[1] = null;
+        VRPlayer = null;
+        PCPlayer = null;
 
         B_IsGameOver = false;
         B_GameStart = false;

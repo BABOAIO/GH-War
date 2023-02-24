@@ -88,18 +88,18 @@ public class ConnManager : MonoBehaviourPunCallbacks
         if (GameManager.instance.IsVR)
         {
             //Vector2 originPos = Random.insideUnitCircle * 2.0f;
-            GameManager.instance.Array_AllPlayers[0] = PhotonNetwork.Instantiate(array_PlayerType[0], VR_Spawn, Quaternion.Euler(0,180,0));
+            GameManager.instance.VRPlayer = PhotonNetwork.Instantiate(array_PlayerType[0], VR_Spawn, Quaternion.Euler(0,180,0));
             // 싱글톤 게임매니저에 생성된 플레이어의 텍스트를 연결
-            GameManager.instance.Array_txtWinner[0] = GameManager.instance.Array_AllPlayers[0].GetComponent<VRPlayerMove>().Txt_winnerText_VR;
+            GameManager.instance.VRText = GameManager.instance.VRPlayer.GetComponent<VRPlayerMove>().Txt_winnerText_VR;
         }
         // PC 플레이어 생성
         else
         {
             //Vector2 originPos = Random.insideUnitCircle * 2.0f;
             //PhotonNetwork.Instantiate("PCPlayerXR", PC_Spawn, Quaternion.identity);
-            GameManager.instance.Array_AllPlayers[1] = PhotonNetwork.Instantiate(array_PlayerType[1], PC_Spawn, Quaternion.identity);
+            GameManager.instance.PCPlayer = PhotonNetwork.Instantiate(array_PlayerType[1], PC_Spawn, Quaternion.identity);
             // 싱글톤 게임매니저에 생성된 플레이어의 텍스트를 연결
-            GameManager.instance.Array_txtWinner[1] = GameManager.instance.Array_AllPlayers[1].GetComponent<PC_Player_Move>().Txt_winnerText_PC;
+            GameManager.instance.PCText = GameManager.instance.PCPlayer.GetComponent<PC_Player_Move>().Txt_winnerText_PC;
         }
     }
 
