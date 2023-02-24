@@ -20,13 +20,29 @@ public class DisconnectIsOutPlayer : MonoBehaviourPunCallbacks
 
     private void FixedUpdate()
     {
-        if (!IsGrab)
+        if(_xr != null)
         {
-            if (PhotonNetwork.IsMasterClient)
+            if (!IsGrab)
             {
-                if (photonView.ControllerActorNr != photonView.CreatorActorNr)
+                if (PhotonNetwork.IsMasterClient)
                 {
-                    PhotonNetwork.Destroy(this.gameObject);
+                    if (photonView.ControllerActorNr != photonView.CreatorActorNr)
+                    {
+                        PhotonNetwork.Destroy(this.gameObject);
+                    }
+                }
+            }
+        }
+        else
+        {
+            if (GameManager.instance.IsVR)
+            {
+                if (PhotonNetwork.IsMasterClient)
+                {
+                    if (photonView.ControllerActorNr != photonView.CreatorActorNr)
+                    {
+                        PhotonNetwork.Destroy(this.gameObject);
+                    }
                 }
             }
         }

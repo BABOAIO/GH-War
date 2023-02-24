@@ -85,12 +85,13 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
             if (currentTime >= invincibilityTime)
             {
                 // VR플레이어의 손위에 올라갈 때
-                if ((collision.gameObject.CompareTag("RightHand") || collision.gameObject.CompareTag("LeftHand")))
+                if ((collision.gameObject.layer == LayerMask.NameToLayer("RightHandPhysics") || collision.gameObject.layer == LayerMask.NameToLayer("LeftHandPhysics")))
                 {
+                    float f_HitFist = collision.gameObject.GetComponent<HandPresence>().gripValue;
                     if (f_objVelocity >= 5f)
                     {
                         // 주먹을 쥐었을 경우, 피격
-                        if (collision.gameObject.GetComponent<HandPresence>().gripValue >= 0.5f)
+                        if (f_HitFist >= 0.0f)
                         {
                             GameObject o_effect = PhotonNetwork.Instantiate("HitEffect2", collision.contacts[0].point, Quaternion.LookRotation(collision.contacts[0].point, collision.contacts[0].normal));
                             HitPCPlayer_PhotonView(1);
@@ -99,6 +100,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
                         // 주먹을 쥐지 않을 경우, 튕겨남 방지
                         else
                         {
+                            HitPCPlayer_PhotonView(1);
                             FunctionForceReducing();
                             photonView.RPC("FunctionForceReducing", RpcTarget.AllBuffered);
                         }

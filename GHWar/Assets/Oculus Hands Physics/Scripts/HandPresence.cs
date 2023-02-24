@@ -11,8 +11,8 @@ public class HandPresence : MonoBehaviour
     private InputDevice targetDevice;
     public Animator handAnimator;
 
-    public float triggerValue;
-    public float gripValue;
+    public float triggerValue; // 검지 버튼 > 집기
+    public float gripValue; // 중지 버튼 > 주먹
 
     void Start()
     {
