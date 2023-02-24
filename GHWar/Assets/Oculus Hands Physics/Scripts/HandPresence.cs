@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
+using Photon.Pun;
 
 // VR 플레이어의 손(콜라이더가 있는)에 넣어준다.
 // 손 애니메이션 관련 스크립트
-public class HandPresence : MonoBehaviour
+public class HandPresence : MonoBehaviourPun, IPunObservable
 {
     public InputDeviceCharacteristics controllerCharacteristics;    
     private InputDevice targetDevice;
@@ -13,6 +14,9 @@ public class HandPresence : MonoBehaviour
 
     public float triggerValue; // 검지 버튼 > 집기
     public float gripValue; // 중지 버튼 > 주먹
+
+    float triggerValueOnPun;
+    float gripValueOnPun;
 
     void Start()
     {
@@ -56,14 +60,36 @@ public class HandPresence : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameObject.GetComponent<HandPresencePhysic>().IsHit) return;
-        if(!targetDevice.isValid)
+        if (photonView.IsMine)
         {
-            TryInitialize();
+            if (gameObject.GetComponent<HandPresencePhysic>().IsHit) return;
+            if (!targetDevice.isValid)
+            {
+                TryInitialize();
+            }
+            else
+            {
+                UpdateHandAnimation();
+            }
         }
         else
         {
-            UpdateHandAnimation();
+            triggerValue = triggerValueOnPun;
+            gripValue = gripValueOnPun;
+        }
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if(stream.IsReading)
+        {
+            triggerValueOnPun = (float)stream.ReceiveNext();
+            gripValue= (float)stream.ReceiveNext();
+        }
+        if(stream.IsWriting)
+        {
+            stream.SendNext(triggerValue);
+            stream.SendNext(gripValue);
         }
     }
 }

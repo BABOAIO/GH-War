@@ -15,7 +15,10 @@ public class DisconnectIsOutPlayer : MonoBehaviourPunCallbacks
     private void Start()
     {
         IsVR = GameManager.instance.IsVR;
-        _xr = GetComponent<XRGrabInteractionPun>();
+        if(!IsVR)
+        {
+            _xr = GetComponent<XRGrabInteractionPun>();
+        }
     }
 
     private void FixedUpdate()
@@ -33,16 +36,13 @@ public class DisconnectIsOutPlayer : MonoBehaviourPunCallbacks
                 }
             }
         }
-        else
+        if (GameManager.instance.IsVR)
         {
-            if (GameManager.instance.IsVR)
+            if (PhotonNetwork.IsMasterClient)
             {
-                if (PhotonNetwork.IsMasterClient)
+                if (photonView.ControllerActorNr != photonView.CreatorActorNr)
                 {
-                    if (photonView.ControllerActorNr != photonView.CreatorActorNr)
-                    {
-                        PhotonNetwork.Destroy(this.gameObject);
-                    }
+                    PhotonNetwork.Destroy(this.gameObject);
                 }
             }
         }
