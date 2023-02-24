@@ -50,8 +50,6 @@ public class PCPlayerFireArrow : MonoBehaviourPunCallbacks
     [SerializeField]
     float maxUlt = 5.0f;
     float perUlt = 1.0f;
-    float startUlt;
-    bool isEnded = true;
 
     [SerializeField] Image img_Skill;
     [SerializeField] Image img_CoolDown;

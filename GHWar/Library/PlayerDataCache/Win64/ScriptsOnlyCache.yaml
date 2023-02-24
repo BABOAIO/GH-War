@@ -23,6 +23,7 @@ ScriptsOnlyBuild:
     - HeadFollowCam
     - HitEffectRock
     - IsVROrPC
+    - LobbyMouseEvent
     - LookCamera
     - NoChildrenDestroy
     - NotPhotonviewisNull
@@ -114,10 +115,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -210,12 +209,6 @@ ScriptsOnlyBuild:
     fullTypeName: UIButtonManagement
     methodName: OnClickButton_GameStart
   - assembly: Assembly-CSharp
-    fullTypeName: OnClickButtonManager
-    methodName: OnClickReadyButton_VR
-  - assembly: Assembly-CSharp
-    fullTypeName: OnClickButtonManager
-    methodName: OnClickReadyButton_PC
-  - assembly: Assembly-CSharp
     fullTypeName: HandPresencePhysic
     methodName: OnSelect_DisableHandCollider
   - assembly: Assembly-CSharp
@@ -252,7 +245,7 @@ ScriptsOnlyBuild:
     fullTypeName: HandPresencePhysic
     methodName: OnSelect_EnableHandCollider_Delay
   sceneClasses:
-    Assets/01.Scenes/TestHandScene.unity:
+    Assets/01.Scenes/MainScene.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -478,17 +471,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12958}
     - Class: 114
-      Script: {instanceID: 13278}
+      Script: {instanceID: 13250}
     - Class: 114
-      Script: {instanceID: 13398}
+      Script: {instanceID: 13280}
     - Class: 114
-      Script: {instanceID: 13562}
+      Script: {instanceID: 13400}
     - Class: 114
-      Script: {instanceID: 13656}
+      Script: {instanceID: 13564}
     - Class: 114
-      Script: {instanceID: 13690}
+      Script: {instanceID: 13658}
     - Class: 114
-      Script: {instanceID: 67066}
+      Script: {instanceID: 13692}
+    - Class: 114
+      Script: {instanceID: 296236}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 120
@@ -926,7 +921,7 @@ ScriptsOnlyBuild:
     className: CurrentRoomPropertiesListedInLobbyProperty
   - hash:
       serializedVersion: 2
-      Hash: 0e0f691f8022a42d8e3e8e918a968130
+      Hash: e3c0cfb01797a5f7f80c44b13a7e40fd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PCPlayerFireArrow
@@ -1136,7 +1131,7 @@ ScriptsOnlyBuild:
     className: UnityOnDropdownValueChangedMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 26a2dca97d3c83920bb97eb8dc552047
+      Hash: d3a9314603538d3018538f325c94ed8f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TurretManager
@@ -1868,7 +1863,7 @@ ScriptsOnlyBuild:
     className: VRPlayerHandHit
   - hash:
       serializedVersion: 2
-      Hash: 7efadfdb80725dfd2a983d4998b4a2a8
+      Hash: 396e47fdebc4df642a28449129b7f633
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PropertyCubeTransform
@@ -2396,7 +2391,7 @@ ScriptsOnlyBuild:
     className: AimWalkStateMachine
   - hash:
       serializedVersion: 2
-      Hash: 33bdc75c508f8b42f792ecc4ab533998
+      Hash: 7f66bf87cd32dd74fa16b9e1cace89f5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: VRPlayerHit
@@ -3596,7 +3591,7 @@ ScriptsOnlyBuild:
     className: HandsActiveChecker
   - hash:
       serializedVersion: 2
-      Hash: 279b8dcbbdc5ce00386276846213b020
+      Hash: 7fbf7ab2ebe86b5a49d9b5f0ebecba37
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: IsVROrPC
@@ -3716,7 +3711,7 @@ ScriptsOnlyBuild:
     className: DictationServiceAudioEventReference
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 0c2df3948240588a8b0048a4f9e45fe7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DisconnectIsOutPlayer
@@ -4916,7 +4911,7 @@ ScriptsOnlyBuild:
     className: PassthroughBrush
   - hash:
       serializedVersion: 2
-      Hash: 7f969ee6aa26bca056f72d7074e8275a
+      Hash: fd408b611d5e6eb38af3adcd9a5c4850
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: FractureTest
@@ -6158,6 +6153,12 @@ ScriptsOnlyBuild:
     className: WorldGenerator
   - hash:
       serializedVersion: 2
+      Hash: 0c555d81abd1476d9494ac9ede484f5d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LobbyMouseEvent
+  - hash:
+      serializedVersion: 2
       Hash: c27504a7a749db1f24bcf5717c2170a5
     assemblyName: Oculus.Interaction.dll
     namespaceName: Oculus.Interaction
@@ -6332,5 +6333,5 @@ ScriptsOnlyBuild:
     className: UnityOnSliderValueChangedMessageListener
   platform: 19
   scenePathNames:
-  - Assets/01.Scenes/TestHandScene.unity
+  - Assets/01.Scenes/MainScene.unity
   playerPath: C:/Users/clicked/Desktop/Unity/BulidFile/TEST_BUILD/GHWar.exe

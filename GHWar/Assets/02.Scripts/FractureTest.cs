@@ -4,7 +4,6 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using DG.Tweening;
-using UnityEditor.ShortcutManagement;
 
 // 부서지는 지형에 넣는다
 // 리지드바드 콘스트레인스트 전부 체크 + 메쉬컬라이더 콘벡스+이즈트리거 체크 필수

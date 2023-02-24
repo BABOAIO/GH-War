@@ -15,9 +15,13 @@ public class DisconnectIsOutPlayer : MonoBehaviourPunCallbacks
     private void Start()
     {
         IsVR = GameManager.instance.IsVR;
-        if(!IsVR)
+        if (!IsVR)
         {
             _xr = GetComponent<XRGrabInteractionPun>();
+        }
+        else
+        {
+            _xr = null;
         }
     }
 
@@ -31,6 +35,7 @@ public class DisconnectIsOutPlayer : MonoBehaviourPunCallbacks
                 {
                     if (photonView.ControllerActorNr != photonView.CreatorActorNr)
                     {
+                        print("PCPlayer제거");
                         PhotonNetwork.Destroy(this.gameObject);
                     }
                 }
@@ -42,6 +47,7 @@ public class DisconnectIsOutPlayer : MonoBehaviourPunCallbacks
             {
                 if (photonView.ControllerActorNr != photonView.CreatorActorNr)
                 {
+                    print("VRPlayer제거");
                     PhotonNetwork.Destroy(this.gameObject);
                 }
             }
