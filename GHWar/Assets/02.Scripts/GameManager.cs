@@ -379,24 +379,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
-    // 준비완료 체크 미완
-    IEnumerator ReadyToGameStart()
-    {
-        while (!B_GameStart)
-        {
-            // 마스터 클라이언트는 항상 존재하기 때문에 구분해놓음
-            if (PhotonNetwork.IsMasterClient)
-            {
-
-            }
-            else
-            {
-                
-            }
-            yield return null;
-        }
-    }
-
     // 텍스트 초기화 + 게임 스타트
     void StartGame()
     {
