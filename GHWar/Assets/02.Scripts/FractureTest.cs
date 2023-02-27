@@ -32,6 +32,7 @@ public class FractureTest : MonoBehaviourPunCallbacks
         {
             // 부모 및 안의 터렛들은 예외처리
             if (c.name.Contains("_Parent") || c.gameObject.layer == LayerMask.NameToLayer("Turret")) continue;
+            c.gameObject.SetActive(false);
             c.gameObject.GetComponent<Renderer>().enabled = false;  // 렌더러 false
             Rigidbody rb = c.gameObject.GetComponent<Rigidbody>();  // 각 자식오브젝트의 리지드바디 컴포넌트 변수 할당
             rb.constraints = (RigidbodyConstraints)126; // 컨스트레인 전부 체크
@@ -40,7 +41,6 @@ public class FractureTest : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Alpha2)) { }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -65,6 +65,9 @@ public class FractureTest : MonoBehaviourPunCallbacks
         {
             // 부모 및 안의 터렛들은 예외처리
             if (c.name.Contains("_Parent") || c.gameObject.layer == LayerMask.NameToLayer("Turret")) continue;
+
+            //추가
+            c.gameObject.SetActive(true);
             c.gameObject.GetComponent<Renderer>().enabled = true;
             Rigidbody rb = c.gameObject.GetComponent<Rigidbody>();
             rb.constraints = (RigidbodyConstraints)0;   // 컨스트레인 전부 체크해제

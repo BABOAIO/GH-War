@@ -166,7 +166,7 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
                 {
                     transform.position =
                         GameManager.instance.o_PlayArea[^1]. // 리스트의 마지막 인덱스는 [^1]로 표시
-                        GetComponent<FractureTest>().tr_spawnPoint.position;
+                        GetComponentInChildren<FractureTest>().tr_spawnPoint.position;
                 }
 
                 // 반동으로 떨어졌을때 힘 억제
