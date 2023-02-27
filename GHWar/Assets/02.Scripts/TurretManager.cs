@@ -16,12 +16,8 @@ public class TurretManager : MonoBehaviourPunCallbacks
     [SerializeField] AudioClip ac_openTurret;
     [SerializeField] AudioClip ac_closeTurret;
     [SerializeField] AudioClip ac_shotTurret;
-    // 없어도 되지만 포톤서버가 아닐때 넣을 대포알
-    [SerializeField] GameObject cannonBall;
     // 대포알이 발사되는 지점(대포에 있는 armatur3 > bone > bone_end 에 넣는다.(대포 포신에 따라 움직임))
-    [SerializeField] Transform tr_firePos;
-    // 폭발하는 이펙트가 담긴 오브젝트(또는 파티클)
-    [SerializeField] GameObject o_exp;
+    [SerializeField] List<Transform> list_tr_firePos = new List<Transform>();
     // 대포에 순간적으로 가할 힘
     [SerializeField] float f_shotPower = 150f;
 
@@ -30,7 +26,7 @@ public class TurretManager : MonoBehaviourPunCallbacks
     //[SerializeField] Animation anim_turretOpen;
 
     // 대포 애니메이션
-    [SerializeField] Animator a_turret;
+    [SerializeField] List<Animator> list_A_turrets = new List<Animator>();
 
     // 버튼 인식에 대한 오차 범위
     [SerializeField] float f_errorRange = 0.025f;
@@ -62,14 +58,17 @@ public class TurretManager : MonoBehaviourPunCallbacks
 
     private void FixedUpdate()
     {
-        // 대포 애니메이션 중 아직 포문이 닫히지 않았을 경우, 쿨타임 동작
-        if (!a_turret.GetBool("Open"))
+        for(int i =0; i< list_A_turrets.Count; i++)
         {
-            currentTime += Time.fixedDeltaTime;
+            if (!list_A_turrets[i].GetBool("Open"))
+            {
 
-            int i_currTime = (int)currentTime;
+                currentTime += Time.fixedDeltaTime;
 
-            txt_countDown.text = i_currTime.ToString();
+                int i_currTime = (int)currentTime;
+
+                txt_countDown.text = i_currTime.ToString();
+            }
         }
 
         if (currentTime > delayTime)
@@ -92,36 +91,67 @@ public class TurretManager : MonoBehaviourPunCallbacks
         txt_countDown.text = "shot!!";
 
         as_turret.PlayOneShot(ac_openTurret, 0.5f);
-        a_turret.SetBool("Open", true);
+        for (int i = 0; i < list_A_turrets.Count; i++)
+        {
+            list_A_turrets[i].SetBool("Open", true);
+        }
         // 애니메이션이 끝까지 가지않아 대포가 중간에 멈춤방지
         yield return new WaitForSeconds(1.0f);
         as_turret.Stop();
         as_turret.PlayOneShot(ac_shotTurret, 0.5f);
-        a_turret.SetBool("Fire", true);
+        for (int i = 0; i < list_A_turrets.Count; i++)
+        {
+            list_A_turrets[i].SetBool("Fire", true);
+        }
 
         if (GameObject.FindGameObjectWithTag(str_TargetTag))
         {
-            tr_firePos.LookAt(GameObject.FindGameObjectWithTag(str_TargetTag).transform.position);
+            Vector3 v3_TargetPos = GameObject.FindGameObjectWithTag(str_TargetTag).transform.position;
+            for (int i = 0; i<list_tr_firePos.Count; i++)
+            {
+                list_tr_firePos[i].LookAt(v3_TargetPos);
+            }
         }
 
         if (photonView.IsMine)
         {
-            GameObject ball = PhotonNetwork.Instantiate("CannonBall", tr_firePos.position, Quaternion.identity, 0, null);
-            GameObject fireEffect = PhotonNetwork.Instantiate("HitEffect", tr_firePos.position, tr_firePos.rotation);
-            ball.GetComponent<Rigidbody>().AddForce(
-                // 삼항연산자로 VR없으면 대포따라 움직이고, 있으면 대포쪽으로 발사
-                (GameObject.FindGameObjectWithTag(str_TargetTag) ? tr_firePos.forward * f_shotPower : tr_firePos.up * f_shotPower)
-                // 한번에 쏘는 대포같은 느낌을 주기 위해
-                , ForceMode.Impulse);
+            GameObject ball;
+            GameObject fireEffect;
+            for (int i = 0; i < list_tr_firePos.Count; i++)
+            {
+                ball = PhotonNetwork.Instantiate("CannonBall", list_tr_firePos[i].position, Quaternion.identity, 0, null);
+                fireEffect = PhotonNetwork.Instantiate("HitEffect", list_tr_firePos[i].position, list_tr_firePos[i].rotation);
+                ball.GetComponent<Rigidbody>().AddForce(
+                    // 삼항연산자로 VR없으면 대포따라 움직이고, 있으면 대포쪽으로 발사
+                    (GameObject.FindGameObjectWithTag(str_TargetTag) ? list_tr_firePos[i].forward * f_shotPower : list_tr_firePos[i].up * f_shotPower)
+                    // 한번에 쏘는 대포같은 느낌을 주기 위해
+                    , ForceMode.Impulse);
+            }
+            //GameObject ball = PhotonNetwork.Instantiate("CannonBall", tr_firePos.position, Quaternion.identity, 0, null);
+            //GameObject fireEffect = PhotonNetwork.Instantiate("HitEffect", tr_firePos.position, tr_firePos.rotation);
+            //ball.GetComponent<Rigidbody>().AddForce(
+            //    // 삼항연산자로 VR없으면 대포따라 움직이고, 있으면 대포쪽으로 발사
+            //    (GameObject.FindGameObjectWithTag(str_TargetTag) ? tr_firePos.forward * f_shotPower : tr_firePos.up * f_shotPower)
+            //    // 한번에 쏘는 대포같은 느낌을 주기 위해
+            //    , ForceMode.Impulse);
         }
         // 대포가 쏘았을 경우, 들어가서 쿨타임을 돌리기까지 시간
         yield return new WaitForSeconds(0.8f);
         as_turret.Stop();
 
-        Observable.NextFrame().Subscribe(_ => a_turret.SetBool("Fire", false));
+        Observable.NextFrame().Subscribe(_ =>
+        {
+            for (int i = 0; i < list_A_turrets.Count; i++)
+            {
+                list_A_turrets[i].SetBool("Fire", false);
+            }
+        });
         as_turret.Stop();
         as_turret.PlayOneShot(ac_closeTurret, 0.5f);
-        a_turret.SetBool("Open", false);
+        for (int i = 0; i < list_A_turrets.Count; i++)
+        {
+            list_A_turrets[i].SetBool("Open", false);
+        }
 
         // 이미 스크립트에 있어서 안없애도됨
         //PhotonNetwork.Destroy(fireEffect);

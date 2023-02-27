@@ -146,8 +146,11 @@ public class PCPlayerHit : MonoBehaviourPunCallbacks, IPunObservable
                         v3_areaSpawnPosition = (la.transform.position - transform.position);
                         q_areaSpawnRotation = la.transform.rotation;
 
+                        string str_AreaName = (string)GameManager.instance.o_PlayArea[i].name;
+                        print(str_AreaName);
+
                         // 이후 지형 추가하면 각각의 이름과 동일한 resource를 찾아서 인스턴스시키는 방향으로 가려함
-                        GameObject tmp = PhotonNetwork.Instantiate("RandSet1", GameManager.instance.o_PlayArea[GameManager.instance.num_destroyArea - 1].GetComponent<FractureTest>().tr_spawnPoint.position + v3_areaSpawnPosition, q_areaSpawnRotation);
+                        GameObject tmp = PhotonNetwork.Instantiate(str_AreaName, GameManager.instance.o_PlayArea[GameManager.instance.num_destroyArea - 1].GetComponent<FractureTest>().tr_spawnPoint.position + v3_areaSpawnPosition, q_areaSpawnRotation);
                         StartCoroutine(DelayedPhotonNetworkDestroy(tmp));
                     }
                 }

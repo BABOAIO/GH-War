@@ -73,6 +73,7 @@ public class FractureTest : MonoBehaviourPunCallbacks
             // 부서질때 다양한 방식으로 무너지게함
             rb.AddForce(new Vector3(Random.Range(-overPow, overPow), Random.Range(-overPow, -0.1f), Random.Range(-overPow, overPow)), ForceMode.Impulse); 
         }
+        StartCoroutine(DestructionAllBridge());
     }
 
     [SerializeField] List<GameObject> list_O_Bridge = new List<GameObject>();
@@ -80,12 +81,13 @@ public class FractureTest : MonoBehaviourPunCallbacks
     // 시간이 지난 후 무너지게 할 다리
     IEnumerator DestructionAllBridge()
     {
-        yield return new WaitForSeconds(10.0f);
-
+        yield return new WaitForSeconds(0.5f);
         for (int i = 0; i<list_O_Bridge.Count; i++)
         {
-            yield return new WaitForSeconds(1.0f);
-
+            Rigidbody rb_tmp = list_O_Bridge[i].GetComponent<Rigidbody>();
+            rb_tmp.constraints = RigidbodyConstraints.None;
+            rb_tmp.AddTorque(new Vector3(Random.Range(-500f, 500f), Random.Range(-500f, 500f), Random.Range(-500f, 500f)));
+            yield return new WaitForSeconds(0.5f);
         }
 
     }
