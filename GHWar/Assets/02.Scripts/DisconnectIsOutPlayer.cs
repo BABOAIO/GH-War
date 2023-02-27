@@ -27,6 +27,7 @@ public class DisconnectIsOutPlayer : MonoBehaviourPunCallbacks
 
     private void FixedUpdate()
     {
+        // PC의 경우,
         if(_xr != null)
         {
             if (!IsGrab)
@@ -41,6 +42,8 @@ public class DisconnectIsOutPlayer : MonoBehaviourPunCallbacks
                 }
             }
         }
+
+        // VR의 경우,
         if (_xr == null)
         {
             if (PhotonNetwork.IsMasterClient)
