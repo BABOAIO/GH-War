@@ -231,14 +231,14 @@ public class PC_Player_Move : MonoBehaviourPunCallbacks, IPunObservable
                 transform.eulerAngles = new Vector3(0, f_mouseX, 0);
 
                 f_mouseYlim = f_mouseYlim + f_mouseY;
-                f_mouseY = Mathf.Clamp(f_mouseY, -70, 30);
+                f_mouseY = Mathf.Clamp(f_mouseY, -70, 50);
                 PC_Player_Cam.transform.eulerAngles = new Vector3(f_mouseY, f_mouseX, 0);
             }
             else
             {
                 PC_Player_Cam.transform.rotation = Quaternion.identity;
-                PC_Player_Cam.transform.LookAt(gameObject.transform);
                 transform.rotation = Quaternion.identity;
+                PC_Player_Cam.transform.LookAt(gameObject.transform);
             }
         }
     }

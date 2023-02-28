@@ -11,6 +11,7 @@ public class HeadFollowCam : MonoBehaviourPun
     void Start()
     {
         tr_this = GetComponent<Transform>();
+        tr_cam.transform.position = ConnManager.Conn.VR_Spawn;
     }
 
     void Update()

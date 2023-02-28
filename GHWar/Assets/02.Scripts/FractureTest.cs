@@ -15,6 +15,8 @@ public class FractureTest : MonoBehaviourPunCallbacks
     public AudioClip ac_shake;
     public AudioClip ac_warning;
 
+    public List<GameObject> DeactiveObj = new List<GameObject>();
+
     public Collider[] colliders;    // 충돌체를 배열로 가져옴
 
     // 플레이어가 떨어지면 스폰할 위치, PCPlayerHit 참고
@@ -61,6 +63,7 @@ public class FractureTest : MonoBehaviourPunCallbacks
     public void DestructionThisArea()
     {
         GetComponent<Renderer>().enabled = false;
+        GetComponent<MeshCollider>().enabled = false;
         foreach (Collider c in colliders)
         {
             // 부모 및 안의 터렛들은 예외처리
@@ -68,6 +71,7 @@ public class FractureTest : MonoBehaviourPunCallbacks
 
             //추가
             c.gameObject.SetActive(true);
+            c.transform.localScale = c.transform.localScale * 0.8f;
             c.gameObject.GetComponent<Renderer>().enabled = true;
             Rigidbody rb = c.gameObject.GetComponent<Rigidbody>();
             rb.constraints = (RigidbodyConstraints)0;   // 컨스트레인 전부 체크해제
@@ -84,12 +88,16 @@ public class FractureTest : MonoBehaviourPunCallbacks
     // 시간이 지난 후 무너지게 할 다리
     IEnumerator DestructionAllBridge()
     {
+        for(int i = 0; i<DeactiveObj.Count; i++)
+        {
+            DeactiveObj[i].SetActive(false);
+        }
         yield return new WaitForSeconds(0.5f);
         for (int i = 0; i<list_O_Bridge.Count; i++)
         {
             Rigidbody rb_tmp = list_O_Bridge[i].GetComponent<Rigidbody>();
             rb_tmp.constraints = RigidbodyConstraints.None;
-            rb_tmp.AddTorque(new Vector3(Random.Range(-500f, 500f), Random.Range(-500f, 500f), Random.Range(-500f, 500f)));
+            rb_tmp.AddTorque(new Vector3(Random.Range(-5000f, 5000f), Random.Range(-5000f, 5000f), Random.Range(-5000f, 5000f)));
             yield return new WaitForSeconds(0.5f);
         }
 

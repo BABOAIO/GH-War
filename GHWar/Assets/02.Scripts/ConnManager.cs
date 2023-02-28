@@ -88,7 +88,7 @@ public class ConnManager : MonoBehaviourPunCallbacks
         if (GameManager.instance.IsVR)
         {
             //Vector2 originPos = Random.insideUnitCircle * 2.0f;
-            GameManager.instance.VRPlayer = PhotonNetwork.Instantiate(array_PlayerType[0], VR_Spawn, Quaternion.Euler(0,180,0));
+            GameManager.instance.VRPlayer = PhotonNetwork.Instantiate(array_PlayerType[0], VR_Spawn, Quaternion.Euler(0,200,0));
             // 싱글톤 게임매니저에 생성된 플레이어의 텍스트를 연결
             GameManager.instance.VRText = GameManager.instance.VRPlayer.GetComponent<VRPlayerMove>().Txt_winnerText_VR;
         }

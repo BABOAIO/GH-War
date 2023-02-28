@@ -68,6 +68,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
+        Screen.SetResolution(1920, 1080, true);
+
         // ΩÃ±€≈Ê
         if (instance == null) instance = this;
 
